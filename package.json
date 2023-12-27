@@ -13,7 +13,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "styled-components": "^6.1.4",
+    "@types/styled-components": "^5.1.29",
+    "styled-components": "^5.3.1",
     "vite-tsconfig-paths": "^4.2.2"
   },
   "devDependencies": {
@@ -29,6 +30,9 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-styled-components": "^2.1.4",
+    "twin.macro": "^3.3.1"
   }
 }
