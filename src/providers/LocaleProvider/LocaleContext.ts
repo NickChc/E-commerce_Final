@@ -6,6 +6,14 @@ export enum Locale_Enum {
     KA = "ka",
 }
 
-interface LocaleContextProps {};
+interface LocaleContextProps {
+  locale: Locale_Enum;
+  setLocale: React.Dispatch<React.SetStateAction<Locale_Enum>>;
+  toggleLocale: () => void;
+};
 
-export const LocaleContext = createContext<LocaleContextProps>({});
+export const LocaleContext = createContext<LocaleContextProps>({
+    locale: Locale_Enum.EN,
+    setLocale: () => {},
+    toggleLocale: () => {},
+});
