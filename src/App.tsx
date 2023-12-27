@@ -1,10 +1,9 @@
-import { SDiv } from "@src/assets/style"
+
+
 
 function App() {
 
-  return <div>
-    <SDiv></SDiv>
-  </div>
+return <div>APP</div>;
 }
 
-export default App
+export default App;
