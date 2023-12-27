@@ -7,6 +7,12 @@ export enum ThemeModes_Enum {
 }
 
 
-interface ThemeContextProps {};
+interface ThemeContextProps {
+  themeMode: ThemeModes_Enum;
+  setThemeMode: React.Dispatch<React.SetStateAction<ThemeModes_Enum>>;
+};
 
-export const ThemeContext = createContext<ThemeContextProps>({});
+export const ThemeContext = createContext<ThemeContextProps>({
+    themeMode: ThemeModes_Enum.LIGHT,
+    setThemeMode: () => {},
+});
