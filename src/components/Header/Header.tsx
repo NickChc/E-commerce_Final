@@ -1,5 +1,5 @@
 import { SHeader, SSearchButton } from "@src/components/Header";
-import { SButton } from "@src/components/Button";
+import { Button } from "@src/components/Button";
 
 import { HeaderIcon } from "@src/features/HeaderIcon";
 import { SearchIcon } from "@src/assets/icons/SearchIcon";
@@ -15,12 +15,12 @@ export function Header() {
         <h1>REACT SHOP</h1>
       </div>
       <div>
-        <SButton onClick={() => console.log("NAVIGATION!")}>
+        <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
             <NavIcon />
           </div>
           NAVIGATION
-        </SButton>
+        </Button>
       </div>
       <div>
         <SSearchButton>
@@ -29,18 +29,18 @@ export function Header() {
         <input placeholder="Search" />
       </div>
       <div>
-        <SButton onClick={() => console.log("CART!")}>
+        <Button onClick={() => console.log("CART!")}>
           <div>
             <CartIcon />
           </div>
           CART
-        </SButton>
-        <SButton onClick={() => console.log("PROFILE!")}>
+        </Button>
+        <Button onClick={() => console.log("PROFILE!")}>
           <div>
             <ProfileIcon />
           </div>
           PROFILE
-        </SButton>
+        </Button>
       </div>
     </SHeader>
   );

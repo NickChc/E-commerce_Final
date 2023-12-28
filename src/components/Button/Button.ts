@@ -1,11 +1,11 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import tw from "twin.macro";
 
 interface SButtonProps {
   variation?: string;
 }
 
-export const SButton = styled.button<SButtonProps>`
+export const Button = styled.button<SButtonProps>`
   ${tw`p-3 px-6 m-1 rounded-xl font-semibold border-solid border cursor-pointer flex items-center justify-center gap-[18px] `}
   border-color: #1F51FF;
   background-color: ${(props) => props.variation === "active" && "#1F51FF"};
@@ -13,7 +13,7 @@ export const SButton = styled.button<SButtonProps>`
   transition: all 0.3s;
 
   :hover {
-    background-color: #add8e6;
+    background-color: ${(props) => props.variation !== "active" && "#ADD8E6"};
   }
 
   div {
