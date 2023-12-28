@@ -7,4 +7,5 @@ A react vite TypeScript project featuring a clone web app with classic e-commerc
 **AXIOS** - for requests
 **React Context** - for context
 **react-router-dom** - for routing
+**React-Icons** - for icons
 
