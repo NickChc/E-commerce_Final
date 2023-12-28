@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import tw from "twin.macro";
-import { FaReact } from "react-icons/fa";
 
-export const ReactIcon = styled(FaReact)`
+export const SHeaderIcon = styled.div`
   @keyframes iconRotate {
     from {
       rotate: 0;

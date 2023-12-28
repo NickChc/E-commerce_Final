@@ -1,11 +1,11 @@
 import { SHeader } from "@src/components/Header";
-import { ReactIcon } from "@src/assets/ReactIcon";
+import { HeaderIcon } from "@src/features/HeaderIcon";
 
 export function Header() {
   return (
     <SHeader>
       <div>
-        <ReactIcon />
+        <HeaderIcon />
         <h1>REACT SHOP</h1>
       </div>
     </SHeader>
