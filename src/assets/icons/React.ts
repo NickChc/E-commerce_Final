@@ -1,0 +1,1 @@
+export { FaReact as ReactIcon } from "react-icons/fa";
