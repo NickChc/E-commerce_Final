@@ -6,17 +6,20 @@ export const SHeader = styled.div`
   background-color: #1b1b1b;
   border-color: #1f51ff;
 
-  div:nth-child(1) {
-    ${tw`inline-flex items-center justify-center gap-3`}
-    color: #1F51FF;
+  h1 {
+    color: #1f51ff;
   }
 
-  div:nth-child(2) {
+  div:nth-child(1) {
+    ${tw`inline-flex items-center justify-center gap-3`}
+  }
+
+  div:nth-child(3) {
     ${tw`w-[30%] rounded-xl border-solid border flex items-stretch justify-center`}
     border-color: #1F51FF;
   }
 
-  div:nth-child(3) {
+  div:nth-child(4) {
     ${tw`flex items-center justify-center gap-3`}
   }
 
