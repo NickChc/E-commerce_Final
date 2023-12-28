@@ -1,4 +1,5 @@
 import { SHeader, SSearchButton } from "@src/components/Header";
+import { Button } from "@src/components/Button";
 
 import { HeaderIcon } from "@src/features/HeaderIcon";
 import { SearchIcon } from "@src/assets/icons/SearchIcon";
@@ -17,9 +18,9 @@ export function Header() {
         <input placeholder="Search" />
       </div>
       <div>
-        <button>NAVIGATION</button>
-        <button>CART</button>
-        <button>PROFILE</button>
+        <Button onClick={() => console.log("NAVIGATION!")}>NAVIGATION</Button>
+        <Button onClick={() => console.log("CART!")}>CART</Button>
+        <Button onClick={() => console.log("PROFILE!")}>PROFILE</Button>
       </div>
     </SHeader>
   );

@@ -17,7 +17,7 @@ export const SHeader = styled.div`
   }
 
   div:nth-child(3) {
-    ${tw`flex items-center bg-[red] justify-center gap-3`}
+    ${tw`flex items-center justify-center gap-3`}
   }
 
   input {
