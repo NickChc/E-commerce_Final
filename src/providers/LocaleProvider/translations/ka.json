@@ -1,4 +1,8 @@
 {
-  "example": "მაგალითი",
-  "example2": "მაგალითი2"
+  "navigation": "ნავიგაცია",
+  "cart": "კალათა",
+  "profile": "პროფილი",
+  "searchPlaceholder": "ძიება",
+  "contactUs": "კონტაქტი",
+  "followUs": "სოც. ქსელები"
 }

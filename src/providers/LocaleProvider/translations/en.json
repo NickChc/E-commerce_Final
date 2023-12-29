@@ -1,4 +1,8 @@
 {
-  "example": "example",
-  "example2": "example2"
+  "navigation": "NAVIGATION",
+  "cart": "CART",
+  "profile": "PRFILE",
+  "searchPlaceholder": "Search",
+  "contactUs": "Contact Us",
+  "followUs": "Follow Us"
 }

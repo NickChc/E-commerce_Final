@@ -1,4 +1,4 @@
-import { SFooter } from "@src/features/Footer";
+import { SFooter } from "@src/components/Footer";
 import { ReactLogo } from "@src/assets/logos/ReactLogo";
 import { PhoneLogo } from "@src/assets/logos/PhoneLogo";
 import { BranchLogos } from "@src/assets/logos/BranchLogos";
@@ -7,11 +7,16 @@ import { InstagramLogo } from "@src/assets/logos/InstagramLogo";
 import { YoutubeLogo } from "@src/assets/logos/YoutubeLogo";
 import { TiktokLogo } from "@src/assets/logos/TiktokLogo";
 
+import { FormattedMessage } from "react-intl";
+import { SelectLang } from "@src/components/SelectLang";
+
 export function Footer() {
   return (
     <SFooter>
       <div>
-        <h2>Contact Us</h2>
+        <h2>
+          <FormattedMessage id="contactUs" defaultMessage={"_CONTACT US_"} />
+        </h2>
         <hr />
         <ul>
           <a href="#">
@@ -29,7 +34,9 @@ export function Footer() {
         </ul>
       </div>
       <div>
-        <h2>Follow Us</h2>
+        <h2>
+          <FormattedMessage id="followUs" defaultMessage={"FOLLOW US_"} />
+        </h2>
         <hr />
         <ul>
           <a href="#">
@@ -50,6 +57,8 @@ export function Footer() {
           </a>
         </ul>
       </div>
+      <SelectLang />
+      
     </SFooter>
   );
 }
