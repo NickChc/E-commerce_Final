@@ -1,4 +1,4 @@
-import { SSelectLang, SSelectWrapper } from "@src/components/SelectLang";
+import { SSelectLang, SSelectWrapper } from "@src/features/SelectLang";
 import { Locale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import geoImg from "@src/assets/images/geoImg.jpg";

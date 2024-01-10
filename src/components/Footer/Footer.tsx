@@ -8,7 +8,7 @@ import { YoutubeLogo } from "@src/assets/logos/YoutubeLogo";
 import { TiktokLogo } from "@src/assets/logos/TiktokLogo";
 
 import { FormattedMessage } from "react-intl";
-import { SelectLang } from "@src/components/SelectLang";
+import { SelectLang } from "@src/features/SelectLang";
 
 export function Footer() {
   return (

@@ -20,6 +20,4 @@ export const SSelectLang = styled.select`
   background-color: grey;
   border-color: #1f51ff;
   color: #ffffff;
-
-
 `;
