@@ -17,7 +17,7 @@ export const SSelectWrapper = styled.div`
 
 export const SSelectLang = styled.select`
   ${tw`absolute right-6 bottom-6 p-3 outline-none appearance-none cursor-pointer border-solid border font-semibold `}
-  background-color: grey;
+  background-color: #ffffff;
   border-color: #1f51ff;
-  color: #ffffff;
+  color: #000000;
 `;

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { SHeaderIcon } from "@src/features/HeaderIcon/HeaderIcon.styled";
+import { SHeaderIcon } from "@src/features/HeaderIcon/SHeaderIcon";
 import { ReactIcon } from "@src/assets/icons/React";
 
 export function HeaderIcon() {

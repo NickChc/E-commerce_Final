@@ -1,2 +1,2 @@
 export { HeaderIcon } from "./HeaderIcon";
-export { SHeaderIcon } from "./HeaderIcon.styled";
+export { SHeaderIcon } from "./SHeaderIcon";

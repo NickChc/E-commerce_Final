@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 export const SHeader = styled.div`
-  ${tw`w-full p-3 sticky top-0 flex flex-col lg:flex-row justify-around items-center border-b border-solid border-t-0 border-r-0 border-l-0`}
+  ${tw`w-full p-1 sm:p-3 z-10 sticky top-0 flex flex-col lg:flex-row justify-around items-center border-b border-solid border-t-0 border-r-0 border-l-0`}
   background-color: #1b1b1b;
   border-color: #1f51ff;
 
