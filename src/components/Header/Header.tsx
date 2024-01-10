@@ -1,6 +1,13 @@
-import { SHeader, SSearchButton } from "@src/components/Header";
-import { Button } from "@src/components/Button";
 import { FormattedMessage, useIntl } from "react-intl";
+import {
+  SHeader,
+  SSearchButton,
+  SHeadlineWrapper,
+  SInputHolder,
+  SBtnsWrapper,
+  SNavWrapper,
+} from "@src/components/Header";
+import { Button } from "@src/components/Button";
 import { HeaderIcon } from "@src/features/HeaderIcon";
 import { SearchIcon } from "@src/assets/icons/SearchIcon";
 import { NavIcon } from "@src/assets/icons/NavigationIcon";
@@ -11,19 +18,21 @@ export function Header() {
   const { formatMessage } = useIntl();
   return (
     <SHeader>
-      <div>
+      <SHeadlineWrapper>
         <HeaderIcon />
         <h1>REACT SHOP</h1>
-      </div>
-      <div>
+      </SHeadlineWrapper>
+      <SNavWrapper>
         <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
             <NavIcon />
           </div>
-          <FormattedMessage id="navigation" defaultMessage={"_NAVIGATION_"} />
+          <p>
+            <FormattedMessage id="navigation" defaultMessage={"_NAVIGATION_"} />
+          </p>
         </Button>
-      </div>
-      <div>
+      </SNavWrapper>
+      <SInputHolder>
         <SSearchButton>
           <SearchIcon />
         </SSearchButton>
@@ -33,21 +42,33 @@ export function Header() {
             defaultMessage: "_SEARCH_",
           })}
         />
-      </div>
-      <div>
+      </SInputHolder>
+      <SBtnsWrapper>
         <Button onClick={() => console.log("CART!")}>
           <div>
             <CartIcon />
           </div>
-          <FormattedMessage id="cart" defaultMessage={"_CART_"} />
+          <p>
+            <FormattedMessage id="cart" defaultMessage={"_CART_"} />
+          </p>
         </Button>
         <Button onClick={() => console.log("PROFILE!")}>
           <div>
             <ProfileIcon />
           </div>
-          <FormattedMessage id="profile" defaultMessage={"_PROFIE_"} />
+          <p>
+            <FormattedMessage id="profile" defaultMessage={"_PROFIE_"} />
+          </p>
         </Button>
-      </div>
+        <Button onClick={() => console.log("NAVIGATION!")}>
+          <div>
+            <NavIcon />
+          </div>
+          <p>
+            <FormattedMessage id="navigation" defaultMessage={"_NAVIGATION_"} />
+          </p>
+        </Button>
+      </SBtnsWrapper>
     </SHeader>
   );
 }

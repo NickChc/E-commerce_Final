@@ -6,7 +6,7 @@ interface SButtonProps {
 }
 
 export const Button = styled.button<SButtonProps>`
-  ${tw`p-3 px-6 m-1 rounded-xl font-semibold border-solid border cursor-pointer flex items-center justify-center gap-[18px] `}
+  ${tw`p-3 px-4 m-1 rounded-xl font-semibold border-solid border cursor-pointer flex flex-row  items-center justify-between gap-x-3`}
   border-color: #1F51FF;
   background-color: ${(props) => props.variation === "active" && "#1F51FF"};
   color: ${(props) => props.variation === "active" && "#ffffff"};
@@ -17,7 +17,11 @@ export const Button = styled.button<SButtonProps>`
   }
 
   div {
-    ${tw`text-2xl`}
+    ${tw`text-2xl h-[25px]`}
     color: ${(props) => (props.variation === "active" ? "#ffffff" : "#1F51FF")};
+  }
+
+  p {
+    ${tw`hidden sm:block`}
   }
 `;

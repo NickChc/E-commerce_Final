@@ -11,7 +11,7 @@ export const SHeaderIcon = styled.div`
     }
   }
 
-  ${tw`text-4xl text-[#1F51FF] cursor-pointer`}
+  ${tw`text-3xl sm:text-4xl text-[#1F51FF] cursor-pointer`}
 
   :hover {
     animation: iconRotate 4s infinite linear;
