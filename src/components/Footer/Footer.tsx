@@ -14,7 +14,7 @@ import { YoutubeLogo } from "@src/assets/logos/YoutubeLogo";
 import { TiktokLogo } from "@src/assets/logos/TiktokLogo";
 
 import { FormattedMessage } from "react-intl";
-import { SelectLang } from "@src/features/SelectLang";
+import { LangSelect } from "@src/features/LangSelect";
 
 export function Footer() {
   return (
@@ -70,7 +70,7 @@ export function Footer() {
         <p>Copyright © 2024 Reactshop.ge. All rights reserved.</p>
       </SBottomText>
 
-      <SelectLang />
+      <LangSelect />
     </SFooter>
   );
 }

@@ -20,6 +20,10 @@ export function LocaleProvider({ children }: PropsWithChildren) {
     }
   }, [locale]);
 
+  
+
+
+
   useEffect(() => {
     if (localStorage.getItem("language")) {
       setLocale(localStorage.getItem("language") as Locale_Enum);
