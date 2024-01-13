@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 export const SFooter = styled.div`
-  ${tw`w-full  flex flex-col items-center justify-center relative `}
+  ${tw`w-full flex flex-col items-center justify-center relative `}
   background-color: #1b1b1b;
   color: #1f51ff;
 
@@ -30,7 +30,7 @@ export const SFooterInfo = styled.div`
   }
 
   a {
-    ${tw`m-3 no-underline flex items-center text-[0.9em] sm:text-[1em] shrink `}
+    ${tw`m-3 no-underline flex items-center text-[0.8em] sm:text-[1em] shrink `}
     color: #ffffff;
   }
 `;
@@ -44,7 +44,7 @@ export const SInfobar = styled.div`
 `;
 
 export const SLine = styled.div`
-  ${tw`w-full border-solid border`}
+  ${tw`w-full border-solid border mb-9 sm:mb-0`}
   background-color: #1F51FF;
   border-color: #1f51ff;
 `;
