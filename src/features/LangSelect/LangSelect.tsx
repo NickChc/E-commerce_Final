@@ -1,4 +1,6 @@
 import { useState } from "react";
+import GeoFlag from "@src/assets/images/GeoFlag.png";
+import USFlag from "@src/assets/images/USFlag.png";
 import {
   SLangWrapper,
   SLangSelect,
@@ -15,7 +17,7 @@ export function LangSelect() {
 
   return (
     <SLangWrapper>
-      <p>Choose Language:</p>
+      <p>Language:</p>
       <SLangSelect>
         {showLangPopup && (
           <SLangPopup>
@@ -42,7 +44,8 @@ export function LangSelect() {
           </SLangPopup>
         )}
         <SLangButton onClick={() => setShowLangPopup(!showLangPopup)}>
-          {locale.toUpperCase()}
+          <img src={locale === Locale_Enum.EN ? USFlag : GeoFlag} />
+          {/* {locale.toUpperCase()} */}
         </SLangButton>
       </SLangSelect>
     </SLangWrapper>
