@@ -12,7 +12,7 @@ export const SHeader = styled.div`
   }
 
   input {
-    ${tw`p-2 outline-none rounded-r-xl border-none w-[100%] text-lg`}
+    ${tw`p-2 outline-none rounded-r-xl border-none w-[100%] text-lg caret-[#1f51ff]`}
   }
 
   input::placeholder {
