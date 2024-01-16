@@ -1,0 +1,1 @@
+export { getRandInt } from "./getRandInt";

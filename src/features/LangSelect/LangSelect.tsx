@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import GeoFlag from "@src/assets/images/GeoFlag.png";
 import USFlag from "@src/assets/images/USFlag.png";
 import {
@@ -17,7 +18,9 @@ export function LangSelect() {
 
   return (
     <SLangWrapper>
-      <p>Language:</p>
+      <p>
+        <FormattedMessage id="language" defaultMessage={"_LANGUAGE_"} />:
+      </p>
       <SLangSelect>
         {showLangPopup && (
           <SLangPopup>

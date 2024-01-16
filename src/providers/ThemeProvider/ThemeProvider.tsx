@@ -29,10 +29,12 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     [ThemeModes_Enum.LIGHT]: {
       primary: "#",
       secondary: "#",
+      additional: "#",
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#",
       secondary: "#",
+      additional: "#",
     },
   };
 
