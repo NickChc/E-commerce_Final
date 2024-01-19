@@ -5,12 +5,22 @@ import { getRandInt } from "@src/utils/getRandInt";
 import NotFoundImg1 from "@src/assets/images/NotFoundImg1.jpg";
 import NotFoundImg2 from "@src/assets/images/NotFoundImg2.jpg";
 import NotFoundImg3 from "@src/assets/images/NotFoundImg3.jpg";
+import NotFoundImg4 from "@src/assets/images/NotFoundImg4.jpg";
+import NotFoundImg5 from "@src/assets/images/NotFoundImg5.jpg";
+import NotFoundImg6 from "@src/assets/images/NotFoundImg6.jpg";
 
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { Locale_Enum } from "@src/providers/LocaleProvider";
 
 export function NotFound() {
-  const imgArray = [NotFoundImg1, NotFoundImg2, NotFoundImg3];
+  const imgArray = [
+    NotFoundImg1,
+    NotFoundImg2,
+    NotFoundImg3,
+    NotFoundImg4,
+    NotFoundImg5,
+    NotFoundImg6,
+  ];
 
   const { locale } = useLocaleProvider();
 
