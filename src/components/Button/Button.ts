@@ -10,10 +10,12 @@ export const Button = styled.button<SButtonProps>`
   border-color: #1F51FF;
   background-color: ${(props) => props.variation === "active" && "#1F51FF"};
   color: ${(props) => props.variation === "active" && "#ffffff"};
-  transition: all 0.3s;
+  transition: all 0.2s;
 
   :hover {
-    background-color: ${(props) => props.variation !== "active" && "#ADD8E6"};
+    ${tw`rounded-lg`}
+    color: ${(props) => props.variation !== "active" && "#1F51FF"};
+    
   }
 
   div {
