@@ -14,6 +14,7 @@ import { NavIcon } from "@src/assets/icons/NavigationIcon";
 import { CartIcon } from "@src/assets/icons/CartIcon";
 import { ProfileIcon } from "@src/assets/icons/ProfileIcon";
 
+
 export function Header() {
   const { formatMessage } = useIntl();
   return (

@@ -15,7 +15,6 @@ export const Button = styled.button<SButtonProps>`
   :hover {
     ${tw`rounded-lg`}
     color: ${(props) => props.variation !== "active" && "#1F51FF"};
-    
   }
 
   div {

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import tw from "twin.macro";
+import "google-fonts";
 
 export const SHeader = styled.div`
   ${tw`w-full p-1 sm:p-3 z-10 sticky top-0 flex flex-col lg:flex-row justify-around items-center border-b border-solid border-t-0 border-r-0 border-l-0`}
@@ -41,6 +42,10 @@ export const SHeadlineWrapper = styled.div`
   ${tw`inline-flex items-center justify-center gap-3`}
   div {
     ${tw`inline-flex items-center justify-center`}
+  }
+
+  h1 {
+    font-family: Oswald, sans-serif;
   }
 `;
 
