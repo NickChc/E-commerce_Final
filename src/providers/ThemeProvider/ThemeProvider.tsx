@@ -27,14 +27,16 @@ export function ThemeProvider({ children }: PropsWithChildren) {
 
   const colors = {
     [ThemeModes_Enum.LIGHT]: {
-      primary: "#",
-      secondary: "#",
-      additional: "#",
+      primary: "#000000",
+      secondary: "#ffffff",
+      secondary_background: "#1b1b1b",
+      additional: "#1f51ff",
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#",
       secondary: "#",
-      additional: "#",
+      secondary_background: "#1b1b1b",
+      additional: "#1f51ff",
     },
   };
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SNotFound = styled.div`
@@ -11,11 +11,15 @@ export const SNotFound = styled.div`
 
   button {
     ${tw`w-[55%] m-6 p-3 border-solid border-2 rounded-lg cursor-pointer font-semibold text-lg transition-[0.3s]`}
-    border-color: #1f51ff;
+    ${(props) => css`
+      border-color: ${props.theme.colors["additional"]};
+    `}
   }
 
   button:hover {
-    color: #ffffff;
-    background-color: #1f51ff;
+    ${(props) => css`
+      color: ${props.theme.colors["secondary"]};
+      background-color: ${props.theme.colors["additional"]};
+    `}
   }
 `;

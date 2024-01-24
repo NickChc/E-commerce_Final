@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SLangWrapper = styled.div`
@@ -6,7 +6,9 @@ export const SLangWrapper = styled.div`
 
   p {
     ${tw`text-sm sm:text-lg`}
-    color: #1f51ff;
+    ${(props) => css`
+      color: ${props.theme.colors["additional"]};
+    `}
   }
 `;
 
@@ -15,14 +17,16 @@ export const SLangSelect = styled.div`
 `;
 
 export const SLangPopup = styled.div`
-  ${tw`w-full my-1 py-3 rounded-xl flex flex-col gap-y-3 items-center`}
-  border: solid 2px #1f51ff;
+  ${tw`w-full my-1 py-3 rounded-xl flex flex-col gap-y-3 items-center border-solid border-2`}
   background-color: #8b8b8b;
+  ${(props) => css`
+    border-color: ${props.theme.colors["additional"]};
+  `}
 `;
 
 export const SLangPopupBtn = styled.button`
-  ${tw`w-[90%] py-1 rounded-xl cursor-pointer`}
-  border: solid 1px transparent;
+  ${tw`w-[90%] py-1 rounded-xl cursor-pointer border-solid border`}
+  border-color: transparent;
 
   :hover {
     border-color: black;
@@ -38,12 +42,14 @@ export const SLangPopupBtn = styled.button`
 `;
 
 export const SLangButton = styled.button`
-  ${tw`w-full mb-1 p-2 outline-none cursor-pointer rounded-xl`}
-  border: solid 2px #1f51ff;
+  ${tw`w-full mb-1 p-2 outline-none cursor-pointer rounded-xl border-solid border-2`}
   background-color: #8b8b8b;
+  ${(props) => css`
+    border-color: ${props.theme.colors["additional"]};
+  `}
 
   img {
-    ${tw`w-[3em] min-h-[2em] max-h-[2em]`}
-    border: solid 1px black;
+    ${tw`w-[3em] min-h-[2em] max-h-[2em] border-solid border`}
+    border-color: #000000;
   }
 `;
