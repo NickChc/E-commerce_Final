@@ -5,5 +5,7 @@ export {
   SInputHolder,
   SBtnsWrapper,
   SNavWrapper,
+  SThemeSelectLg,
+  SThemeSelectSm,
 } from "./Header.styled";
 export { Header } from "./Header";

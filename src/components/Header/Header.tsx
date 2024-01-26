@@ -6,14 +6,16 @@ import {
   SInputHolder,
   SBtnsWrapper,
   SNavWrapper,
+  SThemeSelectLg,
+  SThemeSelectSm,
 } from "@src/components/Header";
 import { Button } from "@src/components/Button";
 import { HeaderIcon } from "@src/features/HeaderIcon";
+import { ThemeSelect } from "@src/features/ThemeSelect";
 import { SearchIcon } from "@src/assets/icons/SearchIcon";
 import { NavIcon } from "@src/assets/icons/NavigationIcon";
 import { CartIcon } from "@src/assets/icons/CartIcon";
 import { ProfileIcon } from "@src/assets/icons/ProfileIcon";
-
 
 export function Header() {
   const { formatMessage } = useIntl();
@@ -23,6 +25,9 @@ export function Header() {
         <HeaderIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
+        <SThemeSelectSm>
+          <ThemeSelect />
+        </SThemeSelectSm>
       <SNavWrapper>
         <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
@@ -70,6 +75,9 @@ export function Header() {
           </p>
         </Button>
       </SBtnsWrapper>
+      <SThemeSelectLg>
+        <ThemeSelect />
+      </SThemeSelectLg>
     </SHeader>
   );
 }

@@ -33,8 +33,8 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       additional: "#1f51ff",
     },
     [ThemeModes_Enum.DARK]: {
-      primary: "#",
-      secondary: "#",
+      primary: "#6b6b6b",
+      secondary: "#3b3b3b",
       secondary_background: "#1b1b1b",
       additional: "#1f51ff",
     },
