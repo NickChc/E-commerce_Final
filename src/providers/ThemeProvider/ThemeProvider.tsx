@@ -1,5 +1,6 @@
 import { PropsWithChildren, useEffect, useState, useCallback } from "react";
 import { ThemeContext, ThemeModes_Enum } from "@src/providers/ThemeProvider";
+import { THEME_MODE } from "@src/config/localStorageKeys";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import GlobalCss from "@src/assets/global.styles";
 
@@ -11,17 +12,17 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   const toggleTheme = useCallback(() => {
     if (themeMode === ThemeModes_Enum.LIGHT) {
       setThemeMode(ThemeModes_Enum.DARK);
-      localStorage.setItem("theme_mode", ThemeModes_Enum.DARK);
+      localStorage.setItem(THEME_MODE, ThemeModes_Enum.DARK);
     } else if (themeMode === ThemeModes_Enum.DARK) {
       setThemeMode(ThemeModes_Enum.LIGHT);
-      localStorage.setItem("theme_mode", ThemeModes_Enum.LIGHT);
+      localStorage.setItem(THEME_MODE, ThemeModes_Enum.LIGHT);
     }
   }, [themeMode]);
   
 
   useEffect(() => {
-    if (localStorage.getItem("theme_mode")) {
-      setThemeMode(localStorage.getItem("theme_mode") as ThemeModes_Enum);
+    if (localStorage.getItem(THEME_MODE)) {
+      setThemeMode(localStorage.getItem(THEME_MODE) as ThemeModes_Enum);
     }
   }, []);
 

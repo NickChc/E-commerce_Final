@@ -1,6 +1,7 @@
 import { PropsWithChildren, useState, useEffect, useCallback } from "react";
 import { LocaleContext, Locale_Enum } from "@src/providers/LocaleProvider";
 import { IntlProvider } from "react-intl";
+import { LANGUAGE } from "@src/config/localStorageKeys";
 
 import en from "@src/providers/LocaleProvider/translations/en.json";
 import ka from "@src/providers/LocaleProvider/translations/ka.json";
@@ -13,10 +14,10 @@ export function LocaleProvider({ children }: PropsWithChildren) {
   const toggleLocale = useCallback(() => {
     if (locale === Locale_Enum.EN) {
       setLocale(Locale_Enum.KA);
-      localStorage.setItem("language", Locale_Enum.KA);
+      localStorage.setItem(LANGUAGE, Locale_Enum.KA);
     } else if (locale === Locale_Enum.KA) {
       setLocale(Locale_Enum.EN);
-      localStorage.setItem("language", Locale_Enum.EN);
+      localStorage.setItem(LANGUAGE, Locale_Enum.EN);
     }
   }, [locale]);
 
@@ -25,8 +26,8 @@ export function LocaleProvider({ children }: PropsWithChildren) {
 
 
   useEffect(() => {
-    if (localStorage.getItem("language")) {
-      setLocale(localStorage.getItem("language") as Locale_Enum);
+    if (localStorage.getItem(LANGUAGE)) {
+      setLocale(localStorage.getItem(LANGUAGE) as Locale_Enum);
     }
   }, []);
 
