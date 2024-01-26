@@ -7,5 +7,6 @@ export {
   SNavWrapper,
   SThemeSelectLg,
   SThemeSelectSm,
+  SHideButtonWrapper,
 } from "./Header.styled";
 export { Header } from "./Header";

@@ -27,11 +27,12 @@ export const SHeader = styled.div`
 
 export const SBtnsWrapper = styled.div`
   ${tw`w-full px-9 md:w-auto flex items-stretch justify-around lg:justify-center gap-x-1 sm:gap-x-3`}
-
-  button:nth-child(3) {
-    ${tw`flex lg:hidden`}
-  }
 `;
+
+export const SHideButtonWrapper = styled.span`
+  ${tw`flex lg:hidden`}
+`;
+
 export const SInputHolder = styled.div`
   ${tw`w-[90%] my-3 md:w-[70%] lg:w-[30%] rounded-xl border-solid border flex items-stretch justify-center`}
   ${(props) => css`
@@ -53,8 +54,7 @@ export const SHeadlineWrapper = styled.div`
   }
 
   h1 {
-    ${tw`lg:text-[1.6em] xl:text-[2em]`}
-    font-family: Oswald, sans-serif;
+    ${tw`lg:text-[1.6em] xl:text-[2em] font-[Oswald, sans]`}
   }
 `;
 
