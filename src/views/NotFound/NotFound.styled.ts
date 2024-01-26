@@ -6,11 +6,11 @@ export const SNotFound = styled.div`
   color: #4b4b4b;
 
   img {
-    ${tw`w-[55%] max-h-[37em] mt-3`}
+    ${tw`w-[55%] max-h-[37em] mt-3 select-none`}
   }
 
   button {
-    ${tw`w-[55%] m-6 p-3 border-solid border-2 rounded-lg cursor-pointer font-semibold text-lg transition-[0.3s]`}
+    ${tw`w-[55%] m-6 p-3 border-solid border-2 rounded-lg cursor-pointer font-semibold text-lg transition-[0.3s] select-none`}
     ${(props) => css`
       border-color: ${props.theme.colors["additional"]};
     `}

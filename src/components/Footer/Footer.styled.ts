@@ -34,7 +34,7 @@ export const SFooterInfo = styled.div`
   a {
     ${tw`m-3 no-underline flex items-center text-[0.8em] sm:text-[1em] shrink hover:underline `}
     ${(props) => css`
-      color: ${props.theme.colors["secondary"]};
+      color: ${props.theme.mode === "DARK" ? "#6b6b6b" : "#ffffff"};
     `}
   }
 `;
