@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import GeoFlag from "@src/assets/images/GeoFlag.png";
 import USFlag from "@src/assets/images/USFlag.png";
@@ -16,12 +16,34 @@ export function LangSelect() {
   const { setLocale, locale } = useLocaleProvider();
   const [showLangPopup, setShowLangPopup] = useState<boolean>(false);
 
+  const langSelectRef = useRef<HTMLDivElement>(null);
+
+
+  // CLOSE LANGSELECT POPUP ON OUTSIDE CLICK
+
+  useEffect(() => {
+    function handleOutsideClick(e: MouseEvent) {
+      if (
+        langSelectRef.current &&
+        !langSelectRef.current.contains(e.target as Node)
+      ) {
+        setShowLangPopup(false);
+      }
+    }
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => window.removeEventListener("click", handleOutsideClick);
+  }, [langSelectRef]);
+
+  
+
   return (
     <SLangWrapper>
       <p>
         <FormattedMessage id="language" defaultMessage={"_LANGUAGE_"} />:
       </p>
-      <SLangSelect>
+      <SLangSelect ref={langSelectRef}>
         {showLangPopup && (
           <SLangPopup>
             <SLangPopupBtn
@@ -48,7 +70,6 @@ export function LangSelect() {
         )}
         <SLangButton onClick={() => setShowLangPopup(!showLangPopup)}>
           <img src={locale === Locale_Enum.EN ? USFlag : GeoFlag} />
-          {/* {locale.toUpperCase()} */}
         </SLangButton>
       </SLangSelect>
     </SLangWrapper>
