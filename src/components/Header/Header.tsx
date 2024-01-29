@@ -59,7 +59,7 @@ export function Header() {
         />
       </SInputHolder>
       <SBtnsWrapper>
-        <Button onClick={() => console.log("CART!")}>
+        <Button variation="active" onClick={() => console.log("CART!")}>
           <div>
             <CartIcon />
           </div>
