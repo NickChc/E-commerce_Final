@@ -28,9 +28,7 @@ export function Header() {
 
   return (
     <SHeader>
-      <SHeadlineWrapper onClick={() => Navigate("/")}
-        // data-tool-tip="go to home"
-      >
+      <SHeadlineWrapper onClick={() => Navigate("/")}>
         <HeaderIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
@@ -47,6 +45,7 @@ export function Header() {
           </p>
         </Button>
       </SNavWrapper>
+
       <SInputHolder>
         <SSearchButton>
           <SearchIcon />
@@ -58,8 +57,9 @@ export function Header() {
           })}
         />
       </SInputHolder>
+
       <SBtnsWrapper>
-        <Button variation="active" onClick={() => console.log("CART!")}>
+        <Button onClick={() => console.log("CART!")}>
           <div>
             <CartIcon />
           </div>
@@ -75,10 +75,11 @@ export function Header() {
           <div>
             <ProfileIcon />
           </div>
-          <p>
-            <FormattedMessage id="profile" defaultMessage={"_PROFIE_"} />
+          <p className="whitespace-nowrap">
+            <FormattedMessage id="login" defaultMessage={"_LOG_IN_"} />
           </p>
         </Button>
+
         {/* MODAL HERE */}
         <Modal
           scrollBlock={true}
@@ -86,6 +87,7 @@ export function Header() {
           setOpen={() => setShowModal(!showModal)}
         />
         {/* MODAL HERE */}
+
         <SHideButtonWrapper>
           <Button onClick={() => console.log("NAVIGATION!")}>
             <div>

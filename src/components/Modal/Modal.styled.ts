@@ -7,7 +7,7 @@ export const SModalWrapper = styled.div`
 `;
 
 export const SModal = styled.div`
-  ${tw`p-3 rounded-lg w-[70%] h-[60vh] border-solid border flex flex-col items-center relative`}
+  ${tw`p-3 rounded-lg w-[90%] h-[90vh] sm:w-[70%] sm:h-[60vh] border-solid border flex flex-col items-center relative`}
   ${(props) => css`
     background-color: ${props.theme.mode === "DARK" ? "#2b2b2b" : "#4b4b4b"};
     color: ${props.theme.mode === "DARK" ? "#9b9b9b" : "#ffffff"};

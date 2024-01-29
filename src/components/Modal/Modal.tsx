@@ -8,17 +8,17 @@ interface ModalProps {
 }
 
 export function Modal({ open, setOpen, scrollBlock }: ModalProps) {
-    
-    useEffect(() => {
-        if (!scrollBlock) return;
-        if (open) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-    }, [open]);
-    
-    if (!open) return;
+  
+  useEffect(() => {
+    if (!scrollBlock) return;
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
+
+  if (!open) return;
   return (
     <SModalWrapper
       onClick={(e) => {
