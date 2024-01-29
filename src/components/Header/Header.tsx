@@ -19,13 +19,18 @@ import { NavIcon } from "@src/assets/icons/NavigationIcon";
 import { CartIcon } from "@src/assets/icons/CartIcon";
 import { ProfileIcon } from "@src/assets/icons/ProfileIcon";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const { formatMessage } = useIntl();
   const [showModal, setShowModal] = useState<boolean>(false);
+  const Navigate = useNavigate();
+
   return (
     <SHeader>
-      <SHeadlineWrapper>
+      <SHeadlineWrapper onClick={() => Navigate("/")}
+        // data-tool-tip="go to home"
+      >
         <HeaderIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>

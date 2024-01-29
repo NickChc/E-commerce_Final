@@ -47,8 +47,23 @@ export const SSearchButton = styled.button`
   `}
 `;
 
+
+
 export const SHeadlineWrapper = styled.div`
-  ${tw`inline-flex items-center justify-center gap-x-2 lg:gap-x-3`}
+  ${tw`inline-flex items-center justify-center gap-x-2 lg:gap-x-3 cursor-pointer relative after:py-1 after:px-2 after:text-[.8em] after:rounded-sm after:border-solid after:border after:absolute after:bottom-[-40%] after:left-[70%] after:whitespace-nowrap after:scale-0 after:origin-top-left hover:after:scale-100 after:duration-200 after:pointer-events-none`}
+
+  ::after {
+    content: "go to home";
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  @media (hover: hover) {
+    :hover::after {
+      content: "go to home";
+    }
+  }
+
   div {
     ${tw`inline-flex items-center justify-center`}
   }

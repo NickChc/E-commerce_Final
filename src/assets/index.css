@@ -2,9 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer utilities {
-    .backdrop-blur-sm {
-        backdrop-filter: blur(4px);
-    }
-}

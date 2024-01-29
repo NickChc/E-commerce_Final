@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import "google-fonts";
 
 export const SModalWrapper = styled.div`
-  ${tw`w-full min-h-screen absolute top-0 right-0 backdrop-blur-sm flex items-center justify-center`}
+  ${tw`w-full min-h-screen absolute top-0 right-0 flex items-center backdrop-blur-sm justify-center`}
 `;
 
 export const SModal = styled.div`
