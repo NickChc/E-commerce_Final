@@ -5,7 +5,7 @@ import {
   SCardInfo,
 } from "@src/components/ProductCard";
 import { TProduct } from "@src/@types/requestTypes";
-import placeholderImg from "@src/assets/images/placeholderImg.jpg";
+import placeholderImg from "@src/assets/images/PlaceholderImg.jpg";
 
 interface ProductCardProps {
   product: TProduct;

@@ -12,6 +12,7 @@ import { LeftArrow, RightArrow } from "@src/assets/icons/Arrows";
 
 interface ProductSliderProps {
   products: TProduct[];
+  title?: string;
 }
 
 interface CustomArrowProps {
@@ -34,7 +35,9 @@ function RightCustomArrow({ onClick }: CustomArrowProps) {
   );
 }
 
-export function ProductSlider({ products }: ProductSliderProps) {
+export function ProductSlider({ products, title }: ProductSliderProps) {
+  if (products.length === 0) return;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -76,6 +79,7 @@ export function ProductSlider({ products }: ProductSliderProps) {
 
   return (
     <SProductSliderWrapper>
+      {title && <h1>{title}</h1>}
       <Slider {...settings}>
         {products?.map((product) => {
           return <ProductCard key={product.id} product={product} />;

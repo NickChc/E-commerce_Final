@@ -1,4 +1,4 @@
-import { SHome } from "@src/views/Home";
+import { SHome, SSlidersContainer } from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 // import { ProductCard } from "@src/components/ProductCard";
 import { ProductSlider } from "@src/components/ProductSlider";
@@ -8,14 +8,12 @@ export function Home() {
 
   return (
     <SHome>
-      <h1>HOME PAGE</h1>
-      <ProductSlider products={products} />
-
-      {/* <div className="grid grid-cols-3 mt-9 gap-x-1 gap-y-9 pb-14 px-3 ">
-        {products?.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
-        })}
-      </div> */}
+      <SSlidersContainer>
+        <ProductSlider title="SALE" products={products} />
+        <ProductSlider title="HARDWARE" products={products} />
+        <ProductSlider title="SPORT" products={products} />
+        <ProductSlider title="ALL" products={products} />
+      </SSlidersContainer>
     </SHome>
   );
 }

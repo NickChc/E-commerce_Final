@@ -9,3 +9,7 @@ export const SHome = styled.div`
     border-color: ${props.theme.mode === "DARK" ? "#7b7b7b" : "transparent"};
   `}
 `;
+
+export const SSlidersContainer = styled.div`
+  ${tw`gap-y-20 w-full flex flex-col items-center my-9`}
+`;
