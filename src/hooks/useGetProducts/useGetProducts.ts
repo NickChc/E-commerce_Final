@@ -19,9 +19,5 @@ export function useGetProducts() {
     }
   }
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  return { products, productsLoading: loading };
+  return { products, productsLoading: loading, fetchProducts };
 }
