@@ -6,6 +6,7 @@ import {
 } from "@src/components/ProductCard";
 import { TProduct } from "@src/@types/requestTypes";
 import placeholderImg from "@src/assets/images/PlaceholderImg.jpg";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: TProduct;
@@ -14,14 +15,12 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(true);
 
-  function imageError() {
-    setImageLoaded(false);
-  }
+  const Navigate = useNavigate();
 
   return (
-    <SProductCard>
+    <SProductCard onClick={() => Navigate(`products/product/${product.id}`)}>
       {imageLoaded ? (
-        <img src={product.image} alt="" onError={imageError} />
+        <img src={product.image} alt="" onError={() => setImageLoaded(false)} />
       ) : (
         <img src={placeholderImg} alt="" />
       )}

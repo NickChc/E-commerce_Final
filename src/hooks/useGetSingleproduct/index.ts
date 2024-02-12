@@ -1,0 +1,1 @@
+export { useGetSingleProduct } from "./useGetSingleProduct";
