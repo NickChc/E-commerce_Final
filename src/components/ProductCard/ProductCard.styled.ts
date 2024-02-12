@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SProductCard = styled.div`
-  ${tw`flex flex-col items-center justify-between py-3 rounded-xl aspect-[1/1.5] cursor-pointer `}
+  ${tw`flex flex-col items-center justify-between py-3 rounded-xl aspect-[1/1.8] cursor-pointer `}
 
   :hover {
     ${tw`shadow-xl`}
@@ -14,16 +14,17 @@ export const SProductCard = styled.div`
   }
 
   h3 {
-    ${tw`text-[1.4rem] break-words mb-3 `}
+    ${tw`break-words mb-3 `}
   }
 
   h2 {
+    ${tw`  whitespace-nowrap `}
     color: #6e6e6e;
   }
 `;
 
 export const SCardInfo = styled.div`
-  ${tw`w-[90%] my-3 pl-3 gap-y-3 max-h-[4rem] `}
+  ${tw`w-[90%] h-[6rem] text-[.7rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
 `;
 
 export const SCardButtonWrapper = styled.div`
