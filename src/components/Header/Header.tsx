@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
 import {
   SHeader,
@@ -18,17 +20,21 @@ import { SearchIcon } from "@src/assets/icons/SearchIcon";
 import { NavIcon } from "@src/assets/icons/NavigationIcon";
 import { CartIcon } from "@src/assets/icons/CartIcon";
 import { ProfileIcon } from "@src/assets/icons/ProfileIcon";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const { formatMessage } = useIntl();
   const [showModal, setShowModal] = useState<boolean>(false);
+
   const Navigate = useNavigate();
+  const Location = useLocation();
+
 
   return (
     <SHeader>
-      <SHeadlineWrapper onClick={() => Navigate("/")}>
+      <SHeadlineWrapper
+        isHome={Location.pathname === "/"}
+        onClick={() => Navigate("/")}
+      >
         <HeaderIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
