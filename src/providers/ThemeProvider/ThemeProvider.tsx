@@ -18,7 +18,6 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       localStorage.setItem(THEME_MODE, ThemeModes_Enum.LIGHT);
     }
   }, [themeMode]);
-  
 
   useEffect(() => {
     if (localStorage.getItem(THEME_MODE)) {
@@ -34,12 +33,14 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       additional: "#1f51ff",
     },
     [ThemeModes_Enum.DARK]: {
-      primary: "#6b6b6b",
-      secondary: "#3b3b3b",
+      primary: "#333333",
+      secondary: "#C0C0C0",
       secondary_background: "#1b1b1b",
       additional: "#1f51ff",
     },
   };
+  // 7b7b7b
+  // 3b3b3b
 
   return (
     <ThemeContext.Provider value={{ themeMode, setThemeMode, toggleTheme }}>

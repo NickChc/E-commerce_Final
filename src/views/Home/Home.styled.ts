@@ -6,6 +6,6 @@ export const SHome = styled.div`
   ${(props) => css`
     background-color: ${props.theme.colors["secondary"]};
     color: ${props.theme.colors["primary"]};
-    border-color: ${props.theme.mode === "DARK" ? "black" : "transparent"};
+    border-color: ${props.theme.mode === "DARK" ? "#7b7b7b" : "transparent"};
   `}
 `;
