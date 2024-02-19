@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import GeoFlag from "@src/assets/images/GeoFlag.png";
 import USFlag from "@src/assets/images/USFlag.png";
@@ -16,34 +16,30 @@ export function LangSelect() {
   const { setLocale, locale } = useLocaleProvider();
   const [showLangPopup, setShowLangPopup] = useState<boolean>(false);
 
-  const langSelectRef = useRef<HTMLDivElement>(null);
-
 
   // CLOSE LANGSELECT POPUP ON OUTSIDE CLICK
 
+  function closeLangPopup() {
+    setShowLangPopup(false);
+    document.removeEventListener("click", closeLangPopup);
+
+    console.log("DONE");
+  }
+
+  // CLEANUP FUNCTION THAT REMOVES EVENTLISTENER FROM DOCUMENT
+
   useEffect(() => {
-    function handleOutsideClick(e: MouseEvent) {
-      if (
-        langSelectRef.current &&
-        !langSelectRef.current.contains(e.target as Node)
-      ) {
-        setShowLangPopup(false);
-      }
-    }
+    if (!showLangPopup) return;
 
-    window.addEventListener("click", handleOutsideClick);
-
-    return () => window.removeEventListener("click", handleOutsideClick);
-  }, [langSelectRef]);
-
-  
+    document.addEventListener("click", closeLangPopup);
+  }, [showLangPopup]);
 
   return (
     <SLangWrapper>
       <p>
         <FormattedMessage id="language" defaultMessage={"_LANGUAGE_"} />:
       </p>
-      <SLangSelect ref={langSelectRef}>
+      <SLangSelect>
         {showLangPopup && (
           <SLangPopup>
             <SLangPopupBtn
@@ -68,7 +64,12 @@ export function LangSelect() {
             </SLangPopupBtn>
           </SLangPopup>
         )}
-        <SLangButton onClick={() => setShowLangPopup(!showLangPopup)}>
+        <SLangButton
+          onClick={(e: React.MouseEvent) => {
+            e.stopPropagation();
+            setShowLangPopup(!showLangPopup);
+          }}
+        >
           <img src={locale === Locale_Enum.EN ? USFlag : GeoFlag} />
         </SLangButton>
       </SLangSelect>
