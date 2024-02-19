@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   SProductCard,
   SCardButtonWrapper,
@@ -11,15 +11,21 @@ import { SProductButton } from "@src/components/Buttons/ProductButton";
 
 interface ProductCardProps {
   product: TProduct;
+  disable?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(true);
 
   const Navigate = useNavigate();
 
   return (
-    <SProductCard onClick={() => Navigate(`products/product/${product.id}`)}>
+    <SProductCard
+      onClick={() => {
+        if (disable) return;
+        Navigate(`products/product/${product.id}`);
+      }}
+    >
       {imageLoaded ? (
         <img src={product.image} alt="" onError={() => setImageLoaded(false)} />
       ) : (

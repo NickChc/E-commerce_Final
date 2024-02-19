@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -35,7 +36,13 @@ function RightCustomArrow({ onClick }: CustomArrowProps) {
   );
 }
 
+function handleSwipe(e: React.MouseEvent) {
+  e.stopPropagation();
+}
+
 export function ProductSlider({ products, title }: ProductSliderProps) {
+  const [swiping, setSwiping] = useState<boolean>(false);
+
   if (products.length === 0) return;
 
   const settings = {
@@ -52,6 +59,8 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
     nextArrow: <RightCustomArrow />,
     swipe: true,
     swipeToSlide: true,
+    beforeChange: () => setSwiping(true),
+    afterChange: () => setSwiping(false),
 
     responsive: [
       {
@@ -82,7 +91,7 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
       {title && <h1>{title}</h1>}
       <Slider {...settings}>
         {products?.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          return <ProductCard key={product.id} product={product} disable={swiping} />;
         })}
       </Slider>
     </SProductSliderWrapper>

@@ -21,7 +21,7 @@ export function Modal({ open, setOpen, scrollBlock }: ModalProps) {
   if (!open) return;
   return (
     <SModalWrapper
-      onClick={(e) => {
+      onMouseDown={(e) => {
         if (e.target === e.currentTarget) {
           setOpen(false);
         }
