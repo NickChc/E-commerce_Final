@@ -6,7 +6,7 @@ import {
   SCardInfo,
 } from "@src/components/ProductCard";
 import { TProduct } from "@src/@types/requestTypes";
-import placeholderImg from "@src/assets/images/PlaceholderImg.jpg";
+import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
 import { useNavigate } from "react-router-dom";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
@@ -31,7 +31,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
       {imageLoaded ? (
         <img src={product.image} alt="" onError={() => setImageLoaded(false)} />
       ) : (
-        <img src={placeholderImg} alt="" />
+        <img src={GamingPcImg} alt="" />
       )}
       <SCardInfo>
         <h3>{product.title}</h3>

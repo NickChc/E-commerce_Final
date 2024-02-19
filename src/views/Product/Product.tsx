@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import {
   SProduct,
@@ -14,17 +15,23 @@ import {
   SProductMain,
 } from "@src/views/Product";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
-import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
 import IphoneMockImg from "@src/assets/images/IphoneMockImg.webp";
+import { PlusIcon } from "@src/assets/icons/PlusIcon";
 import { calculateSale } from "@src/utils/calculateSale";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 export function Product() {
   const [imageLoaded, setImageLoaded] = useState<boolean>(true);
 
-  const { product, productLoading } = useGetSingleProduct();
+  const { productId } = useParams();
+
+  const { product, productLoading, fetchSingleProduct } = useGlobalProvider();
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
+    if (productId) {
+      fetchSingleProduct(productId);
+    }
   }, []);
 
   return (
@@ -50,14 +57,16 @@ export function Product() {
                   <SProductButton side="left">
                     <FormattedMessage
                       id="addToWishList"
-                      defaultMessage={"_ADD TO WISHLIST_"}
+                      defaultMessage={"_TO WISHLIST_"}
                     />
+                    <PlusIcon />
                   </SProductButton>
                   <SProductButton side="right">
                     <FormattedMessage
                       id="addToCart"
-                      defaultMessage={"_ADD TO CART_"}
+                      defaultMessage={"_TO CART_"}
                     />
+                    <PlusIcon />
                   </SProductButton>
                 </SDoubleBtn>
               </SButtonsWrapper>
@@ -74,13 +83,13 @@ export function Product() {
               )}
               <STextPair>
                 <STextTitle>
-                  <FormattedMessage id="name" defaultMessage={"_NAME_"} />:{" "}
+                  <FormattedMessage id="name" defaultMessage={"_NAME_"} />:
                 </STextTitle>
                 <h3>{product?.title}</h3>
               </STextPair>
               <STextPair>
                 <STextTitle>
-                  <FormattedMessage id="priceTUC" defaultMessage={"_PRICE_"} />:{" "}
+                  <FormattedMessage id="priceTUC" defaultMessage={"_PRICE_"} />:
                 </STextTitle>
                 <SPrice isSale={product?.salePrice !== null}>
                   {product?.price}{" "}
@@ -88,7 +97,7 @@ export function Product() {
                 </SPrice>
                 {product?.salePrice && (
                   <h2>
-                    {product?.salePrice}{" "}
+                    {product?.salePrice}
                     <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
                   </h2>
                 )}

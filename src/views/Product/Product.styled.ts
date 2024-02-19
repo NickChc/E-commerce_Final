@@ -19,7 +19,7 @@ export const SProductMainWrapper = styled.div`
 `;
 
 export const SProductMain = styled.div`
-  ${tw`w-[100%] sm:min-w-[50%] flex flex-col items-stretch `}
+  ${tw`w-[100%] sm:min-w-[45%] flex flex-col items-stretch `}
 
   img {
     ${tw`object-cover aspect-square w-full self-center sm:self-auto `}
@@ -27,7 +27,7 @@ export const SProductMain = styled.div`
 `;
 
 export const SProductInfo = styled.div<PriceProps>`
-  ${tw`flex flex-col gap-y-3 mt-3 px-1 sm:px-3 whitespace-nowrap relative sm:min-w-[50%] text-[.7rem] sm:text-[1rem] `}
+  ${tw`flex flex-col gap-y-3 mt-3 px-1 sm:px-3 whitespace-nowrap relative sm:min-w-[55%] text-[.7rem] sm:text-[1rem] `}
   ${(props) => css`
     ${props.isSale && tw`pt-14 lg:pt-6`}
   `}

@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { publicAxios } from "@src/utils/publicAxios";
 import { TProduct } from "@src/@types/requestTypes";
 
@@ -7,7 +6,6 @@ export function useGetSingleProduct() {
   const [product, setProduct] = useState<TProduct>();
   const [loading, setloading] = useState<boolean>(false);
 
-  const { productId } = useParams();
 
   async function fetchSingleProduct(productId: string) {
     try {
@@ -22,11 +20,6 @@ export function useGetSingleProduct() {
     }
   }
 
-  useEffect(() => {
-    if (productId) {
-      fetchSingleProduct(productId);
-    }
-  }, []);
 
-  return { product, productLoading: loading };
+  return { product, productLoading: loading, fetchSingleProduct };
 }
