@@ -9,7 +9,7 @@ import {
   SLangPopup,
   SLangPopupBtn,
 } from "@src/features/LangSelect";
-import { Locale_Enum } from "@src/providers/LocaleProvider";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 
 export function LangSelect() {
@@ -41,20 +41,20 @@ export function LangSelect() {
         {showLangPopup && (
           <SLangPopup>
             <SLangPopupBtn
-              disabled={locale === Locale_Enum.EN}
+              disabled={locale === TLocale_Enum.EN}
               onClick={() => {
-                setLocale(Locale_Enum.EN);
-                localStorage.setItem("language", Locale_Enum.EN);
+                setLocale(TLocale_Enum.EN);
+                localStorage.setItem("language", TLocale_Enum.EN);
                 setShowLangPopup(false);
               }}
             >
               EN
             </SLangPopupBtn>
             <SLangPopupBtn
-              disabled={locale === Locale_Enum.KA}
+              disabled={locale === TLocale_Enum.KA}
               onClick={() => {
-                setLocale(Locale_Enum.KA);
-                localStorage.setItem("language", Locale_Enum.KA);
+                setLocale(TLocale_Enum.KA);
+                localStorage.setItem("language", TLocale_Enum.KA);
                 setShowLangPopup(false);
               }}
             >
@@ -68,7 +68,7 @@ export function LangSelect() {
             setShowLangPopup(!showLangPopup);
           }}
         >
-          <img src={locale === Locale_Enum.EN ? USFlag : GeoFlag} />
+          <img src={locale === TLocale_Enum.EN ? USFlag : GeoFlag} />
         </SLangButton>
       </SLangSelect>
     </SLangWrapper>

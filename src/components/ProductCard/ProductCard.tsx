@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import {
   SProductCard,
   SCardButtonWrapper,
@@ -8,6 +9,7 @@ import { TProduct } from "@src/@types/requestTypes";
 import placeholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { useNavigate } from "react-router-dom";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
+import { calculateSale } from "@src/utils/calculateSale";
 
 interface ProductCardProps {
   product: TProduct;
@@ -33,7 +35,20 @@ export function ProductCard({ product, disable }: ProductCardProps) {
       )}
       <SCardInfo>
         <h3>{product.title}</h3>
-        <h2>Price: {product.price} GEL</h2>
+        {product.salePrice ? (
+          <>
+            <p className="">
+              <FormattedMessage id="sale" defaultMessage={"_SALE_"} />:{" "}
+              {calculateSale(product.price, product.salePrice)}%
+            </p>
+            <h2>
+              <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
+              {product.salePrice} GEL
+            </h2>
+          </>
+        ) : (
+          <h2>Price: {product.price} GEL</h2>
+        )}
       </SCardInfo>
       <SCardButtonWrapper>
         <SProductButton
@@ -41,14 +56,14 @@ export function ProductCard({ product, disable }: ProductCardProps) {
             e.stopPropagation();
           }}
         >
-          BUY NOW
+          <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
         </SProductButton>
         <SProductButton
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
-          ADD TO CART
+          <FormattedMessage id="addToCart" defaultMessage={"_ADD TO CART_"} />
         </SProductButton>
       </SCardButtonWrapper>
     </SProductCard>

@@ -19,14 +19,16 @@ export const SProductButton = styled.button<ProductButtonProps>`
       : props.side === "left"
       ? tw`rounded-l-xl border-r-0 w-[50%] `
       : tw`rounded-xl`}
-    ${props.variation === "primary" && tw`opacity-[.9] hover:opacity-[1] `}
+    ${props.variation === "primary" && tw`opacity-[.9]  `}
   `}
 
     :hover {
-    ${(props) => css`
-      ${tw`opacity-[1]`}
-      background-color: ${props.theme.colors["additional"]};
-      color: ${props.theme.colors["secondary"]};
-    `}
+    @media (hover: hover) {
+      ${(props) => css`
+        ${tw`opacity-[1]`}
+        background-color: ${props.theme.colors["additional"]};
+        color: ${props.theme.colors["secondary"]};
+      `}
+    }
   }
 `;

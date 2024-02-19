@@ -8,5 +8,17 @@
   "branches": "Branches",
   "takeMeHome": "Take Me Home",
   "language": "Language",
-  "login": "Log In"
+  "login": "LOG IN",
+  "sale": "SALE",
+  "name": "NAME",
+  "price": "Price",
+  "priceTUC": "PRICE",
+  "description": "DESCRIPTION",
+  "addToCart": "ADD TO CART",
+  "addToWishList": "ADD TO WISH LIST",
+  "buyNow": "BUY NOW",
+  "gel": "GEL",
+  "uploaded": "UPLOADED",
+  "lastUpdated": "LAST UPDATED",
+  "category": "CATEGORY"
 }

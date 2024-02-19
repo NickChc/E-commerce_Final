@@ -1,19 +1,19 @@
 import { createContext } from "react";
 
 
-export enum Locale_Enum {
+export enum TLocale_Enum {
     EN = "en",
     KA = "ka",
 }
 
 interface LocaleContextProps {
-  locale: Locale_Enum;
-  setLocale: React.Dispatch<React.SetStateAction<Locale_Enum>>;
+  locale: TLocale_Enum;
+  setLocale: React.Dispatch<React.SetStateAction<TLocale_Enum>>;
   toggleLocale: () => void;
 };
 
 export const LocaleContext = createContext<LocaleContextProps>({
-    locale: Locale_Enum.EN,
+    locale: TLocale_Enum.EN,
     setLocale: () => {},
     toggleLocale: () => {},
 });

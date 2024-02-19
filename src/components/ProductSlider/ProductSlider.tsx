@@ -2,7 +2,6 @@ import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import { TProduct } from "@src/@types/requestTypes";
 import { ProductCard } from "@src/components/ProductCard";
 import {
@@ -34,10 +33,6 @@ function RightCustomArrow({ onClick }: CustomArrowProps) {
       <RightArrow />
     </SCustomArrow>
   );
-}
-
-function handleSwipe(e: React.MouseEvent) {
-  e.stopPropagation();
 }
 
 export function ProductSlider({ products, title }: ProductSliderProps) {

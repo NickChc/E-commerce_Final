@@ -27,9 +27,9 @@ export const SProductMain = styled.div`
 `;
 
 export const SProductInfo = styled.div<PriceProps>`
-  ${tw`flex flex-col gap-y-3 px-1 sm:px-3 whitespace-nowrap relative sm:min-w-[50%] text-[.7rem] sm:text-[1rem] `}
+  ${tw`flex flex-col gap-y-3 mt-3 px-1 sm:px-3 whitespace-nowrap relative sm:min-w-[50%] text-[.7rem] sm:text-[1rem] `}
   ${(props) => css`
-    ${props.isSale && tw`pt-14 lg:pt-3`}
+    ${props.isSale && tw`pt-14 lg:pt-6`}
   `}
   
 
@@ -63,7 +63,7 @@ export const SPrice = styled.h2<PriceProps>`
 `;
 
 export const SSaleTag = styled.span`
-  ${tw`absolute top-3 right-1 text-[1.2rem] sm:text-[1.5rem] `}
+  ${tw`absolute top-0 right-0 text-[1.2rem] sm:text-[1.5rem] `}
 `;
 
 export const SAdditionalInfo = styled.div`

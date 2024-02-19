@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
 import {
   SProduct,
   SProductMainWrapper,
@@ -42,10 +43,22 @@ export function Product() {
                 <img src={IphoneMockImg} alt="" />
               )}
               <SButtonsWrapper>
-                <SProductButton variation="primary">BUY NOW</SProductButton>
+                <SProductButton variation="primary">
+                  <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
+                </SProductButton>
                 <SDoubleBtn>
-                  <SProductButton side="left">ADD TO WISHLIST</SProductButton>
-                  <SProductButton side="right">ADD TO CART</SProductButton>
+                  <SProductButton side="left">
+                    <FormattedMessage
+                      id="addToWishList"
+                      defaultMessage={"_ADD TO WISHLIST_"}
+                    />
+                  </SProductButton>
+                  <SProductButton side="right">
+                    <FormattedMessage
+                      id="addToCart"
+                      defaultMessage={"_ADD TO CART_"}
+                    />
+                  </SProductButton>
                 </SDoubleBtn>
               </SButtonsWrapper>
             </SProductMain>
@@ -54,22 +67,39 @@ export function Product() {
               {product?.salePrice && (
                 <SSaleTag>
                   <h4>
-                    SALE: {calculateSale(product.price, product.salePrice)}%
+                    <FormattedMessage id="sale" defaultMessage={"_SALE_"} />:{" "}
+                    {calculateSale(product.price, product.salePrice)}%
                   </h4>
                 </SSaleTag>
               )}
               <STextPair>
-                <STextTitle>NAME: </STextTitle>
+                <STextTitle>
+                  <FormattedMessage id="name" defaultMessage={"_NAME_"} />:{" "}
+                </STextTitle>
                 <h3>{product?.title}</h3>
               </STextPair>
               <STextPair>
-                <STextTitle>PRICE: </STextTitle>
+                <STextTitle>
+                  <FormattedMessage id="priceTUC" defaultMessage={"_PRICE_"} />:{" "}
+                </STextTitle>
                 <SPrice isSale={product?.salePrice !== null}>
-                  {product?.price} GEL
+                  {product?.price}{" "}
+                  <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
                 </SPrice>
-                {product?.salePrice && <h2>{product?.salePrice} GEL</h2>}
+                {product?.salePrice && (
+                  <h2>
+                    {product?.salePrice}{" "}
+                    <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+                  </h2>
+                )}
               </STextPair>
-              <STextTitle>DESCRIPTION: </STextTitle>
+              <STextTitle>
+                <FormattedMessage
+                  id="description"
+                  defaultMessage={"_DESCRIPTION_"}
+                />
+                :{" "}
+              </STextTitle>
               <p>
                 {product?.description} Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Consectetur quaerat nesciunt, error commodi
@@ -95,17 +125,29 @@ export function Product() {
           </SProductMainWrapper>
           <SAdditionalInfo>
             <STextPair>
-              <h5>UPLOADED: </h5>
+              <h5>
+                <FormattedMessage id="uploaded" defaultMessage={"_UPLOADED_"} />
+                :{" "}
+              </h5>
               <p>{product?.created_at.split("T")[0]}</p>
             </STextPair>
             <hr />
             <STextPair>
-              <h5>LAST UPDATED: </h5>
+              <h5>
+                <FormattedMessage
+                  id="lastUpdated"
+                  defaultMessage={"_LAST UPDATED_"}
+                />
+                :{" "}
+              </h5>
               <p>{product?.updated_at.split("T")[0]}</p>
             </STextPair>
             <hr />
             <STextPair>
-              <h5>CATEGORY: </h5>
+              <h5>
+                <FormattedMessage id="category" defaultMessage={"_CATEGORY_"} />
+                :{" "}
+              </h5>
               <p>{product?.category_name}</p>
             </STextPair>
           </SAdditionalInfo>

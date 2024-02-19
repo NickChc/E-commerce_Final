@@ -8,5 +8,17 @@
   "branches": "ფილიალები",
   "takeMeHome": "დამაბრუნეთ მთავარზე",
   "language": "ენა",
-  "login": "შესვლა"
+  "login": "შესვლა",
+  "sale": "ფასდაკლება",
+  "name": "სახელი",
+  "price": "ფასი",
+  "priceTUC": "ფასი",
+  "description": "აღწერა",
+  "addToCart": "კალათაში დამატება",
+  "addToWishList": "სასურველებში დამატება",
+  "buyNow": "შეძენა",
+  "gel": "ლარი",
+  "uploaded": "აიტვირთა",
+  "lastUpdated": "ბოლოს განახლდა",
+  "category": "კატეგორია"
 }
