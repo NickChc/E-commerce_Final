@@ -52,7 +52,7 @@ interface SHeadlineWrapperProps {
 }
 
 export const SHeadlineWrapper = styled.div<SHeadlineWrapperProps>`
-  ${tw`inline-flex items-center justify-center gap-x-2 lg:gap-x-3 relative whitespace-nowrap after:content-["go to home"] after:py-1 after:px-2 after:text-[.8em] after:rounded-sm after:border-solid after:border after:absolute after:bottom-[-40%] after:left-[70%] after:whitespace-nowrap after:scale-0 after:origin-top-left hover:after:scale-100 after:duration-200 after:pointer-events-none`}
+  ${tw`inline-flex items-center justify-center gap-x-2 lg:gap-x-3 relative whitespace-nowrap after:content-["go to home"] after:py-1 after:px-2 after:text-[.8em] after:rounded-sm after:border-solid after:border after:absolute after:bottom-[-40%] after:left-[70%] after:whitespace-nowrap after:scale-0 after:origin-top-left hover:after:scale-100 after:duration-200 after:pointer-events-none select-none`}
   ${(props) => css`
     ${props.isHome ? tw`cursor-default` : tw`cursor-pointer`}
   `}

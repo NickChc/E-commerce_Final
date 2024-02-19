@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { publicAxios } from "@src/utils/publicAxios";
 import { TProduct } from "@src/@types/requestTypes";
 

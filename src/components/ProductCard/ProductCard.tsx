@@ -7,6 +7,7 @@ import {
 import { TProduct } from "@src/@types/requestTypes";
 import placeholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { useNavigate } from "react-router-dom";
+import { SProductButton } from "@src/components/Buttons/ProductButton";
 
 interface ProductCardProps {
   product: TProduct;
@@ -29,20 +30,20 @@ export function ProductCard({ product }: ProductCardProps) {
         <h2>Price: {product.price} GEL</h2>
       </SCardInfo>
       <SCardButtonWrapper>
-        <button
+        <SProductButton
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
           BUY NOW
-        </button>
-        <button
+        </SProductButton>
+        <SProductButton
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
           ADD TO CART
-        </button>
+        </SProductButton>
       </SCardButtonWrapper>
     </SProductCard>
   );

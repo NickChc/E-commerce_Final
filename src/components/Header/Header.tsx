@@ -12,7 +12,7 @@ import {
   SThemeSelectSm,
   SHideButtonWrapper,
 } from "@src/components/Header";
-import { Button } from "@src/components/Button";
+import { Button } from "@src/components/Buttons/HeaderButton";
 import { Modal } from "@src/components/Modal";
 import { HeaderIcon } from "@src/features/HeaderIcon";
 import { ThemeSelect } from "@src/features/ThemeSelect";

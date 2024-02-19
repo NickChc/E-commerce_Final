@@ -1,0 +1,1 @@
+export { SProductButton } from "./ProductButton.styled";

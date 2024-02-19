@@ -22,8 +22,6 @@ export function LangSelect() {
   function closeLangPopup() {
     setShowLangPopup(false);
     document.removeEventListener("click", closeLangPopup);
-
-    console.log("DONE");
   }
 
   // CLEANUP FUNCTION THAT REMOVES EVENTLISTENER FROM DOCUMENT

@@ -29,19 +29,4 @@ export const SCardInfo = styled.div`
 
 export const SCardButtonWrapper = styled.div`
   ${tw`w-[90%] mt-3 flex flex-col items-stretch gap-y-3`}
-
-  button {
-    ${tw`py-[.5rem] rounded-xl border-solid border cursor-pointer duration-150 whitespace-nowrap `}
-    ${(props) => css`
-      border-color: ${props.theme.colors["additional"]};
-      color: ${props.theme.colors["additional"]};
-    `}
-
-    :hover {
-      ${(props) => css`
-        background-color: ${props.theme.colors["additional"]};
-        color: ${props.theme.colors["secondary"]};
-      `}
-    }
-  }
 `;
