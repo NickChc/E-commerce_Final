@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import {
   SHeader,
-  SSearchButton,
   SHeadlineWrapper,
-  SInputHolder,
   SBtnsWrapper,
   SNavWrapper,
   SThemeSelectLg,
@@ -16,16 +14,14 @@ import {
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { Modal } from "@src/components/Modal";
 import { ThemeSelect } from "@src/features/ThemeSelect";
-import { SearchIcon, NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
-
+import { SearchBar } from "@src/features/SearchBar";
+import { NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
 
 export function Header() {
-  const { formatMessage } = useIntl();
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const Navigate = useNavigate();
   const Location = useLocation();
-
 
   return (
     <SHeader>
@@ -36,9 +32,12 @@ export function Header() {
         <SReactIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
+
+      {/* SELECTS THEME ON SMALL SCREENS */}
       <SThemeSelectSm>
         <ThemeSelect />
       </SThemeSelectSm>
+      
       <SNavWrapper>
         <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
@@ -49,19 +48,7 @@ export function Header() {
           </p>
         </Button>
       </SNavWrapper>
-
-      <SInputHolder>
-        <SSearchButton>
-          <SearchIcon />
-        </SSearchButton>
-        <input
-          placeholder={formatMessage({
-            id: "searchPlaceholder",
-            defaultMessage: "_SEARCH_",
-          })}
-        />
-      </SInputHolder>
-
+      <SearchBar />
       <SBtnsWrapper>
         <Button onClick={() => console.log("CART!")}>
           <div>
@@ -105,6 +92,9 @@ export function Header() {
           </Button>
         </SHideButtonWrapper>
       </SBtnsWrapper>
+
+
+      {/* SELECTS THEME ON LARGE SCREENS */}
       <SThemeSelectLg>
         <ThemeSelect />
       </SThemeSelectLg>

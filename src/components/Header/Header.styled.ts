@@ -17,36 +17,16 @@ export const SHeader = styled.div`
     `}
   }
 
-  input {
-    ${tw`p-2 outline-none rounded-r-xl border-none w-[100%] text-lg caret-[#1f51ff]`}
-  }
-
-  input::placeholder {
-    ${tw`font-semibold`}
-  }
 `;
 
 export const SBtnsWrapper = styled.div`
-  ${tw`w-full px-9 md:w-auto flex items-stretch justify-around lg:justify-center gap-x-1 sm:gap-x-3`}
+  ${tw`w-full mt-1 px-9 md:w-auto flex items-stretch justify-around lg:justify-center gap-x-1 sm:gap-x-3`}
 `;
 
 export const SHideButtonWrapper = styled.span`
   ${tw`flex lg:hidden`}
 `;
 
-export const SInputHolder = styled.div`
-  ${tw`w-[90%] my-3 md:w-[70%] lg:w-[30%] rounded-xl border-solid border flex items-stretch justify-center`}
-  ${(props) => css`
-    border-color: ${props.theme.colors["additional"]};
-  `}
-`;
-
-export const SSearchButton = styled.button`
-  ${tw`p-3 rounded-l-xl border-none cursor-pointer outline-none`}
-  ${(props) => css`
-    color: ${props.theme.colors["additional"]};
-  `}
-`;
 
 interface SHeadlineWrapperProps {
   isHome: boolean;
@@ -85,7 +65,7 @@ export const SHeadlineWrapper = styled.div<SHeadlineWrapperProps>`
 export const SReactIcon = styled(ReactIcon)`
   ${tw`text-3xl sm:text-3xl xl:text-4xl `}
   ${(props) => css`
-    background-color: ${props.theme.colors['secondary-background']};
+    background-color: ${props.theme.colors["secondary-background"]};
     color: ${props.theme.colors["additional"]};
   `}
 `;
