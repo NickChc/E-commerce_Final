@@ -16,7 +16,7 @@ import {
 } from "@src/views/Product";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import IphoneMockImg from "@src/assets/images/IphoneMockImg.webp";
-import { PlusIcon } from "@src/assets/icons/PlusIcon";
+import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 

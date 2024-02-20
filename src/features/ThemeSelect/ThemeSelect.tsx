@@ -1,6 +1,5 @@
 import { SThemeSelect } from "@src/features/ThemeSelect";
-import { DarkModeIcon } from "@src/assets/icons/DarkModeIcon";
-import { LightModeIcon } from "@src/assets/icons/LightModeIcon";
+import { DarkModeIcon, LightModeIcon } from "@src/assets/icons";
 import { useThemeProvider } from "@src/providers/ThemeProvider";
 import { ThemeModes_Enum } from "@src/providers/ThemeProvider";
 

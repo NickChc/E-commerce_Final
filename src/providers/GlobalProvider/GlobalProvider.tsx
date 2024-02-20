@@ -5,7 +5,7 @@ import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
 
-  const { products, productsLoading, fetchProducts } = useGetProducts();
+  const { products, productsLoading, fetchProducts, productsError } = useGetProducts();
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
 
   useEffect(() => {
@@ -17,6 +17,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       value={{
         products,
         productsLoading,
+        productsError,
         product,
         productLoading,
         fetchSingleProduct,

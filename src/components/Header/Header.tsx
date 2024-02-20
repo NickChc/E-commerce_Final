@@ -11,15 +11,13 @@ import {
   SThemeSelectLg,
   SThemeSelectSm,
   SHideButtonWrapper,
+  SReactIcon,
 } from "@src/components/Header";
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { Modal } from "@src/components/Modal";
-import { HeaderIcon } from "@src/features/HeaderIcon";
 import { ThemeSelect } from "@src/features/ThemeSelect";
-import { SearchIcon } from "@src/assets/icons/SearchIcon";
-import { NavIcon } from "@src/assets/icons/NavigationIcon";
-import { CartIcon } from "@src/assets/icons/CartIcon";
-import { ProfileIcon } from "@src/assets/icons/ProfileIcon";
+import { SearchIcon, NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
+
 
 export function Header() {
   const { formatMessage } = useIntl();
@@ -35,7 +33,7 @@ export function Header() {
         isHome={Location.pathname === "/"}
         onClick={() => Navigate("/")}
       >
-        <HeaderIcon />
+        <SReactIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
       <SThemeSelectSm>
@@ -86,13 +84,12 @@ export function Header() {
           </p>
         </Button>
 
-        {/* MODAL HERE */}
+        {/*LOG IN MODAL HERE */}
         <Modal
           scrollBlock={true}
           open={showModal}
           setOpen={() => setShowModal(!showModal)}
         />
-        {/* MODAL HERE */}
 
         <SHideButtonWrapper>
           <Button onClick={() => console.log("NAVIGATION!")}>

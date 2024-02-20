@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 import "google-fonts";
+import { ReactIcon } from "@src/assets/icons";
 
 export const SHeader = styled.div`
   ${tw`w-full p-1 sm:p-3 z-10 sticky top-0 flex flex-col lg:flex-row justify-around items-center border-b border-solid border-t-0 border-r-0 border-l-0 relative`}
@@ -79,6 +80,14 @@ export const SHeadlineWrapper = styled.div<SHeadlineWrapperProps>`
   h1 {
     ${tw`lg:text-[1.6em] xl:text-[2em] font-[Oswald, sans]`}
   }
+`;
+
+export const SReactIcon = styled(ReactIcon)`
+  ${tw`text-3xl sm:text-3xl xl:text-4xl `}
+  ${(props) => css`
+    background-color: ${props.theme.colors['secondary-background']};
+    color: ${props.theme.colors["additional"]};
+  `}
 `;
 
 export const SNavWrapper = styled.div`

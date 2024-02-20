@@ -1,13 +1,17 @@
 import { SHome, SSlidersContainer } from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-// import { ProductCard } from "@src/components/ProductCard";
 import { ProductSlider } from "@src/components/ProductSlider";
 
 export function Home() {
-  const { products, productsLoading } = useGlobalProvider();
+  const { products, productsLoading, productsError } = useGlobalProvider();
 
   return (
     <SHome>
+      {/* {productsLoading && (
+        <div className="h-dvh flex items-center justify-center ">
+          <h1>LOADING...</h1>
+        </div>
+      )} */}
       <SSlidersContainer>
         <ProductSlider title="SALE" products={products} />
         <ProductSlider title="HARDWARE" products={products} />

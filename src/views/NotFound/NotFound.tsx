@@ -10,7 +10,7 @@ import NotFoundImg5 from "@src/assets/images/NotFoundImg5.jpg";
 import NotFoundImg6 from "@src/assets/images/NotFoundImg6.jpg";
 
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
-import { Locale_Enum } from "@src/providers/LocaleProvider";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
 
 export function NotFound() {
   const imgArray = [
@@ -36,7 +36,7 @@ export function NotFound() {
       <h1>
         ERROR 404.
         <br />
-        {locale === Locale_Enum.EN ? "Page Not Found!" : "გვერდი ვერ მოიძებნა!"}
+        {locale === TLocale_Enum.EN ? "Page Not Found!" : "გვერდი ვერ მოიძებნა!"}
       </h1>
     </SNotFound>
   );

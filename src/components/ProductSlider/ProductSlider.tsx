@@ -8,7 +8,7 @@ import {
   SProductSliderWrapper,
   SCustomArrow,
 } from "@src/components/ProductSlider";
-import { LeftArrow, RightArrow } from "@src/assets/icons/Arrows";
+import { LeftArrow, RightArrow } from "@src/assets/icons";
 
 interface ProductSliderProps {
   products: TProduct[];
