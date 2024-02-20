@@ -5,17 +5,20 @@ import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
 
-  const { products, productsLoading, fetchProducts, productsError } = useGetProducts();
+  const { products, productsLoading, fetchProducts, productsError, searchedProducts, setSearchedProducts } = useGetProducts();
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts("");
   }, []);
 
   return (
     <GlobalContext.Provider
       value={{
+        fetchProducts,
         products,
+        searchedProducts,
+        setSearchedProducts,
         productsLoading,
         productsError,
         product,

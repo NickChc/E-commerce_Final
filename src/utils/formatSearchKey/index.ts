@@ -1,0 +1,1 @@
+export { formatSearchKey } from "./formatSearchKey";

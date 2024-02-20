@@ -1,18 +1,28 @@
 import { useState } from "react";
 import { publicAxios } from "@src/utils/publicAxios";
 import { TProduct } from "@src/@types/requestTypes";
+import { formatSearchKey } from "@src/utils/formatSearchKey";
 
 export function useGetProducts() {
   const [products, setProducts] = useState<TProduct[]>([]);
+  const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  async function fetchProducts() {
+  async function fetchProducts(keyWord: string) {
+    const formattedKey = formatSearchKey(keyWord);
     try {
       setError("");
-      setLoading(true);
-      const response = await publicAxios.get("/product");
-      setProducts(response.data?.products);
+      const response = await publicAxios.get(
+        `/product?productName=${formattedKey}`
+      );
+      if (keyWord === "") {
+        setLoading(true);
+        setProducts(response.data?.products);
+      } else {
+        setSearchedProducts(response.data?.products);
+      }
       console.log(response.data.products);
     } catch (error: any) {
       console.log(error.message);
@@ -26,6 +36,8 @@ export function useGetProducts() {
 
   return {
     products,
+    searchedProducts,
+    setSearchedProducts,
     productsLoading: loading,
     fetchProducts,
     productsError: error,
