@@ -25,6 +25,15 @@ export const SProductCard = styled.div`
   }
 `;
 
+interface SCardImgProps {
+  show: boolean;
+}
+
+export const SCardImg = styled.img<SCardImgProps>`
+  ${tw`w-[90%] aspect-square object-cover border-none rounded-lg  `}
+  ${(props) => !props.show && tw`invisible h-0 w-0` }
+`;
+
 export const SCardInfo = styled.div`
   ${tw`w-[90%] h-[7rem] text-[.7rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
 

@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import {
   SProductCard,
   SCardButtonWrapper,
   SCardInfo,
+  SCardImg,
 } from "@src/components/ProductCard";
 import { TProduct } from "@src/@types/requestTypes";
 import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
-import { useNavigate } from "react-router-dom";
+import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
 
@@ -17,7 +19,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, disable }: ProductCardProps) {
-  const [imageLoaded, setImageLoaded] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   const Navigate = useNavigate();
 
@@ -28,11 +30,20 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         Navigate(`products/product/${product.id}`);
       }}
     >
-      {imageLoaded ? (
-        <img src={product.image} alt="" onError={() => setImageLoaded(false)} />
-      ) : (
-        <img src={GamingPcImg} alt="" />
-      )}
+      <SCardImg
+        show={imageLoaded}
+        src={product.image}
+        alt="product image"
+        loading="lazy"
+        onLoad={() => setImageLoaded(true)}
+      />
+      <SCardImg
+        show={!imageLoaded}
+        src={GamingPcImg}
+        alt="placeholder image"
+        loading="lazy"
+      />
+
       <SCardInfo>
         <h3>{product.title}</h3>
         {product.salePrice ? (

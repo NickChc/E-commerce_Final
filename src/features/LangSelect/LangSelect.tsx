@@ -68,7 +68,7 @@ export function LangSelect() {
             setShowLangPopup(!showLangPopup);
           }}
         >
-          <img src={locale === TLocale_Enum.EN ? USFlag : GeoFlag} />
+          <img src={locale === TLocale_Enum.EN ? USFlag : GeoFlag} alt="Flag images" />
         </SLangButton>
       </SLangSelect>
     </SLangWrapper>
