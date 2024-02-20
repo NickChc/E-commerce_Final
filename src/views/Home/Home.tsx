@@ -1,4 +1,9 @@
-import { SHome, SSlidersContainer } from "@src/views/Home";
+import {
+  SHome,
+  SSlidersContainer,
+  SScreenMessage,
+  SLoadingCircle,
+} from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 
@@ -7,11 +12,18 @@ export function Home() {
 
   return (
     <SHome>
-      {/* {productsLoading && (
-        <div className="h-dvh flex items-center justify-center ">
-          <h1>LOADING...</h1>
-        </div>
-      )} */}
+      {(productsLoading && (
+        <SScreenMessage>
+          <h1>
+            LOADING <SLoadingCircle />
+          </h1>
+        </SScreenMessage>
+      )) ||
+        (productsError !== "" && (
+          <SScreenMessage>
+            <h1>{productsError}</h1>
+          </SScreenMessage>
+        ))}
       <SSlidersContainer>
         <ProductSlider title="SALE" products={products} />
         <ProductSlider title="HARDWARE" products={products} />
