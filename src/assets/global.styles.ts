@@ -1,14 +1,38 @@
 import { createGlobalStyle } from "styled-components";
+import tw from "twin.macro";
 
 export default createGlobalStyle`
     * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        ${tw`m-0 p-0 box-border `}
     }
 
     :root {
-        font-size: 16px;
+        ${tw`text-[16px]  `}
         font-family: sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+        ${tw`w-[.5rem] `}
+          background-color: #E0E0E0;
+    }
+
+    ::-webkit-scrollbar-track {
+        ${tw` `}
+        background-color: #E0E0E0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        ${tw`rounded-2xl w-full`}
+        background-color: #8b8b8b;
+
+
+        :hover {
+            background-color: #6b6b6b;
+        }
+
+        :active {
+            background-color: #4b4b4b;
+        }
+
     }
 `;
