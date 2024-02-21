@@ -7,20 +7,21 @@ interface SearchListProps {
 }
 
 export function SearchList({ open }: SearchListProps) {
-  const { searchedProducts } = useGlobalProvider();
+  const { searchedProducts, searching } = useGlobalProvider();
 
   if (!open) return;
 
   return (
-    <SSearchList onClick={(e: React.MouseEvent) => e.stopPropagation()}>
+    <SSearchList>
       <div>
-        {searchedProducts.length < 1 ? (
-          <h1>PRODUCT NOT FOUND</h1>
+        {searching ? (
+          <h1>Searching...</h1>
         ) : (
-          searchedProducts?.map((product) => {
-            return <SearchedItem key={product.id} item={product} />;
-          })
+          searchedProducts.length < 1 && <h1>NO RESULTS</h1>
         )}
+        {searchedProducts?.map((product) => {
+          return <SearchedItem key={product.id} item={product} />;
+        })}
       </div>
     </SSearchList>
   );

@@ -32,7 +32,7 @@ export function Product() {
     if (productId) {
       fetchSingleProduct(productId);
     }
-  }, []);
+  }, [productId]);
 
   return (
     <SProduct>

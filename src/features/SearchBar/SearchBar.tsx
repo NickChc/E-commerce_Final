@@ -1,24 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useIntl } from "react-intl";
 import { SInputWrapper, SInput, SInputButton } from "@src/features/SearchBar";
 import { SearchList } from "@src/components/SearchList";
-import { SearchIcon } from "@src/assets/icons";
+import { SearchIcon, CloseIcon } from "@src/assets/icons";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 export function SearchBar() {
-  const [searchKeyWord, setSearchKeyWord] = useState<string>("");
   const [openSearch, setOpenSearch] = useState<boolean>(false);
 
   const { formatMessage } = useIntl();
 
-  const { fetchProducts, setSearchedProducts } = useGlobalProvider();
+  const inputRef = useRef<HTMLInputElement>(null);
 
+  const {
+    fetchProducts,
+    setSearchedProducts,
+    searchKeyWord,
+    setSearchKeyWord,
+  } = useGlobalProvider();
+
+  // HANDLES CHANGE OF SEARCH INPUT
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchKeyWord(e.target.value);
     if (searchKeyWord.length > 1) {
       fetchProducts(searchKeyWord);
     }
-    if (e.target.value !== "") {
+    if (e.target.value.length > 2) {
       setOpenSearch(true);
     } else {
       setOpenSearch(false);
@@ -32,22 +39,40 @@ export function SearchBar() {
 
   function closeSearch() {
     setOpenSearch(false);
-    console.log("WORKS");
-    document.removeEventListener("click", closeSearch);
+    window.removeEventListener("click", closeSearch);
   }
 
   useEffect(() => {
-    if (!openSearch) return;
+    if (!openSearch) {
+      document.body.style.overflowY = "auto";
+      return;
+    } else {
+      document.body.style.overflowY = "hidden";
+    }
+    window.addEventListener("click", closeSearch);
 
-    document.addEventListener("click", closeSearch);
   }, [openSearch]);
 
   return (
     <SInputWrapper>
-      <SInputButton>
-        <SearchIcon />
+      <SInputButton
+        onClick={() => {
+          if (openSearch || searchKeyWord.length > 0) {
+            setSearchKeyWord("");
+          } else if (!openSearch && inputRef.current) {
+            inputRef.current.focus();
+          }
+        }}
+      >
+        {openSearch || searchKeyWord.length > 0 ? (
+          <CloseIcon />
+        ) : (
+          <SearchIcon />
+        )}
       </SInputButton>
       <SInput
+        ref={inputRef}
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
         placeholder={formatMessage({
           id: "searchPlaceholder",
           defaultMessage: "_SEARCH_",

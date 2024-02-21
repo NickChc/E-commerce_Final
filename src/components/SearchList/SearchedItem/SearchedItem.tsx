@@ -6,6 +6,7 @@ import {
 } from "@src/components/SearchList/SearchedItem";
 import { TProduct } from "@src/@types/requestTypes";
 import GamingPC from "@src/assets/images/GamingPcPlaceholderImg.jpg";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 interface SearchedItemProps {
   item: TProduct;
@@ -14,26 +15,34 @@ interface SearchedItemProps {
 export function SearchedItem({ item }: SearchedItemProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  const { setSearchKeyWord } = useGlobalProvider();
+
   const Navigate = useNavigate();
-    // WORK HERE -------------------------------
 
   return (
-    <SSearchedItem onClick={() => Navigate(`/products/product/${item.id}`)}>
-      <SSearchedItemImg
-        showImg={imageLoaded}
-        src={item.image}
-        alt=""
-        loading="lazy"
-        onLoad={() => setImageLoaded(true)}
-      />
-      <SSearchedItemImg
-        showImg={!imageLoaded}
-        src={GamingPC}
-        alt=""
-        loading="lazy"
-      />
-      <h2>{item.title}</h2>
-      {item.salePrice && <span>{item.salePrice}</span>}
+    <SSearchedItem
+      onClick={() => {
+        Navigate(`/products/product/${item.id}`);
+        setSearchKeyWord(item.title);
+      }}
+    >
+      <div>
+        <SSearchedItemImg
+          showImg={imageLoaded}
+          src={item.image}
+          alt=""
+          loading="lazy"
+          onLoad={() => setImageLoaded(true)}
+        />
+        <SSearchedItemImg
+          showImg={!imageLoaded}
+          src={GamingPC}
+          alt=""
+          loading="lazy"
+        />
+        <h2>{item.title}</h2>
+      </div>
+      {item.salePrice && <span>SALE</span>}
     </SSearchedItem>
   );
 }

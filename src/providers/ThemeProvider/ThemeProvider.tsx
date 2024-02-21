@@ -31,12 +31,14 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       secondary: "#ffffff",
       secondary_background: "#1b1b1b",
       additional: "#1f51ff",
+      saleClr: "red",
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#333333",
       secondary: "#C0C0C0",
       secondary_background: "#1b1b1b",
       additional: "#1f51ff",
+      saleClr: "red",
     },
   };
   // 7b7b7b

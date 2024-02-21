@@ -2,22 +2,19 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SSearchList = styled.div`
-  ${tw`w-full min-h-[60dvh] max-h-[30dvh] rounded-xl border-solid border flex flex-col items-center absolute top-[200%] p-3 overflow-hidden `}
+  ${tw`w-[90vw] sm:w-full min-h-[10dvh] max-h-[55dvh] rounded-xl border-solid border flex flex-col items-center absolute top-[200%] p-3 pr-1 overflow-hidden `}
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
-    background-color: #ffffff;
+    background-color: #e0e0e0;
   `}
 
 
   div {
-    ${tw`overflow-y-auto  `}
+    ${tw`w-full overflow-y-auto`}
   }
 
-  
-
   h1 {
-    ${(props) => css`
-      color: ${props.theme.colors["primary"]};
-    `}
+    ${tw`text-center font-bold mt-3 `}
+    color: #3b3b3b;
   }
 `;

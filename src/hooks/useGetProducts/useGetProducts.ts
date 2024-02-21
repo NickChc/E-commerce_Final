@@ -7,6 +7,7 @@ export function useGetProducts() {
   const [products, setProducts] = useState<TProduct[]>([]);
   const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
 
+  const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -14,23 +15,25 @@ export function useGetProducts() {
     const formattedKey = formatSearchKey(keyWord);
     try {
       setError("");
+      if (keyWord === "") setLoading(true);
+      else setSearching(true)
       const response = await publicAxios.get(
         `/product?productName=${formattedKey}`
       );
       if (keyWord === "") {
-        setLoading(true);
         setProducts(response.data?.products);
       } else {
         setSearchedProducts(response.data?.products);
       }
       console.log(response.data.products);
     } catch (error: any) {
-      console.log(error.message);
+      console.error(error.message);
       if (error.message === "Network Error") {
         setError("CONNECTION PROBLEMS, PLEASE TRY AGAIN LATER");
       }
     } finally {
       setLoading(false);
+      setSearching(false);
     }
   }
 
@@ -41,5 +44,6 @@ export function useGetProducts() {
     productsLoading: loading,
     fetchProducts,
     productsError: error,
+    searching,
   };
 }

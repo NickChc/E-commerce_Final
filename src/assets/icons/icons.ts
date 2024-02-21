@@ -2,6 +2,7 @@ export { FaArrowLeft as LeftArrow } from "react-icons/fa";
 export { FaArrowRight as RightArrow } from "react-icons/fa";
 export { FaCodeBranch as BranchIcon } from "react-icons/fa";
 export { FaShoppingCart as CartIcon } from "react-icons/fa";
+export { MdOutlineClose as CloseIcon } from "react-icons/md";
 export { MdDarkMode as DarkModeIcon } from "react-icons/md";
 export { FaFacebook as FacebookIcon } from "react-icons/fa";
 export { FaInstagram as InstagramIcon } from "react-icons/fa";

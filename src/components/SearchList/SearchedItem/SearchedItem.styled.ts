@@ -6,7 +6,7 @@ interface SearchedItemImgProps {
 }
 
 export const SSearchedItem = styled.div`
-  ${tw`flex items-center w-full p-[.75rem] border-solid border border-x-0 border-t-0 gap-x-3 cursor-pointer opacity-[.75] relative `}
+  ${tw`flex flex-col justify-center w-full py-[.55rem] pr-3 border-solid border border-x-0 border-t-0 gap-x-3 cursor-pointer opacity-[.75] text-[.75rem] md:text-[1rem] last:border-none last:pb-3 relative`}
   ${(props) => css`
     border-color: ${props.theme.colors["primary"]};
   `}
@@ -14,15 +14,30 @@ export const SSearchedItem = styled.div`
   :hover {
     @media (hover: hover) {
       ${tw`opacity-[1] `}
+      ${(props) => css`
+        background-color: ${props.theme.colors["secondary"]};
+      `}
     }
   }
 
   span {
-    ${tw`absolute bottom-1 right-1 `}
+    ${tw`w-full flex justify-end absolute bottom-1 right-2 `}
+    ${(props) => css`
+      color: ${props.theme.colors["saleClr"]};
+    `}
+  }
+
+  div {
+    ${tw`flex flex-row items-center gap-x-3 overflow-hidden `}
+  }
+
+  h2 {
+    ${tw`text-[.9rem] md:text-[1.3rem] xl:text-[1.8rem] `}
   }
 `;
 
 export const SSearchedItemImg = styled.img<SearchedItemImgProps>`
-  ${tw`w-[10%] aspect-square object-cover `}
-  ${(props) => !props.showImg && tw`w-0 h-0 invisible`}
+  ${tw`  aspect-square object-cover border-solid border border-black `}
+  ${(props) =>
+    props.showImg ? tw`min-w-[50px] w-[5vw]` : tw`w-0 h-0 invisible`}
 `;

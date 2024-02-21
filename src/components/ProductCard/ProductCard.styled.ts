@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SProductCard = styled.div`
@@ -39,7 +39,9 @@ export const SCardInfo = styled.div`
 
   p {
     ${tw`self-end pr-3 `}
-    color: red;
+    ${(props) => css`
+      color: ${props.theme.colors["saleClr"]};
+    `}
   }
 `;
 

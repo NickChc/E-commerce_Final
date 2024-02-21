@@ -16,4 +16,5 @@ export {
   SearchIcon,
   TiktokIcon,
   YoutubeIcon,
+  CloseIcon,
 } from "./icons";

@@ -38,7 +38,9 @@ export const SProductInfo = styled.div<PriceProps>`
   }
 
   h4 {
-    color: red;
+    ${(props) => css`
+      color: ${props.theme.colors["saleClr"]};
+    `}
   }
 `;
 
