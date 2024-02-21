@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SInputWrapper = styled.div`
-  ${tw`flex justify-center items-stretch text-[1rem] my-[.2rem] lg:ml-6 w-[70%] lg:w-full  border-solid border rounded-xl relative `}
+  ${tw`flex justify-center items-stretch text-[1rem] my-[.2rem] lg:ml-6 w-[70%] md:w-[50%] lg:w-[40%] border-solid border rounded-xl relative `}
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
   `}

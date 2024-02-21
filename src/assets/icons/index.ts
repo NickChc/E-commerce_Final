@@ -17,4 +17,5 @@ export {
   TiktokIcon,
   YoutubeIcon,
   CloseIcon,
+  CrumbarArrow,
 } from "./icons";

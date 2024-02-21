@@ -15,6 +15,7 @@ import {
   SProductMain,
 } from "@src/views/Product";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
+import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import IphoneMockImg from "@src/assets/images/IphoneMockImg.webp";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
@@ -36,6 +37,7 @@ export function Product() {
 
   return (
     <SProduct>
+      <BreadCrumbMenu item={product} />
       {(productLoading && <h1>LOADING...</h1>) || (
         <>
           <SProductMainWrapper>

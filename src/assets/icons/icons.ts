@@ -16,3 +16,5 @@ export { FaReact as ReactIcon } from "react-icons/fa";
 export { FaSearch as SearchIcon } from "react-icons/fa";
 export { FaTiktok as TiktokIcon } from "react-icons/fa";
 export { FaYoutube as YoutubeIcon } from "react-icons/fa";
+export { IoIosArrowForward as CrumbarArrow } from "react-icons/io";
+

@@ -15,7 +15,7 @@ export const SProduct = styled.div`
 `;
 
 export const SProductMainWrapper = styled.div`
-  ${tw`w-full mt-6 flex flex-col  justify-center sm:flex-row sm:items-start gap-x-3 `}
+  ${tw`w-full mt-2 md:mt-6 flex flex-col  justify-center sm:flex-row sm:items-start gap-x-3 `}
 `;
 
 export const SProductMain = styled.div`
@@ -53,7 +53,9 @@ export const STextPair = styled.div`
 `;
 
 export const STextTitle = styled.h2`
-  color: #6b6b6b;
+  ${(props) => css`
+    color: ${props.theme.colors["secondary_text"]};
+  `}
 `;
 
 export const SPrice = styled.h2<PriceProps>`
