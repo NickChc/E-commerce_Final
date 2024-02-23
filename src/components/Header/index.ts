@@ -7,5 +7,6 @@ export {
   SThemeSelectSm,
   SHideButtonWrapper,
   SReactIcon,
+  SLoadingWrapper,
 } from "./Header.styled";
 export { Header } from "./Header";

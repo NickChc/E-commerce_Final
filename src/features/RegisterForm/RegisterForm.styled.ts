@@ -3,17 +3,24 @@ import tw from "twin.macro";
 import { ThemeModes_Enum } from "@src/providers/ThemeProvider";
 
 export const SRegisterForm = styled.form`
-  ${tw`w-full h-full flex flex-col items-center justify-between pb-6 overflow-hidden `}
+  ${tw`w-full h-full flex flex-col items-center justify-between pb-0 sm:pb-6 overflow-hidden `}
 
   div {
-    ${tw`gap-y-[1.4rem] mt-3 flex flex-col items-stretch w-[80%] last:w-auto text-center `}
+    ${tw`gap-y-[1.2rem] sm:mt-3 flex flex-col items-stretch w-[80%] last:w-auto text-center `}
+
+    h4 {
+      ${tw`text-[.7rem] sm:text-[.8rem] md:text-[.9rem] lg:text-[1rem] mt-1 `}
+      ${(props) => css`
+        color: ${props.theme.colors["saleClr"]};
+      `}
+    }
 
     button {
-      ${tw`duration-[50ms] mt-9`}
+      ${tw`duration-[50ms] sm:mt-9`}
     }
 
     p {
-    ${tw`whitespace-nowrap text-[.8rem] md:text-[1rem]  `}
+    ${tw` text-[.65rem] sm:text-[.8rem] md:text-[1rem]  `}
     ${(props) => css`
       /* color: ${props.theme.colors["secondary"]}; */
     `}

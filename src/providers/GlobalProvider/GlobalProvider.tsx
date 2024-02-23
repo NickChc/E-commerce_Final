@@ -7,6 +7,7 @@ import { useAddToCart } from "@src/hooks/useAddToCart";
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
   const [registering, setRegistering] = useState(false);
+  const [authModal, setAuthModal] = useState<boolean>(false);
 
   const {
     products,
@@ -44,6 +45,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         addingToCart,
         registering,
         setRegistering,
+        authModal,
+        setAuthModal,
       }}
     >
       {children}

@@ -18,6 +18,8 @@ interface GlobalContextProps {
   addingToCart: boolean;
   registering: boolean;
   setRegistering: React.Dispatch<React.SetStateAction<boolean>>;
+  authModal: boolean;
+  setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -37,4 +39,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   addingToCart: false,
   registering: false,
   setRegistering: () => {},
+  authModal: false,
+  setAuthModal: () => {},
 });

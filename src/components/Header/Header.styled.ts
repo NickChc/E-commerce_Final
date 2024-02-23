@@ -16,17 +16,19 @@ export const SHeader = styled.div`
       color: ${props.theme.colors["additional"]};
     `}
   }
-
 `;
 
 export const SBtnsWrapper = styled.div`
   ${tw`w-full mt-1 px-9 md:w-auto flex items-stretch justify-around lg:justify-center gap-x-1 sm:gap-x-3`}
 `;
 
+export const SLoadingWrapper = styled.span`
+  ${tw`flex items-center justify-center text-[1rem] md:text-[1.4rem] xl:text-[2rem] `}
+`;
+
 export const SHideButtonWrapper = styled.span`
   ${tw`flex lg:hidden`}
 `;
-
 
 interface SHeadlineWrapperProps {
   isHome: boolean;

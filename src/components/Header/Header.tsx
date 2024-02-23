@@ -10,6 +10,7 @@ import {
   SThemeSelectSm,
   SHideButtonWrapper,
   SReactIcon,
+  SLoadingWrapper,
 } from "@src/components/Header";
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { Modal } from "@src/components/Modal";
@@ -19,11 +20,13 @@ import { NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
 import { LogInForm } from "@src/features/LogInForm";
 import { RegisterForm } from "@src/features/RegisterForm";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useAuthProvider } from "@src/providers/AuthProvider";
+import { TAuthStage_Enum } from "@src/providers/AuthProvider";
+import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function Header() {
-  const [showModal, setShowModal] = useState<boolean>(false);
-
-  const { registering } = useGlobalProvider();
+  const { registering, authModal, setAuthModal } = useGlobalProvider();
+  const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
   const Location = useLocation();
@@ -63,24 +66,38 @@ export function Header() {
             <FormattedMessage id="cart" defaultMessage={"_CART_"} />
           </p>
         </Button>
-        <Button
-          onClick={() => {
-            setShowModal(true);
-          }}
-        >
-          <div>
-            <ProfileIcon />
-          </div>
-          <p className="whitespace-nowrap">
-            <FormattedMessage id="login" defaultMessage={"_LOG_IN_"} />
-          </p>
-        </Button>
+        {authStage === TAuthStage_Enum.PENDING ? (
+          <SLoadingWrapper>
+            <SLoadingCircleAnim />
+          </SLoadingWrapper>
+        ) : (
+          <Button
+            onClick={() => {
+              if (authStage === TAuthStage_Enum.AUTHORIZED) {
+                console.log("PROFILE!");
+              } else {
+                setAuthModal(true);
+              }
+            }}
+          >
+            <div>
+              <ProfileIcon />
+            </div>
+            <p className="whitespace-nowrap">
+              {authStage === TAuthStage_Enum.AUTHORIZED ? (
+                "PROFILE"
+              ) : (
+                <FormattedMessage id="login" defaultMessage={"_LOG_IN_"} />
+              )}
+            </p>
+          </Button>
+        )}
 
         {/*AUTH IN MODAL HERE */}
         <Modal
           scrollBlock={true}
-          open={showModal}
-          setOpen={() => setShowModal(!showModal)}
+          open={authModal}
+          setOpen={() => setAuthModal(!authModal)}
         >
           {registering ? <RegisterForm /> : <LogInForm />}
         </Modal>

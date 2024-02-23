@@ -12,7 +12,7 @@ export const SFormSpan = styled.span`
   ${tw`relative flex flex-col items-stretch `}
 
   p {
-    ${tw`absolute bottom-[-35%] left-[50%] translate-x-[-50%] `}
+    ${tw`absolute bottom-[-35%] left-[50%] translate-x-[-50%] whitespace-nowrap `}
     ${(props) => css`
       color: ${props.theme.colors["saleClr"]};
     `}

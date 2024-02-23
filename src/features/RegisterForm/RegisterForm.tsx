@@ -3,12 +3,16 @@ import { SRegisterForm } from "@src/features/RegisterForm";
 import { FormInput } from "@src/components/FormInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { TUserData } from "@src/@types/requestTypes";
+import { TUserData, TUserTokens } from "@src/@types/requestTypes";
 import { registerDefaultValues } from "@src/mocks/defaultValues";
 import { useValidateRegister } from "@src/features/RegisterForm";
 import { checkPhoneNumber } from "@src/utils/checkPhoneNumber";
+import { useAuthProvider } from "@src/providers/AuthProvider";
+import { publicAxios } from "@src/utils/publicAxios";
 
 export function RegisterForm() {
+  const [authLoading, setAuthLoading] = useState<boolean>(false);
+  const [authFail, setAuthFail] = useState<string>("");
   const [registerValues, setRegisterValues] = useState<TUserData>(
     registerDefaultValues
   );
@@ -22,7 +26,9 @@ export function RegisterForm() {
     "repeat-password": repeatPassword,
   } = registerValues;
 
-  const { setRegistering } = useGlobalProvider();
+  const { setRegistering, setAuthModal } = useGlobalProvider();
+
+  const { setAuthData } = useAuthProvider();
 
   const { isValid, setIsValid, validateRegister, formErrors } =
     useValidateRegister();
@@ -45,8 +51,33 @@ export function RegisterForm() {
     });
   }
 
-  function onFinish(values: TUserData) {
-    console.table(values);
+  //   SENDS REQUEST FOR AUTHORIZING USER AND MANAGES CHANGES AFTER THAT
+  async function onFinish(values: TUserData) {
+    try {
+      setAuthLoading(true);
+      const response = await publicAxios.post("/auth/register", {
+        ...values,
+        phone_number: values.phone_number.replace(/ /gi, ""),
+      });
+      //   CHECKS IF RESPONSE IS OK
+      if (response && response.status >= 200 && response.status <= 299) {
+        setAuthModal(false);
+      }
+      setAuthData(response.data as TUserTokens);
+      setRegisterValues(registerDefaultValues);
+    } catch (error: any) {
+      console.log(error.message);
+      if (
+        error.response.data.message ===
+        'duplicate key value violates unique constraint "UQ_17d1817f241f10a3dbafb169fd2"'
+      ) {
+        setAuthFail("THIS EMAIL OR PHONE NUMBER IS ALREADY USED!");
+      } else {
+        setAuthFail("");
+      }
+    } finally {
+      setAuthLoading(false);
+    }
   }
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -111,8 +142,9 @@ export function RegisterForm() {
           onChange={formInputChange}
           onFocus={() => (formErrors["repeat-password"] = "")}
         />
+        {authFail !== "" && <h4>{authFail}</h4>}
         <SProductButton onClick={() => validateRegister(registerValues)}>
-          REGISTER
+          {authLoading ? "REGISTERING..." : "REGISTER"}
         </SProductButton>
       </div>
 
