@@ -14,7 +14,7 @@ interface SCustomArrowProps {
 }
 
 export const SCustomArrow = styled.button<SCustomArrowProps>`
-  ${tw`flex items-center justify-center outline-none cursor-pointer rounded-[50%] p-3 opacity-[.5] duration-100 border-none absolute top-[50%] translate-y-[-50%] z-1`}
+  ${tw`flex items-center justify-center outline-none cursor-pointer rounded-[50%] p-3 opacity-[.5] duration-100 border-none absolute top-[50%] disabled:cursor-default translate-y-[-50%] z-1`}
   ${(props) => css`
     ${props.side === "left"
       ? tw`left-[1%] `
@@ -27,7 +27,7 @@ export const SCustomArrow = styled.button<SCustomArrowProps>`
 
   @media (hover: hover) {
     :hover {
-      ${tw`opacity-[1] `}
+      ${tw`opacity-[1] disabled:opacity-[.5] `}
     }
   }
 `;

@@ -18,7 +18,7 @@ export const SInput = styled.input`
 export const SInputButton = styled.button`
   ${tw`outline-none p-[.6rem] px-[1rem] text-[.75rem] sm:text-[1rem] lg:text-[1rem] rounded-l-xl border-solid border border-y-0 border-l-0 flex items-center justify-center cursor-pointer `}
   ${(props) => css`
-    border-color: ${props.theme.colors["secondary-background"]};
+    border-color: ${props.theme.colors["additional"]};
     color: ${props.theme.colors["additional"]};
   `}
 `;

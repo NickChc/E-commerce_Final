@@ -58,7 +58,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
             </h2>
           </>
         ) : (
-          <h2>Price: {product.price} GEL</h2>
+          <h2>Price: {product?.salePrice || product.price} GEL</h2>
         )}
       </SCardInfo>
       <SCardButtonWrapper>

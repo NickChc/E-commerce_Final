@@ -12,6 +12,10 @@ export const SProduct = styled.div`
     background-color: ${props.theme.colors["secondary"]};
     border-color: ${props.theme.mode === "DARK" ? "#7b7b7b" : "transparent"};
   `}
+
+  h1 {
+    ${tw`mt-14  `}
+  }
 `;
 
 export const SProductMainWrapper = styled.div`
@@ -31,6 +35,7 @@ export const SProductInfo = styled.div<PriceProps>`
   ${(props) => css`
     ${props.isSale && tw`pt-14 lg:pt-6`}
   `}
+  
   
 
   p {

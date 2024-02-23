@@ -12,7 +12,6 @@ export function useGetSingleProduct() {
       setloading(true);
       const response = await publicAxios.get(`/product/${productId}`);
       setProduct(response?.data);
-      console.log(response.data);
     } catch (error: any) {
       console.log(error.message);
     } finally {

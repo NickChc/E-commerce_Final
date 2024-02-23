@@ -19,30 +19,38 @@ interface CustomArrowProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function LeftCustomArrow({ onClick }: CustomArrowProps) {
-  return (
-    <SCustomArrow side="left" onClick={onClick}>
-      <LeftArrow />
-    </SCustomArrow>
-  );
-}
-
-function RightCustomArrow({ onClick }: CustomArrowProps) {
-  return (
-    <SCustomArrow side="right" onClick={onClick}>
-      <RightArrow />
-    </SCustomArrow>
-  );
-}
-
 export function ProductSlider({ products, title }: ProductSliderProps) {
   const [swiping, setSwiping] = useState<boolean>(false);
+
+  function LeftCustomArrow({ onClick }: CustomArrowProps) {
+    return (
+      <SCustomArrow
+        side="left"
+        onClick={onClick}
+        disabled={products.length <= 5}
+      >
+        <LeftArrow />
+      </SCustomArrow>
+    );
+  }
+
+  function RightCustomArrow({ onClick }: CustomArrowProps) {
+    return (
+      <SCustomArrow
+        side="right"
+        onClick={onClick}
+        disabled={products.length <= 5}
+      >
+        <RightArrow />
+      </SCustomArrow>
+    );
+  }
 
   if (products.length === 0) return;
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: products.length > 5,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -86,7 +94,9 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
       {title && <h1>{title}</h1>}
       <Slider {...settings}>
         {products?.map((product) => {
-          return <ProductCard key={product.id} product={product} disable={swiping} />;
+          return (
+            <ProductCard key={product.id} product={product} disable={swiping} />
+          );
         })}
       </Slider>
     </SProductSliderWrapper>

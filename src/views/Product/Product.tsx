@@ -16,6 +16,7 @@ import {
 } from "@src/views/Product";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
+import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import IphoneMockImg from "@src/assets/images/IphoneMockImg.webp";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
@@ -38,7 +39,14 @@ export function Product() {
   return (
     <SProduct>
       <BreadCrumbMenu item={product} />
-      {(productLoading && <h1>LOADING...</h1>) || (
+      {(productLoading && (
+        <h1>
+          LOADING{" "}
+          <span>
+            <SLoadingCircleAnim />
+          </span>
+        </h1>
+      )) || (
         <>
           <SProductMainWrapper>
             <SProductMain>

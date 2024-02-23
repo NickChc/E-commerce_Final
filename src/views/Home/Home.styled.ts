@@ -22,13 +22,6 @@ export const SScreenMessage = styled.div`
   }
 `;
 
-export const SLoadingCircle = styled(LoadingCircle)`
-  ${tw`animate-spin text-[2rem] font-bold `}
-  ${(props) => css`
-    color: ${props.theme.colors["additional"]};
-  `}
-`;
-
 export const SSlidersContainer = styled.div`
   ${tw`gap-y-20 w-full flex flex-col items-center my-9`}
 `;
