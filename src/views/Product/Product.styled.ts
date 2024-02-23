@@ -76,7 +76,7 @@ export const SSaleTag = styled.span`
 `;
 
 export const SAdditionalInfo = styled.div`
-  ${tw`w-full flex justify-around items-center text-[.75rem] md:text-[1rem] my-9 `}
+  ${tw`w-full flex justify-around items-center text-[.75rem] md:text-[1rem] mt-9 mb-16 `}
 
   div {
     ${tw`flex-col md:flex-row whitespace-nowrap `}

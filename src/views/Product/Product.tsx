@@ -21,13 +21,19 @@ import IphoneMockImg from "@src/assets/images/IphoneMockImg.webp";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { ProductSlider } from "@src/components/ProductSlider";
 
 export function Product() {
   const [imageLoaded, setImageLoaded] = useState<boolean>(true);
 
   const { productId } = useParams();
 
-  const { product, productLoading, fetchSingleProduct } = useGlobalProvider();
+  const { product, productLoading, fetchSingleProduct, products } =
+    useGlobalProvider();
+
+  const recommended = products?.filter(
+    (item) => item.category_name === product?.category_name
+  );
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -172,6 +178,8 @@ export function Product() {
           </SAdditionalInfo>
         </>
       )}
+      <h2>RECOMMENDED FOR YOU:</h2>
+      <ProductSlider products={recommended} />
     </SProduct>
   );
 }
