@@ -12,6 +12,8 @@ import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
 // import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useAddToCart } from "@src/hooks/useAddToCart";
 
 interface ProductCardProps {
   product: TProduct;
@@ -20,6 +22,11 @@ interface ProductCardProps {
 
 export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+
+  // WORK HERE--------------------------------------------
+  const { addToCart } = useGlobalProvider();
+  const { addingToCart } = useAddToCart();
+  
 
   const Navigate = useNavigate();
 
@@ -72,9 +79,14 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         <SProductButton
           onClick={(e) => {
             e.stopPropagation();
+            addToCart(product.id);
           }}
         >
-          <FormattedMessage id="addToCart" defaultMessage={"_ADD TO CART_"} />
+          {addingToCart ? (
+            "ADDING TO CART"
+          ) : (
+            <FormattedMessage id="addToCart" defaultMessage={"_ADD TO CART_"} />
+          )}
         </SProductButton>
       </SCardButtonWrapper>
     </SProductCard>

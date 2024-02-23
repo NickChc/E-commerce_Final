@@ -14,6 +14,8 @@ interface GlobalContextProps {
   fetchSingleProduct: (productId: string) => Promise<void>;
   searchKeyWord: string;
   setSearchKeyWord: React.Dispatch<React.SetStateAction<string>>;
+  addToCart: (arg: string) => Promise<void>;
+  addingToCart: boolean;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -29,4 +31,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   fetchSingleProduct: async () => {},
   searchKeyWord: "",
   setSearchKeyWord: () => {},
+  addToCart: async () => {},
+  addingToCart: false,
 });

@@ -2,6 +2,7 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetProducts } from "@src/hooks/useGetProducts";
 import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
+import { useAddToCart } from "@src/hooks/useAddToCart";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
@@ -17,6 +18,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   } = useGetProducts();
 
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
+  const { addToCart, addingToCart } = useAddToCart();
 
   useEffect(() => {
     fetchProducts("");
@@ -37,6 +39,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         searchKeyWord,
         setSearchKeyWord,
         searching,
+        addToCart,
+        addingToCart,
       }}
     >
       {children}

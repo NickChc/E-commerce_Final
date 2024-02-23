@@ -50,7 +50,7 @@ export function Header() {
       </SNavWrapper>
       <SearchBar />
       <SBtnsWrapper>
-        <Button onClick={() => console.log("CART!")}>
+        <Button onClick={() => Navigate("/cart")}>
           <div>
             <CartIcon />
           </div>
