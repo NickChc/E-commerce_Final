@@ -6,6 +6,7 @@ import { useAddToCart } from "@src/hooks/useAddToCart";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
+  const [registering, setRegistering] = useState(false);
 
   const {
     products,
@@ -41,6 +42,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         searching,
         addToCart,
         addingToCart,
+        registering,
+        setRegistering,
       }}
     >
       {children}

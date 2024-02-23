@@ -1,5 +1,6 @@
+import { PropsWithChildren, useEffect } from "react";
 import { SModalWrapper, SModal, SModalClose } from "@src/components/Modal";
-import { useEffect } from "react";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 interface ModalProps {
   open: boolean;
@@ -7,8 +8,14 @@ interface ModalProps {
   scrollBlock?: boolean;
 }
 
-export function Modal({ open, setOpen, scrollBlock }: ModalProps) {
-  
+export function Modal({
+  children,
+  open,
+  setOpen,
+  scrollBlock,
+}: PropsWithChildren<ModalProps>) {
+  const { setRegistering } = useGlobalProvider();
+
   useEffect(() => {
     if (!scrollBlock) return;
     if (open) {
@@ -24,12 +31,20 @@ export function Modal({ open, setOpen, scrollBlock }: ModalProps) {
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) {
           setOpen(false);
+          setRegistering(false);
         }
       }}
     >
       <SModal>
-        <SModalClose onClick={() => setOpen(false)}>X</SModalClose>
-        the thext
+        <SModalClose
+          onClick={() => {
+            setOpen(false);
+            setRegistering(false);
+          }}
+        >
+          X
+        </SModalClose>
+        {children}
       </SModal>
     </SModalWrapper>
   );

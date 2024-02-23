@@ -16,6 +16,8 @@ interface GlobalContextProps {
   setSearchKeyWord: React.Dispatch<React.SetStateAction<string>>;
   addToCart: (arg: string) => Promise<void>;
   addingToCart: boolean;
+  registering: boolean;
+  setRegistering: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -33,4 +35,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setSearchKeyWord: () => {},
   addToCart: async () => {},
   addingToCart: false,
+  registering: false,
+  setRegistering: () => {},
 });

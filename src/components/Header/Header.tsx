@@ -16,9 +16,14 @@ import { Modal } from "@src/components/Modal";
 import { ThemeSelect } from "@src/features/ThemeSelect";
 import { SearchBar } from "@src/features/SearchBar";
 import { NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
+import { LogInForm } from "@src/features/LogInForm";
+import { RegisterForm } from "@src/features/RegisterForm";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 export function Header() {
   const [showModal, setShowModal] = useState<boolean>(false);
+
+  const { registering } = useGlobalProvider();
 
   const Navigate = useNavigate();
   const Location = useLocation();
@@ -37,7 +42,7 @@ export function Header() {
       <SThemeSelectSm>
         <ThemeSelect />
       </SThemeSelectSm>
-      
+
       <SNavWrapper>
         <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
@@ -71,12 +76,14 @@ export function Header() {
           </p>
         </Button>
 
-        {/*LOG IN MODAL HERE */}
+        {/*AUTH IN MODAL HERE */}
         <Modal
           scrollBlock={true}
           open={showModal}
           setOpen={() => setShowModal(!showModal)}
-        />
+        >
+          {registering ? <RegisterForm /> : <LogInForm />}
+        </Modal>
 
         <SHideButtonWrapper>
           <Button onClick={() => console.log("NAVIGATION!")}>
@@ -92,7 +99,6 @@ export function Header() {
           </Button>
         </SHideButtonWrapper>
       </SBtnsWrapper>
-
 
       {/* SELECTS THEME ON LARGE SCREENS */}
       <SThemeSelectLg>
