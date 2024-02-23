@@ -1,0 +1,1 @@
+export { privateAxios } from "./privateAxios";

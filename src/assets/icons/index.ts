@@ -18,4 +18,5 @@ export {
   YoutubeIcon,
   CloseIcon,
   CrumbarArrow,
+  EyeIcon,
 } from "./icons";

@@ -1,0 +1,1 @@
+export { checkPhoneNumber } from "./checkPhonenumber";

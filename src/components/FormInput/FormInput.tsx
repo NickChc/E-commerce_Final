@@ -1,7 +1,10 @@
+import { useState } from "react";
+import { EyeIcon } from "@src/assets/icons";
 import {
   SFormInpuLabel,
   SFormInput,
   SFormSpan,
+  STogglePassword,
 } from "@src/components/FormInput";
 
 interface FormInputProps {
@@ -24,16 +27,29 @@ export function FormInput({
   error,
   isPassword,
 }: FormInputProps) {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <SFormInpuLabel>
       <SFormSpan>
         <SFormInput
+          error={error !== ""}
+          type={isPassword ? (showPassword ? "text" : "password") : "text"}
           placeholder={placeholder}
           value={value}
           name={name}
           onChange={onChange}
           onFocus={onFocus}
         />
+        {isPassword && (
+          <STogglePassword
+            showPassword={showPassword}
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            <EyeIcon />
+          </STogglePassword>
+        )}
+        {error !== "" && <p className="text-[red]">{error}</p>}
       </SFormSpan>
     </SFormInpuLabel>
   );

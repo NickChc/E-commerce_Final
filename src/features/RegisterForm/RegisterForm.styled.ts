@@ -6,7 +6,7 @@ export const SRegisterForm = styled.form`
   ${tw`w-full h-full flex flex-col items-center justify-between pb-6 overflow-hidden `}
 
   div {
-    ${tw`gap-y-[1rem] mt-3 flex flex-col items-stretch w-[80%] last:w-auto text-center `}
+    ${tw`gap-y-[1.4rem] mt-3 flex flex-col items-stretch w-[80%] last:w-auto text-center `}
 
     button {
       ${tw`duration-[50ms] mt-9`}
@@ -15,12 +15,8 @@ export const SRegisterForm = styled.form`
     p {
     ${tw`whitespace-nowrap text-[.8rem] md:text-[1rem]  `}
     ${(props) => css`
-      color: ${props.theme.colors["secondary"]};
+      /* color: ${props.theme.colors["secondary"]}; */
     `}
-
-    br {
-        /* ${tw`block sm:hidden `} */
-    }
   }
 
   a {

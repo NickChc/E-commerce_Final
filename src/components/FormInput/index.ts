@@ -1,2 +1,7 @@
-export { SFormInpuLabel, SFormInput, SFormSpan } from "./FormInput.styled";
+export {
+  SFormInpuLabel,
+  SFormInput,
+  SFormSpan,
+  STogglePassword,
+} from "./FormInput.styled";
 export { FormInput } from "./FormInput";
