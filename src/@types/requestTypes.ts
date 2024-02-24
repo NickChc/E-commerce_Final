@@ -25,3 +25,9 @@ export interface TUserTokens {
   access_token: string;
   refresh_token: string;
 }
+
+
+export interface TLogInUser {
+  email: string;
+  password: string;
+}

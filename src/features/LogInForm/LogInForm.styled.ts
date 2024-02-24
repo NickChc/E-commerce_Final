@@ -8,8 +8,18 @@ export const SLogInForm = styled.form`
     color: ${props.theme.colors["secondary"]};
   `}
 
+  h4 {
+    ${tw`text-[.7rem] sm:text-[.8rem] md:text-[.9rem] lg:text-[1rem] mt-1 `}
+    ${(props) => css`
+      color: ${props.theme.colors["saleClr"]};
+    `}
+  }
+
   h3 {
     ${tw`text-[.75rem] md:text-[1rem] xl:text-[1.2rem]  `}
+    ${(props) => css`
+      color: ${props.theme.colors["secondary_background"]};
+    `}
   }
 
   p {

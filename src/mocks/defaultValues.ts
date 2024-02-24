@@ -1,4 +1,4 @@
-import { TUserData } from "@src/@types/requestTypes";
+import { TUserData, TLogInUser } from "@src/@types/requestTypes";
 
 export const registerDefaultValues: TUserData = {
   first_name: "",
@@ -8,3 +8,9 @@ export const registerDefaultValues: TUserData = {
   password: "",
   "repeat-password": "",
 };
+
+
+export const logInDefaultValues: TLogInUser = {
+  email: "",
+  password: "",
+}

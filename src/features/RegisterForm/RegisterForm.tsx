@@ -55,6 +55,7 @@ export function RegisterForm() {
   async function onFinish(values: TUserData) {
     try {
       setAuthLoading(true);
+      setAuthFail("");
       const response = await publicAxios.post("/auth/register", {
         ...values,
         phone_number: values.phone_number.replace(/ /gi, ""),
@@ -71,9 +72,12 @@ export function RegisterForm() {
         error.response.data.message ===
         'duplicate key value violates unique constraint "UQ_17d1817f241f10a3dbafb169fd2"'
       ) {
-        setAuthFail("THIS EMAIL OR PHONE NUMBER IS ALREADY USED!");
-      } else {
-        setAuthFail("");
+        setAuthFail("THIS PHONE NUMBER IS ALREADY USED!");
+      } else if (
+        error.response.data.message ===
+        'duplicate key value violates unique constraint "UQ_97672ac88f789774dd47f7c8be3"'
+      ) {
+        setAuthFail("THIS EMAIL IS ALREADY USED!");
       }
     } finally {
       setAuthLoading(false);

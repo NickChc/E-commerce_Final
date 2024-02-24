@@ -16,9 +16,9 @@ export function useGetProducts() {
     try {
       setError("");
       if (keyWord === "") setLoading(true);
-      else setSearching(true)
+      else setSearching(true);
       const response = await publicAxios.get(
-        `/product?productName=${formattedKey}`
+        `/product?productName=${formattedKey}&pageSize=100`
       );
       if (keyWord === "") {
         setProducts(response.data?.products);
