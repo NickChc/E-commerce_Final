@@ -30,7 +30,7 @@ export function RegisterForm() {
 
   const { setAuthData } = useAuthProvider();
 
-  const { isValid, setIsValid, validateRegister, formErrors } =
+  const { isValid, setIsValid, validateRegister, setFormErrors, formErrors } =
     useValidateRegister();
 
   function formInputChange(e: React.ChangeEvent<HTMLFormElement>) {
@@ -101,7 +101,12 @@ export function RegisterForm() {
           value={first_name}
           name="first_name"
           onChange={formInputChange}
-          onFocus={() => (formErrors.first_name = "")}
+          onFocus={() =>
+            setFormErrors((prev) => ({
+              ...prev,
+              first_name: "",
+            }))
+          }
         />
 
         <FormInput
@@ -110,7 +115,12 @@ export function RegisterForm() {
           value={last_name}
           name="last_name"
           onChange={formInputChange}
-          onFocus={() => (formErrors.last_name = "")}
+          onFocus={() =>
+            setFormErrors((prev) => ({
+              ...prev,
+              last_name: "",
+            }))
+          }
         />
         <FormInput
           error={formErrors.email}
@@ -118,7 +128,12 @@ export function RegisterForm() {
           value={email}
           name="email"
           onChange={formInputChange}
-          onFocus={() => (formErrors.email = "")}
+          onFocus={() =>
+            setFormErrors((prev) => ({
+              ...prev,
+              email: "",
+            }))
+          }
         />
         <FormInput
           error={formErrors.phone_number}
@@ -126,7 +141,12 @@ export function RegisterForm() {
           value={phone_number}
           name="phone_number"
           onChange={formInputChange}
-          onFocus={() => (formErrors.phone_number = "")}
+          onFocus={() =>
+            setFormErrors((prev) => ({
+              ...prev,
+              phone_number: "",
+            }))
+          }
         />
         <FormInput
           isPassword
@@ -135,7 +155,12 @@ export function RegisterForm() {
           value={password}
           name="password"
           onChange={formInputChange}
-          onFocus={() => (formErrors.password = "")}
+          onFocus={() =>
+            setFormErrors((prev) => ({
+              ...prev,
+              password: "",
+            }))
+          }
         />
         <FormInput
           isPassword
@@ -144,7 +169,12 @@ export function RegisterForm() {
           value={repeatPassword}
           name="repeat-password"
           onChange={formInputChange}
-          onFocus={() => (formErrors["repeat-password"] = "")}
+          onFocus={() =>
+            setFormErrors((prev) => ({
+              ...prev,
+              "repeat-password": "",
+            }))
+          }
         />
         {authFail !== "" && <h4>{authFail}</h4>}
         <SProductButton onClick={() => validateRegister(registerValues)}>

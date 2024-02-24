@@ -70,5 +70,5 @@ export function useValidateRegister() {
     setFormErrors(errors);
   }
 
-  return { validateRegister, isValid, setIsValid, formErrors };
+  return { validateRegister, isValid, setIsValid, setFormErrors, formErrors };
 }
