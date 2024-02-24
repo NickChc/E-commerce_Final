@@ -57,15 +57,6 @@ export function Product() {
           <BreadCrumbMenu item={product} />
           <SProductMainWrapper>
             <SProductMain>
-              {/* {imageLoaded ? (
-                <img
-                  src={product?.image}
-                  alt=""
-                  onError={() => setImageLoaded(false)}
-                />
-              ) : (
-                <img src={IphoneMockImg} alt="" />
-              )} */}
               <ProductImg
                 src={product?.image}
                 fallbackSrc={PlaceholderImg}
