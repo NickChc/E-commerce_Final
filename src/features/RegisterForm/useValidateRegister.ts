@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { registerDefaultValues } from "@src/mocks/defaultValues";
-import { TUserData } from "@src/@types/requestTypes";
+import { TRegisterUser } from "@src/@types/requestTypes";
 
 export function useValidateRegister() {
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [formErrors, setFormErrors] = useState<TUserData>(
+  const [formErrors, setFormErrors] = useState<TRegisterUser>(
     registerDefaultValues
   );
 
-  function validateRegister(registerValues: TUserData) {
-    const errors: TUserData = { ...formErrors };
+  function validateRegister(registerValues: TRegisterUser) {
+    const errors: TRegisterUser = { ...formErrors };
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

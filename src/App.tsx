@@ -11,7 +11,7 @@ const NotFound = lazy(() => import("@src/views/NotFound"));
 
 function App() {
   return (
-    <Suspense fallback={<div>LOADING...</div>}>
+    <Suspense fallback={<div className="min-h-dvh w-full">LOADING...</div>}>
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />

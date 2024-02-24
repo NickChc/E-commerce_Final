@@ -1,6 +1,6 @@
-import { TUserData, TLogInUser } from "@src/@types/requestTypes";
+import { TRegisterUser, TLogInUser } from "@src/@types/requestTypes";
 
-export const registerDefaultValues: TUserData = {
+export const registerDefaultValues: TRegisterUser = {
   first_name: "",
   last_name: "",
   email: "",

@@ -14,7 +14,7 @@ export function Modal({
   setOpen,
   scrollBlock,
 }: PropsWithChildren<ModalProps>) {
-  const { setRegistering } = useGlobalProvider();
+  const { setRegistering, registering } = useGlobalProvider();
 
   useEffect(() => {
     if (!scrollBlock) return;
@@ -35,7 +35,7 @@ export function Modal({
         }
       }}
     >
-      <SModal>
+      <SModal registering={registering}>
         <SModalClose
           onClick={() => {
             setOpen(false);

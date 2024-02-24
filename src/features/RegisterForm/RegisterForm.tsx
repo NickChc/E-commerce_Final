@@ -3,7 +3,7 @@ import { SRegisterForm } from "@src/features/RegisterForm";
 import { FormInput } from "@src/components/FormInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { TUserData, TUserTokens } from "@src/@types/requestTypes";
+import { TRegisterUser, TUserTokens } from "@src/@types/requestTypes";
 import { registerDefaultValues } from "@src/mocks/defaultValues";
 import { useValidateRegister } from "@src/features/RegisterForm";
 import { checkPhoneNumber } from "@src/utils/checkPhoneNumber";
@@ -13,7 +13,7 @@ import { publicAxios } from "@src/utils/publicAxios";
 export function RegisterForm() {
   const [authLoading, setAuthLoading] = useState<boolean>(false);
   const [authFail, setAuthFail] = useState<string>("");
-  const [registerValues, setRegisterValues] = useState<TUserData>(
+  const [registerValues, setRegisterValues] = useState<TRegisterUser>(
     registerDefaultValues
   );
 
@@ -52,7 +52,7 @@ export function RegisterForm() {
   }
 
   //   SENDS REQUEST FOR AUTHORIZING USER AND MANAGES CHANGES AFTER THAT
-  async function onFinish(values: TUserData) {
+  async function onFinish(values: TRegisterUser) {
     try {
       setAuthLoading(true);
       setAuthFail("");

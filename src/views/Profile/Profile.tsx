@@ -1,8 +1,14 @@
 import { SProfile } from "@src/views/Profile";
-
+import { useAuthProvider } from "@src/providers/AuthProvider";
 
 export function Profile() {
-    return <SProfile>
-        <h1>PROFILE</h1>
+  const { userData, logOut } = useAuthProvider();
+
+  return (
+    <SProfile>
+      <h1>{userData?.first_name}</h1>
+
+      <button onClick={() => logOut()}>LOG OUT</button>
     </SProfile>
+  );
 }

@@ -11,7 +11,7 @@ export interface TProduct {
 }
 
 
-export interface TUserData {
+export interface TRegisterUser {
   first_name: string;
   last_name: string;
   email: string;
@@ -30,4 +30,18 @@ export interface TUserTokens {
 export interface TLogInUser {
   email: string;
   password: string;
+}
+
+export interface TUserInfo {
+  email: string;
+  first_name: string;
+  id: string;
+  last_name: string;
+  password: string;
+  phone_number: string;
+  refresh_token: string;
+  role: string;
+  created_at: string;
+  updated_at: string;
+  verified: boolean;
 }

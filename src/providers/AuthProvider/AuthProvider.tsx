@@ -1,13 +1,15 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { AuthContext, TAuthStage_Enum } from "@src/providers/AuthProvider";
-import { TUserData } from "@src/@types/requestTypes";
+import { TUserTokens, TUserInfo } from "@src/@types/requestTypes";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@src/config/localStorageKeys";
-import { TUserTokens } from "@src/@types/requestTypes";
-import { setPrivateAccessToken } from "@src/utils/privateAxios/privateAxios";
+import {
+  privateAxios,
+  setPrivateAccessToken,
+} from "@src/utils/privateAxios/privateAxios";
 import { publicAxios } from "@src/utils/publicAxios";
 
 export function AuthProvider({ children }: PropsWithChildren) {
-  const [userData, setUserData] = useState<TUserData>();
+  const [userData, setUserData] = useState<TUserInfo>();
   const [authStage, setAuthStage] = useState<TAuthStage_Enum>(
     TAuthStage_Enum.PENDING
   );
@@ -17,6 +19,23 @@ export function AuthProvider({ children }: PropsWithChildren) {
     localStorage.setItem(REFRESH_TOKEN, tokens.refresh_token);
     setPrivateAccessToken(tokens.access_token);
     setAuthStage(TAuthStage_Enum.AUTHORIZED);
+    getUser();
+  }
+
+  function logOut() {
+    localStorage.removeItem(ACCESS_TOKEN);
+    localStorage.removeItem(REFRESH_TOKEN);
+    setPrivateAccessToken("");
+    setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
+  }
+
+  async function getUser() {
+    try {
+      const response = await privateAxios.get("/user/current-user");
+      setUserData(response.data as TUserInfo);
+    } catch (error: any) {
+      console.log(error.message);
+    }
   }
 
   async function updateTokens(refreshToken: string) {
@@ -33,6 +52,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+
     if (refreshToken) updateTokens(refreshToken);
     else setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
   }, []);
@@ -43,6 +63,9 @@ export function AuthProvider({ children }: PropsWithChildren) {
         authStage,
         setAuthStage,
         setAuthData,
+        userData,
+        setUserData,
+        logOut,
       }}
     >
       {children}

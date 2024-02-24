@@ -6,12 +6,17 @@ export const SModalWrapper = styled.div`
   ${tw`w-full min-h-screen absolute top-0 right-0 flex items-center backdrop-blur-sm justify-center`}
 `;
 
-export const SModal = styled.div`
-  ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90vh] sm:w-[60%] sm:h-[75vh] xl:w-[40%] border-solid border flex flex-col items-center relative`}
+interface SModalProps {
+  registering?: boolean;
+}
+
+export const SModal = styled.div<SModalProps>`
+  ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90vh] sm:w-[50%] sm:h-[75vh] xl:w-[40%] border-solid border flex flex-col items-center relative`}
   ${(props) => css`
     background-color: ${props.theme.mode === "DARK" ? "#2b2b2b" : "#4b4b4b"};
     color: ${props.theme.mode === "DARK" ? "#9b9b9b" : "#ffffff"};
     border-color: ${props.theme.colors["additional"]};
+    ${props.registering ? tw`sm:h-[75dvh] ` : tw` sm:h-[55dvh] `}
   `}
 `;
 export const SModalClose = styled.span`
