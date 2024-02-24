@@ -74,7 +74,8 @@ export function LogInForm() {
   return (
     <SLogInForm onSubmit={onSubmit}>
       <h3>
-        SIGN IN OR REGISTER TO FULLY EXPERIENCE <br /> OUR MARKET !
+        SIGN IN OR REGISTER TO FULLY <br />
+        EXPERIENCE OUR MARKET !
       </h3>
       <SFormContent>
         <SInputsWrapper>

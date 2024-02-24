@@ -17,14 +17,15 @@ import {
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
-import IphoneMockImg from "@src/assets/images/IphoneMockImg.webp";
+import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
+import { ProductImg } from "@src/components/ProductImg";
 
 export function Product() {
-  const [imageLoaded, setImageLoaded] = useState<boolean>(true);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   const { productId } = useParams();
 
@@ -53,10 +54,10 @@ export function Product() {
         </h1>
       )) || (
         <>
-        <BreadCrumbMenu item={product} />
+          <BreadCrumbMenu item={product} />
           <SProductMainWrapper>
             <SProductMain>
-              {imageLoaded ? (
+              {/* {imageLoaded ? (
                 <img
                   src={product?.image}
                   alt=""
@@ -64,7 +65,14 @@ export function Product() {
                 />
               ) : (
                 <img src={IphoneMockImg} alt="" />
-              )}
+              )} */}
+              <ProductImg
+                src={product?.image}
+                fallbackSrc={PlaceholderImg}
+                alt="product image"
+                loaded={imageLoaded}
+                onLoad={() => setImageLoaded(true)}
+              />
               <SButtonsWrapper>
                 <SProductButton variation="primary">
                   <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />

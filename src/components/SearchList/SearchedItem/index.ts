@@ -1,2 +1,2 @@
-export { SSearchedItem, SSearchedItemImg } from "./SearchedItem.styled";
+export { SSearchedItem, SSaleTag } from "./SearchedItem.styled";
 export { SearchedItem } from "./SearchedItem";

@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   SSearchedItem,
-  SSearchedItemImg,
+  SSaleTag,
 } from "@src/components/SearchList/SearchedItem";
 import { TProduct } from "@src/@types/requestTypes";
 import GamingPC from "@src/assets/images/GamingPcPlaceholderImg.jpg";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { ProductImg } from "@src/components/ProductImg";
 
 interface SearchedItemProps {
   item: TProduct;
@@ -27,22 +28,17 @@ export function SearchedItem({ item }: SearchedItemProps) {
       }}
     >
       <div>
-        <SSearchedItemImg
-          showImg={imageLoaded}
+        <ProductImg
+          styles
           src={item.image}
-          alt=""
-          loading="lazy"
+          fallbackSrc={GamingPC}
+          alt="list item image"
+          loaded={imageLoaded}
           onLoad={() => setImageLoaded(true)}
-        />
-        <SSearchedItemImg
-          showImg={!imageLoaded}
-          src={GamingPC}
-          alt=""
-          loading="lazy"
         />
         <h2>{item.title}</h2>
       </div>
-      {item.salePrice && <span>SALE</span>}
+      {item.salePrice && <SSaleTag>SALE</SSaleTag>}
     </SSearchedItem>
   );
 }

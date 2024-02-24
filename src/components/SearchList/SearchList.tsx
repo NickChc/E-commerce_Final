@@ -14,7 +14,7 @@ export function SearchList({ open }: SearchListProps) {
   return (
     <SSearchList>
       <div>
-        {searching ? (
+        {searching && SearchedItem.length < 1 ? (
           <h1>Searching...</h1>
         ) : (
           searchedProducts.length < 1 && <h1>NO RESULTS</h1>

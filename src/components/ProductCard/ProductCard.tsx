@@ -5,7 +5,6 @@ import {
   SProductCard,
   SCardButtonWrapper,
   SCardInfo,
-  SCardImg,
 } from "@src/components/ProductCard";
 import { TProduct } from "@src/@types/requestTypes";
 import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
@@ -14,6 +13,7 @@ import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAddToCart } from "@src/hooks/useAddToCart";
+import { ProductImg } from "@src/components/ProductImg";
 
 interface ProductCardProps {
   product: TProduct;
@@ -26,7 +26,6 @@ export function ProductCard({ product, disable }: ProductCardProps) {
   // WORK HERE--------------------------------------------
   const { addToCart } = useGlobalProvider();
   const { addingToCart } = useAddToCart();
-  
 
   const Navigate = useNavigate();
 
@@ -37,18 +36,12 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         Navigate(`products/product/${product.id}`);
       }}
     >
-      <SCardImg
-        show={imageLoaded}
+      <ProductImg
         src={product.image}
+        fallbackSrc={GamingPcImg}
         alt="product image"
-        loading="lazy"
+        loaded={imageLoaded}
         onLoad={() => setImageLoaded(true)}
-      />
-      <SCardImg
-        show={!imageLoaded}
-        src={GamingPcImg}
-        alt="placeholder image"
-        loading="lazy"
       />
 
       <SCardInfo>

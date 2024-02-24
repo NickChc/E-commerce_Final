@@ -16,7 +16,7 @@ export const SLogInForm = styled.form`
   }
 
   h3 {
-    ${tw`text-[.75rem] md:text-[1rem] xl:text-[1.2rem]  `}
+    ${tw`text-[.75rem] md:text-[1rem] xl:text-[1.5rem] whitespace-nowrap  `}
     ${(props) => css`
       color: ${props.theme.colors["secondary_background"]};
     `}
