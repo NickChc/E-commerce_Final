@@ -74,7 +74,7 @@ export function Header() {
           <Button
             onClick={() => {
               if (authStage === TAuthStage_Enum.AUTHORIZED) {
-                console.log("PROFILE!");
+                Navigate("/profile");
               } else {
                 setAuthModal(true);
               }
