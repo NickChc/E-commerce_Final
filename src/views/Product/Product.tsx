@@ -44,7 +44,6 @@ export function Product() {
 
   return (
     <SProduct>
-      <BreadCrumbMenu item={product} />
       {(productLoading && (
         <h1>
           LOADING{" "}
@@ -54,6 +53,7 @@ export function Product() {
         </h1>
       )) || (
         <>
+        <BreadCrumbMenu item={product} />
           <SProductMainWrapper>
             <SProductMain>
               {imageLoaded ? (
@@ -176,10 +176,10 @@ export function Product() {
               <p>{product?.category_name}</p>
             </STextPair>
           </SAdditionalInfo>
+          <h2>RECOMMENDED FOR YOU:</h2>
+          <ProductSlider products={recommended} />
         </>
       )}
-      <h2>RECOMMENDED FOR YOU:</h2>
-      <ProductSlider products={recommended} />
     </SProduct>
   );
 }

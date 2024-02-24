@@ -21,7 +21,7 @@ export function LogInForm() {
 
   const { email, password } = logInValues;
 
-  const { setRegistering, setAuthModal } = useGlobalProvider();
+  const { setRegistering, setAuthModal, setPopUpText } = useGlobalProvider();
   const { setAuthData } = useAuthProvider();
 
   const { isValid, setIsValid, validateLogIn, setFormErrors, formErrors } =
@@ -44,15 +44,18 @@ export function LogInForm() {
       setLoggingIn(true);
       const response = await publicAxios.post("/auth/login", values);
       setAuthData(response.data as TUserTokens);
-      console.log(response);
 
       // CHECK IF RESPONSE IS OK, IFSO CLOSE THE MODAL
       if (response && response.status >= 200 && response.status <= 299) {
         setAuthModal(false);
+        setPopUpText("YOU HAVE SUCCESFULLY LOGGED IN! WELCOME BACK");
       }
     } catch (error: any) {
       console.log(error.message);
-      if (error.response.data.message === "Unauthorized") {
+      if (
+        error.response.data.message === "Unauthorized" ||
+        error.response.data.message === "user not found"
+      ) {
         setLogInFail("WRONG EMAIL OR PASSWORD!");
       }
     } finally {

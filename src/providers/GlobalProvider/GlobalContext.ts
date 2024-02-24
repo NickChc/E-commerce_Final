@@ -20,6 +20,8 @@ interface GlobalContextProps {
   setRegistering: React.Dispatch<React.SetStateAction<boolean>>;
   authModal: boolean;
   setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
+  popUpText: string;
+  setPopUpText: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -41,4 +43,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setRegistering: () => {},
   authModal: false,
   setAuthModal: () => {},
+  popUpText: "",
+  setPopUpText: () => {},
 });

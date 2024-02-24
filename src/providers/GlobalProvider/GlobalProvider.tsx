@@ -8,6 +8,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
   const [registering, setRegistering] = useState(false);
   const [authModal, setAuthModal] = useState<boolean>(false);
+  const [popUpText, setPopUpText] = useState<string>("");
 
   const {
     products,
@@ -47,6 +48,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         setRegistering,
         authModal,
         setAuthModal,
+        popUpText,
+        setPopUpText,
       }}
     >
       {children}

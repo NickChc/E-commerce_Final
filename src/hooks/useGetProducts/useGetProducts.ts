@@ -13,8 +13,10 @@ export function useGetProducts() {
 
   async function fetchProducts(keyWord: string) {
     const formattedKey = formatSearchKey(keyWord);
+
     try {
       setError("");
+      // IF THERE'S A SEARCH KEYWORD, FUNCTION IS HANDLED ACCORDINGLY, ELSE IT JUST FETCHES PRODUCTS
       if (keyWord === "") setLoading(true);
       else setSearching(true);
       const response = await publicAxios.get(
@@ -25,7 +27,6 @@ export function useGetProducts() {
       } else {
         setSearchedProducts(response.data?.products);
       }
-      console.log(response.data.products);
     } catch (error: any) {
       console.error(error.message);
       if (error.message === "Network Error") {

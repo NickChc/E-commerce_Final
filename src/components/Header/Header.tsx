@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import {
@@ -23,9 +22,11 @@ import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { PopUpMessage } from "@src/components/PopUpMessage";
 
 export function Header() {
-  const { registering, authModal, setAuthModal } = useGlobalProvider();
+  const { registering, authModal, setAuthModal, popUpText } =
+    useGlobalProvider();
   const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
@@ -33,6 +34,7 @@ export function Header() {
 
   return (
     <SHeader>
+      {/* SHOWS "GO TO HOME" ONLY IF NOT AT HOME */}
       <SHeadlineWrapper
         isHome={Location.pathname === "/"}
         onClick={() => Navigate("/")}
@@ -40,12 +42,10 @@ export function Header() {
         <SReactIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
-
       {/* SELECTS THEME ON SMALL SCREENS */}
       <SThemeSelectSm>
         <ThemeSelect />
       </SThemeSelectSm>
-
       <SNavWrapper>
         <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
@@ -116,6 +116,9 @@ export function Header() {
           </Button>
         </SHideButtonWrapper>
       </SBtnsWrapper>
+
+      {/* FOR POP UP ALERTS */}
+      <PopUpMessage showPopUpMessage={popUpText !== ""} />
 
       {/* SELECTS THEME ON LARGE SCREENS */}
       <SThemeSelectLg>
