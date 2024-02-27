@@ -66,6 +66,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
         userData,
         setUserData,
         logOut,
+        getUser,
       }}
     >
       {children}

@@ -19,4 +19,5 @@ export {
   CloseIcon,
   CrumbarArrow,
   EyeIcon,
+  EditIcon,
 } from "./icons";

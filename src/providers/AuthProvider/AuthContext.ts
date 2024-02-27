@@ -14,6 +14,7 @@ interface AuthContextProps {
   userData: TUserInfo | undefined;
   setUserData: React.Dispatch<React.SetStateAction<TUserInfo | undefined>>;
   logOut: () => void;
+  getUser: () => Promise<void>;
 }
 
 
@@ -24,4 +25,5 @@ export const AuthContext = createContext<AuthContextProps>({
   userData: undefined,
   setUserData: () => {},
   logOut: () => {},
+  getUser: async () => {},
 });

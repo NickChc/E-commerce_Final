@@ -16,6 +16,7 @@ interface FormInputProps {
   label?: string;
   error?: string;
   isPassword?: boolean;
+  autoComplete?: string;
 }
 
 export function FormInput({
@@ -26,6 +27,7 @@ export function FormInput({
   onFocus,
   error,
   isPassword,
+  autoComplete,
 }: FormInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,6 +35,7 @@ export function FormInput({
     <SFormInpuLabel>
       <SFormSpan>
         <SFormInput
+          autoComplete={autoComplete}
           error={error !== ""}
           type={isPassword ? (showPassword ? "text" : "password") : "text"}
           placeholder={placeholder}

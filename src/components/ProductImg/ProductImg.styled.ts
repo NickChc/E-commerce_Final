@@ -6,6 +6,7 @@ interface SProductImgProps {
 }
 
 export const SImggHolder = styled.span<SProductImgProps>`
+  ${tw`flex items-center justify-center bg-[red] `}
   ${(props) => css`
     ${props.loaded ? tw`block` : tw`hidden`}
   `}

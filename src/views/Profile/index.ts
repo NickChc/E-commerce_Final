@@ -1,9 +1,8 @@
 export {
   SProfile,
+  SEditHolder,
   SUserInfo,
-  SProfileWrapper,
-  SImgWrapper,
-  SMapHolder,
-  SMainWrapper,
+  SValue,
+  SChangeForm,
 } from "./Profile.styled";
 export { Profile as default } from "./Profile";

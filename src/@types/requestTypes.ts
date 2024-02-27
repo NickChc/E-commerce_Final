@@ -45,3 +45,7 @@ export interface TUserInfo {
   updated_at: string;
   verified: boolean;
 }
+
+export interface TUpdateFormValues {
+  [key: string]: string;
+}

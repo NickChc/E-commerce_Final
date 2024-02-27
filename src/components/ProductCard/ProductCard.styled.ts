@@ -15,6 +15,13 @@ export const SProductCard = styled.div`
     ${tw`w-[90%] aspect-square object-cover border-none rounded-lg `}
   }
 
+  span {
+    ${tw`w-[90%] `}
+    img {
+      ${tw`w-full aspect-square object-cover border-none rounded-lg  `}
+    }
+  }
+
   h3 {
     ${tw`break-words mb-3 `}
   }
