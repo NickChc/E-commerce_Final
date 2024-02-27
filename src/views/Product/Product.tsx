@@ -81,7 +81,7 @@ export function Product() {
                       id="addToCart"
                       defaultMessage={"_TO CART_"}
                     />
-                    <PlusIcon />
+                    {/* <PlusIcon /> */}
                   </SProductButton>
                 </SDoubleBtn>
               </SButtonsWrapper>

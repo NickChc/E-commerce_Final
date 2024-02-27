@@ -1,1 +1,1 @@
-export { SLoadingCircleAnim } from "./SLoadingCircleAnim";
+export { SLoadingCircleAnim } from "./LoadingCircleAnim";

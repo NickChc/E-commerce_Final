@@ -6,9 +6,10 @@ import { userUpdateDefaultValues } from "@src/mocks/defaultValues";
 import { UserInfo } from "@src/views/Profile/UserInfo";
 import { UpdateForm } from "@src/views/Profile/UpdateForm";
 import { useValidateUpdate } from "./UpdateForm/useValidateUpdate";
+import { SProductButton } from "@src/components/Buttons/ProductButton";
 
 export function Profile() {
-  const { userData } = useAuthProvider();
+  const { userData, logOut } = useAuthProvider();
 
   const { setFormErrors } = useValidateUpdate();
 

@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useIntl, FormattedMessage } from "react-intl";
 import { SRegisterForm } from "@src/features/RegisterForm";
 import { FormInput } from "@src/components/FormInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { TRegisterUser, TUserTokens } from "@src/@types/requestTypes";
 import { registerDefaultValues } from "@src/mocks/defaultValues";
 import { useValidateRegister } from "@src/features/RegisterForm";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { checkPhoneNumber } from "@src/utils/checkPhoneNumber";
 import { useAuthProvider } from "@src/providers/AuthProvider";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { publicAxios } from "@src/utils/publicAxios";
+import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function RegisterForm() {
   const [authLoading, setAuthLoading] = useState<boolean>(false);
@@ -26,7 +30,11 @@ export function RegisterForm() {
     "repeat-password": repeatPassword,
   } = registerValues;
 
+  const { formatMessage } = useIntl();
+
   const { setRegistering, setAuthModal } = useGlobalProvider();
+
+  const { locale } = useLocaleProvider();
 
   const { setAuthData } = useAuthProvider();
 
@@ -60,7 +68,7 @@ export function RegisterForm() {
         ...values,
         phone_number: values.phone_number.replace(/ /gi, ""),
       });
-      //   CHECKS IF RESPONSE IS OK
+      //   CHECKS IF RESPONSE IS OK, CLOSE MODAL IF SO
       if (response && response.status >= 200 && response.status <= 299) {
         setAuthModal(false);
       }
@@ -72,12 +80,22 @@ export function RegisterForm() {
         error.response.data.message ===
         'duplicate key value violates unique constraint "UQ_17d1817f241f10a3dbafb169fd2"'
       ) {
-        setAuthFail("THIS PHONE NUMBER IS ALREADY USED!");
+        setAuthFail(
+          formatMessage({
+            id: "usedPhone",
+            defaultMessage: "_USED_PHONE_NUMBER_",
+          })
+        );
       } else if (
         error.response.data.message ===
         'duplicate key value violates unique constraint "UQ_97672ac88f789774dd47f7c8be3"'
       ) {
-        setAuthFail("THIS EMAIL IS ALREADY USED!");
+        setAuthFail(
+          formatMessage({
+            id: "usedEmail",
+            defaultMessage: "_USED_EMAIL_ADDRESS_",
+          })
+        );
       }
     } finally {
       setAuthLoading(false);
@@ -97,7 +115,7 @@ export function RegisterForm() {
       <div className="flex flex-col items-center ">
         <FormInput
           error={formErrors.first_name}
-          placeholder="NAME"
+          placeholder={formatMessage({ id: "name", defaultMessage: "_NAME_" })}
           value={first_name}
           name="first_name"
           onChange={formInputChange}
@@ -111,7 +129,10 @@ export function RegisterForm() {
 
         <FormInput
           error={formErrors.last_name}
-          placeholder="SURNAME"
+          placeholder={formatMessage({
+            id: "surname",
+            defaultMessage: "_SURNAME_",
+          })}
           value={last_name}
           name="last_name"
           onChange={formInputChange}
@@ -124,7 +145,10 @@ export function RegisterForm() {
         />
         <FormInput
           error={formErrors.email}
-          placeholder="EMAIL"
+          placeholder={formatMessage({
+            id: "email",
+            defaultMessage: "_EMAIL_",
+          })}
           value={email}
           name="email"
           onChange={formInputChange}
@@ -137,7 +161,10 @@ export function RegisterForm() {
         />
         <FormInput
           error={formErrors.phone_number}
-          placeholder="PHONE NUMBER"
+          placeholder={formatMessage({
+            id: "phone",
+            defaultMessage: "_PHONE_NUMBER_",
+          })}
           value={phone_number}
           name="phone_number"
           onChange={formInputChange}
@@ -151,7 +178,10 @@ export function RegisterForm() {
         <FormInput
           isPassword
           error={formErrors.password}
-          placeholder="PASSWORD"
+          placeholder={formatMessage({
+            id: "password",
+            defaultMessage: "_PASSWORD_",
+          })}
           value={password}
           name="password"
           onChange={formInputChange}
@@ -165,7 +195,10 @@ export function RegisterForm() {
         <FormInput
           isPassword
           error={formErrors["repeat-password"]}
-          placeholder="REPEAT PASSWORD"
+          placeholder={formatMessage({
+            id: "repeatPassword",
+            defaultMessage: "_REPEAT_PASSWORD_",
+          })}
           value={repeatPassword}
           name="repeat-password"
           onChange={formInputChange}
@@ -178,15 +211,32 @@ export function RegisterForm() {
         />
         {authFail !== "" && <h4>{authFail}</h4>}
         <SProductButton onClick={() => validateRegister(registerValues)}>
-          {authLoading ? "REGISTERING..." : "REGISTER"}
+          {authLoading ? (
+            <>
+              <FormattedMessage
+                id="registering"
+                defaultMessage={"_REGISTERING_"}
+              />
+              <SLoadingCircleAnim />
+            </>
+          ) : (
+            <FormattedMessage id="register" defaultMessage={"_REGISTER_"} />
+          )}
         </SProductButton>
       </div>
 
       <div>
-        <p>
-          Already have an account?{" "}
-          <a onClick={() => setRegistering(false)}>SIGN IN HERE!</a>
-        </p>
+        {locale === TLocale_Enum.EN ? (
+          <p>
+            Already have an account?{" "}
+            <a onClick={() => setRegistering(false)}>SIGN IN HERE!</a>
+          </p>
+        ) : locale === TLocale_Enum.KA ? (
+          <p>
+            ხარ ავტორიზირებული?{" "}
+            <a onClick={() => setRegistering(false)}>სცადე შესვლა აქ!</a>
+          </p>
+        ) : null}
       </div>
     </SRegisterForm>
   );

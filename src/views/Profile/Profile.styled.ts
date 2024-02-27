@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SProfile = styled.div`
-  ${tw`w-[80%] min-h-dvh flex flex-col items-center px-2 md:py-9 lg:py-20 text-center `}
+  ${tw`w-full sm:w-[80%] min-h-dvh flex flex-col items-center px-2 md:py-9 lg:py-20 text-center `}
   ${(props) => css`
     background-color: ${props.theme.colors["secondary"]};
     color: ${props.theme.colors["primary"]};

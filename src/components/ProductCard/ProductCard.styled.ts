@@ -33,7 +33,7 @@ export const SProductCard = styled.div`
 `;
 
 export const SCardInfo = styled.div`
-  ${tw`w-[90%] h-[7rem] text-[.7rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
+  ${tw`w-[90%] h-[7rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
 
   p {
     ${tw`self-end pr-3 `}

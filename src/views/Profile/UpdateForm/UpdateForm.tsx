@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { privateAxios } from "@src/utils/privateAxios";
 import { SUpdateForm } from "@src/views/Profile/UpdateForm";
 import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { FormInput } from "@src/components/FormInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { TChangeableUserData } from "@src/@types/requestTypes";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useValidateUpdate } from "@src/views/Profile/UpdateForm/useValidateUpdate";
 import { useAuthProvider } from "@src/providers/AuthProvider";
+import { useLocaleProvider } from "@src/providers/LocaleProvider";
+
 
 interface UpdateFormProps {
   formValues: TChangeableUserData;
@@ -31,6 +35,8 @@ export function UpdateForm({
     useValidateUpdate();
 
   const { getUser } = useAuthProvider();
+
+  const { locale } = useLocaleProvider();
 
   const [updating, setUpdating] = useState(false);
 
@@ -63,7 +69,12 @@ export function UpdateForm({
         error.response.data.message ===
         'duplicate key value violates unique constraint "UQ_97672ac88f789774dd47f7c8be3"'
       ) {
-        setUpdateFail("This Email Is Already Used!");
+        if (locale === TLocale_Enum.EN) {
+
+          setUpdateFail("This Email Is Already Used!");
+        } else if (locale === TLocale_Enum.KA) {
+          setUpdateFail("მოცემული ელ. ფოსტა უკვე გამოყენებულია!");
+        }
       }
     } finally {
       setUpdating(false);
@@ -80,7 +91,9 @@ export function UpdateForm({
 
   return (
     <SUpdateForm onSubmit={onSubmit} editing={currentEdit !== undefined}>
-      <h3>UPDATE</h3>
+      <h3>
+        <FormattedMessage id="newValue" defaultMessage={"_NEW_VALUE"} />
+      </h3>
       <h4>{updateFail}</h4>
       <div>
         {currentEdit && (
@@ -107,10 +120,10 @@ export function UpdateForm({
         >
           {updating ? (
             <>
-              CHANGING <SLoadingCircleAnim />
+              <FormattedMessage id="changing" defaultMessage={"_CHANGING_"} /> <SLoadingCircleAnim />
             </>
           ) : (
-            "CHANGE"
+            <FormattedMessage id="change" defaultMessage={"_CHANGE_"} />
           )}
         </SProductButton>
       </div>

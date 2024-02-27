@@ -28,6 +28,10 @@ export const SImgWrapper = styled.div`
   img {
     ${tw`w-full aspect-square  `}
   }
+
+  button {
+    ${tw`hidden sm:block `}
+  }
 `;
 
 export const SValue = styled.span`
@@ -65,4 +69,15 @@ export const SThemeSelectHolder = styled.span`
   ${(props) => css`
     background-color: ${props.theme.colors["secondary_background"]};
   `}
+
+  button {
+    ${tw`py-[.2rem] `}
+
+    :active {
+      ${(props) => css`
+        color: ${props.theme.colors["saleClr"]};
+        border-color: ${props.theme.colors["saleClr"]};
+      `}
+    }
+  }
 `;
