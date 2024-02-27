@@ -75,11 +75,3 @@ export const SReactIcon = styled(ReactIcon)`
 export const SNavWrapper = styled.div`
   ${tw`hidden lg:block`}
 `;
-
-export const SThemeSelectSm = styled.span`
-  ${tw`block lg:hidden absolute right-3 top-2 sm:right-9 sm:top-4`}
-`;
-
-export const SThemeSelectLg = styled.span`
-  ${tw`hidden lg:block`}
-`;

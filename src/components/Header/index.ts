@@ -3,8 +3,6 @@ export {
   SHeadlineWrapper,
   SBtnsWrapper,
   SNavWrapper,
-  SThemeSelectLg,
-  SThemeSelectSm,
   SHideButtonWrapper,
   SReactIcon,
   SLoadingWrapper,

@@ -1,8 +1,2 @@
-export {
-  SProfile,
-  SEditHolder,
-  SUserInfo,
-  SValue,
-  SChangeForm,
-} from "./Profile.styled";
+export { SProfile, SUserLayer } from "./Profile.styled";
 export { Profile as default } from "./Profile";

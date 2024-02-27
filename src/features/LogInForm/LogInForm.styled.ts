@@ -18,7 +18,9 @@ export const SLogInForm = styled.form`
   h3 {
     ${tw`text-[.75rem] md:text-[1rem] xl:text-[1.5rem] whitespace-nowrap  `}
     ${(props) => css`
-      color: ${props.theme.colors["secondary_background"]};
+      color: ${props.theme.mode === ThemeModes_Enum.LIGHT
+        ? props.theme.colors["secondary_background"]
+        : props.theme.colors["secondary_text"]};
     `}
   }
 

@@ -5,15 +5,12 @@ import {
   SHeadlineWrapper,
   SBtnsWrapper,
   SNavWrapper,
-  SThemeSelectLg,
-  SThemeSelectSm,
   SHideButtonWrapper,
   SReactIcon,
   SLoadingWrapper,
 } from "@src/components/Header";
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { Modal } from "@src/components/Modal";
-import { ThemeSelect } from "@src/features/ThemeSelect";
 import { SearchBar } from "@src/features/SearchBar";
 import { NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
 import { LogInForm } from "@src/features/LogInForm";
@@ -42,10 +39,7 @@ export function Header() {
         <SReactIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
-      {/* SELECTS THEME ON SMALL SCREENS */}
-      <SThemeSelectSm>
-        <ThemeSelect />
-      </SThemeSelectSm>
+
       <SNavWrapper>
         <Button onClick={() => console.log("NAVIGATION!")}>
           <div>
@@ -58,7 +52,16 @@ export function Header() {
       </SNavWrapper>
       <SearchBar />
       <SBtnsWrapper>
-        <Button onClick={() => Navigate("/cart")}>
+        {/* CART BUTTON */}
+        <Button
+          onClick={() => {
+            if (authStage === TAuthStage_Enum.AUTHORIZED) {
+              Navigate("/cart");
+            } else {
+              setAuthModal(true);
+            }
+          }}
+        >
           <div>
             <CartIcon />
           </div>
@@ -119,11 +122,6 @@ export function Header() {
 
       {/* FOR POP UP ALERTS */}
       <PopUpMessage showPopUpMessage={popUpText !== ""} />
-
-      {/* SELECTS THEME ON LARGE SCREENS */}
-      <SThemeSelectLg>
-        <ThemeSelect />
-      </SThemeSelectLg>
     </SHeader>
   );
 }

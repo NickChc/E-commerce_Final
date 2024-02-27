@@ -14,6 +14,6 @@ export const SImggHolder = styled.span<SProductImgProps>`
 
 export const SProductImg = styled.img<SProductImgProps>`
   ${(props) => css`
-    ${props.loaded ? tw`visible` : tw`invisible h-0 w-0 hidden `}
+    ${props.loaded ? tw`visible block` : tw`invisible h-0 w-0 hidden `}
   `}
 `;

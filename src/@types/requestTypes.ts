@@ -46,6 +46,8 @@ export interface TUserInfo {
   verified: boolean;
 }
 
-export interface TUpdateFormValues {
-  [key: string]: string;
+export interface TChangeableUserData {
+  first_name: string;
+  last_name: string;
+  email: string;
 }

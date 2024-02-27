@@ -1,4 +1,4 @@
-import { TRegisterUser, TLogInUser } from "@src/@types/requestTypes";
+import { TRegisterUser, TLogInUser, TChangeableUserData } from "@src/@types/requestTypes";
 
 export const registerDefaultValues: TRegisterUser = {
   first_name: "",
@@ -13,4 +13,11 @@ export const registerDefaultValues: TRegisterUser = {
 export const logInDefaultValues: TLogInUser = {
   email: "",
   password: "",
+}
+
+
+export const userUpdateDefaultValues: TChangeableUserData = {
+  email: "",
+  first_name: "",
+  last_name: "",
 }
