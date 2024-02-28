@@ -20,4 +20,5 @@ export {
   CrumbarArrow,
   EyeIcon,
   EditIcon,
+  HomeIcon,
 } from "./icons";

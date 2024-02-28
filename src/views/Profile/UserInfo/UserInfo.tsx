@@ -28,7 +28,6 @@ export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
     <SUserInfo>
       <SImgWrapper>
         <img src={ProfileImg} alt="profile avatar" loading="lazy" />
-        <button onClick={logOut}>LOG OUT</button>
       </SImgWrapper>
       <STextHolder>
         <h2>

@@ -12,7 +12,7 @@ import {
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { Modal } from "@src/components/Modal";
 import { SearchBar } from "@src/features/SearchBar";
-import { NavIcon, CartIcon, ProfileIcon } from "@src/assets/icons";
+import { NavIcon, CartIcon, ProfileIcon, HomeIcon } from "@src/assets/icons";
 import { LogInForm } from "@src/features/LogInForm";
 import { RegisterForm } from "@src/features/RegisterForm";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -56,18 +56,35 @@ export function Header() {
         <Button
           onClick={() => {
             if (authStage === TAuthStage_Enum.AUTHORIZED) {
-              Navigate("/cart");
+              if (Location.pathname !== "/cart") {
+                Navigate("/cart");
+              } else {
+                Navigate("/");
+              }
             } else {
               setAuthModal(true);
             }
           }}
         >
-          <div>
-            <CartIcon />
-          </div>
-          <p>
-            <FormattedMessage id="cart" defaultMessage={"_CART_"} />
-          </p>
+          {Location.pathname === "/cart" ? (
+            <>
+              <div>
+                <HomeIcon />
+              </div>
+              <p>
+                <FormattedMessage id="home" defaultMessage={"_HOME_"} />
+              </p>
+            </>
+          ) : (
+            <>
+              <div>
+                <CartIcon />
+              </div>
+              <p>
+                <FormattedMessage id="cart" defaultMessage={"_CART_"} />
+              </p>
+            </>
+          )}
         </Button>
         {authStage === TAuthStage_Enum.PENDING ? (
           <SLoadingWrapper>
@@ -77,18 +94,30 @@ export function Header() {
           <Button
             onClick={() => {
               if (authStage === TAuthStage_Enum.AUTHORIZED) {
-                Navigate("/profile");
+                if (Location.pathname !== "/profie") {
+                  Navigate("/profile");
+                } else {
+                  Navigate("/home");
+                }
               } else {
                 setAuthModal(true);
               }
             }}
           >
             <div>
-              <ProfileIcon />
+              {Location.pathname === "/profile" ? (
+                <HomeIcon />
+              ) : (
+                <ProfileIcon />
+              )}
             </div>
             <p className="whitespace-nowrap">
               {authStage === TAuthStage_Enum.AUTHORIZED ? (
-                "PROFILE"
+                Location.pathname === "/profile" ? (
+                  <FormattedMessage id="home" defaultMessage={"_HOME_"} />
+                ) : (
+                  <FormattedMessage id="profile" defaultMessage={"_PROFILE_"} />
+                )
               ) : (
                 <FormattedMessage id="login" defaultMessage={"_LOG_IN_"} />
               )}

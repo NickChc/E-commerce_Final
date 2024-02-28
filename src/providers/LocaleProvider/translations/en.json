@@ -51,5 +51,6 @@
   "logInSuccess": "YOU HAVE SUCCESFULLY LOGGED IN! WELCOME BACK",
   "usedPhone": "THIS PHONE NUMBER IS ALREADY USED!",
   "usedEmail": "THIS EMAIL IS ALREADY USED!",
-  "addToCart": "ADD TO CART"
+  "addToCart": "ADD TO CART",
+  "recommended": "RECOMMENDED"
 }

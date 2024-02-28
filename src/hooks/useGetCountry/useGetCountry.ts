@@ -26,5 +26,5 @@ export function useGetCountry() {
     getCountry();
   }, []);
 
-  return { usersCountryInfo };
+  return { usersCountryInfo, getCountry };
 }

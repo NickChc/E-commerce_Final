@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import {
   SProduct,
@@ -35,6 +35,8 @@ export function Product() {
   const recommended = products?.filter(
     (item) => item.category_name === product?.category_name
   );
+
+  const Navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -175,7 +177,13 @@ export function Product() {
               <p>{product?.category_name}</p>
             </STextPair>
           </SAdditionalInfo>
-          <h2>RECOMMENDED FOR YOU:</h2>
+          <h2>
+            <FormattedMessage
+              id="recommended"
+              defaultMessage={"_RECOMMEDED_"}
+            />
+            :
+          </h2>
           <ProductSlider products={recommended} />
         </>
       )}

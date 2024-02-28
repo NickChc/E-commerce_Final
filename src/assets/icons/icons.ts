@@ -12,6 +12,7 @@ export { LuTableProperties as NavIcon } from "react-icons/lu";
 export { FaPhoneAlt as PhoneIcon } from "react-icons/fa";
 export { FaPlus as PlusIcon } from "react-icons/fa";
 export { CgProfile as ProfileIcon } from "react-icons/cg";
+export { MdHome as HomeIcon } from "react-icons/md";
 export { FaReact as ReactIcon } from "react-icons/fa";
 export { FaSearch as SearchIcon } from "react-icons/fa";
 export { FaTiktok as TiktokIcon } from "react-icons/fa";

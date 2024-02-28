@@ -33,7 +33,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
     <SProductCard
       onClick={() => {
         if (disable) return;
-        Navigate(`products/product/${product.id}`);
+        Navigate(`/products/product/${product.id}`);
       }}
     >
       <ProductImg

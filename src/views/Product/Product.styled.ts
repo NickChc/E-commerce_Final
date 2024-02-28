@@ -13,6 +13,10 @@ export const SProduct = styled.div`
     border-color: ${props.theme.mode === "DARK" ? "#7b7b7b" : "transparent"};
   `}
 
+  h2 {
+    ${tw`text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem] `}
+  }
+
   h1 {
     ${tw`mt-14  `}
   }
