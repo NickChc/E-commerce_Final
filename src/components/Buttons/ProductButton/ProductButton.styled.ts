@@ -7,7 +7,7 @@ interface ProductButtonProps {
 }
 
 export const SProductButton = styled.button<ProductButtonProps>`
-  ${tw`py-[.5rem] px-[.8rem] border-solid border cursor-pointer duration-150 whitespace-nowrap text-[.65rem] sm:text-[.75rem] md:text-[.9rem] lg:text-[1rem] 2xl:text-[.9rem] flex items-center justify-center gap-x-1 break-words `}
+  ${tw`py-[.5rem] px-[.8rem] border-solid border cursor-pointer duration-150 whitespace-nowrap text-[.65rem] sm:text-[.75rem] md:text-[.9rem] lg:text-[1rem] 2xl:text-[.9rem] flex items-center justify-evenly gap-x-1 break-words `}
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
     color: ${props.theme.colors["additional"]};

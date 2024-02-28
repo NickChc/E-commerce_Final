@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { TProduct } from "@src/@types/requestTypes";
+import { TProduct, TWishlistProduct } from "@src/@types/requestTypes";
 
 interface GlobalContextProps {
   fetchProducts: (arg: string) => Promise<void>;
@@ -22,6 +22,12 @@ interface GlobalContextProps {
   setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
   popUpText: string;
   setPopUpText: React.Dispatch<React.SetStateAction<string>>;
+  getWishlist: () => Promise<void>;
+  gettingWishlist: boolean;
+  wishlist: TWishlistProduct[];
+  toggleWishlist: (arg: string) => Promise<void>;
+  removeFromWishlist: (arg: string) => Promise<void>;
+  removingWishlistItem: boolean;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -45,4 +51,10 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setAuthModal: () => {},
   popUpText: "",
   setPopUpText: () => {},
+  getWishlist: async () => {},
+  gettingWishlist: false,
+  wishlist: [],
+  toggleWishlist: async () => {},
+  removeFromWishlist: async () => {},
+  removingWishlistItem: false,
 });

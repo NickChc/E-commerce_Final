@@ -8,8 +8,17 @@ export interface TProduct {
   price: number;
   salePrice: null | number;
   category_name: string;
+  category: TCategory;
 }
 
+
+export interface TCategory {
+  created_at: string;
+  updated_at: string;
+  id: string;
+  image: string;
+  name: string;
+}
 
 export interface TRegisterUser {
   first_name: string;
@@ -20,12 +29,10 @@ export interface TRegisterUser {
   "repeat-password": string;
 }
 
-
 export interface TUserTokens {
   access_token: string;
   refresh_token: string;
 }
-
 
 export interface TLogInUser {
   email: string;
@@ -50,4 +57,12 @@ export interface TChangeableUserData {
   first_name: string;
   last_name: string;
   email: string;
+}
+
+export interface TWishlistProduct {
+  created_at: string;
+  updated_at: string;
+  id: string;
+  product_id: string;
+  user_id: string;
 }

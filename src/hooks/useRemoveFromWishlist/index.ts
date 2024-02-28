@@ -1,0 +1,1 @@
+export { useRemoveFromWishlist } from "./useRemoveFromWishlist";

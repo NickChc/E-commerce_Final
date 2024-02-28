@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import {
   SProduct,
   SProductMainWrapper,
@@ -21,29 +22,42 @@ import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { ProductImg } from "@src/components/ProductImg";
 
 export function Product() {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const { productId } = useParams();
 
-  const { product, productLoading, fetchSingleProduct, products } =
-    useGlobalProvider();
+  const {
+    product,
+    productLoading,
+    fetchSingleProduct,
+    products,
+    toggleWishlist,
+    wishlist,
+  } = useGlobalProvider();
+
+  const { locale } = useLocaleProvider();
 
   const recommended = products?.filter(
     (item) => item.category_name === product?.category_name
   );
 
-  const Navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo({ top: 0 });
     if (productId) {
       fetchSingleProduct(productId);
     }
   }, [productId]);
+
+  useEffect(() => {
+    const liked = wishlist?.some((product) => product.product_id === productId);
+    setIsLiked(liked);
+  }, [wishlist]);
 
   return (
     <SProduct>
@@ -66,26 +80,37 @@ export function Product() {
                 loaded={imageLoaded}
                 onLoad={() => setImageLoaded(true)}
               />
+
+              {/* BUTTONS FOR MANAGING CARD AND WISHLIST */}
               <SButtonsWrapper>
                 <SProductButton variation="primary">
                   <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
                 </SProductButton>
                 <SDoubleBtn>
-                  <SProductButton side="left">
-                    <FormattedMessage
-                      id="addToWishList"
-                      defaultMessage={"_TO WISHLIST_"}
-                    />
-                    <PlusIcon />
+                  <SProductButton
+                    side="left"
+                    onClick={() => productId && toggleWishlist(productId)}
+                  >
+                    {isLiked ? (
+                      "REMOVE"
+                    ) : (
+                      <>
+                        {locale === TLocale_Enum.KA && <PlusIcon />}
+                        <FormattedMessage
+                          id="addToWishList"
+                          defaultMessage={"_TO WISHLIST_"}
+                        />
+                      </>
+                    )}
                   </SProductButton>
                   <SProductButton side="right">
                     <FormattedMessage
                       id="addToCart"
                       defaultMessage={"_TO CART_"}
                     />
-                    {/* <PlusIcon /> */}
                   </SProductButton>
                 </SDoubleBtn>
+                {isLiked && <h5>ADDED TO WISHLIST</h5>}
               </SButtonsWrapper>
             </SProductMain>
 
@@ -177,13 +202,14 @@ export function Product() {
               <p>{product?.category_name}</p>
             </STextPair>
           </SAdditionalInfo>
-          <h2>
+          <h3>
             <FormattedMessage
               id="recommended"
               defaultMessage={"_RECOMMEDED_"}
             />
             :
-          </h2>
+          </h3>
+
           <ProductSlider products={recommended} />
         </>
       )}
