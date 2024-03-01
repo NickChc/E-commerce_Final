@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { TProduct, TWishlistProduct } from "@src/@types/general";
+import { TCartItem, TProduct, TWishlistProduct } from "@src/@types/general";
 
 interface GlobalContextProps {
   fetchProducts: (arg: string) => Promise<void>;
@@ -29,6 +29,11 @@ interface GlobalContextProps {
   removeFromWishlist: (arg: string) => Promise<void>;
   removingWishlistItem: boolean;
   addingToWishlist: boolean;
+  getCart: () => Promise<void>;
+  gettingCart: boolean;
+  cartItems: TCartItem[];
+  removeCartItem: (arg1: TCartItem, arg2: boolean) => Promise<void>;
+  removingCartItem: boolean;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -59,4 +64,9 @@ export const GlobalContext = createContext<GlobalContextProps>({
   removeFromWishlist: async () => {},
   removingWishlistItem: false,
   addingToWishlist: false,
+  getCart: async () => {},
+  gettingCart: false,
+  cartItems: [],
+  removeCartItem: async () => {},
+  removingCartItem: false,
 });

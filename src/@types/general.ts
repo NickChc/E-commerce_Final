@@ -41,3 +41,14 @@ export interface TUserInfo {
   updated_at: string;
   verified: boolean;
 }
+
+
+export interface TCartItem {
+  cartProduct: TProduct;
+  product_id: string;
+  id: string;
+  user_id: string;
+  count: number;
+  created_at: string;
+  updated_at: string;
+}

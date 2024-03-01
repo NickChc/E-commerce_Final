@@ -4,7 +4,7 @@ import {
   SSearchedItem,
   SSaleTag,
 } from "@src/components/SearchList/SearchedItem";
-import { TProduct } from "@src/@types/requestTypes";
+import { TProduct } from "@src/@types/general";
 import GamingPC from "@src/assets/images/GamingPcPlaceholderImg.jpg";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductImg } from "@src/components/ProductImg";

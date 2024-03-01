@@ -6,14 +6,13 @@ import {
   SCardButtonWrapper,
   SCardInfo,
 } from "@src/components/ProductCard";
-import { TProduct } from "@src/@types/requestTypes";
+import { TProduct } from "@src/@types/general";
 import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
-// import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { useAddToCart } from "@src/hooks/useAddToCart";
 import { ProductImg } from "@src/components/ProductImg";
+import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { useAddToCart } from "@src/hooks/useAddToCart";
 
 interface ProductCardProps {
   product: TProduct;
@@ -23,9 +22,7 @@ interface ProductCardProps {
 export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  // WORK HERE--------------------------------------------
-  const { addToCart } = useGlobalProvider();
-  const { addingToCart } = useAddToCart();
+  const { addToCart, addingToCart} = useAddToCart();
 
   const Navigate = useNavigate();
 
@@ -76,7 +73,10 @@ export function ProductCard({ product, disable }: ProductCardProps) {
           }}
         >
           {addingToCart ? (
-            "ADDING TO CART"
+            <>
+              <FormattedMessage id="adding" defaultMessage={"_ADDING_"} />
+              <SLoadingCircleAnim />
+            </>
           ) : (
             <FormattedMessage id="addToCart" defaultMessage={"_ADD TO CART_"} />
           )}

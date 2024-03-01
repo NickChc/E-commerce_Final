@@ -11,6 +11,7 @@ export {
   NavIcon,
   PhoneIcon,
   PlusIcon,
+  MinusIcon,
   ProfileIcon,
   ReactIcon,
   SearchIcon,
@@ -21,4 +22,5 @@ export {
   EyeIcon,
   EditIcon,
   HomeIcon,
+  TrashIcon,
 } from "./icons";

@@ -8,6 +8,8 @@ import { useGetWishlist } from "@src/hooks/useGetWishlist";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useRemoveFromWishlist } from "@src/hooks/useRemoveFromWishlist";
 import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
+import { useGetCart } from "@src/hooks/useGetCart";
+import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
@@ -30,13 +32,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
   const { getWishlist, gettingWishlist, wishlist } = useGetWishlist();
   const { addToCart, addingToCart } = useAddToCart();
-
-  // TEMPO
-    const { addToWishlist, addingToWishlist } = useAddToWishlist();
-
-    const { removeFromWishlist, removingWishlistItem } = useRemoveFromWishlist()
-
-  // TEMPO
+  const { addToWishlist, addingToWishlist } = useAddToWishlist();
+  const { removeFromWishlist, removingWishlistItem } = useRemoveFromWishlist();
+  const { getCart, gettingCart, cartItems } = useGetCart();
+  const { removeCartItem, removingCartItem } = useRemoveCartItem();
 
   const Location = useLocation();
 
@@ -46,12 +45,13 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     });
   }, [Location.pathname]);
 
-
   async function toggleWishlist(productId: string) {
     try {
-      const isLiked = wishlist?.find((product) => product.product_id === productId)
+      const isLiked = wishlist?.find(
+        (product) => product.product_id === productId
+      );
       if (isLiked) {
-        await removeFromWishlist(isLiked.id)
+        await removeFromWishlist(isLiked.id);
       } else {
         await addToWishlist(productId);
       }
@@ -61,11 +61,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
   }
 
-  
-
   useEffect(() => {
     fetchProducts("");
     getWishlist();
+    getCart();
   }, [authStage]);
 
   return (
@@ -98,6 +97,11 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         addToCart,
         addingToCart,
         addingToWishlist,
+        getCart,
+        gettingCart,
+        cartItems,
+        removeCartItem,
+        removingCartItem,
       }}
     >
       {children}
