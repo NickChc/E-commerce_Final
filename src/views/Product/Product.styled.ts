@@ -18,6 +18,9 @@ export const SProduct = styled.div`
 
     span {
       ${tw`text-[1rem] `}
+      ${(props) => css`
+      color: ${props.theme.colors["primary"]}
+      `}
     }
 
     a {

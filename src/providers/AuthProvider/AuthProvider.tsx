@@ -1,6 +1,7 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { AuthContext, TAuthStage_Enum } from "@src/providers/AuthProvider";
-import { TUserTokens, TUserInfo } from "@src/@types/requestTypes";
+import { TUserTokens } from "@src/@types/requestTypes";
+import { TUserInfo } from "@src/@types/general";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@src/config/localStorageKeys";
 import {
   privateAxios,

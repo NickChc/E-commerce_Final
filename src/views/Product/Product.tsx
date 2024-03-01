@@ -21,7 +21,9 @@ import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
+import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { ProductImg } from "@src/components/ProductImg";
@@ -35,6 +37,8 @@ export function Product() {
 
   const { formatMessage } = useIntl();
 
+  const { authStage } = useAuthProvider();
+
   const {
     product,
     productLoading,
@@ -44,6 +48,7 @@ export function Product() {
     wishlist,
     addingToWishlist,
     removingWishlistItem,
+    setAuthModal,
   } = useGlobalProvider();
 
   const { locale } = useLocaleProvider();
@@ -94,6 +99,10 @@ export function Product() {
                   <SProductButton
                     side="left"
                     onClick={() => {
+                      if (authStage !== TAuthStage_Enum.AUTHORIZED) {
+                        setAuthModal(true);
+                        return;
+                      }
                       productId && toggleWishlist(productId);
                       if (isLiked) {
                         setIsLiked(false);
@@ -118,7 +127,7 @@ export function Product() {
                         />{" "}
                         <SLoadingCircleAnim />
                       </>
-                    ) : isLiked ? (
+                    ) : isLiked && authStage === TAuthStage_Enum.AUTHORIZED ? (
                       <FormattedMessage
                         id="wishlistRemove"
                         defaultMessage={"_REMOVE_"}
