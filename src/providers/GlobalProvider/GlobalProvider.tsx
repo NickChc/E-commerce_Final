@@ -6,7 +6,6 @@ import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
 import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGetWishlist } from "@src/hooks/useGetWishlist";
 import { useAuthProvider } from "@src/providers/AuthProvider";
-import { useToggleWishlist } from "@src/hooks/useToggleWishlist";
 import { useRemoveFromWishlist } from "@src/hooks/useRemoveFromWishlist";
 import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
 
@@ -31,7 +30,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
   const { getWishlist, gettingWishlist, wishlist } = useGetWishlist();
   const { addToCart, addingToCart } = useAddToCart();
-  // const { toggleWishlist, togglingWishlist, checkLiked } = useToggleWishlist();
 
   // TEMPO
     const { addToWishlist, addingToWishlist } = useAddToWishlist();
@@ -99,6 +97,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         removingWishlistItem,
         addToCart,
         addingToCart,
+        addingToWishlist,
       }}
     >
       {children}

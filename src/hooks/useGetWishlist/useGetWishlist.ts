@@ -2,7 +2,7 @@ import { privateAxios } from "@src/utils/privateAxios";
 import { useState } from "react";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { TAuthStage_Enum } from "@src/providers/AuthProvider";
-import { TWishlistProduct } from "@src/@types/requestTypes";
+import { TWishlistProduct } from "@src/@types/general";
 
 export function useGetWishlist() {
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,6 @@ export function useGetWishlist() {
       setLoading(true);
       const response = await privateAxios.get("/liked-products");
       setWishlist(response.data);
-      console.log(response.data);
     } catch (error: any) {
       console.log(error.message);
     } finally {

@@ -52,5 +52,9 @@
   "usedPhone": "THIS PHONE NUMBER IS ALREADY USED!",
   "usedEmail": "THIS EMAIL IS ALREADY USED!",
   "addToCart": "ADD TO CART",
-  "recommended": "RECOMMENDED"
+  "similar": "SIMILAR",
+  "wishlistRemove": "REMOVE",
+  "adding": "ADDING",
+  "removing": "REMOVING",
+  "wishlist": "WISHLIST"
 }

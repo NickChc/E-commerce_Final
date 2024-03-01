@@ -14,11 +14,22 @@ export const SProduct = styled.div`
   `}
 
   h5 {
-    ${tw`text-center `}
-  }
+    ${tw`h-[1rem] ml-3 flex gap-x-3 justify-start items-center  `}
 
-  h3 {
-    ${tw`text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem] `}
+    span {
+      ${tw`text-[1rem] `}
+    }
+
+    a {
+      ${tw`opacity-[.75] `}
+      ${(props) => css`
+        color: ${props.theme.colors["primary"]};
+      `}
+
+      :hover {
+        ${tw`opacity-[1] `}
+      }
+    }
   }
 
   h1 {
@@ -63,6 +74,10 @@ export const STextPair = styled.div`
   p {
     ${tw`whitespace-nowrap`}
   }
+
+  h3 {
+    ${tw`text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem]  `}
+  }
 `;
 
 export const STextTitle = styled.h2`
@@ -83,7 +98,7 @@ export const SSaleTag = styled.span`
 `;
 
 export const SAdditionalInfo = styled.div`
-  ${tw`w-full flex justify-around items-center text-[.75rem] md:text-[1rem] mt-9 mb-16 `}
+  ${tw`w-full flex justify-around items-center text-[.75rem] md:text-[1rem] mt-9 mb-[9] md:mb-16 `}
 
   div {
     ${tw`flex-col md:flex-row whitespace-nowrap `}

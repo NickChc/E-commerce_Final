@@ -23,7 +23,7 @@ export const SProductCard = styled.div`
   }
 
   h3 {
-    ${tw`break-words mb-3 `}
+    ${tw`break-words mb-3 text-[1rem] xl:text-[1.2rem] `}
   }
 
   h2 {

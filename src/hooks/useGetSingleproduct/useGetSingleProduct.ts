@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { publicAxios } from "@src/utils/publicAxios";
-import { TProduct } from "@src/@types/requestTypes";
+import { TProduct } from "@src/@types/general";
 
 export function useGetSingleProduct() {
   const [product, setProduct] = useState<TProduct>();

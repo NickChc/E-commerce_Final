@@ -5,6 +5,6 @@ import { LoadingCircle } from "@src/assets/icons";
 export const SLoadingCircleAnim = styled(LoadingCircle)`
     ${tw`animate-spin `}
     ${(props) => css`
-        color: ${props.theme.colors["additional"]};
+        /* color: ${props.theme.colors["additional"]}; */
     `}
 `;

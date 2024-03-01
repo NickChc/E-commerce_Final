@@ -2,7 +2,7 @@ import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { TProduct } from "@src/@types/requestTypes";
+import { TProduct } from "@src/@types/general";
 import { ProductCard } from "@src/components/ProductCard";
 import {
   SProductSliderWrapper,
@@ -60,7 +60,7 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
     arrows: true,
     prevArrow: <LeftCustomArrow />,
     nextArrow: <RightCustomArrow />,
-    swipe: true,
+    swipe: products.length > 5,
     swipeToSlide: true,
     beforeChange: () => setSwiping(true),
     afterChange: () => setSwiping(false),
@@ -70,12 +70,14 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
+          swipe: products.length > 4,
         },
       },
       {
         breakpoint: 870,
         settings: {
           slidesToShow: 3,
+          swipe: products.length > 3,
           arrows: false,
         },
       },
@@ -83,6 +85,7 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
+          swipe: products.length > 2,
           arrows: true,
         },
       },

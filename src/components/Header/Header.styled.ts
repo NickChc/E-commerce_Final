@@ -60,12 +60,12 @@ export const SHeadlineWrapper = styled.div<SHeadlineWrapperProps>`
   }
 
   h1 {
-    ${tw`lg:text-[1.6em] xl:text-[2em] font-[Oswald, sans]`}
+    ${tw`text-[1em] sm:text-[1.2em] md:text-[1.4em] lg:text-[1.6em] xl:text-[2em] font-[Oswald, sans]`}
   }
 `;
 
 export const SReactIcon = styled(ReactIcon)`
-  ${tw`text-3xl sm:text-3xl xl:text-4xl `}
+  ${tw`text-2xl sm:text-3xl xl:text-4xl `}
   ${(props) => css`
     background-color: ${props.theme.colors["secondary-background"]};
     color: ${props.theme.colors["additional"]};

@@ -5,7 +5,7 @@ export const SProductSliderWrapper = styled.div`
   ${tw`w-full border-solid py-3 border-solid border border-[grey] border-x-0 border-t-0 `}
 
   h1 {
-    ${tw`text-center`}
+    ${tw`text-center text-[1.2rem] md:text-[1.4rem] lg:text-[1.8rem] mb-1`}
   }
 `;
 

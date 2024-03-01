@@ -94,10 +94,10 @@ export function Header() {
           <Button
             onClick={() => {
               if (authStage === TAuthStage_Enum.AUTHORIZED) {
-                if (Location.pathname !== "/profie") {
+                if (Location.pathname !== "/profile") {
                   Navigate("/profile");
                 } else {
-                  Navigate("/home");
+                  Navigate("/");
                 }
               } else {
                 setAuthModal(true);

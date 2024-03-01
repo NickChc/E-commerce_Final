@@ -1,17 +1,28 @@
 import { useState } from "react";
+import { useIntl } from "react-intl";
 import { SProfile, SUserLayer } from "@src/views/Profile";
-import { useAuthProvider } from "@src/providers/AuthProvider";
 import { TChangeableUserData } from "@src/@types/requestTypes";
-import { userUpdateDefaultValues } from "@src/mocks/defaultValues";
 import { UserInfo } from "@src/views/Profile/UserInfo";
 import { UpdateForm } from "@src/views/Profile/UpdateForm";
-import { useValidateUpdate } from "./UpdateForm/useValidateUpdate";
-import { SProductButton } from "@src/components/Buttons/ProductButton";
+import { ProductSlider } from "@src/components/ProductSlider";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
+import { useLocaleProvider } from "@src/providers/LocaleProvider";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useAuthProvider } from "@src/providers/AuthProvider";
+import { TProduct } from "@src/@types/general";
 
 export function Profile() {
-  const { userData, logOut } = useAuthProvider();
+  const { userData } = useAuthProvider();
 
-  const { setFormErrors } = useValidateUpdate();
+  const { wishlist } = useGlobalProvider();
+
+  const { locale } = useLocaleProvider();
+
+  const { formatMessage } = useIntl();
+
+  const wishlistProducts: TProduct[] = wishlist?.map(
+    (item) => item.likedProduct
+  );
 
   const [currentEdit, setCurrentEdit] = useState<
     keyof TChangeableUserData | undefined
@@ -31,7 +42,6 @@ export function Profile() {
       setCurrentEdit(undefined);
     } else {
       setCurrentEdit(value);
-      setFormErrors(userUpdateDefaultValues);
     }
     // RESET FORM ON CLOSE
     setFormValues({
@@ -58,6 +68,20 @@ export function Profile() {
           setCurrentEdit={setCurrentEdit}
         />
       </SUserLayer>
+      <hr />
+      {wishlistProducts.length < 1 && (
+        <h1>
+          {locale === TLocale_Enum.EN
+            ? "YOUR WISHLIST IS EMPTY"
+            : locale === TLocale_Enum.KA
+            ? "სასურველების სია ცარიელია"
+            : null}
+        </h1>
+      )}
+      <ProductSlider
+        products={wishlistProducts}
+        title={formatMessage({ id: "wishlist", defaultMessage: "_WISHLIST_" })}
+      />
     </SProfile>
   );
 }

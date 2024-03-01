@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { privateAxios } from "@src/utils/privateAxios";
 import { SUpdateForm } from "@src/views/Profile/UpdateForm";
@@ -10,7 +10,7 @@ import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useValidateUpdate } from "@src/views/Profile/UpdateForm/useValidateUpdate";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
-
+import { userUpdateDefaultValues } from "@src/mocks/defaultValues";
 
 interface UpdateFormProps {
   formValues: TChangeableUserData;
@@ -39,6 +39,11 @@ export function UpdateForm({
   const { locale } = useLocaleProvider();
 
   const [updating, setUpdating] = useState(false);
+
+  // CLEAR FORM ERRORS
+  useEffect(() => {
+    setFormErrors(userUpdateDefaultValues);
+  }, [currentEdit]);
 
   function inputChange(e: React.ChangeEvent<HTMLFormElement>) {
     setFormValues((prev) => ({
@@ -70,7 +75,6 @@ export function UpdateForm({
         'duplicate key value violates unique constraint "UQ_97672ac88f789774dd47f7c8be3"'
       ) {
         if (locale === TLocale_Enum.EN) {
-
           setUpdateFail("This Email Is Already Used!");
         } else if (locale === TLocale_Enum.KA) {
           setUpdateFail("მოცემული ელ. ფოსტა უკვე გამოყენებულია!");
@@ -120,7 +124,8 @@ export function UpdateForm({
         >
           {updating ? (
             <>
-              <FormattedMessage id="changing" defaultMessage={"_CHANGING_"} /> <SLoadingCircleAnim />
+              <FormattedMessage id="changing" defaultMessage={"_CHANGING_"} />{" "}
+              <SLoadingCircleAnim />
             </>
           ) : (
             <FormattedMessage id="change" defaultMessage={"_CHANGE_"} />

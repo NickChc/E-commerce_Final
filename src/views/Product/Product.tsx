@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import {
   SProduct,
@@ -25,12 +25,15 @@ import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { ProductImg } from "@src/components/ProductImg";
+import { FaCheck as CheckIcon } from "react-icons/fa6";
 
 export function Product() {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const { productId } = useParams();
+
+  const { formatMessage } = useIntl();
 
   const {
     product,
@@ -39,6 +42,8 @@ export function Product() {
     products,
     toggleWishlist,
     wishlist,
+    addingToWishlist,
+    removingWishlistItem,
   } = useGlobalProvider();
 
   const { locale } = useLocaleProvider();
@@ -46,7 +51,6 @@ export function Product() {
   const recommended = products?.filter(
     (item) => item.category_name === product?.category_name
   );
-
 
   useEffect(() => {
     if (productId) {
@@ -89,17 +93,43 @@ export function Product() {
                 <SDoubleBtn>
                   <SProductButton
                     side="left"
-                    onClick={() => productId && toggleWishlist(productId)}
+                    onClick={() => {
+                      productId && toggleWishlist(productId);
+                      if (isLiked) {
+                        setIsLiked(false);
+                      } else {
+                        setIsLiked(true);
+                      }
+                    }}
                   >
-                    {isLiked ? (
-                      "REMOVE"
+                    {removingWishlistItem ? (
+                      <>
+                        <FormattedMessage
+                          id="removing"
+                          defaultMessage={"_REMOVING_"}
+                        />{" "}
+                        <SLoadingCircleAnim />
+                      </>
+                    ) : addingToWishlist ? (
+                      <>
+                        <FormattedMessage
+                          id="adding"
+                          defaultMessage={"_ADDING_"}
+                        />{" "}
+                        <SLoadingCircleAnim />
+                      </>
+                    ) : isLiked ? (
+                      <FormattedMessage
+                        id="wishlistRemove"
+                        defaultMessage={"_REMOVE_"}
+                      />
                     ) : (
                       <>
-                        {locale === TLocale_Enum.KA && <PlusIcon />}
                         <FormattedMessage
                           id="addToWishList"
                           defaultMessage={"_TO WISHLIST_"}
                         />
+                        {locale === TLocale_Enum.KA && <PlusIcon />}
                       </>
                     )}
                   </SProductButton>
@@ -110,10 +140,30 @@ export function Product() {
                     />
                   </SProductButton>
                 </SDoubleBtn>
-                {isLiked && <h5>ADDED TO WISHLIST</h5>}
+                <h5>
+                  {" "}
+                  {isLiked &&
+                    !addingToWishlist &&
+                    (locale === TLocale_Enum.EN ? (
+                      <>
+                        ADDED TO <a href="/profile">WISHLIST</a>{" "}
+                        <span>
+                          <CheckIcon />
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        დამატებულია <a href="/profile">სასურველებში</a>{" "}
+                        <span>
+                          <CheckIcon />
+                        </span>
+                      </>
+                    ))}
+                </h5>
               </SButtonsWrapper>
             </SProductMain>
 
+            {/* PRODUCT INFO ON THE RIGHT SIDE */}
             <SProductInfo isSale={product?.salePrice !== null}>
               {product?.salePrice && (
                 <SSaleTag>
@@ -202,15 +252,14 @@ export function Product() {
               <p>{product?.category_name}</p>
             </STextPair>
           </SAdditionalInfo>
-          <h3>
-            <FormattedMessage
-              id="recommended"
-              defaultMessage={"_RECOMMEDED_"}
-            />
-            :
-          </h3>
 
-          <ProductSlider products={recommended} />
+          <ProductSlider
+            products={recommended}
+            title={formatMessage({
+              id: "similar",
+              defaultMessage: "_SIMILAR_",
+            })}
+          />
         </>
       )}
     </SProduct>
