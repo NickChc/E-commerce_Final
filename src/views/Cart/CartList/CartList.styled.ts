@@ -6,7 +6,7 @@ export const SCartList = styled.div`
 `;
 
 export const SEmptyView = styled.div`
-  ${tw`flex flex-col items-center mt-20 text-[.6rem] sm:text-[.8rem] md:text-[1rem] lg:text-[1.2rem] xl:text-[1.4rem] `}
+  ${tw`flex flex-col items-center mt-[50dvh] lg:mt-20 text-[.6rem] sm:text-[.8rem] md:text-[1rem] lg:text-[1.2rem] xl:text-[1.4rem] `}
 
   span {
     ${tw`text-[8rem] mt-6 relative `}
