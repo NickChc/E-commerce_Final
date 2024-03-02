@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { TCartItem } from "@src/@types/general";
 import {
@@ -28,10 +29,8 @@ export function CartItem({ item }: CartItemProps) {
   const { addToCart, addingToCart } = useAddToCart();
   const { removeCartItem, removingCartItem } = useRemoveCartItem();
 
-  if (!show) return;
-
   return (
-    <SCartItem>
+    <SCartItem show={show}>
       <SImgWrapper>
         <ProductImg
           src={item.cartProduct.image}
@@ -41,9 +40,9 @@ export function CartItem({ item }: CartItemProps) {
           onLoad={() => setImageLoaded(true)}
         />
         <SCartItemInfo>
-          <a href={`/products/product/${item.product_id}`}>
+          <Link to={`/products/product/${item.product_id}`}>
             {item.cartProduct.title}
-          </a>
+          </Link>
           <h3>
             <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
             <SSaleTag isSale={item.cartProduct.salePrice !== null}>
@@ -93,13 +92,10 @@ export function CartItem({ item }: CartItemProps) {
       <SBtnsLg>
         <SCountBtnHolder>
           <button
-            disabled={removingCartItem}
+            disabled={removingCartItem || count === 1}
             onClick={() => {
               removeCartItem(item, false);
               setCount(count - 1);
-              if (count === 1) {
-                setShow(false);
-              }
             }}
           >
             {removingCartItem ? <SLoadingCircleAnim /> : <MinusIcon />}
@@ -112,7 +108,11 @@ export function CartItem({ item }: CartItemProps) {
               setCount(count + 1);
             }}
           >
-            {addingToCart ? <SLoadingCircleAnim /> : <PlusIcon />}
+            {addingToCart ? (
+                <SLoadingCircleAnim />
+            ) : (
+              <PlusIcon />
+            )}
           </button>
           <p
             onClick={() => {
@@ -120,10 +120,11 @@ export function CartItem({ item }: CartItemProps) {
               setShow(false);
             }}
           >
-            REMOVE ITEM{" "}
-            <div>
-              <TrashIcon />
-            </div>
+            <FormattedMessage
+              id="removeItem"
+              defaultMessage={"_REMOVE_ITEM_"}
+            />{" "}
+            <TrashIcon />
           </p>
         </SCountBtnHolder>
       </SBtnsLg>

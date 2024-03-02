@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import {
   SProductCard,
   SCardButtonWrapper,
@@ -13,6 +13,9 @@ import { calculateSale } from "@src/utils/calculateSale";
 import { ProductImg } from "@src/components/ProductImg";
 import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useAddToCart } from "@src/hooks/useAddToCart";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useAuthProvider } from "@src/providers/AuthProvider";
+import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 
 interface ProductCardProps {
   product: TProduct;
@@ -22,9 +25,39 @@ interface ProductCardProps {
 export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const { addToCart, addingToCart} = useAddToCart();
+  const { formatMessage } = useIntl();
+
+  const [inCart, setInCart] = useState<boolean>(false);
+
+  const { addToCart, addingToCart } = useAddToCart();
+
+  const { cartItems, setAuthModal } = useGlobalProvider();
+
+  const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
+
+  // HANDLES CART ADDING BUTTON
+  function handleCartAdding() {
+    // IF NOT AUTHORIZED, OPEN LOG IN MODAL
+    if (authStage !== TAuthStage_Enum.AUTHORIZED) {
+      setAuthModal(true);
+      return;
+    }
+    // IF ITEM IS IN CART, NAVIGATE TO CART. ELSE ADD ITEM TO CART
+    if (inCart) {
+      Navigate("/cart");
+    } else {
+      addToCart(product.id);
+      setInCart(true);
+    }
+  }
+
+  // IF ITEM IS IN CART, CHANGE TEXT AND ONCLICK BEHAVIOUR
+  useEffect(() => {
+    const isInCart = cartItems?.some((item) => item.product_id === product.id);
+    setInCart(isInCart);
+  }, [cartItems]);
 
   return (
     <SProductCard
@@ -62,6 +95,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         <SProductButton
           onClick={(e) => {
             e.stopPropagation();
+            console.log("CHECKOUT!");
           }}
         >
           <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
@@ -69,7 +103,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         <SProductButton
           onClick={(e) => {
             e.stopPropagation();
-            addToCart(product.id);
+            handleCartAdding();
           }}
         >
           {addingToCart ? (
@@ -77,8 +111,20 @@ export function ProductCard({ product, disable }: ProductCardProps) {
               <FormattedMessage id="adding" defaultMessage={"_ADDING_"} />
               <SLoadingCircleAnim />
             </>
+          ) : authStage === TAuthStage_Enum.AUTHORIZED ? (
+            inCart ? (
+              <FormattedMessage
+                id="viewInCart"
+                defaultMessage={"_VIEW_IN_CART_"}
+              />
+            ) : (
+              <FormattedMessage
+                id="addToCart"
+                defaultMessage={"_ADD_TO_CART_"}
+              />
+            )
           ) : (
-            <FormattedMessage id="addToCart" defaultMessage={"_ADD TO CART_"} />
+            <FormattedMessage id="addToCart" defaultMessage={"_ADD_TO_CART_"} />
           )}
         </SProductButton>
       </SCardButtonWrapper>

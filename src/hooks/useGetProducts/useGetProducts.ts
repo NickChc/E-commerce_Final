@@ -28,7 +28,7 @@ export function useGetProducts() {
         setSearchedProducts(response.data?.products);
       }
     } catch (error: any) {
-      console.error(error.message);
+      console.log(error.message);
       if (error.message === "Network Error") {
         setError("CONNECTION PROBLEMS, PLEASE TRY AGAIN LATER");
       }

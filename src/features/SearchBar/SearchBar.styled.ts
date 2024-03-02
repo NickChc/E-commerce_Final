@@ -9,7 +9,7 @@ export const SInputWrapper = styled.div`
 `;
 
 export const SInput = styled.input`
-  ${tw`outline-none p-[.6em] text-[.75rem] sm:text-[1rem] lg:text-[1.2rem] rounded-r-xl border-none  w-full placeholder:font-bold `}
+  ${tw`outline-none p-[.6em] text-[.75rem] sm:text-[1rem] lg:text-[1.2rem] rounded-r-xl rounded-l-[0] border-none  w-full placeholder:font-bold `}
   ${(props) => css`
     caret-color: ${props.theme.colors["additional"]};
   `}
