@@ -58,5 +58,11 @@
   "adding": "ADDING",
   "removing": "REMOVING",
   "wishlist": "WISHLIST",
-  "removeItem": "REMOVE ITEM"
+  "removeItem": "REMOVE ITEM",
+  "totalCost": "TOTAL COST",
+  "moneySaved": "MONEY SAVED",
+  "items": "ITEMS",
+  "totalQuantity": "TOTAL QUANTITY",
+  "checkout": "CHECKOUT",
+  "emptyCart": "THE CART IS EMPTY"
 }

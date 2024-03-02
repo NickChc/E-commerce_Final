@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import {
   SProductCard,
   SCardButtonWrapper,
@@ -25,7 +25,6 @@ interface ProductCardProps {
 export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const { formatMessage } = useIntl();
 
   const [inCart, setInCart] = useState<boolean>(false);
 

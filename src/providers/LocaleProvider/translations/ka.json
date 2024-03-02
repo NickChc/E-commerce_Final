@@ -58,5 +58,11 @@
   "adding": "ემატება",
   "removing": "იშლება",
   "wishlist": "სასურველი ნივთები",
-  "removeItem": "ნივთის წაშლა"
+  "removeItem": "ნივთის წაშლა",
+  "totalCost": "სულ ღირებულება",
+  "moneySaved": "თქვენ დაზოგავთ",
+  "items": "ნივთები",
+  "totalQuantity": "სულ რაოდენობა",
+  "checkout": "ყიდვა",
+  "emptyCart": "კალათა ცარიელია"
 }

@@ -27,7 +27,6 @@ export function useGetCart() {
         }
       );
       setCartItems(sortedCartItems);
-      console.log(sortedCartItems);
     } catch (error: any) {
       console.log(error.message);
     } finally {
