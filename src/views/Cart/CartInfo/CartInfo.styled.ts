@@ -13,7 +13,7 @@ export const SCartInfo = styled.div`
   }
 
   h1 {
-    ${tw`flex items-start w-full justify-center gap-x-2 md:gap-x-6 text-[.9rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] whitespace-nowrap `}
+    ${tw`flex items-start w-full justify-start lg:justify-center gap-x-2 md:gap-x-6 text-[.9rem] sm:text-[1.4rem] md:text-[1.6rem] lg:text-[1.8rem] whitespace-nowrap `}
   }
 
   h2 {

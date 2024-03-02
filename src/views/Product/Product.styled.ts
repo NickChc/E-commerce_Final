@@ -19,7 +19,7 @@ export const SProduct = styled.div`
     span {
       ${tw`text-[1rem] `}
       ${(props) => css`
-      color: ${props.theme.colors["primary"]}
+        color: ${props.theme.colors["primary"]};
       `}
     }
 
@@ -41,11 +41,11 @@ export const SProduct = styled.div`
 `;
 
 export const SProductMainWrapper = styled.div`
-  ${tw`w-full mt-2 md:mt-6 flex flex-col  justify-center sm:flex-row sm:items-start gap-x-3 `}
+  ${tw`w-full mt-2 md:mt-6 flex flex-col items-center justify-center sm:flex-row sm:items-start gap-x-3 `}
 `;
 
 export const SProductMain = styled.div`
-  ${tw`w-[100%] sm:min-w-[45%] flex flex-col items-stretch `}
+  ${tw`w-[80%] sm:min-w-[45%] flex flex-col items-stretch `}
 
   img {
     ${tw`object-cover aspect-square w-full self-center sm:self-auto `}
