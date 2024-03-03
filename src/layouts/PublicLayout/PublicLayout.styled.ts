@@ -7,3 +7,8 @@ export const SPublicLayout = styled.div`
     background-color: ${props.theme.mode === "DARK" && "#2b2b2b"};
   `}
 `;
+
+
+export const SOutletWrapper = styled.div`
+  ${tw`w-full flex flex-col items-center relative  `}
+`;

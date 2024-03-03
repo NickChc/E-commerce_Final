@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { SPublicLayout } from "@src/layouts/PublicLayout";
+import { SPublicLayout, SOutletWrapper } from "@src/layouts/PublicLayout";
 
 import { Header } from "@src/components/Header";
 import { Footer } from "@src/components/Footer";
@@ -12,11 +12,11 @@ export function PublicLayout() {
   return (
     <SPublicLayout>
       <Header />
-      <div className="w-full flex flex-col items-center relative ">
+      <SOutletWrapper>
         <Outlet />
         {/* CATEGORY NAVIGATION SIDEBAR */}
         <CategoryNav show={categoryNavOpen} />
-      </div>
+      </SOutletWrapper>
       <Footer />
     </SPublicLayout>
   );

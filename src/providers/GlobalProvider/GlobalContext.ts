@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { TCartItem, TProduct, TWishlistProduct } from "@src/@types/general";
+import { TCartItem, TCategory, TProduct, TWishlistProduct } from "@src/@types/general";
 
 interface GlobalContextProps {
   fetchProducts: (arg: string) => Promise<void>;
@@ -36,6 +36,9 @@ interface GlobalContextProps {
   removingCartItem: boolean;
   categoryNavOpen: boolean;
   setCategoryNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  getCategories: () => Promise<void>;
+  gettingCategories: boolean;
+  categories: TCategory[];
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -73,4 +76,7 @@ export const GlobalContext = createContext<GlobalContextProps>({
   removingCartItem: false,
   categoryNavOpen: false,
   setCategoryNavOpen: () => {},
+  getCategories: async () => {},
+  gettingCategories: false,
+  categories: [],
 });

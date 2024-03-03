@@ -10,6 +10,7 @@ import { useRemoveFromWishlist } from "@src/hooks/useRemoveFromWishlist";
 import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
 import { useGetCart } from "@src/hooks/useGetCart";
 import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
+import { useGetCategories } from "@src/hooks/useGetCategories";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
@@ -38,6 +39,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { removeFromWishlist, removingWishlistItem } = useRemoveFromWishlist();
   const { getCart, gettingCart, cartItems } = useGetCart();
   const { removeCartItem, removingCartItem } = useRemoveCartItem();
+  const { getCategories, categories, gettingCategories } = useGetCategories();
 
   const Location = useLocation();
 
@@ -67,6 +69,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     fetchProducts("");
     getWishlist();
     getCart();
+    getCategories();
   }, [authStage]);
 
   return (
@@ -106,6 +109,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         removingCartItem,
         categoryNavOpen,
         setCategoryNavOpen,
+        getCategories,
+        gettingCategories,
+        categories,
       }}
     >
       {children}

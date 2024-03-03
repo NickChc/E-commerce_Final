@@ -1,2 +1,2 @@
-export { SPublicLayout } from "./PublicLayout.styled";
+export { SPublicLayout, SOutletWrapper } from "./PublicLayout.styled";
 export { PublicLayout } from "./PublicLayout";
