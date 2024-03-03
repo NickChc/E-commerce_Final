@@ -32,10 +32,16 @@ export const SProductButton = styled.button<ProductButtonProps>`
     }
   }
 
+  :disabled {
+    ${css`
+      background-color: transparent;
+    `}
+  }
+
   :disabled:hover {
     ${tw`opacity-[.75] `}
     ${(props) => css`
-      background-color: ${props.theme.colors["secondary"]};
+      background-color: transparent;
       color: ${props.theme.colors["additional"]};
     `}
   }

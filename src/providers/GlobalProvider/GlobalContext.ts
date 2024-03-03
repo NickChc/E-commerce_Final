@@ -34,6 +34,8 @@ interface GlobalContextProps {
   cartItems: TCartItem[];
   removeCartItem: (arg1: TCartItem, arg2: boolean) => Promise<void>;
   removingCartItem: boolean;
+  categoryNavOpen: boolean;
+  setCategoryNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -69,4 +71,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   cartItems: [],
   removeCartItem: async () => {},
   removingCartItem: false,
+  categoryNavOpen: false,
+  setCategoryNavOpen: () => {},
 });

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SFooter = styled.div`
-  ${tw`w-full flex flex-col items-center justify-center relative `}
+  ${tw`w-full flex flex-col items-center justify-center relative z-20 `}
   ${(props) => css`
     background-color: ${props.theme.colors["secondary_background"]};
   `}

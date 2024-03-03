@@ -22,8 +22,14 @@ import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { PopUpMessage } from "@src/components/PopUpMessage";
 
 export function Header() {
-  const { registering, authModal, setAuthModal, popUpText } =
-    useGlobalProvider();
+  const {
+    registering,
+    authModal,
+    setAuthModal,
+    popUpText,
+    categoryNavOpen,
+    setCategoryNavOpen,
+  } = useGlobalProvider();
   const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
@@ -39,9 +45,15 @@ export function Header() {
         <SReactIcon />
         <h1>REACT SHOP</h1>
       </SHeadlineWrapper>
-
+      {/* CATEGORY NAV BUTTON FOR LARGE SCREENS */}
       <SNavWrapper>
-        <Button onClick={() => console.log("NAVIGATION!")}>
+        <Button
+          variation={categoryNavOpen ? "active" : undefined}
+          onClick={(e) => {
+            e.stopPropagation();
+            setCategoryNavOpen(!categoryNavOpen);
+          }}
+        >
           <div>
             <NavIcon />
           </div>
@@ -125,17 +137,15 @@ export function Header() {
           </Button>
         )}
 
-        {/*AUTH IN MODAL HERE */}
-        <Modal
-          scrollBlock={true}
-          open={authModal}
-          setOpen={() => setAuthModal(!authModal)}
-        >
-          {registering ? <RegisterForm /> : <LogInForm />}
-        </Modal>
-
+        {/* NAVIGATION BUTTON FOR SMALL SCREENS */}
         <SHideButtonWrapper>
-          <Button onClick={() => console.log("NAVIGATION!")}>
+          <Button
+            variation={categoryNavOpen ? "active" : undefined}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCategoryNavOpen(!categoryNavOpen);
+            }}
+          >
             <div>
               <NavIcon />
             </div>
@@ -148,6 +158,15 @@ export function Header() {
           </Button>
         </SHideButtonWrapper>
       </SBtnsWrapper>
+
+      {/*AUTH IN MODAL HERE */}
+      <Modal
+        scrollBlock={true}
+        open={authModal}
+        setOpen={() => setAuthModal(!authModal)}
+      >
+        {registering ? <RegisterForm /> : <LogInForm />}
+      </Modal>
 
       {/* FOR POP UP ALERTS */}
       <PopUpMessage showPopUpMessage={popUpText !== ""} />

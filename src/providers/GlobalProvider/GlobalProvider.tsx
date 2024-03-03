@@ -17,6 +17,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [authModal, setAuthModal] = useState<boolean>(false);
   const [popUpText, setPopUpText] = useState<string>("");
 
+  const [categoryNavOpen, setCategoryNavOpen] = useState<boolean>(false);
+
   const {
     products,
     productsLoading,
@@ -102,6 +104,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         cartItems,
         removeCartItem,
         removingCartItem,
+        categoryNavOpen,
+        setCategoryNavOpen,
       }}
     >
       {children}

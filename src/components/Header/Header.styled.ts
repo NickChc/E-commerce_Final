@@ -4,7 +4,7 @@ import "google-fonts";
 import { ReactIcon } from "@src/assets/icons";
 
 export const SHeader = styled.div`
-  ${tw`w-full p-1 sm:p-3 z-10 sticky top-0 flex flex-col lg:flex-row justify-around items-center border-b border-solid border-t-0 border-r-0 border-l-0 relative`}
+  ${tw`w-full p-1 sm:p-3 z-30 sticky top-0 flex flex-col lg:flex-row justify-around items-center border-b border-solid border-t-0 border-r-0 border-l-0 relative`}
   ${(props) => css`
     background-color: ${props.theme.colors["secondary_background"]};
     border-color: ${props.theme.colors["additional"]};
@@ -35,7 +35,7 @@ interface SHeadlineWrapperProps {
 }
 
 export const SHeadlineWrapper = styled.div<SHeadlineWrapperProps>`
-  ${tw`inline-flex items-center justify-center gap-x-2 lg:gap-x-3 relative whitespace-nowrap after:content-["go to home"] after:py-1 after:px-2 after:text-[.8em] after:rounded-sm after:border-solid after:border after:absolute after:bottom-[-40%] after:left-[70%] after:whitespace-nowrap after:scale-0 after:origin-top-left hover:after:scale-100 after:duration-200 after:pointer-events-none select-none`}
+  ${tw`inline-flex items-center justify-center gap-x-2 lg:gap-x-3 relative whitespace-nowrap after:content-["go to home"] after:py-1 after:px-2 after:text-[.8em] after:rounded-sm after:border-solid after:border after:absolute after:bottom-[-40%] after:left-[70%] after:whitespace-nowrap after:scale-0 after:origin-top-left hover:after:scale-100 after:duration-200 after:pointer-events-none select-none `}
   ${(props) => css`
     ${props.isHome ? tw`cursor-default` : tw`cursor-pointer`}
   `}
