@@ -5,10 +5,11 @@ interface SProductImgProps {
   loaded: boolean;
 }
 
-export const SImggHolder = styled.span<SProductImgProps>`
-  ${tw`flex items-center justify-center bg-[red] `}
+export const SImgHolder = styled.span<SProductImgProps>`
+  ${tw`flex items-center justify-center `}
   ${(props) => css`
     ${props.loaded ? tw`block` : tw`hidden`}
+    background-color: transparent;
   `}
 `;
 

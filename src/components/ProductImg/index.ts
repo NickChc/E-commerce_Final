@@ -1,2 +1,2 @@
-export { SProductImg } from "./ProductImg.styled";
+export { SProductImg, SImgHolder } from "./ProductImg.styled";
 export { ProductImg } from "./ProductImg";

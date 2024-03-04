@@ -42,7 +42,6 @@ export interface TUserInfo {
   verified: boolean;
 }
 
-
 export interface TCartItem {
   cartProduct: TProduct;
   product_id: string;

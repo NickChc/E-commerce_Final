@@ -31,11 +31,16 @@ export function CategoryNav({ show }: CategoryNavProps) {
           return (
             <li key={category.id}>
               <Link
-                to={`/products/${category.id}`}
+                to={`/products/${category.name}`}
                 onClick={() => setCategoryNavOpen(false)}
               >
                 {category.name}
               </Link>
+              {/* <img
+                src={category?.image || ""}
+                alt=""
+                loading="lazy"
+              /> */}
             </li>
           );
         })}

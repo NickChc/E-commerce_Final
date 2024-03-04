@@ -7,6 +7,7 @@ const Home = lazy(() => import("@src/views/Home"));
 const Product = lazy(() => import("@src/views/Product"));
 const Cart = lazy(() => import("@src/views/Cart"));
 const Profile = lazy(() => import("@src/views/Profile"));
+const Products = lazy(() => import("@src/views/Products"));
 const NotFound = lazy(() => import("@src/views/NotFound"));
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/products/product/:productId" element={<Product />} />
+          <Route path="/products/:categoryName" element={<Products />} />
           <Route
             path="/cart"
             element={
