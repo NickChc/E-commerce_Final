@@ -10,3 +10,4 @@ A react vite TypeScript project featuring a web app with classic e-commerce func
 **React-Icons** - for icons
 **react-intl** - for multi language support
 **react-slick** - for sliders
+**react-slider** - for range input slider

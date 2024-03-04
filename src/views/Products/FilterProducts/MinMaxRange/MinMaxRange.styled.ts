@@ -1,0 +1,28 @@
+import styled, { css } from "styled-components";
+import tw from "twin.macro";
+
+export const SMinMaxRange = styled.div`
+  ${tw`flex flex-col items-stretch w-[80%] p-3 `}
+`;
+
+export const SSliderHolder = styled.div`
+  ${tw`mt-6 `}
+  div:first-child {
+    ${tw`h-[4px] w-[95%] `}
+    ${(props) => css`
+      background-color: ${props.theme.colors["additional"]};
+    `}
+
+    .thumb {
+      ${tw`w-[1.5rem] h-[1.5rem] rounded-[50%] cursor-grab active:cursor-grabbing border-solid border top-[50%] translate-y-[-50%] outline-none`}
+      ${(props) => css`
+        background: ${props.theme.colors["additional"]};
+        border-color: ${props.theme.colors["secondary"]};
+      `}
+    }
+
+    .track-1 .track-0 .track {
+      ${tw`bg-[red] `}
+    }
+  }
+`;

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { TProduct } from "@src/@types/general";
 import { SFilterProducts } from "@src/views/Products/FilterProducts";
+import { MinMaxRange } from "@src/views/Products/FilterProducts/MinMaxRange";
+import { minMaxPrice } from "@src/utils/minMaxPrice";
 
 interface FilterProductsProps {
   setProducts: React.Dispatch<React.SetStateAction<TProduct[]>>;
@@ -10,7 +12,11 @@ interface FilterProductsProps {
 
 export function FilterProducts({ setProducts, products }: FilterProductsProps) {
   const [saleOnly, setSaleOnly] = useState<boolean>(false);
-  const [moreThan_200, setMoreThan_200] = useState<boolean>(false);
+
+  const MIN = minMaxPrice(products, "min");
+  const MAX = minMaxPrice(products, "max");
+
+  const [priceRange, setPriceRange] = useState([MIN, MAX]);
 
   const Location = useLocation();
 
@@ -24,14 +30,18 @@ export function FilterProducts({ setProducts, products }: FilterProductsProps) {
       );
     }
 
-    if (moreThan_200) {
-      setProducts((prev) => prev.filter((product) => product.price > 200));
-    }
-  }, [saleOnly, moreThan_200]);
+    setProducts((prev) =>
+      prev.filter(
+        (product) =>
+          product.price > priceRange[0] && product.price < priceRange[1]
+      )
+    );
+  }, [saleOnly, priceRange]);
 
+  //   WHEN DIFFERENT CATEGORY IS CHOSEN CLEAR THE FILTERS
   useEffect(() => {
     setSaleOnly(false);
-    setMoreThan_200(false);
+    setPriceRange([MIN, MAX]);
   }, [Location.pathname]);
 
   return (
@@ -46,15 +56,12 @@ export function FilterProducts({ setProducts, products }: FilterProductsProps) {
           onChange={() => setSaleOnly(!saleOnly)}
         />
       </p>
-
-      <p>
-        FILTER BY PRICE{" "}
-        <input
-          type="checkbox"
-          checked={moreThan_200}
-          onChange={() => setMoreThan_200(!moreThan_200)}
-        />
-      </p>
+      <MinMaxRange
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
+        min={MIN}
+        max={MAX}
+      />
     </SFilterProducts>
   );
 }

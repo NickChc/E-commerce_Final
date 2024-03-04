@@ -1,0 +1,1 @@
+export { minMaxPrice } from "./minMaxPrice";

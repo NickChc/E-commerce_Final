@@ -11,7 +11,6 @@ export function useGetCategories() {
       setLoading(true);
       const response = await publicAxios.get("/product-category");
       setCategories(response?.data);
-      console.log(response?.data);
     } catch (error: any) {
       console.log(error.message);
     } finally {
