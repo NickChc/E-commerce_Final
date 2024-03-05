@@ -14,6 +14,7 @@ import { useGetCategories } from "@src/hooks/useGetCategories";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
+  const [minMax, setMinMax] = useState<number[]>([]);
   const [registering, setRegistering] = useState(false);
   const [authModal, setAuthModal] = useState<boolean>(false);
   const [popUpText, setPopUpText] = useState<string>("");
@@ -66,7 +67,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   }
 
   useEffect(() => {
-    fetchProducts("");
+    // fetchProducts("", false);
     getWishlist();
     getCart();
     getCategories();
@@ -85,6 +86,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         productLoading,
         fetchSingleProduct,
         searchKeyWord,
+        minMax,
+        setMinMax,
         setSearchKeyWord,
         searching,
         registering,

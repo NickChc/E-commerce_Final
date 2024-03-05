@@ -6,14 +6,14 @@ interface SCategoryNavProps {
 }
 
 export const SCategoryNav = styled.div<SCategoryNavProps>`
-  ${tw`flex flex-col items-center sm:items-start p-3 border-solid border h-dvh fixed left-0 z-10 overflow-hidden whitespace-nowrap border-y-0 transition-all ease-linear duration-300 `}
+  ${tw`flex flex-col items-center sm:items-start p-3 border-solid border h-dvh fixed left-0 z-10 overflow-hidden whitespace-nowrap border-y-0 transition-all ease-in-out duration-150 `}
   ${(props) => css`
     ${props.show
       ? tw`w-full sm:w-[35vw] md:w-[30vw] lg:w-[20rem]  `
       : tw`w-0 p-0 border-none  `}
     border-color: ${props.theme.colors["additional"]};
-    background-color: ${props.theme.colors["secondary"]};
     color: ${props.theme.colors["primary"]};
+    background-color: #e0e0e0;
   `}
 
   ul {

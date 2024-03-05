@@ -1,8 +1,18 @@
 import { createContext } from "react";
-import { TCartItem, TCategory, TProduct, TWishlistProduct } from "@src/@types/general";
+import {
+  TCartItem,
+  TCategory,
+  TProduct,
+  TWishlistProduct,
+} from "@src/@types/general";
 
 interface GlobalContextProps {
-  fetchProducts: (arg: string) => Promise<void>;
+  fetchProducts: (
+    productId: string,
+    saleOnly: boolean,
+    categoryName?: string,
+    minMax?: number[]
+  ) => Promise<void>;
   products: TProduct[];
   searchedProducts: TProduct[];
   setSearchedProducts: React.Dispatch<React.SetStateAction<TProduct[]>>;
@@ -13,6 +23,8 @@ interface GlobalContextProps {
   productLoading: boolean;
   fetchSingleProduct: (productId: string) => Promise<void>;
   searchKeyWord: string;
+  minMax: number[];
+  setMinMax: React.Dispatch<React.SetStateAction<number[]>>;
   setSearchKeyWord: React.Dispatch<React.SetStateAction<string>>;
   addToCart: (arg: string) => Promise<void>;
   addingToCart: boolean;
@@ -39,7 +51,7 @@ interface GlobalContextProps {
   getCategories: () => Promise<void>;
   gettingCategories: boolean;
   categories: TCategory[];
-};
+}
 
 export const GlobalContext = createContext<GlobalContextProps>({
   fetchProducts: async () => {},
@@ -54,6 +66,8 @@ export const GlobalContext = createContext<GlobalContextProps>({
   fetchSingleProduct: async () => {},
   searchKeyWord: "",
   setSearchKeyWord: () => {},
+  minMax: [],
+  setMinMax: () => {},
   addToCart: async () => {},
   addingToCart: false,
   registering: false,

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SProductCard = styled.div`
-  ${tw`sm:max-h-[400px] flex flex-col items-center justify-between py-3 rounded-xl aspect-[1/1.8] cursor-pointer `}
+  ${tw`sm:max-w-[15rem] flex flex-col items-center justify-between py-3 rounded-xl aspect-[1/1.8] cursor-pointer `}
 
   :hover {
     @media (hover: hover) {

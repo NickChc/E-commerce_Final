@@ -11,7 +11,12 @@ export function useGetProducts() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  async function fetchProducts(keyWord: string) {
+  async function fetchProducts(
+    keyWord: string,
+    saleOnly: boolean,
+    categoryName?: string,
+    minMax?: number[]
+  ) {
     const formattedKey = formatSearchKey(keyWord);
 
     try {
@@ -20,7 +25,11 @@ export function useGetProducts() {
       if (keyWord === "") setLoading(true);
       else setSearching(true);
       const response = await publicAxios.get(
-        `/product?productName=${formattedKey}&pageSize=100`
+        `/product?productName=${formattedKey}&${
+          categoryName && `&categoryName=${categoryName}`
+        }&onlySales=${saleOnly}&minPrice=${minMax?.[0] || ""}&maxPrice=${
+          minMax?.[1] || ""
+        }&pageSize=100`
       );
       if (keyWord === "") {
         setProducts(response.data?.products);

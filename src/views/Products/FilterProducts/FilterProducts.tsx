@@ -1,67 +1,73 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { TProduct } from "@src/@types/general";
-import { SFilterProducts } from "@src/views/Products/FilterProducts";
+import {
+  SFilterProducts,
+  SOpen,
+  SViewContainer,
+} from "@src/views/Products/FilterProducts";
 import { MinMaxRange } from "@src/views/Products/FilterProducts/MinMaxRange";
 import { minMaxPrice } from "@src/utils/minMaxPrice";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
-interface FilterProductsProps {
-  setProducts: React.Dispatch<React.SetStateAction<TProduct[]>>;
-  products: TProduct[];
-}
+export function FilterProducts() {
+  const { categoryName } = useParams();
+  const { fetchProducts, products } = useGlobalProvider();
 
-export function FilterProducts({ setProducts, products }: FilterProductsProps) {
-  const [saleOnly, setSaleOnly] = useState<boolean>(false);
+  const [minMax, setMinMax] = useState<number[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
 
-  const MIN = minMaxPrice(products, "min");
-  const MAX = minMaxPrice(products, "max");
-
-  const [priceRange, setPriceRange] = useState([MIN, MAX]);
+  const [saleOnly, setSaleOnly] = useState(false);
+  const [priceRange, setPriceRange] = useState<number[]>([]);
 
   const Location = useLocation();
 
-  //   FILTER CURRENT CATEGORY PRODUCTS
   useEffect(() => {
-    setProducts(products);
+    if (minMax.length < 1) {
+      const MIN_MAX = minMaxPrice(products);
 
-    if (saleOnly) {
-      setProducts((prev) =>
-        prev.filter((product) => product.salePrice !== null)
-      );
+      setMinMax(MIN_MAX);
+      setPriceRange(MIN_MAX);
     }
+  }, [products]);
 
-    setProducts((prev) =>
-      prev.filter(
-        (product) =>
-          product.price > priceRange[0] && product.price < priceRange[1]
-      )
-    );
-  }, [saleOnly, priceRange]);
-
-  //   WHEN DIFFERENT CATEGORY IS CHOSEN CLEAR THE FILTERS
   useEffect(() => {
+    fetchProducts("", false, categoryName);
     setSaleOnly(false);
-    setPriceRange([MIN, MAX]);
+    setMinMax([]);
   }, [Location.pathname]);
 
   return (
-    <SFilterProducts>
-      <h1>FILTER PRODUCTS</h1>
+    <SFilterProducts show={showFilters}>
+      <SViewContainer show={showFilters}>
+        <h1>FILTER PRODUCTS</h1>
 
-      <p>
-        SALE PRODUCTS ONLY
-        <input
-          type="checkbox"
-          checked={saleOnly}
-          onChange={() => setSaleOnly(!saleOnly)}
+        <h2>CATEGORY - {categoryName}</h2>
+
+        <hr />
+
+        <p>
+          SALE PRODUCTS ONLY
+          <input
+            type="checkbox"
+            checked={saleOnly}
+            onChange={() => setSaleOnly(!saleOnly)}
+          />
+        </p>
+        <MinMaxRange
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          min={minMax[0]}
+          max={minMax[1]}
+          saleOnly={saleOnly}
+          currCategory={categoryName || ""}
         />
-      </p>
-      <MinMaxRange
-        priceRange={priceRange}
-        setPriceRange={setPriceRange}
-        min={MIN}
-        max={MAX}
-      />
+      </SViewContainer>
+      <SOpen>
+        <h3 onClick={() => setShowFilters(!showFilters)}>
+          {showFilters ? "HIDE FILTERS" : "FILTERS"}
+        </h3>
+      </SOpen>
     </SFilterProducts>
   );
 }

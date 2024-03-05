@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import { SHome, SSlidersContainer, SScreenMessage } from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function Home() {
-  const { products, productsLoading, productsError } = useGlobalProvider();
+  const { products, productsLoading, productsError, fetchProducts } = useGlobalProvider();
 
   // PRODUCTS FILTERING LOGIC HERE...
 
@@ -15,6 +16,10 @@ export function Home() {
       product.category_name === "TV | მონიტორები" ||
       product.category_name === "ტაბები"
   );
+
+    useEffect(() => {
+      fetchProducts("", false);
+    }, [])
 
   return (
     <SHome>
