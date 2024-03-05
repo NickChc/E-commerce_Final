@@ -12,7 +12,7 @@ import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { publicAxios } from "@src/utils/publicAxios";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function RegisterForm() {
   const [authLoading, setAuthLoading] = useState<boolean>(false);
@@ -217,7 +217,7 @@ export function RegisterForm() {
                 id="registering"
                 defaultMessage={"_REGISTERING_"}
               />
-              <SLoadingCircleAnim />
+              <LoadingCircleAnim />
             </>
           ) : (
             <FormattedMessage id="register" defaultMessage={"_REGISTER_"} />

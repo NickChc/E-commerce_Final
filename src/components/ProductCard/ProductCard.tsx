@@ -11,7 +11,7 @@ import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
 import { ProductImg } from "@src/components/ProductImg";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
@@ -108,7 +108,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
           {addingToCart ? (
             <>
               <FormattedMessage id="adding" defaultMessage={"_ADDING_"} />
-              <SLoadingCircleAnim />
+              <LoadingCircleAnim />
             </>
           ) : authStage === TAuthStage_Enum.AUTHORIZED ? (
             inCart ? (

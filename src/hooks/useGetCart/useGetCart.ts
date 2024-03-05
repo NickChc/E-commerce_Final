@@ -27,11 +27,10 @@ export function useGetCart() {
         }
       );
       setCartItems(sortedCartItems);
-      console.log("GETTING CART!");
     } catch (error: any) {
       console.log(error.message);
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   }
 

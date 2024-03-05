@@ -33,6 +33,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       secondary_text: "#5b5b5b",
       additional: "#1f51ff",
       saleClr: "red",
+      myGreen: "#008000",
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#333333",
@@ -41,10 +42,9 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       secondary_text: "#5b5b5b",
       additional: "#1f51ff",
       saleClr: "red",
+      myGreen: "#008000",
     },
   };
-  // 7b7b7b
-  // 3b3b3b
 
   return (
     <ThemeContext.Provider value={{ themeMode, setThemeMode, toggleTheme }}>

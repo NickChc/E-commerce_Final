@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { privateAxios } from "@src/utils/privateAxios";
 import { SUpdateForm } from "@src/views/Profile/UpdateForm";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { FormInput } from "@src/components/FormInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { TChangeableUserData } from "@src/@types/requestTypes";
@@ -125,7 +125,7 @@ export function UpdateForm({
           {updating ? (
             <>
               <FormattedMessage id="changing" defaultMessage={"_CHANGING_"} />{" "}
-              <SLoadingCircleAnim />
+              <LoadingCircleAnim isSpan />
             </>
           ) : (
             <FormattedMessage id="change" defaultMessage={"_CHANGE_"} />

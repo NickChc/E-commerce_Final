@@ -15,7 +15,7 @@ import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useValidateLogIn } from "@src/features/LogInForm/useValidateLogIn";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function LogInForm() {
   const [logInFail, setLogInFail] = useState<string>("");
@@ -148,7 +148,7 @@ export function LogInForm() {
                   id="loggingIn"
                   defaultMessage={"_LOGGING_IN_"}
                 />{" "}
-                <SLoadingCircleAnim />
+                <LoadingCircleAnim />
               </>
             ) : (
               <FormattedMessage id="logIn" defaultMessage={"_LOG_IN_"} />

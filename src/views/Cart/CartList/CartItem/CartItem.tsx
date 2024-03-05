@@ -13,9 +13,10 @@ import {
 import { ProductImg } from "@src/components/ProductImg";
 import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon, MinusIcon, TrashIcon } from "@src/assets/icons";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
+import { CART_LAST_REMOVED } from "@src/config/localStorageKeys";
 
 interface CartItemProps {
   item: TCartItem;
@@ -63,7 +64,7 @@ export function CartItem({ item }: CartItemProps) {
                   setCount(count - 1);
                 }}
               >
-                {removingCartItem ? <SLoadingCircleAnim /> : <MinusIcon />}
+                {removingCartItem ? <LoadingCircleAnim /> : <MinusIcon />}
               </button>
               <span>{count}</span>
               <button
@@ -73,7 +74,7 @@ export function CartItem({ item }: CartItemProps) {
                   setCount(count + 1);
                 }}
               >
-                {addingToCart ? <SLoadingCircleAnim /> : <PlusIcon />}
+                {addingToCart ? <LoadingCircleAnim /> : <PlusIcon />}
               </button>
               <p
                 onClick={() => {
@@ -98,7 +99,7 @@ export function CartItem({ item }: CartItemProps) {
               setCount(count - 1);
             }}
           >
-            {removingCartItem ? <SLoadingCircleAnim /> : <MinusIcon />}
+            {removingCartItem ? <LoadingCircleAnim /> : <MinusIcon />}
           </button>
           <span>{count}</span>
           <button
@@ -109,13 +110,14 @@ export function CartItem({ item }: CartItemProps) {
             }}
           >
             {addingToCart ? (
-                <SLoadingCircleAnim />
+                <LoadingCircleAnim />
             ) : (
               <PlusIcon />
             )}
           </button>
           <p
             onClick={() => {
+              localStorage.setItem(CART_LAST_REMOVED, item.product_id);
               removeCartItem(item, true);
               setShow(false);
             }}

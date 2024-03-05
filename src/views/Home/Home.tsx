@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { SHome, SSlidersContainer, SScreenMessage } from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function Home() {
   const { products, productsLoading, productsError, fetchProducts } = useGlobalProvider();
@@ -26,7 +26,7 @@ export function Home() {
       {productsLoading ? (
         <SScreenMessage>
           <h1>
-            LOADING <SLoadingCircleAnim />
+            LOADING <LoadingCircleAnim />
           </h1>
         </SScreenMessage>
       ) : productsError !== "" ? (

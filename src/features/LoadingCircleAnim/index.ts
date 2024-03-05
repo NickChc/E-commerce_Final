@@ -1,1 +1,2 @@
-export { SLoadingCircleAnim } from "./LoadingCircleAnim";
+export { SloadingCircleAnim, SLoadingIcon } from "./LoadingCircleAnim.styled";
+export { LoadingCircleAnim } from "./LoadingCircleAnim";

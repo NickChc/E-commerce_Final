@@ -22,6 +22,8 @@ export { IoIosArrowForward as CrumbarArrow } from "react-icons/io";
 export { IoEye as EyeIcon } from "react-icons/io5";
 export { FaEdit as EditIcon } from "react-icons/fa";
 export { FaTrashAlt as TrashIcon } from "react-icons/fa";
+export { BsCart4 as CartIcon2 } from "react-icons/bs";
+export { FaCartPlus as CartPlusIcon } from "react-icons/fa";
 
 
 

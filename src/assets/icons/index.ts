@@ -23,4 +23,6 @@ export {
   EditIcon,
   HomeIcon,
   TrashIcon,
+  CartIcon2,
+  CartPlusIcon,
 } from "./icons";

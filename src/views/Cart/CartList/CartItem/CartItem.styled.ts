@@ -63,13 +63,13 @@ export const SCountBtnHolder = styled.div`
   ${tw`flex items-stretch justify-center mr-3 text-[.7rem] sm:text-[.9rem] md:text-[1.2rem] lg:text-[1.4rem] border-solid border rounded-md `}
 
   ${(props) => css`
-    border-color: ${props.theme.colors["primary"]};
+    border-color: ${props.theme.colors["additional"]};
   `}
 
   span {
     ${tw`w-[2.25em] px-[.6rem] sm:px-[.8rem] border-solid border border-y-0 flex items-center justify-center font-semibold `}
     ${(props) => css`
-      border-color: ${props.theme.colors["primary"]};
+      border-color: ${props.theme.colors["additional"]};
       background-color: #fff;
     `}
   }
@@ -80,8 +80,14 @@ export const SCountBtnHolder = styled.div`
       border-color: ${props.theme.colors["primary"]};
     `}
 
+    :active {
+      ${(props) => css`
+        color: ${props.theme.colors["additional"]};
+      `}
+    }
+
     :disabled {
-      ${tw`cursor-default `}
+      ${tw`cursor-default opacity-[.8] `}
     }
   }
 `;

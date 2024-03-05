@@ -29,6 +29,12 @@ export const SProductButton = styled.button<ProductButtonProps>`
         background-color: ${props.theme.colors["additional"]};
         color: ${props.theme.colors["secondary"]};
       `}
+
+      span {
+        ${(props) => css`
+          color: ${props.theme.colors["primary"]};
+        `}
+      }
     }
   }
 
@@ -42,6 +48,13 @@ export const SProductButton = styled.button<ProductButtonProps>`
     ${tw`opacity-[.75] `}
     ${(props) => css`
       background-color: transparent;
+      color: ${props.theme.colors["additional"]};
+    `}
+  }
+
+  span {
+    
+    ${(props) => css`
       color: ${props.theme.colors["additional"]};
     `}
   }

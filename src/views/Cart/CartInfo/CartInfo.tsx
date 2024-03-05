@@ -1,14 +1,18 @@
+import { FormattedMessage } from "react-intl";
 import { SCartInfo } from "@src/views/Cart/CartInfo";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { FormattedMessage } from "react-intl";
+import { useAddToCart } from "@src/hooks/useAddToCart";
 import { totalCost } from "@src/utils/totalCost";
 import { moneySaved } from "@src/utils/moneySaved";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { totalQuantity } from "@src/utils/totalQuantity";
-import { BsCart4 as CartIcon2 } from "react-icons/bs";
+import { CartIcon2, CartPlusIcon } from "@src/assets/icons";
+import { CART_LAST_REMOVED } from "@src/config/localStorageKeys";
+
 
 export function CartInfo() {
   const { cartItems } = useGlobalProvider();
+  const { addToCart } = useAddToCart();
 
   return (
     <SCartInfo>
@@ -46,6 +50,23 @@ export function CartInfo() {
           :{"  "}
           <span>{totalQuantity(cartItems)}</span>
         </h2>
+
+        {localStorage.getItem(CART_LAST_REMOVED) && (
+          <p
+            onClick={() => {
+              const removedItem = localStorage.getItem(CART_LAST_REMOVED);
+              if (removedItem) {
+                addToCart(removedItem);
+                localStorage.removeItem(CART_LAST_REMOVED);
+              }
+            }}
+          >
+            RESTORE LAST REMOVED ITEM{" "}
+            <span>
+              <CartPlusIcon />
+            </span>
+          </p>
+        )}
       </div>
       <SProductButton
         disabled={cartItems.length < 1}
