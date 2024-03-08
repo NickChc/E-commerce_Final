@@ -17,7 +17,7 @@ import {
 } from "@src/views/Product";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
-import { SLoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
@@ -98,7 +98,7 @@ export function Product() {
         <h1>
           LOADING{" "}
           <span>
-            <SLoadingCircleAnim />
+            <LoadingCircleAnim />
           </span>
         </h1>
       )) || (
@@ -141,7 +141,7 @@ export function Product() {
                           id="removing"
                           defaultMessage={"_REMOVING_"}
                         />{" "}
-                        <SLoadingCircleAnim />
+                        <LoadingCircleAnim />
                       </>
                     ) : addingToWishlist ? (
                       <>
@@ -149,7 +149,7 @@ export function Product() {
                           id="adding"
                           defaultMessage={"_ADDING_"}
                         />{" "}
-                        <SLoadingCircleAnim />
+                        <LoadingCircleAnim />
                       </>
                     ) : isLiked && authStage === TAuthStage_Enum.AUTHORIZED ? (
                       <FormattedMessage

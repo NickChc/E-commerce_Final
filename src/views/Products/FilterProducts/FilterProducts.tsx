@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import {
   SFilterProducts,
   SOpen,
@@ -11,16 +10,14 @@ import { minMaxPrice } from "@src/utils/minMaxPrice";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 export function FilterProducts() {
-  const { categoryName } = useParams();
-  const { fetchProducts, products } = useGlobalProvider();
+  const { categoryName, page } = useParams();
+  const { fetchProducts, products, getFilteredProducts } = useGlobalProvider();
 
   const [minMax, setMinMax] = useState<number[]>([]);
   const [showFilters, setShowFilters] = useState(false);
 
   const [saleOnly, setSaleOnly] = useState(false);
   const [priceRange, setPriceRange] = useState<number[]>([]);
-
-  const Location = useLocation();
 
   useEffect(() => {
     if (minMax.length < 1) {
@@ -32,10 +29,14 @@ export function FilterProducts() {
   }, [products]);
 
   useEffect(() => {
-    fetchProducts("", false, categoryName);
+    if (categoryName && page) {
+      fetchProducts("", categoryName);
+      getFilteredProducts(categoryName, false, undefined, Number(page));
+      console.log(page);
+    }
     setSaleOnly(false);
     setMinMax([]);
-  }, [Location.pathname]);
+  }, [categoryName]);
 
   return (
     <SFilterProducts show={showFilters}>
@@ -60,7 +61,6 @@ export function FilterProducts() {
           min={minMax[0]}
           max={minMax[1]}
           saleOnly={saleOnly}
-          currCategory={categoryName || ""}
         />
       </SViewContainer>
       <SOpen>

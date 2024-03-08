@@ -11,6 +11,7 @@ import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
 import { useGetCart } from "@src/hooks/useGetCart";
 import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
 import { useGetCategories } from "@src/hooks/useGetCategories";
+import { useGetFilteredProducts } from "@src/hooks/useGetFilteredProducts";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
@@ -21,6 +22,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   const [categoryNavOpen, setCategoryNavOpen] = useState<boolean>(false);
 
+  const { authStage } = useAuthProvider();
+
   const {
     products,
     productsLoading,
@@ -29,10 +32,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     searchedProducts,
     setSearchedProducts,
     searching,
+    totalProducts,
   } = useGetProducts();
 
-  const { authStage } = useAuthProvider();
-
+  const { filteredProducts, gettingFiltered, getFilteredProducts, totalFiltered } = useGetFilteredProducts();
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
   const { getWishlist, gettingWishlist, wishlist } = useGetWishlist();
   const { addToCart, addingToCart } = useAddToCart();
@@ -76,6 +79,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        filteredProducts,
+        getFilteredProducts,
+        gettingFiltered,
+        totalFiltered,
         fetchProducts,
         products,
         searchedProducts,
@@ -85,6 +92,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         product,
         productLoading,
         fetchSingleProduct,
+        totalProducts,
         searchKeyWord,
         minMax,
         setMinMax,

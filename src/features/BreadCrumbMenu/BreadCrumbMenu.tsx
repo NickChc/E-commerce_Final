@@ -1,7 +1,7 @@
 import { SBreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { TProduct } from "@src/@types/requestTypes";
+import { TProduct } from "@src/@types/general";
 import { CrumbarArrow } from "@src/assets/icons";
 
 interface MenuProps {
@@ -17,7 +17,7 @@ export function BreadCrumbMenu({ item }: MenuProps) {
             <FormattedMessage id="home" defaultMessage={"_HOME_"} />
           </Link>{" "}
           <CrumbarArrow />
-          <Link to={`/products${item?.category_name}`}>
+          <Link to={`/products/${item?.category_name}/1`}>
             {item?.category_name}
           </Link>
           <CrumbarArrow />

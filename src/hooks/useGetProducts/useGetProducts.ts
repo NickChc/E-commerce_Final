@@ -6,31 +6,26 @@ import { formatSearchKey } from "@src/utils/formatSearchKey";
 export function useGetProducts() {
   const [products, setProducts] = useState<TProduct[]>([]);
   const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
+  const [totalProducts, setTotalProducts] = useState<number>(100);
 
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  async function fetchProducts(
-    keyWord: string,
-    saleOnly: boolean,
-    categoryName?: string,
-    minMax?: number[]
-  ) {
+  async function fetchProducts(keyWord: string, categoryName?: string) {
     const formattedKey = formatSearchKey(keyWord);
-
     try {
       setError("");
       // IF THERE'S A SEARCH KEYWORD, FUNCTION IS HANDLED ACCORDINGLY, ELSE IT JUST FETCHES PRODUCTS
       if (keyWord === "") setLoading(true);
       else setSearching(true);
       const response = await publicAxios.get(
-        `/product?productName=${formattedKey}&${
-          categoryName && `&categoryName=${categoryName}`
-        }&onlySales=${saleOnly}&minPrice=${minMax?.[0] || ""}&maxPrice=${
-          minMax?.[1] || ""
+        `/product?productName=${formattedKey}&categoryName=${
+          categoryName || ""
         }&pageSize=100`
       );
+      setTotalProducts(response.data?.total);
+      console.log(response.data.products);
       if (keyWord === "") {
         setProducts(response.data?.products);
       } else {
@@ -55,5 +50,6 @@ export function useGetProducts() {
     fetchProducts,
     productsError: error,
     searching,
+    totalProducts,
   };
 }

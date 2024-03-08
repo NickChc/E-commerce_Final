@@ -16,8 +16,8 @@ function App() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/products/:categoryName/:page" element={<Products />} />
           <Route path="/products/product/:productId" element={<Product />} />
-          <Route path="/products/:categoryName" element={<Products />} />
           <Route
             path="/cart"
             element={

@@ -1,11 +1,16 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { SHome, SSlidersContainer, SScreenMessage } from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function Home() {
-  const { products, productsLoading, productsError, fetchProducts } = useGlobalProvider();
+  const { products, productsLoading, productsError, fetchProducts } =
+    useGlobalProvider();
+
+  const Location = useLocation();
+
 
   // PRODUCTS FILTERING LOGIC HERE...
 
@@ -17,9 +22,9 @@ export function Home() {
       product.category_name === "ტაბები"
   );
 
-    useEffect(() => {
-      fetchProducts("", false);
-    }, [])
+  useEffect(() => {
+    fetchProducts("");
+  }, [Location.pathname]);
 
   return (
     <SHome>

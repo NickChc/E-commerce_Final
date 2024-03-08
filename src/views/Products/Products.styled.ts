@@ -9,8 +9,16 @@ export const SProducts = styled.div`
   `}
 `;
 
+export const SProductsLayout = styled.div`
+  ${tw`w-full max-w-full overflow-hidden flex flex-col items-center justify-between mb-9`}
+`;
+
 export const SProductsHolder = styled.div`
-  ${tw`w-full min-h-dvh grid grid-cols-repeat-15 pb-14 gap-y-9 p-3 `}
+  ${tw`w-full grid grid-cols-repeat-15 pb-14 gap-y-9 p-3 `}
+
+  h1 {
+    ${tw`self-center text-center mt-9 `}
+  }
 `;
 
 export const SEmptyWrapper = styled.div`

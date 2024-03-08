@@ -1,0 +1,1 @@
+export { useGetFilteredProducts } from "./useGetFilteredProducts";

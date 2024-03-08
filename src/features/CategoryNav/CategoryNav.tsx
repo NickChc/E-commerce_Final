@@ -31,7 +31,7 @@ export function CategoryNav({ show }: CategoryNavProps) {
           return (
             <li key={category.id}>
               <Link
-                to={`/products/${category.name}`}
+                to={`/products/${category.name}/${1}`}
                 onClick={() => setCategoryNavOpen(false)}
               >
                 {category.name}

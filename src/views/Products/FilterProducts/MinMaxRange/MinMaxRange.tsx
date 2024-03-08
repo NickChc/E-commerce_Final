@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import Slider from "react-slider";
 import {
   SMinMaxRange,
   SSliderHolder,
   SMinMaxWrapper,
 } from "@src/views/Products/FilterProducts/MinMaxRange";
-import Slider from "react-slider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 interface MinMaxRangeProps {
@@ -14,7 +15,6 @@ interface MinMaxRangeProps {
   min: number;
   max: number;
   saleOnly: boolean;
-  currCategory: string;
 }
 
 export function MinMaxRange({
@@ -23,21 +23,41 @@ export function MinMaxRange({
   min,
   max,
   saleOnly,
-  currCategory,
 }: MinMaxRangeProps) {
-  const { fetchProducts } = useGlobalProvider();
+  const { getFilteredProducts } = useGlobalProvider();
+
+  const Navigate = useNavigate();
+
+  const { categoryName, page } = useParams();
 
   useEffect(() => {
-    fetchProducts("", saleOnly, currCategory, priceRange);
-  }, [saleOnly]);
+
+    if (categoryName && page) {
+      Navigate(`/products/${categoryName}/1`);
+      getFilteredProducts(categoryName, saleOnly, priceRange, Number(page));
+    }
+  }, [saleOnly, priceRange]);
+
+  useEffect(() => {
+    if (categoryName) {
+      getFilteredProducts(categoryName, saleOnly, priceRange, Number(page));
+    }
+  }, [page]);
 
   return (
     <SMinMaxRange>
       <SSliderHolder>
         <Slider
-          onAfterChange={() =>
-            fetchProducts("", saleOnly, currCategory, priceRange)
-          }
+          onAfterChange={() => {
+            if (categoryName && page) {
+              getFilteredProducts(
+                categoryName,
+                saleOnly,
+                priceRange,
+                Number(page)
+              );
+            }
+          }}
           step={max > 1000 ? 20 : max > 500 ? 10 : 5}
           value={priceRange}
           onChange={setPriceRange}

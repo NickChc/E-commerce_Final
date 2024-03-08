@@ -7,12 +7,16 @@ import {
 } from "@src/@types/general";
 
 interface GlobalContextProps {
-  fetchProducts: (
-    productId: string,
+  filteredProducts: TProduct[];
+  getFilteredProducts: (
+    categoryName: string,
     saleOnly: boolean,
-    categoryName?: string,
-    minMax?: number[]
+    priceRange: number[] | undefined,
+    page: number
   ) => Promise<void>;
+  gettingFiltered: boolean;
+  totalFiltered: number;
+  fetchProducts: (productName: string, categoryName?: string) => Promise<void>;
   products: TProduct[];
   searchedProducts: TProduct[];
   setSearchedProducts: React.Dispatch<React.SetStateAction<TProduct[]>>;
@@ -22,6 +26,7 @@ interface GlobalContextProps {
   product: TProduct | undefined;
   productLoading: boolean;
   fetchSingleProduct: (productId: string) => Promise<void>;
+  totalProducts: number;
   searchKeyWord: string;
   minMax: number[];
   setMinMax: React.Dispatch<React.SetStateAction<number[]>>;
@@ -54,6 +59,10 @@ interface GlobalContextProps {
 }
 
 export const GlobalContext = createContext<GlobalContextProps>({
+  filteredProducts: [],
+  getFilteredProducts: async () => {},
+  gettingFiltered: false,
+  totalFiltered: 0,
   fetchProducts: async () => {},
   products: [],
   searchedProducts: [],
@@ -64,6 +73,7 @@ export const GlobalContext = createContext<GlobalContextProps>({
   product: undefined,
   productLoading: false,
   fetchSingleProduct: async () => {},
+  totalProducts: 100,
   searchKeyWord: "",
   setSearchKeyWord: () => {},
   minMax: [],
