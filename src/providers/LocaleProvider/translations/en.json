@@ -64,5 +64,15 @@
   "items": "ITEMS",
   "totalQuantity": "TOTAL QUANTITY",
   "checkout": "CHECKOUT",
-  "emptyCart": "THE CART IS EMPTY"
+  "emptyCart": "THE CART IS EMPTY",
+  "categories": "CATEGORIES",
+  "filterProducts": "FILTER PRODUCTS",
+  "saleProductsOnly": "SALE PRODUCTS ONLY",
+  "priceRange": "PRICE RANGE",
+  "min": "MIN",
+  "max": "MAX",
+  "filters": "FILTERS",
+  "hideFilters": "HIDE FILTERS",
+  "next": "Next",
+  "prev": "Prev"
 }

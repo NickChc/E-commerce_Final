@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import {
   SFilterProducts,
   SOpen,
@@ -32,7 +33,6 @@ export function FilterProducts() {
     if (categoryName && page) {
       fetchProducts("", categoryName);
       getFilteredProducts(categoryName, false, undefined, Number(page));
-      console.log(page);
     }
     setSaleOnly(false);
     setMinMax([]);
@@ -41,20 +41,31 @@ export function FilterProducts() {
   return (
     <SFilterProducts show={showFilters}>
       <SViewContainer show={showFilters}>
-        <h1>FILTER PRODUCTS</h1>
+        <h1>
+          <FormattedMessage
+            id="filterProducts"
+            defaultMessage={"_FILTER_PRODUCTS_"}
+          />
+        </h1>
 
-        <h2>CATEGORY - {categoryName}</h2>
+        <h2>
+          <FormattedMessage id="category" defaultMessage={"_CATEGORY_"} /> -{" "}
+          {categoryName}
+        </h2>
 
         <hr />
 
-        <p>
-          SALE PRODUCTS ONLY
+        <h4>
+          <FormattedMessage
+            id="saleProductsOnly"
+            defaultMessage={"_SALE_PRODUCTS_ONLY_"}
+          />
           <input
             type="checkbox"
             checked={saleOnly}
             onChange={() => setSaleOnly(!saleOnly)}
           />
-        </p>
+        </h4>
         <MinMaxRange
           priceRange={priceRange}
           setPriceRange={setPriceRange}
@@ -65,7 +76,14 @@ export function FilterProducts() {
       </SViewContainer>
       <SOpen>
         <h3 onClick={() => setShowFilters(!showFilters)}>
-          {showFilters ? "HIDE FILTERS" : "FILTERS"}
+          {showFilters ? (
+            <FormattedMessage
+              id="hideFilters"
+              defaultMessage={"_HIDE_FILTERS_"}
+            />
+          ) : (
+            <FormattedMessage id="filters" defaultMessage={"_FILTERS_"} />
+          )}
         </h3>
       </SOpen>
     </SFilterProducts>

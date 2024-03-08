@@ -25,7 +25,6 @@ export function useGetProducts() {
         }&pageSize=100`
       );
       setTotalProducts(response.data?.total);
-      console.log(response.data.products);
       if (keyWord === "") {
         setProducts(response.data?.products);
       } else {

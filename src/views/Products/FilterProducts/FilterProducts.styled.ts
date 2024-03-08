@@ -17,7 +17,7 @@ export const SFilterProducts = styled.div<FilterProductsProp>`
   `}
 
   h1 {
-    ${tw`md:pb-6 pt-4 text-[1.4rem] md:text-[1.2rem] `}
+    ${tw`md:pb-6 pt-4 text-[1.2rem] sm:text-[1.4rem] md:text-[1.2rem] whitespace-nowrap mb-3 `}
   }
 
   h2 {
@@ -28,16 +28,15 @@ export const SFilterProducts = styled.div<FilterProductsProp>`
     ${tw`block md:hidden cursor-pointer `}
   }
 
-  hr {
-    ${tw`w-[90%] my-4 `}
-  }
-
-  p {
-    ${tw`flex items-center gap-x-3 md:text-[.75rem] lg:text-[1rem] `}
-
+  h4 {
+    ${tw`flex items-center gap-x-3 md:text-[.75rem] lg:text-[1rem]  `}
     input {
       ${tw`mb-1 cursor-pointer `}
     }
+  }
+
+  hr {
+    ${tw`w-[90%] my-4 `}
   }
 `;
 

@@ -24,7 +24,7 @@ interface FormInputProps {
 }
 
 export const SFormInput = styled.input<FormInputProps>`
-  ${tw`p-[.6rem] text-[.7rem] md:text-[.8rem] lg:text-[.9rem] xl:text-[1rem] 2xl:text-[1.2rem] m-1 placeholder:font-semibold rounded-xl border-solid border outline-none `}
+  ${tw`p-[.6rem] text-[.8rem] md:text-[.85rem] lg:text-[.9rem] xl:text-[1rem] 2xl:text-[1.2rem] m-1 placeholder:font-semibold rounded-xl border-solid border outline-none `}
   ${(props) => css`
     border-color: ${props.error
       ? props.theme.colors["saleClr"]

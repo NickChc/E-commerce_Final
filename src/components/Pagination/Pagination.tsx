@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { SPagination } from "@src/components/Pagination";
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -22,7 +23,7 @@ export function Pagination() {
         disabled={Number(page) === 1}
         onClick={() => pageChange(Number(page) - 1)}
       >
-        Prev
+        <FormattedMessage id="prev" defaultMessage={"_PREV_"} />
       </Button>
       {totalPages.map((_, index) => {
         return (
@@ -39,7 +40,7 @@ export function Pagination() {
         disabled={Number(page) === totalPages.length}
         onClick={() => pageChange(Number(page) + 1)}
       >
-        Next
+        <FormattedMessage id="next" defaultMessage={"_NEXT_"} />
       </Button>
     </SPagination>
   );

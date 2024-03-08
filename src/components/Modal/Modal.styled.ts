@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import "google-fonts";
 
 export const SModalWrapper = styled.div`
-  ${tw`w-full min-h-screen absolute top-0 right-0 flex items-center backdrop-blur-sm justify-center`}
+  ${tw`w-full min-h-dvh absolute top-0 right-0 flex items-center backdrop-blur-sm justify-center`}
 `;
 
 interface SModalProps {
@@ -11,7 +11,7 @@ interface SModalProps {
 }
 
 export const SModal = styled.div<SModalProps>`
-  ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90vh] sm:w-[50%] sm:h-[75vh] xl:w-[40%] border-solid border flex flex-col items-center relative`}
+  ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90dvh] sm:w-[50%] sm:h-[75vh] xl:w-[40%] border-solid border flex flex-col items-center relative`}
   ${(props) => css`
     ${props.registering ? tw`sm:h-[75dvh] ` : tw` sm:h-[55dvh] `}
     background-color: ${props.theme.mode === "DARK" ? "#2b2b2b" : "#4b4b4b"};

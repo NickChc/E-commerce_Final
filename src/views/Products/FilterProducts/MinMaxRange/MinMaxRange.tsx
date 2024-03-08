@@ -31,12 +31,11 @@ export function MinMaxRange({
   const { categoryName, page } = useParams();
 
   useEffect(() => {
-
     if (categoryName && page) {
       Navigate(`/products/${categoryName}/1`);
       getFilteredProducts(categoryName, saleOnly, priceRange, Number(page));
     }
-  }, [saleOnly, priceRange]);
+  }, [saleOnly]);
 
   useEffect(() => {
     if (categoryName) {
@@ -46,6 +45,9 @@ export function MinMaxRange({
 
   return (
     <SMinMaxRange>
+      <h4>
+        <FormattedMessage id="priceRange" defaultMessage={"_PRICE_RANGE_"} />
+      </h4>
       <SSliderHolder>
         <Slider
           onAfterChange={() => {
@@ -67,12 +69,12 @@ export function MinMaxRange({
       </SSliderHolder>
       <SMinMaxWrapper>
         <h4>
-          MIN - <br /> {priceRange[0]}{" "}
-          <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+          <FormattedMessage id="min" defaultMessage={"_MIN_"} /> - <br />{" "}
+          {priceRange[0]} <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
         </h4>
         <h4>
-          MAX - <br /> {priceRange[1]}{" "}
-          <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+          <FormattedMessage id="max" defaultMessage={"_MAX_"} /> - <br />{" "}
+          {priceRange[1]} <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
         </h4>
       </SMinMaxWrapper>
     </SMinMaxRange>

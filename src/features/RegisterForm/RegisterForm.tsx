@@ -217,7 +217,7 @@ export function RegisterForm() {
                 id="registering"
                 defaultMessage={"_REGISTERING_"}
               />
-              <LoadingCircleAnim />
+              <LoadingCircleAnim isSpan />
             </>
           ) : (
             <FormattedMessage id="register" defaultMessage={"_REGISTER_"} />

@@ -75,7 +75,7 @@ export const SCountBtnHolder = styled.div`
   }
 
   button {
-    ${tw`p-[.5rem] sm:p-[.8rem] text-[.6rem] md:text-[.8rem] lg:text-[1rem] border-none first:border-r-0 first:rounded-l-md  first:rounded-[0] border-l-0 rounded-r-md cursor-pointer outline-none opacity-[.8] hover:opacity-[1] flex items-center justify-center  `}
+    ${tw`p-[.5rem] sm:p-[.8rem] text-[.6rem] md:text-[.8rem] lg:text-[1rem] border-none first:border-r-0 first:rounded-l-md  first:rounded-[0] border-l-0 rounded-r-md cursor-pointer outline-none opacity-[.75] hover:opacity-[1] flex items-center justify-center  `}
     ${(props) => css`
       border-color: ${props.theme.colors["primary"]};
     `}
@@ -86,8 +86,17 @@ export const SCountBtnHolder = styled.div`
       `}
     }
 
+    :disabled:active {
+      ${(props) => css`
+        color: ${props.theme.colors["primary"]};
+      `}
+    }
+
     :disabled {
-      ${tw`cursor-default opacity-[.8] `}
+      ${tw`cursor-default opacity-[.5] `}
+      ${(props) => css`
+        color: ${props.theme.colors["primary"]};
+      `}
     }
   }
 `;

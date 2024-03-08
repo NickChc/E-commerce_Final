@@ -64,5 +64,15 @@
   "items": "ნივთები",
   "totalQuantity": "სულ რაოდენობა",
   "checkout": "ყიდვა",
-  "emptyCart": "კალათა ცარიელია"
+  "emptyCart": "კალათა ცარიელია",
+  "categories": "კატეგორიები",
+  "filterProducts": "პროდუქტების გაფილტრვა",
+  "saleProductsOnly": "მხოლოდ ფასდაკლებული",
+  "priceRange": "ფასის ზღვრები",
+  "min": "მინ.",
+  "max": "მაქს.",
+  "filters": "გაფილტრვა",
+  "hideFilters": "ფილტრის დამალვა",
+  "next": "წინ",
+  "prev": "უკან"
 }

@@ -2,11 +2,15 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SMinMaxRange = styled.div`
-  ${tw`flex flex-col items-stretch w-full p-3 `}
+  ${tw`flex flex-col items-stretch w-full p-3 mt-6 `}
+
+  h4 {
+    ${tw`md:text-[.75rem] lg:text-[1rem] self-center mb-4 `}
+  }
 `;
 
 export const SSliderHolder = styled.div`
-  ${tw`mt-6 mb-6 `}
+  ${tw` mb-6 mt-3 `}
   div:first-child {
     ${tw`h-[4px] w-[95%] `}
     ${(props) => css`

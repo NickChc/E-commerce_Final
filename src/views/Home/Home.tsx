@@ -11,7 +11,6 @@ export function Home() {
 
   const Location = useLocation();
 
-
   // PRODUCTS FILTERING LOGIC HERE...
 
   const saleProducts = products?.filter((product) => product.salePrice);
@@ -31,7 +30,7 @@ export function Home() {
       {productsLoading ? (
         <SScreenMessage>
           <h1>
-            LOADING <LoadingCircleAnim />
+            LOADING <LoadingCircleAnim hasColor isSpan />
           </h1>
         </SScreenMessage>
       ) : productsError !== "" ? (

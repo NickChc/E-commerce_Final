@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { SCategoryNav } from "@src/features/CategoryNav";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
@@ -25,7 +26,9 @@ export function CategoryNav({ show }: CategoryNavProps) {
 
   return (
     <SCategoryNav show={show} onClick={(e) => e.stopPropagation()}>
-      <h1>PRODUCT CATEGORIES</h1>
+      <h1>
+        <FormattedMessage id="categories" defaultMessage={"_CATEGORIES_"} />
+      </h1>
       <ul>
         {categories?.map((category) => {
           return (

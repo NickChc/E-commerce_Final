@@ -14,7 +14,7 @@ export const SScreenMessage = styled.div`
   ${tw`h-[80dvh] flex items-center justify-center `}
 
   h1 {
-    ${tw`text-[1rem] sm:text-[1.2rem] lg:text-[2rem] 2xl:text-[2.5rem] text-center flex items-center gap-x-3  `}
+    ${tw`text-[1rem] sm:text-[1.2rem] lg:text-[2rem] 2xl:text-[2.5rem] text-center flex items-center gap-x-3 w-[80%] `}
     ${(props) => css`
       color: ${props.theme.colors["primary"]};
     `}

@@ -25,7 +25,6 @@ interface ProductCardProps {
 export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-
   const [inCart, setInCart] = useState<boolean>(false);
 
   const { addToCart, addingToCart } = useAddToCart();
@@ -83,11 +82,16 @@ export function ProductCard({ product, disable }: ProductCardProps) {
             </p>
             <h2>
               <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
-              {product.salePrice} GEL
+              {product.salePrice}{" "}
+              <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
             </h2>
           </>
         ) : (
-          <h2>Price: {product?.salePrice || product.price} GEL</h2>
+          <h2>
+            <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
+            {product?.salePrice || product.price}{" "}
+            <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+          </h2>
         )}
       </SCardInfo>
       <SCardButtonWrapper>
@@ -108,7 +112,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
           {addingToCart ? (
             <>
               <FormattedMessage id="adding" defaultMessage={"_ADDING_"} />
-              <LoadingCircleAnim />
+              <LoadingCircleAnim isSpan />
             </>
           ) : authStage === TAuthStage_Enum.AUTHORIZED ? (
             inCart ? (

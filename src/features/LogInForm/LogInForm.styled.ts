@@ -59,7 +59,7 @@ export const SLogInForm = styled.form`
 `;
 
 export const SInputsWrapper = styled.div`
-  ${tw`flex flex-col items-stretch gap-y-[3dvh] w-full `}
+  ${tw`flex flex-col items-stretch gap-y-[6dvh] min-w-full text-[1.4rem] `}
 
   button {
     ${tw`duration-[50ms] `}
@@ -67,5 +67,5 @@ export const SInputsWrapper = styled.div`
 `;
 
 export const SFormContent = styled.div`
-  ${tw`flex flex-col items-stretch justify-between h-full mt-6 `}
+  ${tw`flex flex-col items-stretch justify-between w-full sm:w-auto h-full mt-6 `}
 `;

@@ -32,7 +32,7 @@ export const SProductButton = styled.button<ProductButtonProps>`
 
       span {
         ${(props) => css`
-          color: ${props.theme.colors["primary"]};
+          color: ${props.theme.colors["secondary"]};
         `}
       }
     }
@@ -53,8 +53,8 @@ export const SProductButton = styled.button<ProductButtonProps>`
   }
 
   span {
-    
     ${(props) => css`
+    ${tw`flex items-center justify-center `}
       color: ${props.theme.colors["additional"]};
     `}
   }
