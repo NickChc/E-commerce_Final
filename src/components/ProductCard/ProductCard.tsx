@@ -14,8 +14,8 @@ import { ProductImg } from "@src/components/ProductImg";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { useAuthProvider } from "@src/providers/AuthProvider";
-import { TAuthStage_Enum } from "@src/providers/AuthProvider";
+import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
+
 
 interface ProductCardProps {
   product: TProduct;

@@ -6,7 +6,6 @@ interface ProductImgProps {
   alt: string;
   loaded: boolean;
   onLoad: () => void;
-  styles?: boolean;
 }
 
 export function ProductImg({

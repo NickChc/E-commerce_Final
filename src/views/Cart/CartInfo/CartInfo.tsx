@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCartInfo } from "@src/views/Cart/CartInfo";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -9,10 +10,11 @@ import { totalQuantity } from "@src/utils/totalQuantity";
 import { CartIcon2, CartPlusIcon } from "@src/assets/icons";
 import { CART_LAST_REMOVED } from "@src/config/localStorageKeys";
 
-
 export function CartInfo() {
   const { cartItems } = useGlobalProvider();
   const { addToCart } = useAddToCart();
+
+  const Navigate = useNavigate();
 
   return (
     <SCartInfo>
@@ -70,7 +72,7 @@ export function CartInfo() {
       </div>
       <SProductButton
         disabled={cartItems.length < 1}
-        onClick={() => console.log("CHECKOUT!")}
+        onClick={() => Navigate("/checkout")}
       >
         <FormattedMessage id="checkout" defaultMessage={"_CHECKOUT_"} />
       </SProductButton>

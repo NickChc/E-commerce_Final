@@ -8,7 +8,7 @@ interface SProductImgProps {
 export const SImgHolder = styled.span<SProductImgProps>`
   ${tw`flex items-center justify-center `}
   ${(props) => css`
-    ${props.loaded ? tw`block` : tw`hidden`}
+    ${props.loaded ? tw`visible w-auto h-auto` : tw`invisible h-0 w-0`}
     background-color: transparent;
   `}
 `;
