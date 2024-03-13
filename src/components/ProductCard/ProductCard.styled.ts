@@ -23,7 +23,7 @@ export const SProductCard = styled.div`
   }
 
   h3 {
-    ${tw`break-words mb-3 text-[1rem] xl:text-[1.2rem] `}
+    ${tw`break-words mb-3 text-[.9rem] xl:text-[1.2rem] `}
   }
 
   h2 {
@@ -33,10 +33,14 @@ export const SProductCard = styled.div`
 `;
 
 export const SCardInfo = styled.div`
-  ${tw`w-[90%] h-[7rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
+  ${tw`w-[90%] h-[8rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
+
+  h3 {
+    ${tw`h-[2.5rem] overflow-hidden  `}
+  }
 
   p {
-    ${tw`self-end pr-3 `}
+    ${tw`self-end pr-3 text-[.7rem] sm:text-[1rem] `}
     ${(props) => css`
       color: ${props.theme.colors["saleClr"]};
     `}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import {
   SFilterProducts,
@@ -19,6 +19,8 @@ export function FilterProducts() {
 
   const [saleOnly, setSaleOnly] = useState(false);
   const [priceRange, setPriceRange] = useState<number[]>([]);
+
+  const Navigate = useNavigate();
 
   useEffect(() => {
     if (minMax.length < 1) {
@@ -63,7 +65,10 @@ export function FilterProducts() {
           <input
             type="checkbox"
             checked={saleOnly}
-            onChange={() => setSaleOnly(!saleOnly)}
+            onChange={() => {
+              setSaleOnly(!saleOnly);
+              Navigate(`/products/${categoryName}/1`);
+            }}
           />
         </h4>
         <MinMaxRange

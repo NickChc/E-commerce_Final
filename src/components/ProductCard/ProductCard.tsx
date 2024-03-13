@@ -16,7 +16,6 @@ import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
 
-
 interface ProductCardProps {
   product: TProduct;
   disable?: boolean;
@@ -74,25 +73,17 @@ export function ProductCard({ product, disable }: ProductCardProps) {
 
       <SCardInfo>
         <h3>{product.title}</h3>
-        {product.salePrice ? (
-          <>
-            <p className="">
-              <FormattedMessage id="sale" defaultMessage={"_SALE_"} />:{" "}
-              {calculateSale(product.price, product.salePrice)}%
-            </p>
-            <h2>
-              <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
-              {product.salePrice}{" "}
-              <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
-            </h2>
-          </>
-        ) : (
-          <h2>
-            <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
-            {product?.salePrice || product.price}{" "}
-            <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
-          </h2>
+        {product.salePrice && (
+          <p>
+            <FormattedMessage id="sale" defaultMessage={"_SALE_"} />:{" "}
+            {calculateSale(product.price, product.salePrice)}%
+          </p>
         )}
+        <h2>
+          <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
+          {product?.salePrice || product.price}{" "}
+          <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+        </h2>
       </SCardInfo>
       <SCardButtonWrapper>
         <SProductButton

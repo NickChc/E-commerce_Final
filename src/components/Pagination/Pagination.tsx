@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SPagination } from "@src/components/Pagination";
@@ -6,6 +7,7 @@ import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 export function Pagination() {
   const { totalFiltered } = useGlobalProvider();
+  const [pageRange, setPageRange] = useState<[number, number]>([0, 6]);
 
   const { categoryName, page } = useParams();
 
@@ -13,9 +15,21 @@ export function Pagination() {
 
   function pageChange(newPage: number) {
     Navigate(`/products/${categoryName}/${newPage}`);
+    if (
+      newPage === mappedPages[mappedPages.length - 1] &&
+      newPage !== totalPages.length
+    ) {
+      setPageRange((prev) => [prev[0] + 1, prev[1] + 1]);
+    } else if (newPage === mappedPages[0] && pageRange[0] !== 0) {
+      setPageRange((prev) => [prev[0] - 1, prev[1] - 1]);
+      console.log("CHANGE");
+    }
   }
 
-  const totalPages = new Array(Math.ceil(totalFiltered / 2)).fill(0);
+  const pageArray = new Array(Math.ceil(totalFiltered / 2)).fill(0);
+  const totalPages = pageArray.map((_, index) => index + 1);
+
+  const mappedPages = totalPages.slice(pageRange[0], pageRange[1]);
 
   return (
     <SPagination>
@@ -25,17 +39,19 @@ export function Pagination() {
       >
         <FormattedMessage id="prev" defaultMessage={"_PREV_"} />
       </Button>
-      {totalPages.map((_, index) => {
-        return (
-          <Button
-            variation={Number(page) === index + 1 ? "active" : undefined}
-            key={index}
-            onClick={() => pageChange(index + 1)}
-          >
-            {index + 1}
-          </Button>
-        );
-      })}
+      <div className="flex justify-start max-w-[80%] overflow-hidden ">
+        {mappedPages.map((name, index) => {
+          return (
+            <Button
+              variation={Number(page) === name ? "active" : undefined}
+              key={index}
+              onClick={() => pageChange(name)}
+            >
+              {name}
+            </Button>
+          );
+        })}
+      </div>
       <Button
         disabled={Number(page) === totalPages.length}
         onClick={() => pageChange(Number(page) + 1)}

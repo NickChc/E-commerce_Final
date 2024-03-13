@@ -32,7 +32,7 @@ export function MinMaxRange({
 
   useEffect(() => {
     if (categoryName && page) {
-      Navigate(`/products/${categoryName}/1`);
+      // Navigate(`/products/${categoryName}/1`);
       getFilteredProducts(categoryName, saleOnly, priceRange, Number(page));
     }
   }, [saleOnly]);

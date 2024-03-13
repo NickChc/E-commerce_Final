@@ -43,14 +43,7 @@ export function SearchBar() {
   }
 
   useEffect(() => {
-    if (!openSearch) {
-      document.body.style.overflowY = "auto";
-      return;
-    } else {
-      document.body.style.overflowY = "hidden";
-    }
     window.addEventListener("click", closeSearch);
-
   }, [openSearch]);
 
   return (
