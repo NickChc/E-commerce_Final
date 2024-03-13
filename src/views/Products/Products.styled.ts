@@ -22,5 +22,17 @@ export const SProductsHolder = styled.div`
 `;
 
 export const SEmptyWrapper = styled.div`
-  ${tw`h-full flex items-center justify-center `}
+  ${tw`h-full flex flex-col gap-y-14 items-center justify-center `}
+
+  div {
+    ${tw`text-[5rem] sm:text-[7.5rem] md:text-[10rem] mt-20 flex flex-col gap-y-3 items-center `}
+    ${(props) => css`
+      color: ${props.theme.colors["secondary_text"]};
+    `}
+
+
+    span {
+      ${tw`text-[1.2rem] sm:text-[2rem] md:text-[2.8rem] whitespace-nowrap font-bold `}
+    }
+  }
 `;

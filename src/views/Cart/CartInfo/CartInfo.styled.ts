@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCartInfo = styled.div`
-  ${tw`flex flex-col justify-between py-4 p-3 min-w-[30vw] md:w-auto md:w-[55vw] md:max-w-full sm:w-[40%] min-h-[35dvh] md:min-h-[35dvh] lg:min-h-[40dvh] border-none lg:border-solid lg:border lg:fixed lg:border-t-0 lg:right-[5%] rounded-b-lg rounded-t-[0] mb-1 lg:px-6  `}
+  ${tw`flex flex-col justify-between py-4 p-3 min-w-[30vw] w-[70%] md:w-auto md:w-[55vw] sm:w-[40%] min-h-[30dvh] lg:min-h-[40dvh] border-none lg:border-solid lg:border lg:fixed lg:border-t-0 lg:right-[5%] rounded-b-lg rounded-t-[0] mb-1 lg:px-6  `}
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
     background-color: #d3d3d3;
@@ -11,10 +11,14 @@ export const SCartInfo = styled.div`
   
 
   div {
-    ${tw`gap-y-3 lg:gap-y-6 flex flex-col items-start `}
+    ${tw`gap-y-3 lg:gap-y-6 flex flex-col items-center px-3 sm:px-6 md:px-9 md:w-[35vw] md:h-[40dvh] `}
+
+    div {
+      ${tw`flex flex-col items-start w-fit h-full `}
+    }
 
     p {
-      ${tw`text-[.8rem] self-center flex items-center gap-x-3 cursor-pointer `}
+      ${tw`text-[.55rem] sm:text-[.8rem] mt-6 mb-2  whitespace-nowrap self-center flex items-center gap-x-3 cursor-pointer `}
 
       @media(hover: hover) {
         :hover {
@@ -25,7 +29,7 @@ export const SCartInfo = styled.div`
       }
 
       span {
-        ${tw`text-[1rem]  `}
+        ${tw`text-[.8rem] sm:text-[1rem]  `}
       }
     }
   }

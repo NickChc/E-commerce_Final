@@ -32,6 +32,8 @@ export function Pagination() {
 
   const mappedPages = totalPages.slice(pageRange[0], pageRange[1]);
 
+  if (mappedPages.length < 1) return;
+
   return (
     <SPagination>
       <Button

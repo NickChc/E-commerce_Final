@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slider";
 import {
@@ -25,8 +25,6 @@ export function MinMaxRange({
   saleOnly,
 }: MinMaxRangeProps) {
   const { getFilteredProducts } = useGlobalProvider();
-
-  const Navigate = useNavigate();
 
   const { categoryName, page } = useParams();
 

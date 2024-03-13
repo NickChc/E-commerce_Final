@@ -17,13 +17,19 @@ export const SCategoryNav = styled.div<SCategoryNavProps>`
   `}
 
   ul {
-    ${tw`p-3 sm:pl-9 flex flex-col items-start text-start w-fit `}
+    ${tw`p-3 sm:pl-9 flex flex-col items-stretch text-start w-fit `}
 
     li {
-      ${tw`mt-2 opacity-[.8] hover:opacity-[1] cursor-pointer flex items-center gap-x-3 `}
+      ${tw`mt-2 opacity-[.8] hover:opacity-[1] cursor-pointer flex items-center justify-between gap-x-3`}
+
+      :hover {
+        ${(props) => css`
+          background-color: ${props.theme.colors["secondary"]};
+        `}
+      }
 
       a {
-        ${tw`font-semibold text-[1.2rem] sm:text-[1rem]  lg:text-[1.2rem] `}
+        ${tw`font-semibold text-[1.2rem] sm:text-[1rem] underline lg:text-[1.2rem] `}
         ${(props) => css`
           color: ${props.theme.colors["primary"]};
         `}

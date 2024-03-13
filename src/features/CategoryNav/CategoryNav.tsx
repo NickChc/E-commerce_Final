@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCategoryNav } from "@src/features/CategoryNav";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -10,6 +10,8 @@ interface CategoryNavProps {
 
 export function CategoryNav({ show }: CategoryNavProps) {
   const { setCategoryNavOpen, categories } = useGlobalProvider();
+
+  const Navigate = useNavigate();
 
   // CLOSE CATEGORY NAVIGATION SIDEBAR ON OUTSIDE CLICK
   function closeNavSidebar() {
@@ -32,18 +34,15 @@ export function CategoryNav({ show }: CategoryNavProps) {
       <ul>
         {categories?.map((category) => {
           return (
-            <li key={category.id}>
-              <Link
-                to={`/products/${category.name}/${1}`}
-                onClick={() => setCategoryNavOpen(false)}
-              >
-                {category.name}
-              </Link>
-              {/* <img
-                src={category?.image || ""}
-                alt=""
-                loading="lazy"
-              /> */}
+            <li
+              key={category.id}
+              onClick={() => {
+                Navigate(`/products/${category.name}/1`);
+                setCategoryNavOpen(false);
+              }}
+            >
+              <a>{category.name}</a>
+              <img src={category?.image || ""} alt="category icon" />
             </li>
           );
         })}

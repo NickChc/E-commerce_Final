@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SLangWrapper = styled.div`
-  ${tw` flex items-end justify-between absolute bottom-9 sm:bottom-3 right-3`}
+  ${tw` flex items-end justify-between absolute bottom-12 sm:bottom-3 right-3`}
 
   p {
     ${tw`text-sm sm:text-lg`}

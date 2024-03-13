@@ -14,7 +14,7 @@ export const SCartItem = styled.div<CartItemProps>`
   `}
 
   a {
-    ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.2rem] xl:text-[1.8rem] mt-1  `}
+    ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mt-1 sm:truncate  sm:max-w-[14rem]  `}
     ${(props) => css`
       color: ${props.theme.colors["primary"]};
     `}

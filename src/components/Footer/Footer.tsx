@@ -26,7 +26,7 @@ export function Footer() {
           </h2>
           <hr />
           <ul>
-            <a href="#">
+            <a href="https://gmail.com" target="_blank">
               <ReactLogo />
               reactshop@gmail.com
             </a>
@@ -46,19 +46,19 @@ export function Footer() {
           </h2>
           <hr />
           <ul>
-            <a href="#">
+            <a href="https://facebook.com" target="_blank">
               <FacebookLogos />
               Facebook
             </a>
-            <a href="#">
+            <a href="https://instagram.com" target="_blank">
               <InstagramLogo />
               Instagram
             </a>
-            <a href="#">
+            <a href="https://youtube.com" target="_blank">
               <YoutubeLogo />
               Youtube
             </a>
-            <a href="#">
+            <a href="https://tiktok.com" target="_blank">
               <TiktokLogo />
               Tik Tok
             </a>
@@ -70,6 +70,7 @@ export function Footer() {
         <p>Copyright © 2024 Reactshop.ge. All rights reserved.</p>
       </SBottomText>
 
+      {/* SELECTS LANGUAGE */}
       <LangSelect />
     </SFooter>
   );

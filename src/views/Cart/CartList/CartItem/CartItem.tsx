@@ -78,6 +78,7 @@ export function CartItem({ item }: CartItemProps) {
               </button>
               <p
                 onClick={() => {
+                  localStorage.setItem(CART_LAST_REMOVED, item.product_id);
                   removeCartItem(item, true);
                   setShow(false);
                 }}

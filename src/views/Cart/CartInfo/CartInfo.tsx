@@ -19,39 +19,44 @@ export function CartInfo() {
   return (
     <SCartInfo>
       <div>
-        <h1>
-          YOUR CART <CartIcon2 />
-        </h1>
-        <h2>
-          <FormattedMessage id="totalCost" defaultMessage={"_TOTAL_COST_"} />:
-          {"  "}
-          <span>
-            {totalCost(cartItems)}
+        <div>
+          <h1>
+            YOUR CART <CartIcon2 />
+          </h1>
+          <h2>
+            <FormattedMessage id="totalCost" defaultMessage={"_TOTAL_COST_"} />:
             {"  "}
-            <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
-          </span>
-        </h2>
-        <h2>
-          <FormattedMessage id="moneySaved" defaultMessage={"_MONEY_SAVED_"} />:
-          {"  "}
-          <span>
-            {moneySaved(cartItems)}
-            {"  "}
-            <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
-          </span>
-        </h2>
-        <h2>
-          <FormattedMessage id="items" defaultMessage={"_ITEMS_"} />:{"  "}
-          <span>{cartItems.length}</span>
-        </h2>
-        <h2>
-          <FormattedMessage
-            id="totalQuantity"
-            defaultMessage={"_TOTAL_QUANTITY_"}
-          />
-          :{"  "}
-          <span>{totalQuantity(cartItems)}</span>
-        </h2>
+            <span>
+              {totalCost(cartItems)}
+              {"  "}
+              <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+            </span>
+          </h2>
+          <h2>
+            <FormattedMessage
+              id="moneySaved"
+              defaultMessage={"_MONEY_SAVED_"}
+            />
+            :{"  "}
+            <span>
+              {moneySaved(cartItems)}
+              {"  "}
+              <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+            </span>
+          </h2>
+          <h2>
+            <FormattedMessage id="items" defaultMessage={"_ITEMS_"} />:{"  "}
+            <span>{cartItems.length}</span>
+          </h2>
+          <h2>
+            <FormattedMessage
+              id="totalQuantity"
+              defaultMessage={"_TOTAL_QUANTITY_"}
+            />
+            :{"  "}
+            <span>{totalQuantity(cartItems)}</span>
+          </h2>
+        </div>
 
         {localStorage.getItem(CART_LAST_REMOVED) && (
           <p

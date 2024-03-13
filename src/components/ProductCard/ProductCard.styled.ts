@@ -11,12 +11,8 @@ export const SProductCard = styled.div`
     }
   }
 
-  img {
-    ${tw`w-[90%] aspect-square object-cover border-none rounded-lg `}
-  }
-
   span {
-    ${tw`w-[90%] `}
+    ${tw`w-[90%]`}
     img {
       ${tw`w-full aspect-square object-cover border-none rounded-lg  `}
     }
@@ -36,7 +32,7 @@ export const SCardInfo = styled.div`
   ${tw`w-[90%] h-[8rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 gap-y-3 overflow-hidden flex flex-col justify-between `}
 
   h3 {
-    ${tw`h-[2.5rem] overflow-hidden  `}
+    ${tw`h-[2.7rem] overflow-hidden text-[.9rem] sm:text-[1rem] md:text-[1.2rem] lg:text-[1.2rem]  `}
   }
 
   p {
@@ -49,4 +45,8 @@ export const SCardInfo = styled.div`
 
 export const SCardButtonWrapper = styled.div`
   ${tw`w-[90%] mt-3 flex flex-col items-stretch gap-y-3`}
+
+  span {
+    ${tw`w-fit `}
+  }
 `;

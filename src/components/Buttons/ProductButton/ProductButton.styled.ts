@@ -54,7 +54,6 @@ export const SProductButton = styled.button<ProductButtonProps>`
 
   span {
     ${(props) => css`
-    ${tw`flex items-center justify-center `}
       color: ${props.theme.colors["additional"]};
     `}
   }

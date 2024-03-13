@@ -25,4 +25,5 @@ export {
   TrashIcon,
   CartIcon2,
   CartPlusIcon,
+  ListIcon,
 } from "./icons";
