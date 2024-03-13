@@ -8,6 +8,7 @@ import {
 } from "@src/components/ProductCard";
 import { TProduct } from "@src/@types/general";
 import GamingPcImg from "@src/assets/images/GamingPcPlaceholderImg.jpg";
+import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
 import { ProductImg } from "@src/components/ProductImg";
@@ -65,7 +66,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
     >
       <ProductImg
         src={product.image}
-        fallbackSrc={GamingPcImg}
+        fallbackSrc={PlaceholderImg}
         alt="product image"
         loaded={imageLoaded}
         onLoad={() => setImageLoaded(true)}

@@ -1,2 +1,5 @@
-export { SProductImg, SImgHolder } from "./ProductImg.styled";
+export {
+  SImgHolder,
+  SPlaceholderImgWrapper,
+} from "./ProductImg.styled";
 export { ProductImg } from "./ProductImg";

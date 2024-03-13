@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { TProduct } from "@src/@types/general";
 import { publicAxios } from "@src/utils/publicAxios";
-import { useState } from "react";
+import { PAGE_SIZE } from "@src/config/general";
 
 export function useGetFilteredProducts() {
   const [filteredProducts, setFilteredProducts] = useState<TProduct[]>([]);
@@ -16,7 +17,7 @@ export function useGetFilteredProducts() {
     try {
       setLoading(true);
       const response = await publicAxios.get(
-        `/product?onlySales=${onlySale}&categoryName=${categoryName}&page=${page}&pageSize=2&minPrice=${priceRange?.[0]}&maxPrice=${priceRange?.[1]}`
+        `/product?onlySales=${onlySale}&categoryName=${categoryName}&page=${page}&pageSize=${PAGE_SIZE}&minPrice=${priceRange?.[0]}&maxPrice=${priceRange?.[1]}`
       );
       setTotal(response.data?.total);
       setFilteredProducts(response.data?.products);

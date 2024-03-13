@@ -4,6 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { SPagination } from "@src/components/Pagination";
 import { Button } from "@src/components/Buttons/HeaderButton";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { PAGE_SIZE } from "@src/config/general";
 
 export function Pagination() {
   const { totalFiltered } = useGlobalProvider();
@@ -26,7 +27,7 @@ export function Pagination() {
     }
   }
 
-  const pageArray = new Array(Math.ceil(totalFiltered / 2)).fill(0);
+  const pageArray = new Array(Math.ceil(totalFiltered / PAGE_SIZE)).fill(0);
   const totalPages = pageArray.map((_, index) => index + 1);
 
   const mappedPages = totalPages.slice(pageRange[0], pageRange[1]);

@@ -1,4 +1,4 @@
-import { SProductImg, SImgHolder } from "@src/components/ProductImg";
+import { SImgHolder, SPlaceholderImgWrapper } from "@src/components/ProductImg";
 
 interface ProductImgProps {
   src: string | undefined;
@@ -18,20 +18,20 @@ export function ProductImg({
   return (
     <>
       <SImgHolder loaded={loaded}>
-        <SProductImg
-          loaded={loaded}
+        <img
           src={src}
           alt={alt}
           onLoad={onLoad}
           loading="lazy"
         />
       </SImgHolder>
-      <SProductImg
-        loaded={!loaded}
-        src={fallbackSrc}
-        alt={alt}
-        loading="lazy"
-      />
+      <SPlaceholderImgWrapper loaded={loaded}>
+        <img
+          src={fallbackSrc}
+          alt={alt}
+          loading="lazy"
+        />
+      </SPlaceholderImgWrapper>
     </>
   );
 }
