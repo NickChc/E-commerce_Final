@@ -20,7 +20,7 @@ function App() {
           <Route path="/products/:categoryName/:page" element={<Products />} />
           <Route path="/products/product/:productId" element={<Product />} />
           <Route
-            path="/checkout"
+            path="/checkout/:checkoutItems"
             element={
               <PrivatePage>
                 <Checkout />

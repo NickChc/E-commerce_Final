@@ -20,8 +20,8 @@ export function useGetCart() {
       // SORT CART ITEMS TO MAINTAIN ITEMS LIST ORDER
       const sortedCartItems = response?.data.sort(
         (a: TCartItem, b: TCartItem) => {
-          const dateA = new Date(a.cartProduct["created_at"]).getTime();
-          const dateB = new Date(b.cartProduct["created_at"]).getTime();
+          const dateA = new Date(a["created_at"]).getTime();
+          const dateB = new Date(b["created_at"]).getTime();
 
           return dateA - dateB;
         }

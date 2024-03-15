@@ -5,9 +5,9 @@ import {
   SSaleTag,
 } from "@src/components/SearchList/SearchedItem";
 import { TProduct } from "@src/@types/general";
-import GamingPC from "@src/assets/images/GamingPcPlaceholderImg.jpg";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductImg } from "@src/components/ProductImg";
+import PlaceholderImage from "@src/assets/images/PlaceholderImg.jpg";
 
 interface SearchedItemProps {
   item: TProduct;
@@ -29,9 +29,8 @@ export function SearchedItem({ item }: SearchedItemProps) {
     >
       <div>
         <ProductImg
-          styles
           src={item.image}
-          fallbackSrc={GamingPC}
+          fallbackSrc={PlaceholderImage}
           alt="list item image"
           loaded={imageLoaded}
           onLoad={() => setImageLoaded(true)}

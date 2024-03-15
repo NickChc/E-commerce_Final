@@ -89,7 +89,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         <SProductButton
           onClick={(e) => {
             e.stopPropagation();
-            console.log("CHECKOUT!");
+            Navigate(`/checkout/${product.id}`);
           }}
         >
           <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />

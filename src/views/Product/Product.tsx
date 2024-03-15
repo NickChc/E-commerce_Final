@@ -116,7 +116,12 @@ export function Product() {
 
               {/* BUTTONS FOR MANAGING CARD AND WISHLIST */}
               <SButtonsWrapper>
-                <SProductButton variation="primary">
+                <SProductButton
+                  variation="primary"
+                  onClick={() => {
+                    Navigate(`/checkout/${productId}`);
+                  }}
+                >
                   <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
                 </SProductButton>
                 <SDoubleBtn>
@@ -141,7 +146,7 @@ export function Product() {
                           id="removing"
                           defaultMessage={"_REMOVING_"}
                         />{" "}
-                        <LoadingCircleAnim />
+                        <LoadingCircleAnim isSpan />
                       </>
                     ) : addingToWishlist ? (
                       <>
@@ -149,7 +154,7 @@ export function Product() {
                           id="adding"
                           defaultMessage={"_ADDING_"}
                         />{" "}
-                        <LoadingCircleAnim />
+                        <LoadingCircleAnim isSpan />
                       </>
                     ) : isLiked && authStage === TAuthStage_Enum.AUTHORIZED ? (
                       <FormattedMessage
@@ -168,10 +173,13 @@ export function Product() {
                   </SProductButton>
                   <SProductButton side="right" onClick={handleCartAdding}>
                     {addingToCart ? (
-                      <FormattedMessage
-                        id="adding"
-                        defaultMessage={"_ADDING_"}
-                      />
+                      <>
+                        <FormattedMessage
+                          id="adding"
+                          defaultMessage={"_ADDING_"}
+                        />
+                        <LoadingCircleAnim isSpan />
+                      </>
                     ) : inCart ? (
                       <FormattedMessage
                         id="viewInCart"

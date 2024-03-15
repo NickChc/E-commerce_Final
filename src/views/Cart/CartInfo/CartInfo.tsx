@@ -77,7 +77,7 @@ export function CartInfo() {
       </div>
       <SProductButton
         disabled={cartItems.length < 1}
-        onClick={() => Navigate("/checkout")}
+        onClick={() => Navigate("/checkout/cartItems")}
       >
         <FormattedMessage id="checkout" defaultMessage={"_CHECKOUT_"} />
       </SProductButton>
