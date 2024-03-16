@@ -6,6 +6,9 @@ export default {
       gridTemplateColumns: {
         "repeat-15": "repeat(auto-fit, minmax(15rem, 1fr))",
       },
+      screens: {
+        xs: "300px",
+      },
     },
   },
   corePlugins: {

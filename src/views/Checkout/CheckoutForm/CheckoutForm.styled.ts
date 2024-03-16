@@ -1,12 +1,16 @@
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
+export const SCheckoutFormWrapper = styled.div`
+  ${tw`flex flex-col items-center `}
+`;
+
 interface CheckoutFormProps {
   formOpen: boolean;
 }
 
 export const SFormHideLink = styled.a`
-  ${tw`self-center underline cursor-pointer `}
+  ${tw`underline cursor-pointer self-end mr-9 mt-1 sm:mt-6 `}
   ${(props) => css`
     color: ${props.theme.colors["additional"]};
   `}
@@ -20,11 +24,16 @@ export const SFormHideLink = styled.a`
 `;
 
 export const SCheckoutForm = styled.form<CheckoutFormProps>`
-  ${tw`flex flex-col items-stretch transition-all duration-300 overflow-hidden `}
-  ${(props) => (props.formOpen ? tw`gap-y-4 mt-20 max-h-full` : tw`max-h-0`)}
+  ${tw`flex flex-col items-stretch transition-all duration-300 ease-in-out overflow-hidden max-w-[95vw]  `}
+  ${(props) =>
+    props.formOpen ? tw`gap-y-4 mt-6 md:mt-14 max-h-full` : tw`max-h-0`}
 
   input {
     ${tw`font-bold text-[.8rem] `}
+  }
+
+  p {
+    ${tw`text-[.75rem]  `}
   }
 
   button {

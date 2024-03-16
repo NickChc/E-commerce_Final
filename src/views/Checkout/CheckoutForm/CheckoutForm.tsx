@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   SCheckoutForm,
   SFormHideLink,
   SDoubleInput,
+  SCheckoutFormWrapper,
 } from "@src/views/Checkout/CheckoutForm";
 import { paymentDefaultValues } from "@src/mocks/defaultValues";
 import { useValidateCheckout } from "@src/views/Checkout/CheckoutForm/useValidateCheckout";
@@ -10,6 +11,8 @@ import { FormInput } from "@src/components/FormInput";
 import { TPaymentValues } from "@src/@types/general";
 import { formatInput } from "@src/utils/formatInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
+import { CreditCard } from "@src/views/Checkout/CheckoutForm/CreditCard";
+import { USER_CARD_DATA } from "@src/config/sessionStorageKeys";
 
 interface CheckoutFormProps {
   gotCard: boolean;
@@ -17,12 +20,15 @@ interface CheckoutFormProps {
 }
 
 export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
+  const [focusedValue, setFocusedValue] =
+    useState<keyof TPaymentValues>("fullName");
   const [paymentFormValues, setPaymentFormValues] =
     useState<TPaymentValues>(paymentDefaultValues);
 
   const { validateCheckout, isValid, setIsValid, formErrors, setFormErrors } =
     useValidateCheckout();
 
+  // FORM INPUT CHANGE
   function inputChange(e: React.ChangeEvent<HTMLFormElement>) {
     setPaymentFormValues((prev) => {
       const { name, value } = e.target;
@@ -40,11 +46,12 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
         return { ...prev, [name]: formatInput(value, " ", 4) };
         // EXPIRY
       } else if (name === "expiry" && expiryRegex.test(value)) {
-        const withoutSlash = value.replace(/\//g, "");
+        const withoutSlashPart_1 = value.replace(/\//g, "").slice(0, 2);
+        const withoutSlashPart_2 = value.replace(/\//g, "").slice(2);
         if (value.length > 2) {
           return {
             ...prev,
-            [name]: withoutSlash.slice(0, 2) + "/" + withoutSlash.slice(2),
+            [name]: withoutSlashPart_1 + "/" + withoutSlashPart_2,
           };
         } else {
           return { ...prev, [name]: value };
@@ -63,16 +70,35 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
     setIsValid(true);
   }
 
+  // FORM SUBMIT
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (!isValid) return;
 
     setGotCard(true);
+    sessionStorage.setItem(USER_CARD_DATA, JSON.stringify(paymentFormValues));
   }
 
+  // CHECK IF SESSION STORAGE HAS USERS CARD DATA
+  useEffect(() => {
+    const userCardData = sessionStorage.getItem(USER_CARD_DATA);
+
+    if (userCardData) {
+      setPaymentFormValues(JSON.parse(userCardData));
+      setGotCard(true);
+    }
+  }, []);
+
   return (
-    <div>
+    <SCheckoutFormWrapper>
+      <CreditCard
+        number={paymentFormValues.number}
+        expiry={paymentFormValues.expiry}
+        cvc={paymentFormValues.cvc}
+        name={paymentFormValues.fullName}
+        focused={focusedValue}
+      />
       <SCheckoutForm formOpen={!gotCard} onSubmit={onSubmit}>
         <FormInput
           autoComplete="off"
@@ -96,12 +122,13 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
           name="number"
           value={paymentFormValues.number}
           onChange={inputChange}
-          onFocus={() =>
+          onFocus={() => {
+            setFocusedValue("number");
             setFormErrors((prev) => ({
               ...prev,
               number: "",
-            }))
-          }
+            }));
+          }}
         />
 
         <SDoubleInput>
@@ -113,12 +140,13 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
               name="expiry"
               value={paymentFormValues.expiry}
               onChange={inputChange}
-              onFocus={() =>
+              onFocus={() => {
+                setFocusedValue("expiry");
                 setFormErrors((prev) => ({
                   ...prev,
                   expiry: "",
-                }))
-              }
+                }));
+              }}
             />
           </div>
 
@@ -130,12 +158,13 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
               name="cvc"
               value={paymentFormValues.cvc}
               onChange={inputChange}
-              onFocus={() =>
+              onFocus={() => {
+                setFocusedValue("cvc");
                 setFormErrors((prev) => ({
                   ...prev,
                   cvc: "",
-                }))
-              }
+                }));
+              }}
             />
           </div>
         </SDoubleInput>
@@ -147,17 +176,29 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
           name="postal"
           value={paymentFormValues.postal}
           onChange={inputChange}
-          onFocus={() =>
+          onFocus={() => {
+            setFocusedValue("fullName");
             setFormErrors((prev) => ({
               ...prev,
               postal: "",
-            }))
-          }
+            }));
+          }}
         />
 
         <SProductButton
           type="submit"
-          onClick={() => validateCheckout(paymentFormValues)}
+          onClick={() => {
+            const userCardData = sessionStorage.getItem(USER_CARD_DATA);
+
+            if (
+              userCardData &&
+              userCardData === JSON.stringify(paymentFormValues)
+            ) {
+              setIsValid(true);
+            } else {
+              validateCheckout(paymentFormValues);
+            }
+          }}
         >
           ADD CARD
         </SProductButton>
@@ -167,6 +208,6 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
           Edit Card
         </SFormHideLink>
       )}
-    </div>
+    </SCheckoutFormWrapper>
   );
 }

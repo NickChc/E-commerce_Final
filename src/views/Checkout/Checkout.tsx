@@ -47,11 +47,12 @@ export function Checkout() {
   return (
     <SCheckout>
       <SLeftSide>
-        <h1>CHOOSE CARD</h1>
+        <h1>{gotCard ? "YOUR CARD" : "CHOOSE CARD"}</h1>
         <CheckoutForm gotCard={gotCard} setGotCard={setGotCard} />
       </SLeftSide>
 
       <SRightSide>
+        <h1>Checkout Info</h1>
         <hr />
         <CheckoutInfo
           gotCard={gotCard}
