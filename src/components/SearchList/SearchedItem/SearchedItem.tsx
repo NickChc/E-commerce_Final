@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import {
   SSearchedItem,
   SSaleTag,
@@ -37,7 +38,11 @@ export function SearchedItem({ item }: SearchedItemProps) {
         />
         <h2>{item.title}</h2>
       </div>
-      {item.salePrice && <SSaleTag>SALE</SSaleTag>}
+      {item.salePrice && (
+        <SSaleTag>
+          <FormattedMessage id="sale" defaultMessage={"_SALE_"} />
+        </SSaleTag>
+      )}
     </SSearchedItem>
   );
 }

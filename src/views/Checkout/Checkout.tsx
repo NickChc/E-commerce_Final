@@ -8,6 +8,7 @@ import { totalQuantity } from "@src/utils/totalQuantity";
 import { CheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { CheckoutProducts } from "@src/views/Checkout/CheckoutProducts";
 import { CheckoutForm } from "@src/views/Checkout/CheckoutForm";
+import { FormattedMessage } from "react-intl";
 
 export function Checkout() {
   const [checkoutItems, setCheckoutItems] = useState<TProduct[]>([]);
@@ -47,12 +48,26 @@ export function Checkout() {
   return (
     <SCheckout>
       <SLeftSide>
-        <h1>{gotCard ? "YOUR CARD" : "CHOOSE CARD"}</h1>
+        <h1>
+          {gotCard ? (
+            <FormattedMessage id="yourCard" defaultMessage={"_YOUR_CARD_"} />
+          ) : (
+            <FormattedMessage
+              id="chooseCard"
+              defaultMessage={"_CHOOSE_CARD_"}
+            />
+          )}
+        </h1>
         <CheckoutForm gotCard={gotCard} setGotCard={setGotCard} />
       </SLeftSide>
 
       <SRightSide>
-        <h1>Checkout Info</h1>
+        <h1>
+          <FormattedMessage
+            id="checkoutPreview"
+            defaultMessage={"_CHECKOUT_"}
+          />
+        </h1>
         <hr />
         <CheckoutInfo
           gotCard={gotCard}

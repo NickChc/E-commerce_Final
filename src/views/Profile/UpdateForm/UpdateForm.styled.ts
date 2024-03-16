@@ -6,7 +6,7 @@ interface SEditProps {
 }
 
 export const SUpdateForm = styled.form<SEditProps>`
-  ${tw`mb-9 w-[90%] lg:w-[35%] border-solid border rounded-md h-[25dvh] md:h-[20dvh] p-3 pt-1 pb-6 flex flex-col items-stretch justify-between text-center origin-top lg:origin-top-left fixed sm:static top-[10%] z-10 `}
+  ${tw`mb-9 w-[90%] lg:w-[35%] border-solid border rounded-md h-[25dvh] md:h-[20dvh] p-3 pt-1 pb-6 flex flex-col items-stretch justify-between text-center origin-top lg:origin-top-left fixed sm:static top-[60%] z-10 `}
 
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};

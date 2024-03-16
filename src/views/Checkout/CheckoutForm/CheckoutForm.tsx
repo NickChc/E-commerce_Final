@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import {
   SCheckoutForm,
   SFormHideLink,
@@ -13,6 +14,7 @@ import { formatInput } from "@src/utils/formatInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { CreditCard } from "@src/views/Checkout/CheckoutForm/CreditCard";
 import { USER_CARD_DATA } from "@src/config/sessionStorageKeys";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
 
 interface CheckoutFormProps {
   gotCard: boolean;
@@ -27,6 +29,10 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
 
   const { validateCheckout, isValid, setIsValid, formErrors, setFormErrors } =
     useValidateCheckout();
+
+  const { formatMessage } = useIntl();
+
+  const { setPopUpText } = useGlobalProvider();
 
   // FORM INPUT CHANGE
   function inputChange(e: React.ChangeEvent<HTMLFormElement>) {
@@ -77,6 +83,12 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
     if (!isValid) return;
 
     setGotCard(true);
+    setPopUpText(
+      formatMessage({
+        id: "cardSaveSuccess",
+        defaultMessage: "_CARD_SUCCESSFULLY_SAVED_",
+      })
+    );
     sessionStorage.setItem(USER_CARD_DATA, JSON.stringify(paymentFormValues));
   }
 
@@ -103,7 +115,10 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
         <FormInput
           autoComplete="off"
           error={formErrors.fullName}
-          placeholder="Full Name"
+          placeholder={formatMessage({
+            id: "fullName",
+            defaultMessage: "_FULL_NAME_",
+          })}
           name="fullName"
           value={paymentFormValues.fullName}
           onChange={inputChange}
@@ -136,7 +151,10 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
             <FormInput
               autoComplete="off"
               error={formErrors.expiry}
-              placeholder="Expiry MM/YY"
+              placeholder={formatMessage({
+                id: "expiry",
+                defaultMessage: "_EXPIRY_DATE_MM/YY_",
+              })}
               name="expiry"
               value={paymentFormValues.expiry}
               onChange={inputChange}
@@ -172,7 +190,10 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
         <FormInput
           autoComplete="off"
           error={formErrors.postal}
-          placeholder="Postal Code"
+          placeholder={formatMessage({
+            id: "postal",
+            defaultMessage: "_POSTAL_CODE_",
+          })}
           name="postal"
           value={paymentFormValues.postal}
           onChange={inputChange}
@@ -200,12 +221,12 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
             }
           }}
         >
-          ADD CARD
+          <FormattedMessage id="addCard" defaultMessage={"_ADD_CARD_"} />
         </SProductButton>
       </SCheckoutForm>
       {gotCard && (
         <SFormHideLink onClick={() => setGotCard(false)}>
-          Edit Card
+          <FormattedMessage id="editCard" defaultMessage={"_EDIT_CARD_"} />
         </SFormHideLink>
       )}
     </SCheckoutFormWrapper>

@@ -25,16 +25,17 @@ export function CheckoutProduct({ product, item }: CheckoutProductProps) {
       />
       <div>
         <h3>
-          Title -{" "}
+          <FormattedMessage id="name" defaultMessage={"_NAME_"} /> -{" "}
           <Link to={`/products/product/${product?.id || item?.product_id}`}>
             {product?.title || item?.cartProduct.title}
           </Link>
         </h3>
         <h3>
-          Quantity - <span>{item?.count || 1}</span>
+          <FormattedMessage id="quantity" defaultMessage={"_QUANTITY_"} /> -{" "}
+          <span>{item?.count || 1}</span>
         </h3>
         <h3>
-          Price -{" "}
+          <FormattedMessage id="price" defaultMessage={"_PRICE_"} /> -{" "}
           <span>
             {product?.salePrice ||
               product?.price ||

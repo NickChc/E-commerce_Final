@@ -63,7 +63,7 @@ export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
         <h2>
           <FormattedMessage id="phone" defaultMessage={"_PHONE_NUMBER_"} />:{" "}
           <SValue>
-            {/* REQUST LIMIT, LEAVE COMMENTED FOR NOW */}
+            {/* REQUEST LIMIT, LEAVE COMMENTED FOR NOW */}
             {/* {usersCountryInfo?.country_calling_code || "   "}{" "} */}
             {userData && formatPhoneNumber(userData.phone_number)}
           </SValue>
@@ -73,7 +73,10 @@ export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
             id="lastUpdated"
             defaultMessage={"_LAST_UPDATED_"}
           />
-          : <SValue>{userData?.updated_at.split("T")[0]}</SValue>
+          :{" "}
+          <SValue>
+            {userData?.updated_at.split("T")[0].replace(/\-/g, "/")}
+          </SValue>
         </h2>
         <h2>
           <FormattedMessage

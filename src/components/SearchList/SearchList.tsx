@@ -1,3 +1,4 @@
+import { FormattedMessage } from "react-intl";
 import { SSearchList } from "@src/components/SearchList";
 import { SearchedItem } from "@src/components/SearchList/SearchedItem";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -14,10 +15,20 @@ export function SearchList({ open }: SearchListProps) {
   return (
     <SSearchList>
       <div>
-        {searching && SearchedItem.length < 1 ? (
-          <h1>Searching...</h1>
+        {searching && searchedProducts.length < 1 ? (
+          <h1>
+            <FormattedMessage id="searching" defaultMessage={"_SEARCHING_"} />
+            ...
+          </h1>
         ) : (
-          searchedProducts.length < 1 && <h1>NO RESULTS</h1>
+          searchedProducts.length < 1 && (
+            <h1>
+              <FormattedMessage
+                id="noResults"
+                defaultMessage={"_NO_RESULTS_"}
+              />
+            </h1>
+          )
         )}
         {searchedProducts?.map((product) => {
           return <SearchedItem key={product.id} item={product} />;

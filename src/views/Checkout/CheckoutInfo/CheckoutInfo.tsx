@@ -34,23 +34,33 @@ export function CheckoutInfo({
   return (
     <SCheckoutInfo>
       <h2>
-        Items - <span>{items || "  "}</span>
+        <FormattedMessage id="items" defaultMessage={"_ITEMS_"} /> -{" "}
+        <span>{items || "  "}</span>
       </h2>
       <h2>
-        Total Quantity - <span>{total || "  "}</span>
+        <FormattedMessage
+          id="totalQuantity"
+          defaultMessage={"_TOTAL_QUANTITY_"}
+        />{" "}
+        - <span>{total || "  "}</span>
       </h2>
       <h2>
-        Shipping - <span>{shipping || "  "}</span>{" "}
+        <FormattedMessage id="shipping" defaultMessage={"_SHIPPING_"} /> -{" "}
+        <span>{shipping || "  "}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />{" "}
       </h2>
       <h2>
-        Total Price - <span>{totalPrice + shipping || "  "}</span>{" "}
+        <FormattedMessage id="totalPrice" defaultMessage={"_TOTAL_PRICE_"} /> -{" "}
+        <span>{totalPrice + shipping || "  "}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h2>
       <h2>
-        Deliver To - <span>{usersCountryInfo?.country_name || "      "}</span>
+        <FormattedMessage id="deliverTo" defaultMessage={"_DELIVER_TO_"} /> -{" "}
+        <span>{usersCountryInfo?.country_name || "      "}</span>
       </h2>
-      <SProductButton disabled={!gotCard}>BUY NOW</SProductButton>
+      <SProductButton disabled={!gotCard}>
+        <FormattedMessage id="buyNow" defaultMessage={"_BUY_NOW_"} />
+      </SProductButton>
     </SCheckoutInfo>
   );
 }
