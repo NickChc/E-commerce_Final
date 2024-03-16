@@ -1,6 +1,8 @@
 import { FormattedMessage } from "react-intl";
+import {
+  SCheckoutInfo,
+} from "@src/views/Checkout/CheckoutInfo";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
-import { SCheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 
 interface CheckoutInfoProps {
@@ -28,21 +30,22 @@ export function CheckoutInfo({ items, total, totalPrice }: CheckoutInfoProps) {
   return (
     <SCheckoutInfo>
       <h2>
-        Items - <span>{items}</span>
+        Items - <span>{items || "  "}</span>
       </h2>
       <h2>
-        Total Quantity - <span>{total}</span>
+        Total Quantity - <span>{total || "  "}</span>
       </h2>
       <h2>
-        Shipping - <span>{shipping}</span>{" "}
+        Shipping - <span>{shipping || "  "}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />{" "}
       </h2>
       <h2>
-        TotalPrice - <span>{totalPrice + shipping}</span>{" "}
+        Total Price - <span>{totalPrice + shipping || "  "}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h2>
       <h2>
-        Delivery Country - <span>{usersCountryInfo?.country_name}</span>
+        Delivery Country -{" "}
+        <span>{usersCountryInfo?.country_name || "      "}</span>
       </h2>
       <SProductButton>BUY NOW</SProductButton>
     </SCheckoutInfo>
