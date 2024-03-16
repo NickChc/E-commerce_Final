@@ -1,7 +1,7 @@
-
-
-
-
+export interface TPurchaseValues {
+  totalItems: number;
+  totalPrice: number;
+}
 
 export interface TRegisterUser {
   first_name: string;
@@ -22,12 +22,8 @@ export interface TLogInUser {
   password: string;
 }
 
-
-
 export interface TChangeableUserData {
   first_name: string;
   last_name: string;
   email: string;
 }
-
-

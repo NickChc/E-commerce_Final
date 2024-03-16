@@ -1,7 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import {
-  SCheckoutInfo,
-} from "@src/views/Checkout/CheckoutInfo";
+import { SCheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 
@@ -9,9 +7,15 @@ interface CheckoutInfoProps {
   items: number;
   total: number;
   totalPrice: number;
+  gotCard: boolean;
 }
 
-export function CheckoutInfo({ items, total, totalPrice }: CheckoutInfoProps) {
+export function CheckoutInfo({
+  items,
+  total,
+  totalPrice,
+  gotCard,
+}: CheckoutInfoProps) {
   const { usersCountryInfo } = useGetCountry();
 
   // IMITATES DIFFERENT SHIPPING COSTS
@@ -44,10 +48,9 @@ export function CheckoutInfo({ items, total, totalPrice }: CheckoutInfoProps) {
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h2>
       <h2>
-        Delivery Country -{" "}
-        <span>{usersCountryInfo?.country_name || "      "}</span>
+        Deliver To - <span>{usersCountryInfo?.country_name || "      "}</span>
       </h2>
-      <SProductButton>BUY NOW</SProductButton>
+      <SProductButton disabled={!gotCard}>BUY NOW</SProductButton>
     </SCheckoutInfo>
   );
 }

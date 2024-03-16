@@ -50,6 +50,14 @@ export function ProductCard({ product, disable }: ProductCardProps) {
     }
   }
 
+  function handleBuying() {
+    if (authStage !== TAuthStage_Enum.AUTHORIZED) {
+      setAuthModal(true);
+    } else {
+      Navigate(`/checkout/${product.id}`);
+    }
+  }
+
   // IF ITEM IS IN CART, CHANGE TEXT AND ONCLICK BEHAVIOUR
   useEffect(() => {
     const isInCart = cartItems?.some((item) => item.product_id === product.id);
@@ -86,10 +94,11 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         </h2>
       </SCardInfo>
       <SCardButtonWrapper>
+        {/* BUY BUTTON */}
         <SProductButton
           onClick={(e) => {
             e.stopPropagation();
-            Navigate(`/checkout/${product.id}`);
+            handleBuying();
           }}
         >
           <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />

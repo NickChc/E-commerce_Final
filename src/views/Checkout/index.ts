@@ -1,2 +1,2 @@
-export { SCheckout, SRightSide } from "./Checkout.styled";
+export { SCheckout, SRightSide, SLeftSide } from "./Checkout.styled";
 export { Checkout as default } from "./Checkout";

@@ -51,3 +51,12 @@ export interface TCartItem {
   created_at: string;
   updated_at: string;
 }
+
+
+export interface TPaymentValues {
+  fullName: string;
+  number: string;
+  expiry: string;
+  cvc: string;
+  postal: string;
+}
