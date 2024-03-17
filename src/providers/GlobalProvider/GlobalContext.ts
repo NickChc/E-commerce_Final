@@ -56,6 +56,8 @@ interface GlobalContextProps {
   getCategories: () => Promise<void>;
   gettingCategories: boolean;
   categories: TCategory[];
+  deliveryAddress: string;
+  setDeliveryAddress: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -103,4 +105,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   getCategories: async () => {},
   gettingCategories: false,
   categories: [],
+  deliveryAddress: "",
+  setDeliveryAddress: () => {},
 });

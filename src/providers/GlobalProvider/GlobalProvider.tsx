@@ -19,6 +19,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [registering, setRegistering] = useState(false);
   const [authModal, setAuthModal] = useState<boolean>(false);
   const [popUpText, setPopUpText] = useState<string>("");
+  const [deliveryAddress, setDeliveryAddress] = useState<string>("");
 
   const [categoryNavOpen, setCategoryNavOpen] = useState<boolean>(false);
 
@@ -35,7 +36,12 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     totalProducts,
   } = useGetProducts();
 
-  const { filteredProducts, gettingFiltered, getFilteredProducts, totalFiltered } = useGetFilteredProducts();
+  const {
+    filteredProducts,
+    gettingFiltered,
+    getFilteredProducts,
+    totalFiltered,
+  } = useGetFilteredProducts();
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
   const { getWishlist, gettingWishlist, wishlist } = useGetWishlist();
   const { addToCart, addingToCart } = useAddToCart();
@@ -46,12 +52,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { getCategories, categories, gettingCategories } = useGetCategories();
 
   const Location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-    });
-  }, [Location.pathname]);
 
   async function toggleWishlist(productId: string) {
     try {
@@ -68,6 +68,12 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       console.log(error.message);
     }
   }
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [Location.pathname]);
 
   useEffect(() => {
     // fetchProducts("", false);
@@ -123,6 +129,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         getCategories,
         gettingCategories,
         categories,
+        deliveryAddress,
+        setDeliveryAddress,
       }}
     >
       {children}

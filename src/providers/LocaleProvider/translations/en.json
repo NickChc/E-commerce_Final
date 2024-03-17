@@ -90,7 +90,7 @@
   "cardNumberLength": "Card Number Must Be 16 Digits Long!",
   "emptyField": "Is Missing",
   "expiryMissing": "Expiry Date is Missing",
-  "expiryFirstTwo": "First Two Digits Must Represent Month (MM)",
+  "expiryFirstTwo": "MM larger Than 12!",
   "expirySecondTwo": "Check Year On Card",
   "postalMissing": "Postal Code Is Missing!",
   "cvcLength": "CVC Too Short!",
@@ -102,5 +102,6 @@
   "deliverTo": "DELIVER TO",
   "quantity": "QUANTITY",
   "noResults": "NO RESULTS",
-  "searching": "SEARCHING"
+  "searching": "SEARCHING",
+  "priceToUpper": "PRICE"
 }

@@ -90,7 +90,7 @@
   "cardNumberLength": "ბარათის ნომერი შედგება 16 ციფრისგან!",
   "emptyField": "ველი ცარიელია!",
   "expiryMissing": "ვადის ველი ცარიელია!",
-  "expiryFirstTwo": "(თვე / წელი)",
+  "expiryFirstTwo": "თვე მეტია 12-ზე!",
   "expirySecondTwo": "წელი იხილეთ ბარათზე",
   "postalMissing": "ფოსტის მისამართის ველი ცარიელია!",
   "cvcLength": "CVC ზედმეტად მოკლეა!",
@@ -102,5 +102,6 @@
   "deliverTo": "მიტანა",
   "quantity": "რაოდენობა",
   "noResults": "ვერ მოიძებნა",
-  "searching": "იძებნება"
+  "searching": "იძებნება",
+  "priceToUpper": "ფასი"
 }

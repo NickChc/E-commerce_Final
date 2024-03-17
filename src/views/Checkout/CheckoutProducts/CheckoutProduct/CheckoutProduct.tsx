@@ -35,7 +35,7 @@ export function CheckoutProduct({ product, item }: CheckoutProductProps) {
           <span>{item?.count || 1}</span>
         </h3>
         <h3>
-          <FormattedMessage id="price" defaultMessage={"_PRICE_"} /> -{" "}
+          <FormattedMessage id="priceToUpper" defaultMessage={"_PRICE_"} /> -{" "}
           <span>
             {product?.salePrice ||
               product?.price ||

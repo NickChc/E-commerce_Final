@@ -9,9 +9,8 @@ export function useGetCountry() {
     country_capital: string;
   }
 
-  const [usersCountryInfo, setUsersCountryInfo] = useState<TUserCountryInfo | null>(
-    null
-  );
+  const [usersCountryInfo, setUsersCountryInfo] =
+    useState<TUserCountryInfo | null>(null);
 
   async function getCountry() {
     try {

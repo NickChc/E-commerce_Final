@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { SCheckout, SRightSide, SLeftSide } from "@src/views/Checkout";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { TProduct } from "@src/@types/general";
@@ -8,7 +9,7 @@ import { totalQuantity } from "@src/utils/totalQuantity";
 import { CheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { CheckoutProducts } from "@src/views/Checkout/CheckoutProducts";
 import { CheckoutForm } from "@src/views/Checkout/CheckoutForm";
-import { FormattedMessage } from "react-intl";
+import { Map } from "@src/features/Map";
 
 export function Checkout() {
   const [checkoutItems, setCheckoutItems] = useState<TProduct[]>([]);
@@ -59,6 +60,7 @@ export function Checkout() {
           )}
         </h1>
         <CheckoutForm gotCard={gotCard} setGotCard={setGotCard} />
+        <Map />
       </SLeftSide>
 
       <SRightSide>

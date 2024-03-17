@@ -11,7 +11,7 @@ import { EditIcon } from "@src/assets/icons";
 import ProfileImg from "@src/assets/images/AvatarImg.webp";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { formatPhoneNumber } from "@src/utils/formatPhoneNumber";
-// import { useGetCountry } from "@src/hooks/useGetCountry";
+import { useGetCountry } from "@src/hooks/useGetCountry";
 import { TChangeableUserData } from "@src/@types/requestTypes";
 import { ThemeSelect } from "@src/features/ThemeSelect";
 
@@ -22,7 +22,7 @@ interface UserInfoProps {
 
 export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
   const { logOut, userData } = useAuthProvider();
-  // const { usersCountryInfo } = useGetCountry();
+  const { usersCountryInfo } = useGetCountry();
 
   return (
     <SUserInfo>
@@ -63,8 +63,7 @@ export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
         <h2>
           <FormattedMessage id="phone" defaultMessage={"_PHONE_NUMBER_"} />:{" "}
           <SValue>
-            {/* REQUEST LIMIT, LEAVE COMMENTED FOR NOW */}
-            {/* {usersCountryInfo?.country_calling_code || "   "}{" "} */}
+            {usersCountryInfo?.country_calling_code || "   "}{" "}
             {userData && formatPhoneNumber(userData.phone_number)}
           </SValue>
         </h2>
