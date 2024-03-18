@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
-export const SMapInput = styled.div`
+export const SMapInputForm = styled.form`
   ${tw`flex items-stretch justify-center mb-3 `}
 
   input {
@@ -36,5 +36,14 @@ export const SMapInput = styled.div`
         color: ${props.theme.colors["additional"]};
       `}
     }
+  }
+`;
+
+export const SMapInputWrapper = styled.div`
+  p {
+    ${tw`h-[1.2rem] my-[.2rem] `}
+    ${(props) => css`
+      color: ${props.theme.colors["saleClr"]};
+    `}
   }
 `;

@@ -3,6 +3,7 @@ import { Marker, Popup } from "react-leaflet";
 import { LatLngExpression, Icon } from "leaflet";
 import CartMapIcon from "@src/assets/images/CartMapIcon.webp";
 import { useSearchLocation } from "@src/hooks/useSearchLocation";
+import { DELIVERY_ADDRESS } from "@src/config/sessionStorageKeys";
 
 interface MapMarkerProps {
   coords: LatLngExpression;
@@ -21,6 +22,10 @@ export function MapMarker({ coords, setCoords }: MapMarkerProps) {
       setCoords(latLng);
       const formattedLatLng = `${latLng.lat}, ${latLng.lng}`;
       searchLocation(formattedLatLng);
+      sessionStorage.setItem(
+        DELIVERY_ADDRESS,
+        JSON.stringify([latLng.lat, latLng.lng])
+      );
     }
   }
 

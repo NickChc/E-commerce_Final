@@ -31,7 +31,7 @@ export const SFilterProducts = styled.div<FilterProductsProp>`
   h4 {
     ${tw`flex items-center gap-x-3 md:text-[.75rem] lg:text-[1rem]  `}
     input {
-      ${tw`mb-1 cursor-pointer `}
+      ${tw`mb-1 cursor-pointer w-[18px] aspect-square `}
     }
   }
 

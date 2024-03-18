@@ -103,5 +103,7 @@
   "quantity": "QUANTITY",
   "noResults": "NO RESULTS",
   "searching": "SEARCHING",
-  "priceToUpper": "PRICE"
+  "priceToUpper": "PRICE",
+  "searchOrDragAddress": "Search address or drag and drop pin",
+  "locationNotFound": "Location Not Found!"
 }

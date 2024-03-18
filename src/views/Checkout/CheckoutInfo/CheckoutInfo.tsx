@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SCheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
@@ -17,6 +18,8 @@ export function CheckoutInfo({
   totalPrice,
   gotCard,
 }: CheckoutInfoProps) {
+  const [addressConfirmed, setAddressConfirmed] = useState<boolean>(false);
+
   const { usersCountryInfo } = useGetCountry();
   const { deliveryAddress } = useGlobalProvider();
 
@@ -64,7 +67,16 @@ export function CheckoutInfo({
             : usersCountryInfo?.country_name || "Unknown"}
         </span>
       </h2>
-      <SProductButton disabled={!gotCard}>
+
+      <p>
+        CONFIRM YOUR ADDRESS
+        <input
+          type="checkbox"
+          checked={addressConfirmed}
+          onChange={() => setAddressConfirmed((prev) => !prev)}
+        />
+      </p>
+      <SProductButton disabled={!gotCard || !addressConfirmed}>
         <FormattedMessage id="buyNow" defaultMessage={"_BUY_NOW_"} />
       </SProductButton>
     </SCheckoutInfo>

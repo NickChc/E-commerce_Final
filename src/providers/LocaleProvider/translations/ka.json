@@ -103,5 +103,7 @@
   "quantity": "რაოდენობა",
   "noResults": "ვერ მოიძებნა",
   "searching": "იძებნება",
-  "priceToUpper": "ფასი"
+  "priceToUpper": "ფასი",
+  "searchOrDragAddress": "მოძებნეთ მისამართი ველით ან გადაადგილეთ ნიშნული",
+  "locationNotFound": "მისამართი არ იძებნება!" 
 }

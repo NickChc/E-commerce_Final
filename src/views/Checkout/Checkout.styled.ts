@@ -20,7 +20,7 @@ export const SLeftSide = styled.div`
 export const SRightSide = styled.div`
   ${tw`w-full sm:w-[40%] flex flex-col items-stretch gap-y-6 sm:gap-y-14 px-3 sm:px-6 border-solid border border-y-0 border-r-0 border-l-0 sm:border-l-[1px] py-6 `}
   ${(props) => css`
-    border-color: ${props.theme.colors["secondary_background"]};
+    border-color: ${props.theme.colors["secondary_text"]};
   `}
 
   h1 {

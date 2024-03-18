@@ -17,6 +17,14 @@ export const SCheckoutInfo = styled.div`
     }
   }
 
+  p {
+    ${tw`whitespace-nowrap mt-6 flex items-start gap-x-3 `}
+
+    input {
+      ${tw`cursor-pointer w-[18px] aspect-square `}
+    }
+  }
+
   button {
     ${tw`w-full mt-9 `}
   }
