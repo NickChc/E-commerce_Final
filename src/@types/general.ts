@@ -65,3 +65,11 @@ export enum TPaymentStatus_Enum {
   BAD = "bad",
   EMPTY = "",
 }
+
+export interface TOrder {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  totalItems: number;
+  totalPrice: number;
+}

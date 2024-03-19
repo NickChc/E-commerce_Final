@@ -112,5 +112,7 @@
   "address": "ADDRESS",
   "gotIt": "GOT IT",
   "paymentThanks": "THANKS FOR USING OUR SERVICE",
-  "paymentDetails": "Your order will be on it's way soon. You can track it from profile page"
+  "date": "DATE",
+  "cost": "COST",
+  "cancel": "Cancel"
 }

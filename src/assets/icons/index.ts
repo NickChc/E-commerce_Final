@@ -26,4 +26,5 @@ export {
   CartIcon2,
   CartPlusIcon,
   ListIcon,
+  CancelIcon,
 } from "./icons";

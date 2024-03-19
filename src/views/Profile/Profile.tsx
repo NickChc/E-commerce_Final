@@ -10,6 +10,7 @@ import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { TProduct } from "@src/@types/general";
+import { OrderList } from "@src/views/Profile/OrderList";
 
 export function Profile() {
   const { userData } = useAuthProvider();
@@ -68,6 +69,8 @@ export function Profile() {
           setCurrentEdit={setCurrentEdit}
         />
       </SUserLayer>
+      {/* LIST OF ORDERS */}
+      <OrderList />
       <hr />
       {wishlistProducts.length < 1 && (
         <h1>

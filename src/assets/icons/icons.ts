@@ -25,6 +25,8 @@ export { FaTrashAlt as TrashIcon } from "react-icons/fa";
 export { BsCart4 as CartIcon2 } from "react-icons/bs";
 export { FaCartPlus as CartPlusIcon } from "react-icons/fa";
 export { FaList as ListIcon } from "react-icons/fa";
+export { TiCancel as CancelIcon } from "react-icons/ti";
+
 
 
 

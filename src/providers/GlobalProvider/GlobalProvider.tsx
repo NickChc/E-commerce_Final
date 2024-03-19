@@ -13,6 +13,7 @@ import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
 import { useGetCategories } from "@src/hooks/useGetCategories";
 import { useGetFilteredProducts } from "@src/hooks/useGetFilteredProducts";
 import { TPaymentStatus_Enum } from "@src/@types/general";
+import { useGetOrders } from "@src/hooks/useGetOrders";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
@@ -55,6 +56,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { getCart, gettingCart, cartItems } = useGetCart();
   const { removeCartItem, removingCartItem } = useRemoveCartItem();
   const { getCategories, categories, gettingCategories } = useGetCategories();
+  const { orders, gettingOrders, getOrders } = useGetOrders();
 
   const Location = useLocation();
 
@@ -140,6 +142,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         setDeliveryAddress,
         paymentStatus,
         setPaymentStatus,
+        orders,
+        getOrders,
+        gettingOrders,
       }}
     >
       {children}

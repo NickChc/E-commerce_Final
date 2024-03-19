@@ -5,6 +5,7 @@ import {
   TProduct,
   TWishlistProduct,
   TPaymentStatus_Enum,
+  TOrder,
 } from "@src/@types/general";
 
 interface GlobalContextProps {
@@ -63,6 +64,9 @@ interface GlobalContextProps {
   setDeliveryAddress: React.Dispatch<React.SetStateAction<string>>;
   paymentStatus: TPaymentStatus_Enum;
   setPaymentStatus: React.Dispatch<React.SetStateAction<TPaymentStatus_Enum>>;
+  orders: TOrder[];
+  getOrders: () => Promise<void>;
+  gettingOrders: boolean;
 }
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -116,4 +120,7 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setDeliveryAddress: () => {},
   paymentStatus: TPaymentStatus_Enum.EMPTY,
   setPaymentStatus: () => {},
+  orders: [],
+  getOrders: async () => {},
+  gettingOrders: false,
 });
