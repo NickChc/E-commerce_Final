@@ -10,7 +10,6 @@ export function useGetOrders() {
     try {
       setLoading(true);
       const response = await privateAxios.get("/purchases");
-      console.log(response);
       setOrders(response?.data);
     } catch (error: any) {
       console.log(error.message);

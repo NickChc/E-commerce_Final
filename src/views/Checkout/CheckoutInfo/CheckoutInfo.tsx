@@ -26,8 +26,7 @@ export function CheckoutInfo({
   const [buying, setBuying] = useState<boolean>(false);
 
   const { usersCountryInfo } = useGetCountry();
-  const { deliveryAddress, setPaymentModal, setPaymentStatus } =
-    useGlobalProvider();
+  const { deliveryAddress, setPaymentStatus } = useGlobalProvider();
 
   const Navigate = useNavigate();
 
@@ -57,8 +56,6 @@ export function CheckoutInfo({
         Navigate("/");
         setPaymentStatus(TPaymentStatus_Enum.GOOD);
       }
-      // OPEN PAYMENT MODAL
-      setPaymentModal(true);
     } catch (error: any) {
       console.log(error.message);
     } finally {

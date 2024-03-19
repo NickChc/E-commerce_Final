@@ -21,6 +21,7 @@ import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { PopUpMessage } from "@src/components/PopUpMessage";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { PaymentMessage } from "@src/components/PaymentMessage";
+import { TPaymentStatus_Enum } from "@src/@types/general";
 
 export function Header() {
   const {
@@ -30,8 +31,7 @@ export function Header() {
     popUpText,
     categoryNavOpen,
     setCategoryNavOpen,
-    paymentModal,
-    setPaymentModal,
+    setPaymentStatus,
     paymentStatus,
   } = useGlobalProvider();
 
@@ -177,12 +177,12 @@ export function Header() {
       <Modal
         small
         scrollBlock
-        open={paymentModal}
-        setOpen={() => setPaymentModal(!paymentModal)}
+        open={paymentStatus !== TPaymentStatus_Enum.EMPTY}
+        setOpen={() => setPaymentStatus(TPaymentStatus_Enum.EMPTY)}
       >
         <PaymentMessage
           status={paymentStatus}
-          closeModal={() => setPaymentModal(false)}
+          closeModal={() => setPaymentStatus(TPaymentStatus_Enum.EMPTY)}
         />
       </Modal>
 

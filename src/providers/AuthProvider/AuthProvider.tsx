@@ -4,6 +4,10 @@ import { TUserTokens } from "@src/@types/requestTypes";
 import { TUserInfo } from "@src/@types/general";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@src/config/localStorageKeys";
 import {
+  USER_CARD_DATA,
+  DELIVERY_ADDRESS,
+} from "@src/config/sessionStorageKeys";
+import {
   privateAxios,
   setPrivateAccessToken,
 } from "@src/utils/privateAxios/privateAxios";
@@ -28,6 +32,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
     localStorage.removeItem(REFRESH_TOKEN);
     setPrivateAccessToken("");
     setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
+    sessionStorage.removeItem(USER_CARD_DATA);
+    sessionStorage.removeItem(DELIVERY_ADDRESS);
   }
 
   async function getUser() {

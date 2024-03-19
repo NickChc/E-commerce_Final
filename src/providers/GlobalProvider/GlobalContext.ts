@@ -39,8 +39,6 @@ interface GlobalContextProps {
   setRegistering: React.Dispatch<React.SetStateAction<boolean>>;
   authModal: boolean;
   setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
-  paymentModal: boolean;
-  setPaymentModal: React.Dispatch<React.SetStateAction<boolean>>;
   popUpText: string;
   setPopUpText: React.Dispatch<React.SetStateAction<string>>;
   getWishlist: () => Promise<void>;
@@ -67,6 +65,8 @@ interface GlobalContextProps {
   orders: TOrder[];
   getOrders: () => Promise<void>;
   gettingOrders: boolean;
+  currOrder: string | undefined;
+  setCurrOrder: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -95,8 +95,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setRegistering: () => {},
   authModal: false,
   setAuthModal: () => {},
-  paymentModal: false,
-  setPaymentModal: () => {},
   popUpText: "",
   setPopUpText: () => {},
   getWishlist: async () => {},
@@ -123,4 +121,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   orders: [],
   getOrders: async () => {},
   gettingOrders: false,
+  currOrder: undefined,
+  setCurrOrder: () => {},
 });

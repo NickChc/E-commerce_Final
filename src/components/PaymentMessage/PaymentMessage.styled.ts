@@ -5,15 +5,15 @@ export const SPaymentMessage = styled.div`
   ${tw`flex flex-col items-center `}
 
   div {
-    ${tw`flex items-center justify-around w-full  gap-x-3 w-[50%] mt-20`}
+    ${tw`flex items-center justify-center xs:justify-around w-full overflow-hidden gap-x-3 mt-20 `}
 
     button {
-      ${tw`duration-75 p-3 w-[40%] `}
+      ${tw`duration-75 p-3 w-fit xs:w-[40%] `}
     }
   }
 
   h2 {
-    ${tw`text-[.8rem] md:text-[1.2rem] whitespace-nowrap `}
+    ${tw`text-[.7rem] xs:text-[.8rem] md:text-[1.2rem] whitespace-nowrap `}
   }
 
   p {

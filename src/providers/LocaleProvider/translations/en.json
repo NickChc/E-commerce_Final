@@ -114,5 +114,11 @@
   "paymentThanks": "THANKS FOR USING OUR SERVICE",
   "date": "DATE",
   "cost": "COST",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "removeOrder": "REMOVE ORDER",
+  "removingOrder": "REMOVING",
+  "orderCancelAssure": "Are you sure you want to cancel the order?",
+  "orderHistoryClean": "YOUR ORDER HISTORY IS CLEAN",
+  "yourCart": "YOUR CART",
+  "back": "BACK"
 }

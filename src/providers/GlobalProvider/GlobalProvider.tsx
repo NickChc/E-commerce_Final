@@ -22,11 +22,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [authModal, setAuthModal] = useState<boolean>(false);
   const [popUpText, setPopUpText] = useState<string>("");
   const [deliveryAddress, setDeliveryAddress] = useState<string>("");
-  const [paymentModal, setPaymentModal] = useState<boolean>(false);
   const [paymentStatus, setPaymentStatus] = useState<TPaymentStatus_Enum>(
     TPaymentStatus_Enum.EMPTY
   );
-
+  const [currOrder, setCurrOrder] = useState<string | undefined>();
   const [categoryNavOpen, setCategoryNavOpen] = useState<boolean>(false);
 
   const { authStage } = useAuthProvider();
@@ -83,7 +82,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   }, [Location.pathname]);
 
   useEffect(() => {
-    // fetchProducts("", false);
     getWishlist();
     getCart();
     getCategories();
@@ -115,8 +113,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         setRegistering,
         authModal,
         setAuthModal,
-        paymentModal,
-        setPaymentModal,
         popUpText,
         setPopUpText,
         getWishlist,
@@ -145,6 +141,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         orders,
         getOrders,
         gettingOrders,
+        currOrder,
+        setCurrOrder,
       }}
     >
       {children}

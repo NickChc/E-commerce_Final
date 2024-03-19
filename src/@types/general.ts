@@ -63,6 +63,7 @@ export interface TPaymentValues {
 export enum TPaymentStatus_Enum {
   GOOD = "good",
   BAD = "bad",
+  CANCEL = "cancel",
   EMPTY = "",
 }
 

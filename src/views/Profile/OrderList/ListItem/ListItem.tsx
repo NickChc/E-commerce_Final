@@ -2,12 +2,21 @@ import { FormattedMessage } from "react-intl";
 import { SListItem } from "@src/views/Profile/OrderList/ListItem";
 import { TOrder } from "@src/@types/general";
 import { CancelIcon } from "@src/assets/icons";
+import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { TPaymentStatus_Enum } from "@src/@types/general";
 
 interface ListItemProps {
   order: TOrder;
 }
 
 export function ListItem({ order }: ListItemProps) {
+  const { setPaymentStatus, setCurrOrder } = useGlobalProvider();
+
+  function handleCancel() {
+    setCurrOrder(order.id);
+    setPaymentStatus(TPaymentStatus_Enum.CANCEL);
+  }
+
   return (
     <SListItem>
       <h4>
@@ -23,10 +32,10 @@ export function ListItem({ order }: ListItemProps) {
         <FormattedMessage id="quantity" defaultMessage={"_QUANTITY_"} /> -{" "}
         {order.totalItems}
       </h4>
-      <button>
+      <button onClick={handleCancel}>
         <FormattedMessage id="cancel" defaultMessage={"_CANCEL_"} />
       </button>
-      <span>
+      <span onClick={handleCancel}>
         <CancelIcon />
       </span>
     </SListItem>

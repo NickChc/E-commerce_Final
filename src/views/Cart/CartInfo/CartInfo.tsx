@@ -21,7 +21,8 @@ export function CartInfo() {
       <div>
         <div>
           <h1>
-            YOUR CART <CartIcon2 />
+            <FormattedMessage id="yourCart" defaultMessage={"_YOUR_CART_"} />{" "}
+            <CartIcon2 />
           </h1>
           <h2>
             <FormattedMessage id="totalCost" defaultMessage={"_TOTAL_COST_"} />:

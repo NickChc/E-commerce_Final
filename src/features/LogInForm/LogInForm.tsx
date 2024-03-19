@@ -148,7 +148,7 @@ export function LogInForm() {
                   id="loggingIn"
                   defaultMessage={"_LOGGING_IN_"}
                 />{" "}
-                <LoadingCircleAnim isSpan />
+                <LoadingCircleAnim isSpan hasColor />
               </>
             ) : (
               <FormattedMessage id="logIn" defaultMessage={"_LOG_IN_"} />
