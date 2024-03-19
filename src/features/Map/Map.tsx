@@ -25,6 +25,7 @@ export function Map() {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         setUserCoords([lat, lng]);
+        searchLocation(`${lat}, ${lng}`);
       });
     }
   }, []);

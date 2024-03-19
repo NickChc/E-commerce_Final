@@ -6,6 +6,7 @@ interface ModalProps {
   open: boolean;
   setOpen: (arg: boolean) => void;
   scrollBlock?: boolean;
+  small?: boolean;
 }
 
 export function Modal({
@@ -13,6 +14,7 @@ export function Modal({
   open,
   setOpen,
   scrollBlock,
+  small,
 }: PropsWithChildren<ModalProps>) {
   const { setRegistering, registering } = useGlobalProvider();
 
@@ -35,7 +37,7 @@ export function Modal({
         }
       }}
     >
-      <SModal registering={registering}>
+      <SModal registering={registering} small={small}>
         <SModalClose
           onClick={() => {
             setOpen(false);

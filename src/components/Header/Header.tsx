@@ -20,6 +20,7 @@ import { useAuthProvider } from "@src/providers/AuthProvider";
 import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { PopUpMessage } from "@src/components/PopUpMessage";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { PaymentMessage } from "@src/components/PaymentMessage";
 
 export function Header() {
   const {
@@ -29,7 +30,11 @@ export function Header() {
     popUpText,
     categoryNavOpen,
     setCategoryNavOpen,
+    paymentModal,
+    setPaymentModal,
+    paymentStatus,
   } = useGlobalProvider();
+
   const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
@@ -166,6 +171,19 @@ export function Header() {
         setOpen={() => setAuthModal(!authModal)}
       >
         {registering ? <RegisterForm /> : <LogInForm />}
+      </Modal>
+
+      {/* PAYMENT MODAL HERE */}
+      <Modal
+        small
+        scrollBlock
+        open={paymentModal}
+        setOpen={() => setPaymentModal(!paymentModal)}
+      >
+        <PaymentMessage
+          status={paymentStatus}
+          closeModal={() => setPaymentModal(false)}
+        />
       </Modal>
 
       {/* FOR POP UP ALERTS */}

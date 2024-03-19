@@ -113,8 +113,6 @@ export function useValidateCheckout() {
       setIsValid(false);
     }
 
-    console.log(currMonth);
-
     // POSTAL CODE
     if (paymentValues.postal === "") {
       errors.postal = formatMessage({

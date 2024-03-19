@@ -4,6 +4,7 @@ import {
   TCategory,
   TProduct,
   TWishlistProduct,
+  TPaymentStatus_Enum,
 } from "@src/@types/general";
 
 interface GlobalContextProps {
@@ -37,6 +38,8 @@ interface GlobalContextProps {
   setRegistering: React.Dispatch<React.SetStateAction<boolean>>;
   authModal: boolean;
   setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
+  paymentModal: boolean;
+  setPaymentModal: React.Dispatch<React.SetStateAction<boolean>>;
   popUpText: string;
   setPopUpText: React.Dispatch<React.SetStateAction<string>>;
   getWishlist: () => Promise<void>;
@@ -58,6 +61,8 @@ interface GlobalContextProps {
   categories: TCategory[];
   deliveryAddress: string;
   setDeliveryAddress: React.Dispatch<React.SetStateAction<string>>;
+  paymentStatus: TPaymentStatus_Enum;
+  setPaymentStatus: React.Dispatch<React.SetStateAction<TPaymentStatus_Enum>>;
 }
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -86,6 +91,8 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setRegistering: () => {},
   authModal: false,
   setAuthModal: () => {},
+  paymentModal: false,
+  setPaymentModal: () => {},
   popUpText: "",
   setPopUpText: () => {},
   getWishlist: async () => {},
@@ -107,4 +114,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   categories: [],
   deliveryAddress: "",
   setDeliveryAddress: () => {},
+  paymentStatus: TPaymentStatus_Enum.EMPTY,
+  setPaymentStatus: () => {},
 });

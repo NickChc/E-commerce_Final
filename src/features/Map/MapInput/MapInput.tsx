@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useIntl } from "react-intl";
 import { SMapInputForm, SMapInputWrapper } from "@src/features/Map/MapInput";
 import { LatLngExpression } from "leaflet";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
@@ -11,6 +12,8 @@ interface MapInputProps {
 
 export function MapInput({ setCoords }: MapInputProps) {
   const [address, setAddress] = useState<string>("");
+
+  const { formatMessage } = useIntl();
 
   const { searchLocation, searchingLocation, locationError } =
     useSearchLocation();
@@ -27,7 +30,10 @@ export function MapInput({ setCoords }: MapInputProps) {
       <p>{locationError}</p>
       <SMapInputForm onSubmit={onSubmit}>
         <input
-          placeholder="Delivery Address"
+          placeholder={formatMessage({
+            id: "deliveryAddress",
+            defaultMessage: "_DELIVERY_ADDRESS_",
+          })}
           name="address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}

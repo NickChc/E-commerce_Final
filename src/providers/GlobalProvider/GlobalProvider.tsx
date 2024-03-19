@@ -12,6 +12,7 @@ import { useGetCart } from "@src/hooks/useGetCart";
 import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
 import { useGetCategories } from "@src/hooks/useGetCategories";
 import { useGetFilteredProducts } from "@src/hooks/useGetFilteredProducts";
+import { TPaymentStatus_Enum } from "@src/@types/general";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
@@ -20,6 +21,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [authModal, setAuthModal] = useState<boolean>(false);
   const [popUpText, setPopUpText] = useState<string>("");
   const [deliveryAddress, setDeliveryAddress] = useState<string>("");
+  const [paymentModal, setPaymentModal] = useState<boolean>(false);
+  const [paymentStatus, setPaymentStatus] = useState<TPaymentStatus_Enum>(
+    TPaymentStatus_Enum.EMPTY
+  );
 
   const [categoryNavOpen, setCategoryNavOpen] = useState<boolean>(false);
 
@@ -108,6 +113,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         setRegistering,
         authModal,
         setAuthModal,
+        paymentModal,
+        setPaymentModal,
         popUpText,
         setPopUpText,
         getWishlist,
@@ -131,6 +138,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         categories,
         deliveryAddress,
         setDeliveryAddress,
+        paymentStatus,
+        setPaymentStatus,
       }}
     >
       {children}

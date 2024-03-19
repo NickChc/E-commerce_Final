@@ -52,11 +52,16 @@ export interface TCartItem {
   updated_at: string;
 }
 
-
 export interface TPaymentValues {
   fullName: string;
   number: string;
   expiry: string;
   cvc: string;
   postal: string;
+}
+
+export enum TPaymentStatus_Enum {
+  GOOD = "good",
+  BAD = "bad",
+  EMPTY = "",
 }

@@ -8,12 +8,17 @@ export const SModalWrapper = styled.div`
 
 interface SModalProps {
   registering?: boolean;
+  small?: boolean;
 }
 
 export const SModal = styled.div<SModalProps>`
   ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90dvh] sm:w-[50%] sm:h-[75vh] xl:w-[40%] border-solid border flex flex-col items-center relative`}
   ${(props) => css`
-    ${props.registering ? tw`sm:h-[75dvh] ` : tw` sm:h-[55dvh] `}
+    ${props.registering
+      ? tw`sm:h-[75dvh] `
+      : props.small
+      ? tw` h-fit sm:h-fit`
+      : tw` sm:h-[55dvh] `}
     background-color: ${props.theme.mode === "DARK" ? "#2b2b2b" : "#4b4b4b"};
     color: ${props.theme.mode === "DARK" ? "#9b9b9b" : "#ffffff"};
     border-color: ${props.theme.colors["additional"]};

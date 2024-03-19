@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { privateAxios } from "@src/utils/privateAxios";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { TPaymentStatus_Enum } from "@src/@types/general";
 
 interface CheckoutInfoProps {
   items: number;
@@ -19,9 +23,13 @@ export function CheckoutInfo({
   gotCard,
 }: CheckoutInfoProps) {
   const [addressConfirmed, setAddressConfirmed] = useState<boolean>(false);
+  const [buying, setBuying] = useState<boolean>(false);
 
   const { usersCountryInfo } = useGetCountry();
-  const { deliveryAddress } = useGlobalProvider();
+  const { deliveryAddress, setPaymentModal, setPaymentStatus } =
+    useGlobalProvider();
+
+  const Navigate = useNavigate();
 
   // IMITATES DIFFERENT SHIPPING COSTS
   function shippingPrice() {
@@ -35,6 +43,28 @@ export function CheckoutInfo({
   }
 
   const shipping = shippingPrice();
+
+  async function buyItems() {
+    try {
+      setBuying(true);
+      const response = await privateAxios.post("/purchases", {
+        totalPrice: totalPrice,
+        totalItems: items,
+      });
+      console.log(response.data);
+      // INFORM USER ON PAYMENT
+      if (response.status < 299 && response.status > 200) {
+        Navigate("/");
+        setPaymentStatus(TPaymentStatus_Enum.GOOD);
+      }
+      // OPEN PAYMENT MODAL
+      setPaymentModal(true);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setBuying(false);
+    }
+  }
 
   return (
     <SCheckoutInfo>
@@ -60,7 +90,7 @@ export function CheckoutInfo({
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h2>
       <h2>
-        <FormattedMessage id="deliverTo" defaultMessage={"_DELIVER_TO_"} /> -{" "}
+        <FormattedMessage id="address" defaultMessage={"_ADDRESS_"} /> -{" "}
         <span>
           {deliveryAddress !== ""
             ? deliveryAddress
@@ -69,15 +99,29 @@ export function CheckoutInfo({
       </h2>
 
       <p>
-        CONFIRM YOUR ADDRESS
+        <FormattedMessage
+          id="confirmAddress"
+          defaultMessage={"_CONFIRM_YOUR_ADDRESS_"}
+        />
         <input
           type="checkbox"
           checked={addressConfirmed}
           onChange={() => setAddressConfirmed((prev) => !prev)}
         />
       </p>
-      <SProductButton disabled={!gotCard || !addressConfirmed}>
-        <FormattedMessage id="buyNow" defaultMessage={"_BUY_NOW_"} />
+      {/* BUYING BUTTON */}
+      <SProductButton
+        disabled={!gotCard || !addressConfirmed}
+        onClick={buyItems}
+      >
+        {buying ? (
+          <>
+            <FormattedMessage id="buying" defaultMessage={"_BUYING_"} />
+            <LoadingCircleAnim isSpan />
+          </>
+        ) : (
+          <FormattedMessage id="buyNow" defaultMessage={"_BUY_NOW_"} />
+        )}
       </SProductButton>
     </SCheckoutInfo>
   );
