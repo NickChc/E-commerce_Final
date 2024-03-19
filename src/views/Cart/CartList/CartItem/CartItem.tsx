@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { TCartItem } from "@src/@types/general";
@@ -11,7 +11,6 @@ import {
   SSaleTag,
 } from "@src/views/Cart/CartList/CartItem";
 import { ProductImg } from "@src/components/ProductImg";
-import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon, MinusIcon, TrashIcon } from "@src/assets/icons";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useAddToCart } from "@src/hooks/useAddToCart";
@@ -30,12 +29,15 @@ export function CartItem({ item }: CartItemProps) {
   const { addToCart, addingToCart } = useAddToCart();
   const { removeCartItem, removingCartItem } = useRemoveCartItem();
 
+  useEffect(() => {
+    setCount(item.count);
+  }, [item.count]);
+
   return (
     <SCartItem show={show}>
       <SImgWrapper>
         <ProductImg
           src={item.cartProduct.image}
-          fallbackSrc={PlaceholderImg}
           alt="cart item image"
           loaded={imageLoaded}
           onLoad={() => setImageLoaded(true)}
@@ -110,11 +112,7 @@ export function CartItem({ item }: CartItemProps) {
               setCount(count + 1);
             }}
           >
-            {addingToCart ? (
-                <LoadingCircleAnim />
-            ) : (
-              <PlusIcon />
-            )}
+            {addingToCart ? <LoadingCircleAnim /> : <PlusIcon />}
           </button>
           <p
             onClick={() => {

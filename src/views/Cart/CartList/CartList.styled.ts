@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCartList = styled.div`
-  ${tw`flex flex-col items-stretch p-3 w-[95%] sm:w-[80%] lg:w-[50%] `}
+  ${tw`flex flex-col items-stretch p-3 w-[95%] sm:w-[80%] lg:w-[50%] h-[320px] lg:h-auto lg:max-h-[50dvh] overflow-y-auto `}
 `;
 
 export const SEmptyView = styled.div`

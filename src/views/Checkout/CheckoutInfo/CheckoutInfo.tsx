@@ -50,7 +50,6 @@ export function CheckoutInfo({
         totalPrice: totalPrice,
         totalItems: items,
       });
-      console.log(response.data);
       // INFORM USER ON PAYMENT
       if (response.status < 299 && response.status > 200) {
         Navigate("/");

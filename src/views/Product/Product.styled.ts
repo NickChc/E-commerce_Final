@@ -6,7 +6,7 @@ interface PriceProps {
 }
 
 export const SProduct = styled.div`
-  ${tw`min-h-dvh w-full px-3 sm:w-[80%] flex flex-col items-center border-solid border border-y-0`}
+  ${tw`min-h-dvh w-full px-3 pb-6 sm:w-[80%] flex flex-col items-center border-solid border border-y-0`}
   ${(props) => css`
     color: ${props.theme.colors["primary"]};
     background-color: ${props.theme.colors["secondary"]};
@@ -53,12 +53,14 @@ export const SProductMain = styled.div`
 `;
 
 export const SProductInfo = styled.div<PriceProps>`
-  ${tw`flex flex-col gap-y-3 mt-3 px-1 sm:px-3 whitespace-nowrap relative sm:min-w-[55%] text-[.7rem] sm:text-[1rem] `}
+  ${tw`w-full overflow-x-hidden flex flex-col gap-y-3 mt-3 px-1 sm:px-3 whitespace-nowrap relative sm:min-w-[55%] text-[.7rem] sm:text-[1rem] `}
   ${(props) => css`
-    ${props.isSale && tw`pt-14 lg:pt-6`}
+    ${props.isSale && tw`pt-14 lg:pt-9`}
   `}
-  
-  
+
+   h2 {
+    ${tw`text-[1rem] lg:text-[1.4rem] `}
+  }
 
   p {
     ${tw`whitespace-normal `}
@@ -72,14 +74,14 @@ export const SProductInfo = styled.div<PriceProps>`
 `;
 
 export const STextPair = styled.div`
-  ${tw`flex items-center gap-x-3 `}
+  ${tw`flex items-start gap-x-3 `}
 
   p {
     ${tw`whitespace-nowrap`}
   }
 
   h3 {
-    ${tw`text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem]  `}
+    ${tw`whitespace-normal text-[.8rem] xs:text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem]   `}
   }
 `;
 

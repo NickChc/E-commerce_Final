@@ -19,6 +19,10 @@ export const SProfile = styled.div`
       color: ${props.theme.colors["primary"]};
     `}
   }
+
+  h3 {
+    ${tw`mt-6 `}
+  }
 `;
 
 export const SUserLayer = styled.div`

@@ -1,2 +1,2 @@
-export { SCheckoutProducts } from "./Checkoutproducts.styled";
+export { SCheckoutProducts } from "./CheckoutProducts.styled";
 export { CheckoutProducts } from "./CheckoutProducts";

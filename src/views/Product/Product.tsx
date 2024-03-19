@@ -18,7 +18,6 @@ import {
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
-import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
 import { TAuthStage_Enum } from "@src/providers/AuthProvider";
@@ -36,11 +35,8 @@ export function Product() {
   const [inCart, setInCart] = useState<boolean>(false);
 
   const { productId } = useParams();
-
   const { formatMessage } = useIntl();
-
   const { authStage } = useAuthProvider();
-
   const { addToCart, addingToCart } = useAddToCart();
 
   const {
@@ -108,7 +104,6 @@ export function Product() {
             <SProductMain>
               <ProductImg
                 src={product?.image}
-                fallbackSrc={PlaceholderImg}
                 alt="product image"
                 loaded={imageLoaded}
                 onLoad={() => setImageLoaded(true)}
@@ -263,17 +258,7 @@ export function Product() {
                 expedita ullam ea fugiat asperiores id alias mollitia totam.
                 Saepe vel adipisci rem, aliquam id beatae consectetur voluptate
                 dolorem eligendi dolore, deleniti, reiciendis nostrum porro
-                animi! Dolores rem deserunt itaque dolore, soluta amet corporis
-                maiores in veritatis error modi rerum omnis minus quisquam
-                maxime ratione, esse ducimus quos. Reiciendis earum nobis
-                dolorem voluptate, est tenetur, corporis vitae rerum facilis
-                velit amet, nesciunt sit. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Fugiat optio quos exercitationem in
-                accusantium quidem nemo omnis veniam consectetur excepturi
-                obcaecati, consequuntur, placeat sit molestiae, dolor
-                perspiciatis! Blanditiis nam dicta beatae iusto ut amet a, vitae
-                temporibus quidem dolorem mollitia incidunt sunt dolores error
-                dolor ab iure sapiente cumque dignissimos.
+                animi! Dolores rem deserunt itaque dolore, soluta amet.
               </p>
             </SProductInfo>
           </SProductMainWrapper>

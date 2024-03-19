@@ -8,7 +8,6 @@ import {
 import { TProduct } from "@src/@types/general";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductImg } from "@src/components/ProductImg";
-import PlaceholderImage from "@src/assets/images/PlaceholderImg.jpg";
 
 interface SearchedItemProps {
   item: TProduct;
@@ -31,7 +30,6 @@ export function SearchedItem({ item }: SearchedItemProps) {
       <div>
         <ProductImg
           src={item.image}
-          fallbackSrc={PlaceholderImage}
           alt="list item image"
           loaded={imageLoaded}
           onLoad={() => setImageLoaded(true)}

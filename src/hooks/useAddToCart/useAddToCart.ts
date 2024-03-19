@@ -8,7 +8,6 @@ export function useAddToCart() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const { authStage } = useAuthProvider();
-
   const { getCart } = useGlobalProvider();
 
   async function addToCart(id: string) {

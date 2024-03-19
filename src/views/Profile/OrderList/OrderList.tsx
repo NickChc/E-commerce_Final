@@ -13,6 +13,7 @@ export function OrderList() {
 
   return (
     <SOrderList>
+      <h1>ORDERS</h1>
       {orders.length < 1 ? (
         <h2>
           <FormattedMessage

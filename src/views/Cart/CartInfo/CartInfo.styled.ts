@@ -8,10 +8,12 @@ export const SCartInfo = styled.div`
     background-color: #d3d3d3;
   `}
 
-  
+  button {
+    ${tw`mt-3 `}
+  }
 
   div {
-    ${tw`gap-y-3 lg:gap-y-6 flex flex-col items-center px-3 sm:px-6 md:px-9 md:w-[35vw] md:h-[40dvh] `}
+    ${tw`gap-y-3 lg:gap-y-6 flex flex-col items-center px-3 sm:px-6 md:px-9 md:w-[35vw] `}
 
     div {
       ${tw`flex flex-col items-start w-fit h-full `}

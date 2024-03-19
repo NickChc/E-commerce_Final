@@ -8,7 +8,14 @@ export const SListItem = styled.li`
   `}
 
   h4 {
-    ${tw`whitespace-nowrap overflow-x-hidden `}
+    ${tw`whitespace-nowrap overflow-x-hidden flex flex-row items-center `}
+
+    span {
+      ${tw`grid place-items-center sm:min-w-[4rem] mt-0 text-[.55rem] xs:text-[.7rem] sm:text-[.9rem] md:text-[1.2rem] `}
+      ${(props) => css`
+        color: ${props.theme.colors["primary"]};
+      `}
+    }
   }
 
   button {

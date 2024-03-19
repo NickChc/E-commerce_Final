@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { useIntl } from "react-intl";
 import { SProfile, SUserLayer } from "@src/views/Profile";
 import { TChangeableUserData } from "@src/@types/requestTypes";
 import { UserInfo } from "@src/views/Profile/UserInfo";
 import { UpdateForm } from "@src/views/Profile/UpdateForm";
-import { ProductSlider } from "@src/components/ProductSlider";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { TProduct } from "@src/@types/general";
 import { OrderList } from "@src/views/Profile/OrderList";
+import { WishlistSlider } from "@src/components/WishlistSlider";
 
 export function Profile() {
   const { userData } = useAuthProvider();
@@ -18,8 +17,6 @@ export function Profile() {
   const { wishlist } = useGlobalProvider();
 
   const { locale } = useLocaleProvider();
-
-  const { formatMessage } = useIntl();
 
   const wishlistProducts: TProduct[] = wishlist?.map(
     (item) => item.likedProduct
@@ -81,10 +78,7 @@ export function Profile() {
             : null}
         </h1>
       )}
-      <ProductSlider
-        products={wishlistProducts}
-        title={formatMessage({ id: "wishlist", defaultMessage: "_WISHLIST_" })}
-      />
+      <WishlistSlider />
     </SProfile>
   );
 }

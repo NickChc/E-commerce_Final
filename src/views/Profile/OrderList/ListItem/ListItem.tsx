@@ -25,7 +25,7 @@ export function ListItem({ order }: ListItemProps) {
       </h4>
       <h4>
         <FormattedMessage id="cost" defaultMessage={"_COST_"} /> -{" "}
-        {order.totalPrice}{" "}
+        <span>{order.totalPrice}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h4>
       <h4>

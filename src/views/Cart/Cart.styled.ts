@@ -7,6 +7,10 @@ export const SCart = styled.div`
     color: ${props.theme.colors["primary"]};
     background: ${props.theme.colors["secondary"]};
   `}
+
+  hr {
+    ${tw`w-[55%] my-3 `}
+  }
 `;
 
 export const SCartInfoWrapperSm = styled.div`
@@ -19,4 +23,8 @@ export const SCartInfoWrapperSm = styled.div`
 
 export const SCartInfoWrapperLg = styled.div`
   ${tw`hidden lg:block fixed `}
+`;
+
+export const SSliderWrapper = styled.div`
+  ${tw`w-full lg:hidden `}
 `;
