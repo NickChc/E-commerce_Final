@@ -7,8 +7,5 @@ export {
   SSaleTag,
   SAdditionalInfo,
   STextPair,
-  SDoubleBtn,
-  SButtonsWrapper,
-  SProductMain,
 } from "./Product.styled";
 export { Product as default } from "./Product";

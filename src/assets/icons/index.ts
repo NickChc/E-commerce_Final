@@ -28,4 +28,5 @@ export {
   ListIcon,
   CancelIcon,
   PresentIcon,
+  CheckIcon,
 } from "./icons";

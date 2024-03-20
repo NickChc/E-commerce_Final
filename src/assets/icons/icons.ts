@@ -27,6 +27,8 @@ export { FaCartPlus as CartPlusIcon } from "react-icons/fa";
 export { FaList as ListIcon } from "react-icons/fa";
 export { TiCancel as CancelIcon } from "react-icons/ti";
 export { GiPresent as PresentIcon } from "react-icons/gi";
+export { FaCheck as CheckIcon } from "react-icons/fa6";
+
 
 
 

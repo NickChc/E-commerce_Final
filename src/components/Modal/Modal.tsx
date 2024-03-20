@@ -1,6 +1,7 @@
 import { PropsWithChildren, useEffect } from "react";
 import { SModalWrapper, SModal, SModalClose } from "@src/components/Modal";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { CloseIcon } from "@src/assets/icons";
 
 interface ModalProps {
   open: boolean;
@@ -44,7 +45,7 @@ export function Modal({
             setRegistering(false);
           }}
         >
-          X
+          <CloseIcon />
         </SModalClose>
         {children}
       </SModal>

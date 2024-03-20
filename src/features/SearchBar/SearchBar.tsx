@@ -39,11 +39,16 @@ export function SearchBar() {
 
   function closeSearch() {
     setOpenSearch(false);
-    window.removeEventListener("click", closeSearch);
   }
 
   useEffect(() => {
-    window.addEventListener("click", closeSearch);
+    if (openSearch) {
+      window.addEventListener("click", closeSearch);
+
+      return () => {
+        window.removeEventListener("click", closeSearch);
+      };
+    }
   }, [openSearch]);
 
   return (

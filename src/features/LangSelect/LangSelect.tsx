@@ -16,20 +16,22 @@ export function LangSelect() {
   const { setLocale, locale } = useLocaleProvider();
   const [showLangPopup, setShowLangPopup] = useState<boolean>(false);
 
-
   // CLOSE LANGSELECT POPUP ON OUTSIDE CLICK
 
   function closeLangPopup() {
     setShowLangPopup(false);
-    document.removeEventListener("click", closeLangPopup);
   }
 
   // CLEANUP FUNCTION THAT REMOVES EVENTLISTENER FROM DOCUMENT
 
   useEffect(() => {
-    if (!showLangPopup) return;
+    if (showLangPopup) {
+      document.addEventListener("click", closeLangPopup);
 
-    document.addEventListener("click", closeLangPopup);
+      return () => {
+        document.removeEventListener("click", closeLangPopup);
+      };
+    }
   }, [showLangPopup]);
 
   return (
@@ -68,7 +70,10 @@ export function LangSelect() {
             setShowLangPopup(!showLangPopup);
           }}
         >
-          <img src={locale === TLocale_Enum.EN ? USFlag : GeoFlag} alt="Flag images" />
+          <img
+            src={locale === TLocale_Enum.EN ? USFlag : GeoFlag}
+            alt="Flag images"
+          />
         </SLangButton>
       </SLangSelect>
     </SLangWrapper>

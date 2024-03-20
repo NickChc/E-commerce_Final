@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
-import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import {
   SProduct,
   SProductMainWrapper,
@@ -11,82 +10,30 @@ import {
   SSaleTag,
   SAdditionalInfo,
   STextPair,
-  SDoubleBtn,
-  SButtonsWrapper,
-  SProductMain,
 } from "@src/views/Product";
-import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
-import { PlusIcon } from "@src/assets/icons";
 import { calculateSale } from "@src/utils/calculateSale";
-import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { useAuthProvider } from "@src/providers/AuthProvider";
-import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
-import { ProductImg } from "@src/components/ProductImg";
-import { FaCheck as CheckIcon } from "react-icons/fa6";
-import { useAddToCart } from "@src/hooks/useAddToCart";
+import { FunctionalSide } from "@src/views/Product/FunctionalSide";
 
 export function Product() {
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
-  const [isLiked, setIsLiked] = useState<boolean>(false);
-  const [inCart, setInCart] = useState<boolean>(false);
-
   const { productId } = useParams();
   const { formatMessage } = useIntl();
-  const { authStage } = useAuthProvider();
-  const { addToCart, addingToCart } = useAddToCart();
 
-  const {
-    product,
-    productLoading,
-    fetchSingleProduct,
-    products,
-    toggleWishlist,
-    wishlist,
-    addingToWishlist,
-    removingWishlistItem,
-    setAuthModal,
-    cartItems,
-  } = useGlobalProvider();
-
-  const { locale } = useLocaleProvider();
-
-  const Navigate = useNavigate();
+  const { product, productLoading, fetchSingleProduct, products } =
+    useGlobalProvider();
 
   const recommended = products?.filter(
     (item) => item.category_name === product?.category_name
   );
-
-  function handleCartAdding() {
-    if (authStage !== TAuthStage_Enum.AUTHORIZED) {
-      setAuthModal(true);
-      return;
-    }
-    // IF ITEM IS IN CART, NAVIGATE TO CART. ELSE ADD ITEM TO CART
-    if (inCart) {
-      Navigate("/cart");
-    } else if (productId) {
-      addToCart(productId);
-      setInCart(true);
-    }
-  }
 
   useEffect(() => {
     if (productId) {
       fetchSingleProduct(productId);
     }
   }, [productId]);
-
-  useEffect(() => {
-    const liked = wishlist?.some((product) => product.product_id === productId);
-    setIsLiked(liked);
-
-    const isInCart = cartItems?.some((item) => item.product_id === productId);
-    setInCart(isInCart);
-  }, [wishlist, cartItems]);
 
   return (
     <SProduct>
@@ -101,115 +48,9 @@ export function Product() {
         <>
           <BreadCrumbMenu item={product} />
           <SProductMainWrapper>
-            <SProductMain>
-              <ProductImg
-                src={product?.image}
-                alt="product image"
-                loaded={imageLoaded}
-                onLoad={() => setImageLoaded(true)}
-              />
 
-              {/* BUTTONS FOR MANAGING CARD AND WISHLIST */}
-              <SButtonsWrapper>
-                <SProductButton
-                  variation="primary"
-                  onClick={() => {
-                    Navigate(`/checkout/${productId}`);
-                  }}
-                >
-                  <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
-                </SProductButton>
-                <SDoubleBtn>
-                  <SProductButton
-                    side="left"
-                    onClick={() => {
-                      if (authStage !== TAuthStage_Enum.AUTHORIZED) {
-                        setAuthModal(true);
-                        return;
-                      }
-                      productId && toggleWishlist(productId);
-                      if (isLiked) {
-                        setIsLiked(false);
-                      } else {
-                        setIsLiked(true);
-                      }
-                    }}
-                  >
-                    {removingWishlistItem ? (
-                      <>
-                        <FormattedMessage
-                          id="removing"
-                          defaultMessage={"_REMOVING_"}
-                        />{" "}
-                        <LoadingCircleAnim isSpan />
-                      </>
-                    ) : addingToWishlist ? (
-                      <>
-                        <FormattedMessage
-                          id="adding"
-                          defaultMessage={"_ADDING_"}
-                        />{" "}
-                        <LoadingCircleAnim isSpan />
-                      </>
-                    ) : isLiked && authStage === TAuthStage_Enum.AUTHORIZED ? (
-                      <FormattedMessage
-                        id="wishlistRemove"
-                        defaultMessage={"_REMOVE_"}
-                      />
-                    ) : (
-                      <>
-                        <FormattedMessage
-                          id="addToWishList"
-                          defaultMessage={"_TO WISHLIST_"}
-                        />
-                        {locale === TLocale_Enum.KA && <PlusIcon />}
-                      </>
-                    )}
-                  </SProductButton>
-                  <SProductButton side="right" onClick={handleCartAdding}>
-                    {addingToCart ? (
-                      <>
-                        <FormattedMessage
-                          id="adding"
-                          defaultMessage={"_ADDING_"}
-                        />
-                        <LoadingCircleAnim isSpan />
-                      </>
-                    ) : inCart ? (
-                      <FormattedMessage
-                        id="viewInCart"
-                        defaultMessage={"_VIEW_IN_CART_"}
-                      />
-                    ) : (
-                      <FormattedMessage
-                        id="addToCart"
-                        defaultMessage={"_TO_CART_"}
-                      />
-                    )}
-                  </SProductButton>
-                </SDoubleBtn>
-                <h5>
-                  {" "}
-                  {isLiked &&
-                    !addingToWishlist &&
-                    (locale === TLocale_Enum.EN ? (
-                      <>
-                        ADDED TO <Link to={"/profile"}>WISHLIST</Link>{" "}
-                        <span>
-                          <CheckIcon />
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        დამატებულია <a href="/profile">სასურველებში</a>{" "}
-                        <span>
-                          <CheckIcon />
-                        </span>
-                      </>
-                    ))}
-                </h5>
-              </SButtonsWrapper>
-            </SProductMain>
+            {/* FUNCTIONAL SIDE (LEFT) */}
+            <FunctionalSide product={product} />
 
             {/* PRODUCT INFO ON THE RIGHT SIDE */}
             <SProductInfo isSale={product?.salePrice !== null}>

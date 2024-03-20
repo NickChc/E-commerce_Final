@@ -26,7 +26,7 @@ export const SModal = styled.div<SModalProps>`
   `}
 `;
 export const SModalClose = styled.span`
-  ${tw`w-[1em] h-[1em] text-[1.2em] cursor-pointer select-none absolute right-2 top-2 flex items-center justify-center rounded-full p-3 border-solid border duration-75`}
+  ${tw`text-[1.4rem] grid place-items-center cursor-pointer select-none absolute right-2 top-2 rounded-full p-1 border-solid border duration-75 `}
   ${(props) => css`
     border-color: transparent;
     color: ${props.theme.mode === "DARK" ? "#5b5b5b" : "#8b8b8b"};
