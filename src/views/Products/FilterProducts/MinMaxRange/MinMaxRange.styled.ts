@@ -18,7 +18,7 @@ export const SSliderHolder = styled.div`
     `}
 
     .thumb {
-      ${tw`w-[1.2rem] h-[1.2rem] lg:w-[1.5rem] lg:h-[1.5rem] rounded-[50%] cursor-grab active:cursor-grabbing border-solid border top-[50%] translate-y-[-50%] outline-none`}
+      ${tw`w-[1.2rem] h-[1.2rem]  rounded-[50%] cursor-grab active:cursor-grabbing border-solid border top-[50%] translate-y-[-50%] outline-none`}
       ${(props) => css`
         background: ${props.theme.colors["additional"]};
         border-color: ${props.theme.colors["secondary"]};

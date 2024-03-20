@@ -9,6 +9,7 @@ import { ProductCard } from "@src/components/ProductCard";
 import { FilterProducts } from "@src/views/Products/FilterProducts";
 import { Pagination } from "@src/components/Pagination";
 import { ListIcon } from "@src/assets/icons";
+import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function Products() {
   const { filteredProducts, gettingFiltered } = useGlobalProvider();
@@ -25,6 +26,10 @@ export function Products() {
                 <span>PRODUCTS NOT FOUND</span>
               </div>
             </SEmptyWrapper>
+          ) : gettingFiltered ? (
+            <h1>
+              LOADING <LoadingCircleAnim />
+            </h1>
           ) : (
             filteredProducts?.map((product) => {
               return <ProductCard key={product.id} product={product} />;

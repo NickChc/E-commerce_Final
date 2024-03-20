@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import Slider from "react-slider";
 import {
@@ -25,6 +25,8 @@ export function MinMaxRange({
   saleOnly,
 }: MinMaxRangeProps) {
   const { getFilteredProducts } = useGlobalProvider();
+
+  const Navigate = useNavigate();
 
   const { categoryName, page } = useParams();
 
@@ -56,6 +58,7 @@ export function MinMaxRange({
                 priceRange,
                 Number(page)
               );
+              Navigate(`/products/${categoryName}/1`);
             }
           }}
           step={max > 1000 ? 20 : max > 500 ? 10 : 5}
