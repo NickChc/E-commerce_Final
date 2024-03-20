@@ -4,47 +4,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { TProduct } from "@src/@types/general";
 import { ProductCard } from "@src/components/ProductCard";
-import {
-  SProductSliderWrapper,
-  SCustomArrow,
-} from "@src/components/ProductSlider";
-import { LeftArrow, RightArrow } from "@src/assets/icons";
+import { SProductSliderWrapper } from "@src/components/ProductSlider";
+import { CustomArrow } from "@src/components/ProductSlider/CustomArrow";
 
 interface ProductSliderProps {
   products: TProduct[];
   title?: string;
 }
 
-interface CustomArrowProps {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
 export function ProductSlider({ products, title }: ProductSliderProps) {
   const [swiping, setSwiping] = useState<boolean>(false);
-
-  function LeftCustomArrow({ onClick }: CustomArrowProps) {
-    return (
-      <SCustomArrow
-        side="left"
-        onClick={onClick}
-        disabled={products.length <= 5}
-      >
-        <LeftArrow />
-      </SCustomArrow>
-    );
-  }
-
-  function RightCustomArrow({ onClick }: CustomArrowProps) {
-    return (
-      <SCustomArrow
-        side="right"
-        onClick={onClick}
-        disabled={products.length <= 5}
-      >
-        <RightArrow />
-      </SCustomArrow>
-    );
-  }
 
   if (products.length === 0) return;
 
@@ -56,10 +25,9 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: false,
-    autoplaySpeed: 6000,
     arrows: true,
-    prevArrow: <LeftCustomArrow />,
-    nextArrow: <RightCustomArrow />,
+    prevArrow: <CustomArrow side="left" disabled={products.length < 5} />,
+    nextArrow: <CustomArrow side="right" disabled={products.length < 5} />,
     swipe: products.length > 5,
     swipeToSlide: true,
     beforeChange: () => setSwiping(true),

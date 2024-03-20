@@ -14,6 +14,7 @@ import { formatPhoneNumber } from "@src/utils/formatPhoneNumber";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 import { TChangeableUserData } from "@src/@types/requestTypes";
 import { ThemeSelect } from "@src/features/ThemeSelect";
+import { formatDate } from "@src/utils/formatDate";
 
 interface UserInfoProps {
   toggleEdit: (arg: keyof TChangeableUserData) => void;
@@ -64,7 +65,7 @@ export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
           <FormattedMessage id="phone" defaultMessage={"_PHONE_NUMBER_"} />:{" "}
           <SValue>
             {usersCountryInfo?.country_calling_code || "   "}{" "}
-            {userData && formatPhoneNumber(userData.phone_number)}
+            {userData && formatPhoneNumber(userData?.phone_number)}
           </SValue>
         </h2>
         <h2>
@@ -72,10 +73,7 @@ export function UserInfo({ toggleEdit, currentEdit }: UserInfoProps) {
             id="lastUpdated"
             defaultMessage={"_LAST_UPDATED_"}
           />
-          :{" "}
-          <SValue>
-            {userData?.updated_at.split("T")[0].replace(/\-/g, "/")}
-          </SValue>
+          : <SValue>{userData && formatDate(userData.updated_at)}</SValue>
         </h2>
         <h2>
           <FormattedMessage

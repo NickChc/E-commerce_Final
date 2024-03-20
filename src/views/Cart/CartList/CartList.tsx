@@ -10,7 +10,7 @@ export function CartList() {
 
   return (
     <SCartList>
-      {cartItems.length < 1 && (
+      {cartItems.length < 1 ? (
         <SEmptyView>
           {gettingCart ? (
             <h1>
@@ -30,6 +30,10 @@ export function CartList() {
             </>
           )}
         </SEmptyView>
+      ) : (
+        <h1>
+          <FormattedMessage id="cartItems" defaultMessage={"_CART_ITEMS_"} />
+        </h1>
       )}
       {cartItems?.map((item) => {
         return <CartItem key={item.id} item={item} />;

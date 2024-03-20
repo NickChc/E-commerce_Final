@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCartInfo = styled.div`
-  ${tw`flex flex-col justify-between py-4 p-3 min-w-[30vw] w-[70%] md:w-auto md:w-[55vw] sm:w-[40%] min-h-[30dvh] lg:min-h-[40dvh] border-none lg:border-solid lg:border lg:fixed lg:border-t-0 lg:right-[5%] rounded-b-lg rounded-t-[0] mb-1 lg:px-6  `}
+  ${tw`flex flex-col justify-between py-4 p-3 min-w-[30vw] w-[70%] md:w-auto md:w-[55vw] sm:w-[40%] min-h-[30dvh] lg:min-h-[40dvh] border-none lg:border-solid lg:border lg:fixed lg:border-t-0 lg:right-[5%] rounded-b-lg rounded-t-[0] mb-1 lg:px-6 z-20 `}
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
     background-color: #d3d3d3;

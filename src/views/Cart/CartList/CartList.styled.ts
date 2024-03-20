@@ -2,11 +2,15 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCartList = styled.div`
-  ${tw`flex flex-col items-stretch p-3 w-[95%] sm:w-[80%] lg:w-[50%] h-[320px] lg:h-auto lg:max-h-[50dvh] overflow-y-auto `}
+  ${tw`flex flex-col items-center p-3 w-[95%] sm:w-[80%] lg:w-[50%] h-[320px] lg:h-auto lg:max-h-[50dvh] overflow-y-auto overflow-x-hidden `}
+
+  h1 {
+    ${tw`text-[1rem] xs:text-[1.2rem] sm:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mb-1 `}
+  }
 `;
 
 export const SEmptyView = styled.div`
-  ${tw`flex flex-col items-center  lg:mt-[15dvh] lg:mt-20 text-[.6rem] sm:text-[.8rem] md:text-[1rem] lg:text-[1.2rem] xl:text-[1.4rem] `}
+  ${tw`flex flex-col items-center  lg:mt-[15dvh] lg:mt-20 text-[.6rem] sm:text-[.8rem] md:text-[1rem] lg:text-[1.2rem] xl:text-[1.8rem] `}
 
   span {
     ${tw`text-[8rem] mt-6 relative `}

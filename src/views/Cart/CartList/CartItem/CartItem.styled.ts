@@ -6,17 +6,18 @@ interface CartItemProps {
 }
 
 export const SCartItem = styled.div<CartItemProps>`
-  ${tw`border border-solid rounded-lg flex flex-row items-center sm:items-start lg:items-center justify-between relative  shadow-lg transition-all duration-700 origin-top  `}
+  ${tw`w-full border border-solid rounded-lg flex flex-row items-center sm:items-start lg:items-center justify-between relative  shadow-lg transition-all duration-700 origin-top  `}
   ${(props) => css`
     ${!props.show
       ? tw`scale-[0] p-0 max-h-0 opacity-[0] m-0 `
       : tw`scale-[1] opacity-[1] p-2 max-h-[15rem] my-2 lg:mt-9 `}
 
     border-color: ${props.theme.colors["additional"]};
+    background-color: rgb(211, 211, 211);
   `}
 
   a {
-    ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mt-1 sm:truncate max-w-[8rem] xs:max-w-[12rem] sm:max-w-[15rem] lg:max-w-[12rem] xl:max-w-[16rem] truncate `}
+    ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mt-1 max-w-[8rem] xs:max-w-[12rem] sm:max-w-[20rem] lg:max-w-[12rem] xl:max-w-full truncate xl:whitespace-normal xl:text-clip `}
     ${(props) => css`
       color: ${props.theme.colors["primary"]};
     `}
@@ -27,7 +28,7 @@ export const SCartItem = styled.div<CartItemProps>`
   }
 
   h3 {
-    ${tw`text-[.75rem] sm:text-[.8rem] md:text-[1rem] xl:text-[1.2rem] truncate `}
+    ${tw`text-[.75rem] sm:text-[.8rem] md:text-[1rem] xl:text-[1.2rem] truncate mt-2 `}
   }
 
   img {

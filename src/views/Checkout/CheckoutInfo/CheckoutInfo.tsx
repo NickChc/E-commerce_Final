@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
@@ -61,6 +61,12 @@ export function CheckoutInfo({
       setBuying(false);
     }
   }
+
+
+
+  useEffect(() => {
+    setAddressConfirmed(false);
+  }, [deliveryAddress])
 
   return (
     <SCheckoutInfo>

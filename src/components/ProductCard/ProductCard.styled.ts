@@ -24,7 +24,9 @@ export const SProductCard = styled.div`
 
   h2 {
     ${tw`  whitespace-nowrap `}
-    color: #6e6e6e;
+    ${(props) => css`
+      color: ${props.theme.colors["secondary_text"]};
+    `}
   }
 `;
 

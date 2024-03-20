@@ -69,7 +69,10 @@ export function CartInfo() {
               }
             }}
           >
-            RESTORE LAST REMOVED ITEM{" "}
+            <FormattedMessage
+              id="restoreCartItem"
+              defaultMessage={"_RESTORE_LAST_REMOVED_ITEM_"}
+            />{" "}
             <span>
               <CartPlusIcon />
             </span>

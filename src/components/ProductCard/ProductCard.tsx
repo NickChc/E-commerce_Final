@@ -94,6 +94,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
       <SCardButtonWrapper>
         {/* BUY BUTTON */}
         <SProductButton
+          variation="primary"
           onClick={(e) => {
             e.stopPropagation();
             handleBuying();
@@ -102,6 +103,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
           <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
         </SProductButton>
         <SProductButton
+          variation="primary"
           onClick={(e) => {
             e.stopPropagation();
             handleCartAdding();

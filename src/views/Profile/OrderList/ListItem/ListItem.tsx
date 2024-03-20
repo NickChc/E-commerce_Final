@@ -4,6 +4,7 @@ import { TOrder } from "@src/@types/general";
 import { CancelIcon } from "@src/assets/icons";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { TPaymentStatus_Enum } from "@src/@types/general";
+import { formatDate } from "@src/utils/formatDate";
 
 interface ListItemProps {
   order: TOrder;
@@ -21,7 +22,7 @@ export function ListItem({ order }: ListItemProps) {
     <SListItem>
       <h4>
         <FormattedMessage id="date" defaultMessage={"_DATE_"} /> -{" "}
-        {order.created_at.split("T")[0].replace(/\-/g, "/")}
+        {formatDate(order.created_at)}
       </h4>
       <h4>
         <FormattedMessage id="cost" defaultMessage={"_COST_"} /> -{" "}

@@ -1,5 +1,6 @@
 import { createContext } from "react";
-import { TUserInfo, TUserTokens } from "@src/@types/requestTypes";
+import { TUserTokens } from "@src/@types/requestTypes";
+import { TUserInfo } from "@src/@types/general";
 
 export enum TAuthStage_Enum {
   PENDING = "pending",

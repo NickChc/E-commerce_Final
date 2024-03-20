@@ -57,7 +57,7 @@ export function CartItem({ item }: CartItemProps) {
             <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
           </h3>
           <div>
-            {/* FOR INCREASING / DECREASING CART ITEM ON SMALL SCREENS */}
+            {/* FOR INCREASING / DECREASING CART ITEMS ON SMALL SCREENS */}
             <SCountBtnHolder>
               <button
                 disabled={removingCartItem}

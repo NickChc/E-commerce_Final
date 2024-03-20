@@ -1,2 +1,2 @@
-export { SProductSliderWrapper, SCustomArrow } from "./productSlider.styled";
+export { SProductSliderWrapper } from "./productSlider.styled";
 export { ProductSlider } from "./ProductSlider";

@@ -4,6 +4,7 @@ import { SInputWrapper, SInput, SInputButton } from "@src/features/SearchBar";
 import { SearchList } from "@src/components/SearchList";
 import { SearchIcon, CloseIcon } from "@src/assets/icons";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import _ from "lodash";
 
 export function SearchBar() {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
@@ -19,11 +20,16 @@ export function SearchBar() {
     setSearchKeyWord,
   } = useGlobalProvider();
 
+  // SET TIMER AFTER CHANGING INPUT
+  const debounceFetchSearched = _.debounce((keyWord: string) => {
+    fetchProducts(keyWord);
+  }, 500);
+
   // HANDLES CHANGE OF SEARCH INPUT
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchKeyWord(e.target.value);
     if (searchKeyWord.length > 1) {
-      fetchProducts(searchKeyWord);
+      debounceFetchSearched(searchKeyWord);
     }
     if (e.target.value.length > 2) {
       setOpenSearch(true);

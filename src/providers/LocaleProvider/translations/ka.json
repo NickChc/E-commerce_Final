@@ -120,5 +120,7 @@
   "orderCancelAssure": "ნამდვილად გსურთ შეკვეთის გაუქმება?",
   "orderHistoryClean": "თქვენ არ გაქვთ შეკვეთები",
   "yourCart": "თქვენი კალათა",
-  "back": "უკან"
+  "back": "უკან",
+  "cartItems": "კალათის ნივთები",
+  "restoreCartItem": "აღადგინეთ ბოლო წაშლილი"
 }

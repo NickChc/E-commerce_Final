@@ -1,10 +1,17 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useIntl } from "react-intl";
-import { SHome, SSlidersContainer, SScreenMessage } from "@src/views/Home";
+import { Link } from "react-router-dom";
+import {
+  SHome,
+  SSlidersContainer,
+  SScreenMessage,
+  SSliderHeader,
+  SSliderHolder,
+} from "@src/views/Home";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { TagIcon } from "@src/assets/icons";
+import { ProductImg } from "@src/components/ProductImg";
 
 export function Home() {
   const {
@@ -15,17 +22,12 @@ export function Home() {
     categories,
   } = useGlobalProvider();
 
-  const Location = useLocation();
-
-  const { formatMessage } = useIntl();
-
-  // PRODUCTS FILTERING LOGIC HERE...
-
+  // PRODUCTS FILTERING LOGIC
   const saleProducts = products?.filter((product) => product.salePrice);
 
   useEffect(() => {
     fetchProducts("");
-  }, [Location.pathname]);
+  }, []);
 
   return (
     <SHome>
@@ -41,21 +43,39 @@ export function Home() {
         </SScreenMessage>
       ) : (
         <SSlidersContainer>
-          <ProductSlider
-            title={formatMessage({ id: "sale", defaultMessage: "_SALE_" })}
-            products={saleProducts}
-          />
+          <SSliderHolder>
+            <SSliderHeader>
+              SALE{" "}
+              <span>
+                <TagIcon />
+              </span>
+            </SSliderHeader>
+            <ProductSlider
+              // title={formatMessage({ id: "sale", defaultMessage: "_SALE_" })}
+              products={saleProducts}
+            />
+          </SSliderHolder>
           {categories?.map((category) => {
             const filteredProducts = products?.filter(
               (product) => product.category_name === category.name
             );
 
+            if (filteredProducts.length < 1) return;
             return (
-              <ProductSlider
-                key={category.id}
-                title={category.name}
-                products={filteredProducts}
-              />
+              <SSliderHolder key={category.id}>
+                <SSliderHeader>
+                  <Link to={`/products/${category.name}/1`}>
+                    {category.name}
+                    <ProductImg
+                      src={category.image}
+                      alt="category image"
+                      loaded
+                      onLoad={() => {}}
+                    />
+                  </Link>
+                </SSliderHeader>
+                <ProductSlider key={category.id} products={filteredProducts} />
+              </SSliderHolder>
             );
           })}
         </SSlidersContainer>

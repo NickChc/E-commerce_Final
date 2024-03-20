@@ -92,6 +92,17 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
     sessionStorage.setItem(USER_CARD_DATA, JSON.stringify(paymentFormValues));
   }
 
+  function handleCardAdding() {
+    setFocusedValue("fullName");
+    const userCardData = sessionStorage.getItem(USER_CARD_DATA);
+
+    if (userCardData && userCardData === JSON.stringify(paymentFormValues)) {
+      setIsValid(true);
+    } else {
+      validateCheckout(paymentFormValues);
+    }
+  }
+
   // CHECK IF SESSION STORAGE HAS USERS CARD DATA
   useEffect(() => {
     const userCardData = sessionStorage.getItem(USER_CARD_DATA);
@@ -122,12 +133,13 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
           name="fullName"
           value={paymentFormValues.fullName}
           onChange={inputChange}
-          onFocus={() =>
+          onFocus={() => {
+            setFocusedValue("fullName");
             setFormErrors((prev) => ({
               ...prev,
               fullName: "",
-            }))
-          }
+            }));
+          }}
         />
 
         <FormInput
@@ -206,21 +218,7 @@ export function CheckoutForm({ gotCard, setGotCard }: CheckoutFormProps) {
           }}
         />
 
-        <SProductButton
-          type="submit"
-          onClick={() => {
-            const userCardData = sessionStorage.getItem(USER_CARD_DATA);
-
-            if (
-              userCardData &&
-              userCardData === JSON.stringify(paymentFormValues)
-            ) {
-              setIsValid(true);
-            } else {
-              validateCheckout(paymentFormValues);
-            }
-          }}
-        >
+        <SProductButton type="submit" onClick={handleCardAdding}>
           <FormattedMessage id="addCard" defaultMessage={"_ADD_CARD_"} />
         </SProductButton>
       </SCheckoutForm>

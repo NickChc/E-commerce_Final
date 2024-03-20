@@ -27,11 +27,12 @@ export function ThemeProvider({ children }: PropsWithChildren) {
 
   const colors = {
     [ThemeModes_Enum.LIGHT]: {
-      primary: "#000000",
+      primary: "#2b2b2b",
       secondary: "#ffffff",
       secondary_background: "#1b1b1b",
-      secondary_text: "#5b5b5b",
-      additional: "#1f51ff",
+      // secondary_text: "#5b5b5b",
+      secondary_text: "#343a40",
+      additional: "#339af0",
       saleClr: "red",
       myGreen: "#008000",
     },
@@ -40,7 +41,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       secondary: "#C0C0C0",
       secondary_background: "#1b1b1b",
       secondary_text: "#5b5b5b",
-      additional: "#1f51ff",
+      additional: "#339af0",
       saleClr: "red",
       myGreen: "#008000",
     },

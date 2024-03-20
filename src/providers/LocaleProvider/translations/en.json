@@ -120,5 +120,7 @@
   "orderCancelAssure": "Are you sure you want to cancel the order?",
   "orderHistoryClean": "YOUR ORDER HISTORY IS CLEAN",
   "yourCart": "YOUR CART",
-  "back": "BACK"
+  "back": "BACK",
+  "cartItems": "CART ITEMS",
+  "restoreCartItem": "RESTORE LAST REMOVED ITEM"
 }

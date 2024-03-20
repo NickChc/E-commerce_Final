@@ -11,6 +11,7 @@ import {
   SAdditionalInfo,
   STextPair,
 } from "@src/views/Product";
+import { formatDate } from "@src/utils/formatDate";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { calculateSale } from "@src/utils/calculateSale";
@@ -48,7 +49,6 @@ export function Product() {
         <>
           <BreadCrumbMenu item={product} />
           <SProductMainWrapper>
-
             {/* FUNCTIONAL SIDE (LEFT) */}
             <FunctionalSide product={product} />
 
@@ -109,7 +109,7 @@ export function Product() {
                 <FormattedMessage id="uploaded" defaultMessage={"_UPLOADED_"} />
                 :{" "}
               </h5>
-              <p>{product?.created_at.split("T")[0]}</p>
+              <p>{formatDate(product?.created_at)}</p>
             </STextPair>
             <hr />
             <STextPair>
@@ -120,7 +120,7 @@ export function Product() {
                 />
                 :{" "}
               </h5>
-              <p>{product?.updated_at.split("T")[0]}</p>
+              <p>{formatDate(product?.updated_at)}</p>
             </STextPair>
             <hr />
             <STextPair>
@@ -132,6 +132,7 @@ export function Product() {
             </STextPair>
           </SAdditionalInfo>
 
+          {/* SHOWING SIMILAR PRODUCTS SLIDER */}
           <ProductSlider
             products={recommended}
             title={formatMessage({
