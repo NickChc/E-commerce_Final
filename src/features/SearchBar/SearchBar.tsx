@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useIntl } from "react-intl";
 import { SInputWrapper, SInput, SInputButton } from "@src/features/SearchBar";
 import { SearchList } from "@src/components/SearchList";
@@ -21,17 +21,23 @@ export function SearchBar() {
   } = useGlobalProvider();
 
   // SET TIMER AFTER CHANGING INPUT
-  const debounceFetchSearched = _.debounce((keyWord: string) => {
-    fetchProducts(keyWord);
-  }, 500);
+  const debounceFetchSearched = useCallback(
+    _.debounce((keyWord: string) => {
+      fetchProducts(keyWord);
+      console.log("RATAFAQ");
+    }, 1000),
+    []
+  );
 
   // HANDLES CHANGE OF SEARCH INPUT
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchKeyWord(e.target.value);
+    const keyWord = e.target.value;
+
+    setSearchKeyWord(keyWord);
     if (searchKeyWord.length > 1) {
-      debounceFetchSearched(searchKeyWord);
+      debounceFetchSearched(keyWord);
     }
-    if (e.target.value.length > 2) {
+    if (keyWord.length > 2) {
       setOpenSearch(true);
     } else {
       setOpenSearch(false);

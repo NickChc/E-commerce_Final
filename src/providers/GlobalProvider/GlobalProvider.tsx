@@ -3,13 +3,10 @@ import { useLocation } from "react-router-dom";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetProducts } from "@src/hooks/useGetProducts";
 import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
-import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGetWishlist } from "@src/hooks/useGetWishlist";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useRemoveFromWishlist } from "@src/hooks/useRemoveFromWishlist";
 import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
-import { useGetCart } from "@src/hooks/useGetCart";
-import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
 import { useGetCategories } from "@src/hooks/useGetCategories";
 import { useGetFilteredProducts } from "@src/hooks/useGetFilteredProducts";
 import { TPaymentStatus_Enum } from "@src/@types/general";
@@ -49,11 +46,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   } = useGetFilteredProducts();
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
   const { getWishlist, gettingWishlist, wishlist } = useGetWishlist();
-  const { addToCart, addingToCart } = useAddToCart();
   const { addToWishlist, addingToWishlist } = useAddToWishlist();
   const { removeFromWishlist, removingWishlistItem } = useRemoveFromWishlist();
-  const { getCart, gettingCart, cartItems } = useGetCart();
-  const { removeCartItem, removingCartItem } = useRemoveCartItem();
   const { getCategories, categories, gettingCategories } = useGetCategories();
   const { orders, gettingOrders, getOrders } = useGetOrders();
 
@@ -83,7 +77,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     getWishlist();
-    getCart();
     getCategories();
   }, [authStage]);
 
@@ -121,14 +114,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         toggleWishlist,
         removeFromWishlist,
         removingWishlistItem,
-        addToCart,
-        addingToCart,
         addingToWishlist,
-        getCart,
-        gettingCart,
-        cartItems,
-        removeCartItem,
-        removingCartItem,
         categoryNavOpen,
         setCategoryNavOpen,
         getCategories,

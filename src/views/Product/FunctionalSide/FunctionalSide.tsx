@@ -13,7 +13,7 @@ import { TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
-import { useAddToCart } from "@src/hooks/useAddToCart";
+import { useCartProvider } from "@src/providers/CartProvider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { PlusIcon, CheckIcon } from "@src/assets/icons";
@@ -27,16 +27,16 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [inCart, setInCart] = useState<boolean>(false);
 
+  const { addToCart, cartItems, addingToCart } = useCartProvider();
+
   const {
     setAuthModal,
     toggleWishlist,
     wishlist,
-    cartItems,
     removingWishlistItem,
     addingToWishlist,
   } = useGlobalProvider();
   const { authStage } = useAuthProvider();
-  const { addToCart, addingToCart } = useAddToCart();
   const { locale } = useLocaleProvider();
 
   const Navigate = useNavigate();

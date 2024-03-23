@@ -5,8 +5,8 @@ import { ProductImg } from "@src/components/ProductImg";
 import { TWishlistProduct } from "@src/@types/general";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { CartPlusIcon } from "@src/assets/icons";
-import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useCartProvider } from "@src/providers/CartProvider";
 
 interface CartWishlistItemProps {
   item: TWishlistProduct;
@@ -14,14 +14,21 @@ interface CartWishlistItemProps {
 
 export function CartWishlistItem({ item }: CartWishlistItemProps) {
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
+  const [addingToCart, setAddingToCart] = useState<boolean>(false);
+  const [show, setShow] = useState(true);
 
-  const { addToCart, addingToCart } = useAddToCart();
+  const { handleAddToCart } = useCartProvider();
   const { toggleWishlist } = useGlobalProvider();
 
-  function handleWishlistToCart() {
-    addToCart(item.product_id);
+  async function handleWishlistToCart() {
+    setAddingToCart(true);
+    await handleAddToCart(item.product_id);
+    setAddingToCart(false);
+    setShow(false);
     toggleWishlist(item.product_id);
   }
+
+  if (!show) return;
 
   return (
     <SCartWishlistItem>

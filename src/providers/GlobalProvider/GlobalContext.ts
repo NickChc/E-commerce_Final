@@ -1,6 +1,5 @@
 import { createContext } from "react";
 import {
-  TCartItem,
   TCategory,
   TProduct,
   TWishlistProduct,
@@ -33,8 +32,6 @@ interface GlobalContextProps {
   minMax: number[];
   setMinMax: React.Dispatch<React.SetStateAction<number[]>>;
   setSearchKeyWord: React.Dispatch<React.SetStateAction<string>>;
-  addToCart: (arg: string) => Promise<void>;
-  addingToCart: boolean;
   registering: boolean;
   setRegistering: React.Dispatch<React.SetStateAction<boolean>>;
   authModal: boolean;
@@ -48,11 +45,6 @@ interface GlobalContextProps {
   removeFromWishlist: (arg: string) => Promise<void>;
   removingWishlistItem: boolean;
   addingToWishlist: boolean;
-  getCart: () => Promise<void>;
-  gettingCart: boolean;
-  cartItems: TCartItem[];
-  removeCartItem: (arg1: TCartItem, arg2: boolean) => Promise<void>;
-  removingCartItem: boolean;
   categoryNavOpen: boolean;
   setCategoryNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
   getCategories: () => Promise<void>;
@@ -89,8 +81,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setSearchKeyWord: () => {},
   minMax: [],
   setMinMax: () => {},
-  addToCart: async () => {},
-  addingToCart: false,
   registering: false,
   setRegistering: () => {},
   authModal: false,
@@ -104,11 +94,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   removeFromWishlist: async () => {},
   removingWishlistItem: false,
   addingToWishlist: false,
-  getCart: async () => {},
-  gettingCart: false,
-  cartItems: [],
-  removeCartItem: async () => {},
-  removingCartItem: false,
   categoryNavOpen: false,
   setCategoryNavOpen: () => {},
   getCategories: async () => {},

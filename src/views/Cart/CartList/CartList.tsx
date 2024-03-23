@@ -1,12 +1,12 @@
-import { SCartList, SEmptyView } from "@src/views/Cart/CartList";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { CartItem } from "@src/views/Cart/CartList/CartItem";
-import { CartIcon } from "@src/assets/icons";
 import { FormattedMessage } from "react-intl";
+import { CartIcon } from "@src/assets/icons";
+import { SCartList, SEmptyView } from "@src/views/Cart/CartList";
+import { CartItem } from "@src/views/Cart/CartList/CartItem";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { useCartProvider } from "@src/providers/CartProvider";
 
 export function CartList() {
-  const { cartItems, gettingCart } = useGlobalProvider();
+  const { cartItems, gettingCart } = useCartProvider();
 
   return (
     <SCartList>

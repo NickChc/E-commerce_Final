@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { privateAxios } from "@src/utils/privateAxios";
 import { TCartItem } from "@src/@types/general";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useCartProvider } from "@src/providers/CartProvider";
 
 export function useRemoveCartItem() {
   const [loading, setloading] = useState<boolean>(false);
 
-  const { getCart } = useGlobalProvider();
+  const { getCart } = useCartProvider();
 
   async function removeCartItem(cartItem: TCartItem, removeAll: boolean) {
     try {

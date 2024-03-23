@@ -3,16 +3,19 @@ import { BrowserRouter } from "react-router-dom";
 import { GlobalProvider } from "@src/providers/GlobalProvider";
 import { ThemeProvider } from "@src/providers/ThemeProvider";
 import { LocaleProvider } from "@src/providers/LocaleProvider";
-import { AuthProvider } from "./AuthProvider";
+import { AuthProvider } from "@src/providers/AuthProvider";
+import { CartProvider } from "@src/providers/CartProvider";
 
 export function Providers({ children }: PropsWithChildren) {
   return (
     <BrowserRouter>
       <AuthProvider>
         <GlobalProvider>
-          <ThemeProvider>
-            <LocaleProvider>{children}</LocaleProvider>
-          </ThemeProvider>
+          <CartProvider>
+            <ThemeProvider>
+              <LocaleProvider>{children}</LocaleProvider>
+            </ThemeProvider>
+          </CartProvider>
         </GlobalProvider>
       </AuthProvider>
     </BrowserRouter>

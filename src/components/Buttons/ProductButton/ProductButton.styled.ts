@@ -68,7 +68,9 @@ export const SProductButton = styled.button<ProductButtonProps>`
 
   span {
     ${(props) => css`
-      color: ${props.theme.colors["additional"]};
+      color: ${props.variation === "primary"
+        ? props.theme.colors["secondary"]
+        : props.theme.colors["primary"]};
     `}
   }
 `;

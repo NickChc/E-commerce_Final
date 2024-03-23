@@ -13,9 +13,8 @@ import {
 import { ProductImg } from "@src/components/ProductImg";
 import { PlusIcon, MinusIcon, TrashIcon } from "@src/assets/icons";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
-import { useAddToCart } from "@src/hooks/useAddToCart";
-import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
 import { CART_LAST_REMOVED } from "@src/config/localStorageKeys";
+import { useCartProvider } from "@src/providers/CartProvider";
 
 interface CartItemProps {
   item: TCartItem;
@@ -25,9 +24,28 @@ export function CartItem({ item }: CartItemProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [count, setCount] = useState<number>(item.count);
   const [show, setShow] = useState(true);
+  const [incrementing, setIncrementing] = useState(false);
+  const [decrementing, setDecrementing] = useState(false);
 
-  const { addToCart, addingToCart } = useAddToCart();
-  const { removeCartItem, removingCartItem } = useRemoveCartItem();
+  const { handleRemoveCart, handleAddToCart } = useCartProvider();
+
+  // HANDLE DIFFERENT SCENARIOS OF CART ITEM MANIPULATIONS
+  async function handleItemCountChange(opType: string) {
+    // DECREMENTING COUNT
+    if (opType === "dec") {
+      setDecrementing(true);
+      await handleRemoveCart(item, false);
+      setDecrementing(false);
+      // INCREMENTING COUNT
+    } else if (opType === "inc") {
+      setIncrementing(true);
+      await handleAddToCart(item.product_id);
+      setIncrementing(false);
+      // REMOVING ITEM FROM CART
+    } else {
+      handleRemoveCart(item, true);
+    }
+  }
 
   useEffect(() => {
     setCount(item.count);
@@ -60,28 +78,28 @@ export function CartItem({ item }: CartItemProps) {
             {/* FOR INCREASING / DECREASING CART ITEMS ON SMALL SCREENS */}
             <SCountBtnHolder>
               <button
-                disabled={removingCartItem}
+                disabled={decrementing}
                 onClick={() => {
-                  removeCartItem(item, false);
+                  handleItemCountChange("dec");
                   setCount(count - 1);
                 }}
               >
-                {removingCartItem ? <LoadingCircleAnim /> : <MinusIcon />}
+                {decrementing ? <LoadingCircleAnim /> : <MinusIcon />}
               </button>
               <span>{count}</span>
               <button
-                disabled={addingToCart}
+                disabled={incrementing}
                 onClick={() => {
-                  addToCart(item.product_id);
+                  handleItemCountChange("inc");
                   setCount(count + 1);
                 }}
               >
-                {addingToCart ? <LoadingCircleAnim /> : <PlusIcon />}
+                {incrementing ? <LoadingCircleAnim /> : <PlusIcon />}
               </button>
               <p
                 onClick={() => {
                   localStorage.setItem(CART_LAST_REMOVED, item.product_id);
-                  removeCartItem(item, true);
+                  handleItemCountChange("removeAll");
                   setShow(false);
                 }}
               >
@@ -96,28 +114,28 @@ export function CartItem({ item }: CartItemProps) {
       <SBtnsLg>
         <SCountBtnHolder>
           <button
-            disabled={removingCartItem || count === 1}
+            disabled={decrementing || count === 1}
             onClick={() => {
-              removeCartItem(item, false);
+              handleItemCountChange("dec");
               setCount(count - 1);
             }}
           >
-            {removingCartItem ? <LoadingCircleAnim /> : <MinusIcon />}
+            {decrementing ? <LoadingCircleAnim /> : <MinusIcon />}
           </button>
           <span>{count}</span>
           <button
-            disabled={addingToCart}
+            disabled={incrementing}
             onClick={() => {
-              addToCart(item.product_id);
+              handleItemCountChange("inc");
               setCount(count + 1);
             }}
           >
-            {addingToCart ? <LoadingCircleAnim /> : <PlusIcon />}
+            {incrementing ? <LoadingCircleAnim /> : <PlusIcon />}
           </button>
           <p
             onClick={() => {
               localStorage.setItem(CART_LAST_REMOVED, item.product_id);
-              removeCartItem(item, true);
+              handleItemCountChange("removeAll");
               setShow(false);
             }}
           >

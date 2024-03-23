@@ -11,9 +11,9 @@ import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
 import { ProductImg } from "@src/components/ProductImg";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
-import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
+import { useCartProvider } from "@src/providers/CartProvider";
 
 interface ProductCardProps {
   product: TProduct;
@@ -22,19 +22,20 @@ interface ProductCardProps {
 
 export function ProductCard({ product, disable }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const [addingToCart, setAddingToCart] = useState<boolean>(false);
 
   const [inCart, setInCart] = useState<boolean>(false);
 
-  const { addToCart, addingToCart } = useAddToCart();
+  const { cartItems, handleAddToCart } = useCartProvider();
 
-  const { cartItems, setAuthModal } = useGlobalProvider();
+  const { setAuthModal } = useGlobalProvider();
 
   const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
 
   // HANDLES CART ADDING BUTTON
-  function handleCartAdding() {
+  async function handleCartAdding() {
     // IF NOT AUTHORIZED, OPEN LOG IN MODAL
     if (authStage !== TAuthStage_Enum.AUTHORIZED) {
       setAuthModal(true);
@@ -44,7 +45,9 @@ export function ProductCard({ product, disable }: ProductCardProps) {
     if (inCart) {
       Navigate("/cart");
     } else {
-      addToCart(product.id);
+      setAddingToCart(true);
+      await handleAddToCart(product.id);
+      setAddingToCart(false);
       setInCart(true);
     }
   }

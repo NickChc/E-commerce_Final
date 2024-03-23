@@ -1,18 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCartInfo } from "@src/views/Cart/CartInfo";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { useAddToCart } from "@src/hooks/useAddToCart";
 import { totalCost } from "@src/utils/totalCost";
 import { moneySaved } from "@src/utils/moneySaved";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { totalQuantity } from "@src/utils/totalQuantity";
 import { CartIcon2, CartPlusIcon } from "@src/assets/icons";
 import { CART_LAST_REMOVED } from "@src/config/localStorageKeys";
+import { useCartProvider } from "@src/providers/CartProvider";
 
 export function CartInfo() {
-  const { cartItems } = useGlobalProvider();
-  const { addToCart } = useAddToCart();
+  const { cartItems, handleAddToCart } = useCartProvider();
 
   const Navigate = useNavigate();
 
@@ -64,7 +62,7 @@ export function CartInfo() {
             onClick={() => {
               const removedItem = localStorage.getItem(CART_LAST_REMOVED);
               if (removedItem) {
-                addToCart(removedItem);
+                handleAddToCart(removedItem);
                 localStorage.removeItem(CART_LAST_REMOVED);
               }
             }}
