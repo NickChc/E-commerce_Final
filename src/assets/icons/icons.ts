@@ -29,6 +29,8 @@ export { TiCancel as CancelIcon } from "react-icons/ti";
 export { GiPresent as PresentIcon } from "react-icons/gi";
 export { FaCheck as CheckIcon } from "react-icons/fa6";
 export { FaTag as TagIcon } from "react-icons/fa6";
+export { MdOutlineShoppingCartCheckout as CheckoutIcon } from "react-icons/md";
+
 
 
 

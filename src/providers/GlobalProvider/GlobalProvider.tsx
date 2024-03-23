@@ -47,22 +47,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   const Location = useLocation();
 
-  // async function toggleWishlist(productId: string) {
-  //   try {
-  //     const isLiked = wishlist?.find(
-  //       (product) => product.product_id === productId
-  //     );
-  //     if (isLiked) {
-  //       await removeFromWishlist(isLiked.id);
-  //     } else {
-  //       await addToWishlist(productId);
-  //     }
-  //     getWishlist();
-  //   } catch (error: any) {
-  //     console.log(error.message);
-  //   }
-  // }
-
   useEffect(() => {
     window.scrollTo({
       top: 0,

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SNotFound } from "@src/views/NotFound";
@@ -13,14 +14,17 @@ import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 
 export function NotFound() {
-  const imgArray = [
-    NotFoundImg1,
-    NotFoundImg2,
-    NotFoundImg3,
-    NotFoundImg4,
-    NotFoundImg5,
-    NotFoundImg6,
-  ];
+  const imgArray = useMemo(
+    () => [
+      NotFoundImg1,
+      NotFoundImg2,
+      NotFoundImg3,
+      NotFoundImg4,
+      NotFoundImg5,
+      NotFoundImg6,
+    ],
+    []
+  );
 
   const { locale } = useLocaleProvider();
 
@@ -29,14 +33,16 @@ export function NotFound() {
 
   return (
     <SNotFound>
-      <img src={imgArray[randomthItem]} alt="#" />
+      <img src={imgArray[randomthItem]} alt="image for not found page" />
       <button onClick={() => Navigate("/")}>
         <FormattedMessage id="takeMeHome" defaultMessage={"_TAKE_ME_HOME_"} />
       </button>
       <h1>
         ERROR 404.
         <br />
-        {locale === TLocale_Enum.EN ? "Page Not Found!" : "გვერდი ვერ მოიძებნა!"}
+        {locale === TLocale_Enum.EN
+          ? "Page Not Found!"
+          : "გვერდი ვერ მოიძებნა!"}
       </h1>
     </SNotFound>
   );

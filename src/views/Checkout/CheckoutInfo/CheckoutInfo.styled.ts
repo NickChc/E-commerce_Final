@@ -26,6 +26,6 @@ export const SCheckoutInfo = styled.div`
   }
 
   button {
-    ${tw`w-full mt-9 `}
+    ${tw`w-full mt-9 text-[1.2rem] `}
   }
 `;

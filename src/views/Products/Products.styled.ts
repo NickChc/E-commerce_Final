@@ -10,14 +10,14 @@ export const SProducts = styled.div`
 `;
 
 export const SProductsLayout = styled.div`
-  ${tw`w-full max-w-full overflow-hidden flex flex-col items-center justify-between mb-9`}
+  ${tw`w-full max-w-full overflow-hidden flex flex-col items-center justify-start mb-9`}
 `;
 
 export const SProductsHolder = styled.div`
   ${tw`w-full grid grid-cols-repeat-15 pb-14 gap-y-9 p-3 `}
 
   h1 {
-    ${tw`self-center text-center mt-9 `}
+    ${tw`flex items-center justify-center gap-x-3 mt-9 text-[2rem] sm:text-[3rem] md:text-[4rem] `}
   }
 `;
 

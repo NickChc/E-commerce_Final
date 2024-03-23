@@ -10,6 +10,7 @@ import { FilterProducts } from "@src/views/Products/FilterProducts";
 import { Pagination } from "@src/components/Pagination";
 import { ListIcon } from "@src/assets/icons";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
+import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 
 export function Products() {
   const { filteredProducts, gettingFiltered } = useGlobalProvider();
@@ -18,6 +19,7 @@ export function Products() {
     <SProducts>
       <FilterProducts />
       <SProductsLayout>
+        <BreadCrumbMenu />
         <SProductsHolder>
           {filteredProducts.length < 1 && !gettingFiltered ? (
             <SEmptyWrapper>
@@ -36,7 +38,7 @@ export function Products() {
             })
           )}
         </SProductsHolder>
-        <Pagination />
+        {!gettingFiltered && <Pagination />}
       </SProductsLayout>
     </SProducts>
   );

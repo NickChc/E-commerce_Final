@@ -24,7 +24,11 @@ export const SRightSide = styled.div`
   `}
 
   h1 {
-    ${tw`text-center text-[1.4rem] md:text-[1.6rem] xl:text-[1.8rem] `}
+    ${tw`text-center text-[1.4rem] md:text-[1.6rem] xl:text-[1.8rem] flex items-center justify-center gap-x-3 `}
+
+    span {
+      ${tw`text-[2.4rem] sm:text-[3rem] `}
+    }
   }
 
   hr {

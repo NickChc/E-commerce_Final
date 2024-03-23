@@ -30,4 +30,5 @@ export {
   PresentIcon,
   CheckIcon,
   TagIcon,
+  CheckoutIcon,
 } from "./icons";

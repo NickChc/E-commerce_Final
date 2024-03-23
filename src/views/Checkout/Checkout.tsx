@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCheckout, SRightSide, SLeftSide } from "@src/views/Checkout";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useCartProvider } from "@src/providers/CartProvider";
 import { TProduct } from "@src/@types/general";
 import { totalCost } from "@src/utils/totalCost";
 import { totalQuantity } from "@src/utils/totalQuantity";
@@ -10,6 +11,7 @@ import { CheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { CheckoutProducts } from "@src/views/Checkout/CheckoutProducts";
 import { CheckoutForm } from "@src/views/Checkout/CheckoutForm";
 import { Map } from "@src/features/Map";
+import { CheckoutIcon } from "@src/assets/icons";
 
 export function Checkout() {
   const [checkoutItems, setCheckoutItems] = useState<TProduct[]>([]);
@@ -18,7 +20,8 @@ export function Checkout() {
 
   const [gotCard, setGotCard] = useState(false);
 
-  const { cartItems, fetchSingleProduct, product } = useGlobalProvider();
+  const { fetchSingleProduct, product } = useGlobalProvider();
+  const { cartItems } = useCartProvider();
 
   const Location = useLocation();
 
@@ -69,6 +72,9 @@ export function Checkout() {
             id="checkoutPreview"
             defaultMessage={"_CHECKOUT_"}
           />
+          <span>
+            <CheckoutIcon />
+          </span>
         </h1>
         <hr />
         <CheckoutInfo

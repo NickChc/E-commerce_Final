@@ -17,7 +17,7 @@ export const SSearchedItem = styled.div`
   }
 
   img {
-    ${tw`min-w-[50px] w-[5vw] aspect-square object-cover border-solid border border-black `}
+    ${tw`min-w-[50px] w-[5vw] aspect-square object-cover border-solid border border-black rounded-lg `}
   }
 
   div {
