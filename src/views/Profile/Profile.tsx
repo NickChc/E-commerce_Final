@@ -3,24 +3,13 @@ import { SProfile, SUserLayer } from "@src/views/Profile";
 import { TChangeableUserData } from "@src/@types/requestTypes";
 import { UserInfo } from "@src/views/Profile/UserInfo";
 import { UpdateForm } from "@src/views/Profile/UpdateForm";
-import { TLocale_Enum } from "@src/providers/LocaleProvider";
-import { useLocaleProvider } from "@src/providers/LocaleProvider";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider } from "@src/providers/AuthProvider";
-import { TProduct } from "@src/@types/general";
 import { OrderList } from "@src/views/Profile/OrderList";
 import { WishlistSlider } from "@src/components/WishlistSlider";
 
+
 export function Profile() {
   const { userData } = useAuthProvider();
-
-  const { wishlist } = useGlobalProvider();
-
-  const { locale } = useLocaleProvider();
-
-  const wishlistProducts: TProduct[] = wishlist?.map(
-    (item) => item.likedProduct
-  );
 
   const [currentEdit, setCurrentEdit] = useState<
     keyof TChangeableUserData | undefined
@@ -69,15 +58,7 @@ export function Profile() {
       {/* LIST OF ORDERS */}
       <OrderList />
       <hr />
-      {wishlistProducts.length < 1 && (
-        <h1>
-          {locale === TLocale_Enum.EN
-            ? "YOUR WISHLIST IS EMPTY"
-            : locale === TLocale_Enum.KA
-            ? "სასურველების სია ცარიელია"
-            : null}
-        </h1>
-      )}
+      {/* WISHLIST */}
       <WishlistSlider />
     </SProfile>
   );

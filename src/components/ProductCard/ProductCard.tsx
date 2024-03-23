@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import {
   SProductCard,
@@ -14,6 +14,7 @@ import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { useCartProvider } from "@src/providers/CartProvider";
+import { useWishlistProvider } from "@src/providers/WishlistProvider";
 
 interface ProductCardProps {
   product: TProduct;
@@ -27,12 +28,13 @@ export function ProductCard({ product, disable }: ProductCardProps) {
   const [inCart, setInCart] = useState<boolean>(false);
 
   const { cartItems, handleAddToCart } = useCartProvider();
+  const { toggleWishlist } = useWishlistProvider();
 
   const { setAuthModal } = useGlobalProvider();
-
   const { authStage } = useAuthProvider();
 
   const Navigate = useNavigate();
+  const Location = useLocation();
 
   // HANDLES CART ADDING BUTTON
   async function handleCartAdding() {
@@ -46,12 +48,17 @@ export function ProductCard({ product, disable }: ProductCardProps) {
       Navigate("/cart");
     } else {
       setAddingToCart(true);
+      // IF IN CART PAGE AND USER ADDS WISHLIST ITEM TO CART, REMOVE ITEM FROM WISHLIST
+      if (Location.pathname === "/cart") {
+        await toggleWishlist(product.id);
+      }
       await handleAddToCart(product.id);
       setAddingToCart(false);
       setInCart(true);
     }
   }
 
+  // OPEN AUTHORIZATION MODAL IF NOT AUTHORIZED
   function handleBuying() {
     if (authStage !== TAuthStage_Enum.AUTHORIZED) {
       setAuthModal(true);

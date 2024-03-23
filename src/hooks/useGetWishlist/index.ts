@@ -1,1 +1,0 @@
-export { useGetWishlist } from "./useGetWishlist";

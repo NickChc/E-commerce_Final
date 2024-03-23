@@ -23,9 +23,8 @@ export function SearchBar() {
   // SET TIMER AFTER CHANGING INPUT
   const debounceFetchSearched = useCallback(
     _.debounce((keyWord: string) => {
-      fetchProducts(keyWord);
-      console.log("RATAFAQ");
-    }, 1000),
+      fetchProducts(keyWord, undefined, true);
+    }, 800),
     []
   );
 

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@src/providers/ThemeProvider";
 import { LocaleProvider } from "@src/providers/LocaleProvider";
 import { AuthProvider } from "@src/providers/AuthProvider";
 import { CartProvider } from "@src/providers/CartProvider";
+import { WishlistProvider } from "@src/providers/WishlistProvider";
 
 export function Providers({ children }: PropsWithChildren) {
   return (
@@ -12,9 +13,11 @@ export function Providers({ children }: PropsWithChildren) {
       <AuthProvider>
         <GlobalProvider>
           <CartProvider>
-            <ThemeProvider>
-              <LocaleProvider>{children}</LocaleProvider>
-            </ThemeProvider>
+            <WishlistProvider>
+              <ThemeProvider>
+                <LocaleProvider>{children}</LocaleProvider>
+              </ThemeProvider>
+            </WishlistProvider>
           </CartProvider>
         </GlobalProvider>
       </AuthProvider>

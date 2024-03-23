@@ -3,10 +3,7 @@ import { useLocation } from "react-router-dom";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetProducts } from "@src/hooks/useGetProducts";
 import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
-import { useGetWishlist } from "@src/hooks/useGetWishlist";
 import { useAuthProvider } from "@src/providers/AuthProvider";
-import { useRemoveFromWishlist } from "@src/hooks/useRemoveFromWishlist";
-import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
 import { useGetCategories } from "@src/hooks/useGetCategories";
 import { useGetFilteredProducts } from "@src/hooks/useGetFilteredProducts";
 import { TPaymentStatus_Enum } from "@src/@types/general";
@@ -45,29 +42,26 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     totalFiltered,
   } = useGetFilteredProducts();
   const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
-  const { getWishlist, gettingWishlist, wishlist } = useGetWishlist();
-  const { addToWishlist, addingToWishlist } = useAddToWishlist();
-  const { removeFromWishlist, removingWishlistItem } = useRemoveFromWishlist();
   const { getCategories, categories, gettingCategories } = useGetCategories();
   const { orders, gettingOrders, getOrders } = useGetOrders();
 
   const Location = useLocation();
 
-  async function toggleWishlist(productId: string) {
-    try {
-      const isLiked = wishlist?.find(
-        (product) => product.product_id === productId
-      );
-      if (isLiked) {
-        await removeFromWishlist(isLiked.id);
-      } else {
-        await addToWishlist(productId);
-      }
-      getWishlist();
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  }
+  // async function toggleWishlist(productId: string) {
+  //   try {
+  //     const isLiked = wishlist?.find(
+  //       (product) => product.product_id === productId
+  //     );
+  //     if (isLiked) {
+  //       await removeFromWishlist(isLiked.id);
+  //     } else {
+  //       await addToWishlist(productId);
+  //     }
+  //     getWishlist();
+  //   } catch (error: any) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   useEffect(() => {
     window.scrollTo({
@@ -76,7 +70,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   }, [Location.pathname]);
 
   useEffect(() => {
-    getWishlist();
     getCategories();
   }, [authStage]);
 
@@ -108,13 +101,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         setAuthModal,
         popUpText,
         setPopUpText,
-        getWishlist,
-        gettingWishlist,
-        wishlist,
-        toggleWishlist,
-        removeFromWishlist,
-        removingWishlistItem,
-        addingToWishlist,
         categoryNavOpen,
         setCategoryNavOpen,
         getCategories,

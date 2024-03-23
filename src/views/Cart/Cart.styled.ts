@@ -27,4 +27,8 @@ export const SCartInfoWrapperLg = styled.div`
 
 export const SSliderWrapper = styled.div`
   ${tw`w-full lg:hidden `}
+
+  h1 {
+    ${tw`text-[1.2rem] text-center pb-6 `}
+  }
 `;

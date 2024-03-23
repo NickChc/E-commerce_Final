@@ -1,11 +1,9 @@
-import { privateAxios } from "@src/utils/privateAxios";
 import { useState } from "react";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { privateAxios } from "@src/utils/privateAxios";
 
 export function useAddToWishlist() {
   const [loading, setLoading] = useState<boolean>(false);
 
-  const { getWishlist } = useGlobalProvider();
 
   async function addToWishlist(productId: string) {
     try {
@@ -13,9 +11,6 @@ export function useAddToWishlist() {
       await privateAxios.post(`/liked-products`, {
         product_id: productId,
       });
-
-    //   GET WISHLIST AFTER ADDING TO IT
-      getWishlist();
     } catch (error: any) {
       console.log(error.message);
     } finally {

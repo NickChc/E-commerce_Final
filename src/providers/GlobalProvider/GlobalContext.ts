@@ -2,7 +2,6 @@ import { createContext } from "react";
 import {
   TCategory,
   TProduct,
-  TWishlistProduct,
   TPaymentStatus_Enum,
   TOrder,
 } from "@src/@types/general";
@@ -17,7 +16,7 @@ interface GlobalContextProps {
   ) => Promise<void>;
   gettingFiltered: boolean;
   totalFiltered: number;
-  fetchProducts: (productName: string, categoryName?: string) => Promise<void>;
+  fetchProducts: (productName: string, categoryName?: string, searching?: boolean) => Promise<void>;
   products: TProduct[];
   searchedProducts: TProduct[];
   setSearchedProducts: React.Dispatch<React.SetStateAction<TProduct[]>>;
@@ -38,13 +37,6 @@ interface GlobalContextProps {
   setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
   popUpText: string;
   setPopUpText: React.Dispatch<React.SetStateAction<string>>;
-  getWishlist: () => Promise<void>;
-  gettingWishlist: boolean;
-  wishlist: TWishlistProduct[];
-  toggleWishlist: (arg: string) => Promise<void>;
-  removeFromWishlist: (arg: string) => Promise<void>;
-  removingWishlistItem: boolean;
-  addingToWishlist: boolean;
   categoryNavOpen: boolean;
   setCategoryNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
   getCategories: () => Promise<void>;
@@ -87,13 +79,6 @@ export const GlobalContext = createContext<GlobalContextProps>({
   setAuthModal: () => {},
   popUpText: "",
   setPopUpText: () => {},
-  getWishlist: async () => {},
-  gettingWishlist: false,
-  wishlist: [],
-  toggleWishlist: async () => {},
-  removeFromWishlist: async () => {},
-  removingWishlistItem: false,
-  addingToWishlist: false,
   categoryNavOpen: false,
   setCategoryNavOpen: () => {},
   getCategories: async () => {},

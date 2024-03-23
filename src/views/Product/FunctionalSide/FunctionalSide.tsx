@@ -14,6 +14,7 @@ import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { useCartProvider } from "@src/providers/CartProvider";
+import { useWishlistProvider } from "@src/providers/WishlistProvider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { PlusIcon, CheckIcon } from "@src/assets/icons";
@@ -27,15 +28,9 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [inCart, setInCart] = useState<boolean>(false);
 
-  const { addToCart, cartItems, addingToCart } = useCartProvider();
-
-  const {
-    setAuthModal,
-    toggleWishlist,
-    wishlist,
-    removingWishlistItem,
-    addingToWishlist,
-  } = useGlobalProvider();
+  const { handleAddToCart, cartItems, addingToCart } = useCartProvider();
+  const { wishlistItems, toggleWishlist, addingWishlist, removingWishlist } = useWishlistProvider()
+  const { setAuthModal } = useGlobalProvider();
   const { authStage } = useAuthProvider();
   const { locale } = useLocaleProvider();
 
@@ -50,20 +45,20 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
     if (inCart) {
       Navigate("/cart");
     } else if (product?.id) {
-      addToCart(product.id);
+      handleAddToCart(product.id);
       setInCart(true);
     }
   }
 
   useEffect(() => {
-    const liked = wishlist?.some(
+    const liked = wishlistItems?.some(
       (wishlistProduct) => wishlistProduct.product_id === product?.id
     );
     setIsLiked(liked);
 
     const isInCart = cartItems?.some((item) => item.product_id === product?.id);
     setInCart(isInCart);
-  }, [wishlist, cartItems]);
+  }, [wishlistItems, cartItems]);
 
   return (
     <SProductMain>
@@ -93,6 +88,7 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
                 return;
               }
               product?.id && toggleWishlist(product.id);
+              // OPTIMISTIC UPDATE
               if (isLiked) {
                 setIsLiked(false);
               } else {
@@ -100,12 +96,12 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
               }
             }}
           >
-            {removingWishlistItem ? (
+            {removingWishlist ? (
               <>
                 <FormattedMessage id="removing" defaultMessage={"_REMOVING_"} />{" "}
                 <LoadingCircleAnim isSpan />
               </>
-            ) : addingToWishlist ? (
+            ) : addingWishlist ? (
               <>
                 <FormattedMessage id="adding" defaultMessage={"_ADDING_"} />{" "}
                 <LoadingCircleAnim isSpan />
@@ -144,7 +140,7 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
         <h5>
           {" "}
           {isLiked &&
-            !addingToWishlist &&
+            !addingWishlist &&
             (locale === TLocale_Enum.EN ? (
               <>
                 ADDED TO <Link to={"/profile"}>WISHLIST</Link>{" "}
