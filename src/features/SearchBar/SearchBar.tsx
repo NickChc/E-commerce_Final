@@ -24,25 +24,20 @@ export function SearchBar() {
   const debounceFetchSearched = useCallback(
     _.debounce((keyWord: string) => {
       fetchProducts(keyWord, undefined, true);
-    }, 800),
+    }, 1000),
     []
   );
 
   // HANDLES CHANGE OF SEARCH INPUT
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const keyWord = e.target.value;
-
     setSearchKeyWord(keyWord);
-    if (searchKeyWord.length > 1) {
+    if (keyWord.length > 0) {
       debounceFetchSearched(keyWord);
+      setOpenSearch(true)
     }
-    if (keyWord.length > 2) {
-      setOpenSearch(true);
-    } else {
+    if (keyWord  === "") {
       setOpenSearch(false);
-    }
-    if (searchKeyWord === "") {
-      setSearchedProducts([]);
     }
   }
 

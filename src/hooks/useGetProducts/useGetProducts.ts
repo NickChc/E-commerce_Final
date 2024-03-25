@@ -14,12 +14,12 @@ export function useGetProducts() {
   async function fetchProducts(
     keyWord: string,
     categoryName?: string,
-    searching?: boolean
+    search?: boolean
   ) {
     try {
       setError("");
       // IF THERE'S A SEARCH KEYWORD, FUNCTION IS HANDLED ACCORDINGLY, ELSE IT JUST FETCHES PRODUCTS
-      if (!searching) setLoading(true);
+      if (!search) setLoading(true);
       else setSearching(true);
       const response = await publicAxios.get(
         `/product?productName=${keyWord}&categoryName=${
@@ -27,7 +27,7 @@ export function useGetProducts() {
         }&pageSize=100`
       );
       setTotalProducts(response.data?.total);
-      if (!searching) {
+      if (!search) {
         setProducts(response.data?.products);
       } else {
         setSearchedProducts(response.data?.products);

@@ -12,7 +12,7 @@ import { ProductSlider } from "@src/components/ProductSlider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { TagIcon } from "@src/assets/icons";
 import { ProductImg } from "@src/components/ProductImg";
-import GamingRoomImg from "@src/assets/images/GamingRoomImg.jpg";
+import { ImageSlider } from "@src/components/ImageSlider";
 
 export function Home() {
   const {
@@ -44,11 +44,10 @@ export function Home() {
         </SScreenMessage>
       ) : (
         <>
-          {/* HEADER IMAGE */}
-          <img
-            className="w-full h-[150px] md:h-[200px] lg:h-[300px] xl:h-[400px] mt-4"
-            src={GamingRoomImg}
-          />
+          {/* IMAGE SLIDER */}
+          <SSliderHolder>
+            <ImageSlider />
+          </SSliderHolder>
           <SSlidersContainer>
             <SSliderHolder>
               <SSliderHeader>

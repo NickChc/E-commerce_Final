@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCategoryNav } from "@src/features/CategoryNav";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -41,8 +41,8 @@ export function CategoryNav({ show }: CategoryNavProps) {
                 setCategoryNavOpen(false);
               }}
             >
+              <img src={category.image} alt="category icon" />
               <a>{category.name}</a>
-              <img src={category?.image || ""} alt="category icon" />
             </li>
           );
         })}

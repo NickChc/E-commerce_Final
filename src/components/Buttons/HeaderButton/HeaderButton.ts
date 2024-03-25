@@ -11,11 +11,10 @@ export const Button = styled.button<SButtonProps>`
   ${(props) => css`
     ${props.variation === "active" && tw`rounded-md`}
     border-color: ${props.theme.colors["additional"]};
+    background-color: ${props.variation === "active" &&
+    props.theme.colors["additional"]};
+    color: ${props.variation === "active" && "#fff"};
   `}
-    background-color: ${(props) =>
-    props.variation === "active" && props.theme.colors["additional"]};
-  color: ${(props) =>
-    props.variation === "active" && props.theme.colors["secondary"]};
 
   @media (hover: hover) {
     :hover {

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SHome = styled.div`
-  ${tw`w-full sm:w-[80%] min-h-dvh flex flex-col items-center`}
+  ${tw`w-full min-h-dvh flex flex-col items-center`}
   ${(props) => css`
     background-color: ${props.theme.colors["secondary"]};
     color: ${props.theme.colors["primary"]};
@@ -27,7 +27,7 @@ export const SScreenMessage = styled.div`
 `;
 
 export const SSlidersContainer = styled.div`
-  ${tw`gap-y-14 w-full flex flex-col items-center my-9`}
+  ${tw`gap-y-14 w-full sm:w-[80%] flex flex-col items-center my-9`}
 `;
 
 export const SSliderHolder = styled.div`

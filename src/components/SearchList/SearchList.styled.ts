@@ -14,7 +14,7 @@ export const SSearchList = styled.div`
   }
 
   h1 {
-    ${tw`text-center font-bold mt-3 flex items-center justify-center gap-x-3 `}
+    ${tw`text-center font-bold mt-3 flex items-center justify-center gap-x-3 overflow-hidden `}
     color: #3b3b3b;
   }
 `;

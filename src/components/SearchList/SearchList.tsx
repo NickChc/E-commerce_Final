@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { SSearchList } from "@src/components/SearchList";
 import { SearchedItem } from "@src/components/SearchList/SearchedItem";
@@ -9,26 +10,35 @@ interface SearchListProps {
 }
 
 export function SearchList({ open }: SearchListProps) {
-  const { searchedProducts, searching } = useGlobalProvider();
+  const { searchedProducts, searching, setSearchedProducts } = useGlobalProvider();
+
+  useEffect(() => {
+    setSearchedProducts([]);
+  }, []);
 
   if (!open) return;
 
   return (
     <SSearchList>
       <div>
-        {searching && searchedProducts.length < 1 ? (
+        {searchedProducts.length < 1 && (
           <h1>
-            <FormattedMessage id="searching" defaultMessage={"_SEARCHING_"} />
-            <LoadingCircleAnim />
+            {searching ? (
+              <>
+                <FormattedMessage
+                  id="searching"
+                  defaultMessage={"_SEARCHING_"}
+                />
+                <LoadingCircleAnim />
+              </>
+            ) : (
+              <FormattedMessage
+                id="noResults"
+                defaultMessage={"_PRODUCT_NOT_FOUND_"}
+              />
+            )}
           </h1>
-        ) : searchedProducts.length < 1 ? (
-          <h1>
-            <FormattedMessage
-              id="noResults"
-              defaultMessage={"_PRODUCT_NOT_FOUND_"}
-            />
-          </h1>
-        ) : null}
+        )}
         {searchedProducts?.map((product) => {
           return <SearchedItem key={product.id} item={product} />;
         })}

@@ -7,7 +7,7 @@ interface SLoadingCircleProps {
 }
 
 export const SloadingCircleAnim = styled.span<SLoadingCircleProps>`
-  ${tw`animate-spin flex items-center justify-center`}
+  ${tw`animate-spin grid place-items-center max-w-fit aspect-square`}
   ${(props) => css`
     color: ${props.hasColor && props.theme.colors["additional"]};
   `}

@@ -31,6 +31,7 @@ export const SProductCard = styled.div`
 
 export const SCardInfo = styled.div`
   ${tw`w-[90%] h-[6rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 overflow-hidden flex flex-col justify-between `}
+
   h3 {
     ${tw`h-[3.2rem] min-h-[3.2rem] overflow-hidden text-[.75rem] xs:text-[.9rem] sm:text-[1rem] md:text-[.9rem] xl:text-[1rem]  `}
   }

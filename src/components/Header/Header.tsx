@@ -67,6 +67,7 @@ export function Header() {
           </p>
         </Button>
       </SNavWrapper>
+      {/* SEARCHBAR */}
       <SearchBar />
       <SBtnsWrapper>
         {/* CART BUTTON */}
@@ -128,6 +129,7 @@ export function Header() {
                 <ProfileIcon />
               )}
             </div>
+            {/* FIX HERE....... */}
             <p className="whitespace-nowrap">
               {authStage === TAuthStage_Enum.AUTHORIZED ? (
                 Location.pathname === "/profile" ? (
