@@ -12,15 +12,19 @@ interface SModalProps {
 }
 
 export const SModal = styled.div<SModalProps>`
-  ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90dvh] sm:w-[50%] sm:h-[75vh] xl:w-[40%] border-solid border flex flex-col items-center relative`}
+  ${tw`p-3 pt-9 rounded-lg w-[90%] h-[90dvh] sm:w-[50%] sm:h-[75vh] xl:w-[40%] border-solid border-2 flex flex-col items-center relative`}
   ${(props) => css`
     ${props.registering
       ? tw`sm:h-[75dvh] `
       : props.small
       ? tw` h-fit sm:h-fit`
       : tw` sm:h-[55dvh] `}
-    background-color: ${props.theme.mode === "DARK" ? "#2b2b2b" : "#4b4b4b"};
-    color: ${props.theme.mode === "DARK" ? "#9b9b9b" : "#ffffff"};
+    background-color: ${props.theme.mode === "DARK"
+      ? props.theme.colors["secondary_text"]
+      : "#4b4b4b"};
+    color: ${props.theme.mode === "DARK"
+      ? props.theme.colors["secondary_background"]
+      : "#ffffff"};
     border-color: ${props.theme.colors["additional"]};
     transition: height 0.1s ease-in-out;
   `}

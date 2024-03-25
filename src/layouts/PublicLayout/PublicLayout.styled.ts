@@ -4,7 +4,7 @@ import tw from "twin.macro";
 export const SPublicLayout = styled.div`
   ${tw`w-full min-h-dvh flex flex-col items-center justify-between relative`}
   ${(props) => css`
-    background-color: ${props.theme.mode === "DARK" && "#2b2b2b"};
+    background-color: ${props.theme.colors["secondary"]};
   `}
 `;
 

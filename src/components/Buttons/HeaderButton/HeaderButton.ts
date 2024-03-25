@@ -6,7 +6,7 @@ interface SButtonProps {
 }
 
 export const Button = styled.button<SButtonProps>`
-  ${tw`p-[.6rem] py-[.4rem] text-[.75rem] md:text-[.8rem] aspect-square sm:aspect-auto overflow-hidden mx-3 rounded-xl font-semibold border-solid border cursor-pointer flex sm:flex-row  items-center justify-center sm:justify-between gap-x-3 transition-all duration-200 disabled:cursor-default disabled:opacity-[.75] `}
+  ${tw`p-[.6rem] py-[.4rem] text-[.75rem] md:text-[.8rem] aspect-square sm:aspect-auto overflow-hidden mx-3 rounded-xl font-semibold border-solid border cursor-pointer flex sm:flex-row  items-center justify-center sm:justify-between gap-x-3 transition-all duration-200 disabled:cursor-default disabled:opacity-[.75] outline-none `}
 
   ${(props) => css`
     ${props.variation === "active" && tw`rounded-md`}

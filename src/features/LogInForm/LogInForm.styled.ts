@@ -18,9 +18,7 @@ export const SLogInForm = styled.form`
   h3 {
     ${tw`text-[.75rem] md:text-[1rem] xl:text-[1.5rem] whitespace-nowrap  `}
     ${(props) => css`
-      color: ${props.theme.mode === ThemeModes_Enum.LIGHT
-        ? props.theme.colors["secondary_background"]
-        : props.theme.colors["secondary_text"]};
+      color: ${props.theme.colors["secondary"]};
     `}
   }
 
@@ -62,7 +60,10 @@ export const SInputsWrapper = styled.div`
   ${tw`flex flex-col items-stretch gap-y-[6dvh] min-w-full text-[1.4rem] `}
 
   button {
-    ${tw`duration-[50ms] `}
+    ${tw`duration-[50ms] lg:text-[1.2rem] `}
+
+    
+
   }
 `;
 

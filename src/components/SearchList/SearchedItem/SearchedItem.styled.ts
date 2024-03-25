@@ -2,14 +2,13 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SSearchedItem = styled.div`
-  ${tw`flex flex-col justify-center w-full py-[.55rem] pr-3 pl-1 border-solid border border-x-0 border-t-0 gap-x-3 cursor-pointer opacity-[.75] text-[.75rem] md:text-[1rem] last:border-none last:pb-3 relative`}
+  ${tw`flex flex-col justify-center w-full py-[.55rem] pr-3 pl-1 border-solid border border-x-0 border-t-0 gap-x-3 cursor-pointer text-[.75rem] md:text-[1rem] last:border-none last:pb-3 relative first:rounded-t-lg last:rounded-b-lg`}
   ${(props) => css`
     border-color: ${props.theme.colors["primary"]};
   `}
 
   :hover {
     @media (hover: hover) {
-      ${tw`opacity-[1] `}
       ${(props) => css`
         background-color: ${props.theme.colors["secondary"]};
       `}

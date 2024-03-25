@@ -38,9 +38,9 @@ export function ThemeProvider({ children }: PropsWithChildren) {
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#333333",
-      secondary: "#C0C0C0",
+      secondary: "#91a7ff",
       secondary_background: "#1b1b1b",
-      secondary_text: "#5b5b5b",
+      secondary_text: "#343a40",
       additional: "#339af0",
       saleClr: "red",
       myGreen: "#008000",
