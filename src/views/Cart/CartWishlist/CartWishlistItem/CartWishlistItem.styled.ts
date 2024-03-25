@@ -28,7 +28,7 @@ export const SCartWishlistItem = styled.div`
     @media (hover: hover) {
       :hover {
         ${(props) => css`
-          color: ${props.theme.colors["myGreen"]};
+          color: ${props.theme.colors["additional"]};
         `}
       }
     }

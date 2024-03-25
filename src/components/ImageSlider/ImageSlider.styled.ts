@@ -8,7 +8,7 @@ export const SImageSliderHolder = styled.div`
     ${tw`w-full xs:h-[120px] sm:h-[150px] md:h-[200px] lg:h-[300px] xl:h-[350px] outline-none`}
 
     img {
-      ${tw`w-full h-full mx-[auto]  `}
+      ${tw`w-full h-full mx-[auto] rounded-lg `}
       mask-image: linear-gradient(to right,
          rgba(0, 0, 0, .2) 0%,
          rgba(0, 0, 0, .75) 15%,

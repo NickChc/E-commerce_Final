@@ -34,7 +34,7 @@
   "register": "REGISTER",
   "registering": "REGISTERING",
   "loggingIn": "LOGGING IN",
-  "newValue": "NEW VALUE",
+  "newValue": "UPDATE",
   "change": "CHANGE",
   "changing": "CHANGING",
   "emailMissing": "Email Is Missing!",

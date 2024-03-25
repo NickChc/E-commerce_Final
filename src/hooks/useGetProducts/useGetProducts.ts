@@ -3,9 +3,9 @@ import { publicAxios } from "@src/utils/publicAxios";
 import { TProduct } from "@src/@types/general";
 
 export function useGetProducts() {
+  const [totalProducts, setTotalProducts] = useState<number>(100);
   const [products, setProducts] = useState<TProduct[]>([]);
   const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
-  const [totalProducts, setTotalProducts] = useState<number>(100);
 
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -19,8 +19,12 @@ export function useGetProducts() {
     try {
       setError("");
       // IF THERE'S A SEARCH KEYWORD, FUNCTION IS HANDLED ACCORDINGLY, ELSE IT JUST FETCHES PRODUCTS
-      if (!search) setLoading(true);
-      else setSearching(true);
+      if (!search) {
+        setLoading(true);
+      } else {
+        setSearching(true);
+        setSearchedProducts([]);
+      }
       const response = await publicAxios.get(
         `/product?productName=${keyWord}&categoryName=${
           categoryName || ""
@@ -44,13 +48,13 @@ export function useGetProducts() {
   }
 
   return {
-    products,
-    searchedProducts,
-    setSearchedProducts,
     productsLoading: loading,
     fetchProducts,
     productsError: error,
     searching,
     totalProducts,
+    products,
+    searchedProducts,
+    setSearchedProducts,
   };
 }

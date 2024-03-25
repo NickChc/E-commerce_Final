@@ -15,7 +15,6 @@ export function SearchBar() {
 
   const {
     fetchProducts,
-    setSearchedProducts,
     searchKeyWord,
     setSearchKeyWord,
   } = useGlobalProvider();

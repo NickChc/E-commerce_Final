@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCheckout, SRightSide, SLeftSide } from "@src/views/Checkout";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -24,6 +24,7 @@ export function Checkout() {
   const { cartItems } = useCartProvider();
 
   const Location = useLocation();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     if (product) {
@@ -37,12 +38,15 @@ export function Checkout() {
     const pathEnd = pathArray[pathArray.length - 1];
 
     // CHECKS IF CHECKOUT WAS ACCESED THROUGH CART OR SINGLE PRODUCT...
-    if (pathEnd === "cartItems") {
+    if (pathEnd === "cartItems" && cartItems.length > 0) {
       const cartProducts = cartItems.map((item) => item.cartProduct);
 
       setCheckoutItems(cartProducts);
       setTotalCount(totalQuantity(cartItems));
       setTotalPrice(totalCost(cartItems));
+      // MANUALLY ACCESSING CHECKOUT BLOCKED
+    } else if (pathEnd === "cartItems" && cartItems.length < 1) {
+      Navigate("/");
     } else {
       fetchSingleProduct(pathEnd);
       setTotalCount(1);

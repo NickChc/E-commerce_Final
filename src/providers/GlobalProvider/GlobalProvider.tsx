@@ -11,6 +11,7 @@ import { useGetOrders } from "@src/hooks/useGetOrders";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [searchKeyWord, setSearchKeyWord] = useState<string>("");
+
   const [minMax, setMinMax] = useState<number[]>([]);
   const [registering, setRegistering] = useState(false);
   const [authModal, setAuthModal] = useState<boolean>(false);
@@ -25,14 +26,14 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { authStage } = useAuthProvider();
 
   const {
-    products,
     productsLoading,
     fetchProducts,
     productsError,
-    searchedProducts,
-    setSearchedProducts,
     searching,
     totalProducts,
+    products,
+    searchedProducts,
+    setSearchedProducts,
   } = useGetProducts();
 
   const {
@@ -55,6 +56,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     getCategories();
+    fetchProducts("");
   }, [authStage]);
 
   return (

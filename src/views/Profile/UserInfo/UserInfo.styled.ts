@@ -57,7 +57,7 @@ export const STextHolder = styled.div`
   ${tw`w-full md:w-[60%] flex flex-col items-stretch lg:items-center gap-y-1 md:mt-3 xl:mt-0 text-start `}
 
   h2 {
-    ${tw`w-full border-solid border border-black border-x-0 border-t-0 relative pr-6 whitespace-nowrap text-[.75rem] sm:text-[.8rem] lg:text-[1rem] xl:text-[1.2rem] truncate py-2 `}
+    ${tw`w-full flex items-center gap-x-3 border-solid border border-black border-x-0 border-t-0 relative pr-6 whitespace-nowrap text-[.75rem] sm:text-[.8rem] lg:text-[1rem] xl:text-[1.2rem] truncate py-2 `}
     ${(props) => css`
       color: ${props.theme.colors["secondary_text"]};
     `}

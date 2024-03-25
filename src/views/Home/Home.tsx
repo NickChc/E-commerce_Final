@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   SHome,
@@ -19,16 +18,11 @@ export function Home() {
     products,
     productsLoading,
     productsError,
-    fetchProducts,
     categories,
   } = useGlobalProvider();
 
   // PRODUCTS FILTERING LOGIC
   const saleProducts = products?.filter((product) => product.salePrice);
-
-  useEffect(() => {
-    fetchProducts("");
-  }, []);
 
   return (
     <SHome>

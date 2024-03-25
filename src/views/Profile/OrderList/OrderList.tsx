@@ -13,7 +13,6 @@ export function OrderList() {
 
   return (
     <SOrderList>
-      <h1>ORDERS</h1>
       {orders.length < 1 ? (
         <h2>
           <FormattedMessage
@@ -22,9 +21,12 @@ export function OrderList() {
           />
         </h2>
       ) : (
-        orders?.map((order) => {
-          return <ListItem key={order.id} order={order} />;
-        })
+        <>
+          <h1>ORDERS</h1>
+          {orders?.map((order) => {
+            return <ListItem key={order.id} order={order} />;
+          })}
+        </>
       )}
     </SOrderList>
   );

@@ -25,7 +25,7 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: false,
-    arrows: true,
+    arrows: products.length > 5,
     prevArrow: <CustomArrow side="left" disabled={products.length < 5} />,
     nextArrow: <CustomArrow side="right" disabled={products.length < 5} />,
     swipe: products.length > 5,

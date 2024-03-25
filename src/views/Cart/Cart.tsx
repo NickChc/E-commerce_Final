@@ -1,9 +1,4 @@
-import {
-  SCart,
-  SCartInfoWrapperSm,
-  SCartInfoWrapperLg,
-  SSliderWrapper,
-} from "@src/views/Cart";
+import { SCart, SRightSide, SLeftSide } from "@src/views/Cart";
 import { CartList } from "@src/views/Cart/CartList";
 import { CartInfo } from "@src/views/Cart/CartInfo";
 import { WishlistSlider } from "@src/components/WishlistSlider";
@@ -13,22 +8,16 @@ export function Cart() {
   return (
     <>
       <SCart>
-        {/* CART INFO ON SMALL SCREENS */}
-        <SCartInfoWrapperSm>
+        <SLeftSide>
+          <CartWishlist />
+          <CartList />
+          <WishlistSlider />
+        </SLeftSide>
+
+        <SRightSide>
           <CartInfo />
-          <hr />
-        </SCartInfoWrapperSm>
-        <CartList />
-        <hr />
-        <CartWishlist />
-        {/* CART INFO ON LARGE SCREENS */}
-        <SCartInfoWrapperLg>
-          <CartInfo />
-        </SCartInfoWrapperLg>
+        </SRightSide>
       </SCart>
-      <SSliderWrapper>
-        <WishlistSlider />
-      </SSliderWrapper>
     </>
   );
 }

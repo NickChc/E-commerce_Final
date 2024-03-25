@@ -16,7 +16,11 @@ interface GlobalContextProps {
   ) => Promise<void>;
   gettingFiltered: boolean;
   totalFiltered: number;
-  fetchProducts: (productName: string, categoryName?: string, search?: boolean) => Promise<void>;
+  fetchProducts: (
+    productName: string,
+    categoryName?: string,
+    search?: boolean
+  ) => Promise<void>;
   products: TProduct[];
   searchedProducts: TProduct[];
   setSearchedProducts: React.Dispatch<React.SetStateAction<TProduct[]>>;

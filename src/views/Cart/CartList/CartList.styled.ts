@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCartList = styled.div`
-  ${tw`flex flex-col items-center p-3 w-[95%] sm:w-[80%] lg:w-[50%] h-[320px] lg:h-auto lg:max-h-[50dvh] overflow-y-auto overflow-x-hidden `}
+  ${tw`flex flex-col items-center p-3 w-[80%] `}
 
   h1 {
     ${tw`text-[1rem] xs:text-[1.2rem] sm:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mb-1 `}

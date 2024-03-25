@@ -6,29 +6,33 @@ interface CartItemProps {
 }
 
 export const SCartItem = styled.div<CartItemProps>`
-  ${tw`w-full border border-solid rounded-lg flex flex-row items-center sm:items-start lg:items-center justify-between relative  shadow-lg transition-all duration-700 origin-top  `}
+  ${tw`w-full border-2 border-solid rounded-lg flex flex-row items-center sm:items-start lg:items-center justify-between relative transition-all duration-700 origin-top `}
   ${(props) => css`
     ${!props.show
       ? tw`scale-[0] p-0 max-h-0 opacity-[0] m-0 `
       : tw`scale-[1] opacity-[1] p-2 max-h-[15rem] my-2 lg:mt-9 `}
 
     border-color: ${props.theme.colors["additional"]};
-    background-color: rgb(211, 211, 211);
+    background-color: ${props.theme.mode === "DARK" &&
+    props.theme.colors["secondary_text"]};
   `}
 
   a {
     ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mt-1 max-w-[8rem] xs:max-w-[12rem] sm:max-w-[20rem] lg:max-w-[12rem] xl:max-w-full truncate xl:whitespace-normal xl:text-clip `}
     ${(props) => css`
-      color: ${props.theme.colors["primary"]};
+      color: ${props.theme.mode === "DARK"
+        ? props.theme.colors["secondary"]
+        : props.theme.colors["primary"]};
     `}
-
-    :hover {
-      color: #000;
-    }
   }
 
   h3 {
     ${tw`text-[.75rem] sm:text-[.8rem] md:text-[1rem] xl:text-[1.2rem] truncate mt-2 `}
+    ${(props) => css`
+      color: ${props.theme.mode === "DARK"
+        ? props.theme.colors["secondary"]
+        : props.theme.colors["primary"]};
+    `}
   }
 
   img {
@@ -40,7 +44,7 @@ export const SImgWrapper = styled.div`
   ${tw`flex `}
 
   p {
-    ${tw`text-[1rem] md:text-[1.4rem] absolute bottom-1  right-1 `}
+    ${tw`text-[1rem] md:text-[1.4rem] absolute bottom-1 right-1 `}
   }
 `;
 
@@ -67,6 +71,9 @@ export const SCountBtnHolder = styled.div`
 
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
+    color: ${props.theme.mode === "DARK"
+      ? props.theme.colors["secondary"]
+      : props.theme.colors["primary"]};
   `}
 
   span {
@@ -109,6 +116,11 @@ export const SBtnsLg = styled.div`
 
   p {
     ${tw`absolute bottom-0 left-[105%] sm:left-[50%] sm:translate-x-[-50%] text-[.6rem] sm:top-[120%] sm:text-[.8rem] flex flex-row gap-x-1 cursor-pointer duration-75 whitespace-nowrap select-none   `}
+    ${(props) => css`
+      color: ${props.theme.mode === "DARK"
+        ? props.theme.colors["secondary"]
+        : props.theme.colors["primary"]};
+    `}
 
     div {
       ${tw`text-[.75rem] sm:text-[.9rem]  `}

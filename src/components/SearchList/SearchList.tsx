@@ -10,13 +10,14 @@ interface SearchListProps {
 }
 
 export function SearchList({ open }: SearchListProps) {
-  const { searchedProducts, searching, setSearchedProducts } = useGlobalProvider();
+  const { searchedProducts, searching, setSearchedProducts } =
+    useGlobalProvider();
 
   useEffect(() => {
     setSearchedProducts([]);
   }, []);
 
-  if (!open) return;
+  if (!open) return null;
 
   return (
     <SSearchList>

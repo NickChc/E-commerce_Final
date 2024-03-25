@@ -15,6 +15,7 @@ export function CartProvider({ children }: PropsWithChildren) {
   const { addToCart, addingToCart } = useAddToCart();
   const { removeCartItem, removingCartItem } = useRemoveCartItem();
 
+  // GET CART ITEMS
   async function getCart() {
     try {
       setGettingCart(true);
@@ -26,7 +27,7 @@ export function CartProvider({ children }: PropsWithChildren) {
           const dateA = new Date(a["created_at"]).getTime();
           const dateB = new Date(b["created_at"]).getTime();
 
-          return dateA - dateB;
+          return dateB - dateA;
         }
       );
       setCartItems(sortedCartItems);
