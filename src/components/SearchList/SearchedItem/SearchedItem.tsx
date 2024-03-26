@@ -6,8 +6,8 @@ import {
   SSaleTag,
 } from "@src/components/SearchList/SearchedItem";
 import { TProduct } from "@src/@types/general";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductImg } from "@src/components/ProductImg";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 interface SearchedItemProps {
   item: TProduct;
@@ -16,7 +16,7 @@ interface SearchedItemProps {
 export function SearchedItem({ item }: SearchedItemProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const { setSearchKeyWord } = useGlobalProvider();
+  const { setSearchKeyWord } = useProductProvider();
 
   const Navigate = useNavigate();
 

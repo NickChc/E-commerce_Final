@@ -19,7 +19,7 @@ export function BreadCrumbMenu({ item }: MenuProps) {
             <FormattedMessage id="home" defaultMessage={"_HOME_"} />
           </Link>{" "}
           <CrumbarArrow />
-          <Link to={`/products/${item?.category_name}/1`}>
+          <Link to={`/products/${item?.category_name || categoryName}/1`}>
             {item?.category_name || categoryName || ""}
           </Link>
           {item && (

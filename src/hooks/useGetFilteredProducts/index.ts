@@ -1,1 +1,0 @@
-export { useGetFilteredProducts } from "./useGetFilteredProducts";

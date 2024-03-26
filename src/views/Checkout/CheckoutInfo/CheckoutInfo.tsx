@@ -62,11 +62,9 @@ export function CheckoutInfo({
     }
   }
 
-
-
   useEffect(() => {
     setAddressConfirmed(false);
-  }, [deliveryAddress])
+  }, [deliveryAddress]);
 
   return (
     <SCheckoutInfo>
@@ -83,7 +81,7 @@ export function CheckoutInfo({
       </h2>
       <h2>
         <FormattedMessage id="shipping" defaultMessage={"_SHIPPING_"} /> -{" "}
-        <span>{shipping || "  "}</span>{" "}
+        <span>{shipping || 0}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />{" "}
       </h2>
       <h2>

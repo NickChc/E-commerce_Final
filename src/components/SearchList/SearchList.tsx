@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { SSearchList } from "@src/components/SearchList";
 import { SearchedItem } from "@src/components/SearchList/SearchedItem";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 interface SearchListProps {
@@ -11,11 +11,11 @@ interface SearchListProps {
 
 export function SearchList({ open }: SearchListProps) {
   const { searchedProducts, searching, setSearchedProducts } =
-    useGlobalProvider();
+    useProductProvider();
 
   useEffect(() => {
     setSearchedProducts([]);
-  }, []);
+  }, [open]);
 
   if (!open) return null;
 

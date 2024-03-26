@@ -10,7 +10,6 @@ import { TPaymentStatus_Enum } from "@src/@types/general";
 import { useGetOrders } from "@src/hooks/useGetOrders";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
-  const [searchKeyWord, setSearchKeyWord] = useState<string>("");
 
   const [minMax, setMinMax] = useState<number[]>([]);
   const [registering, setRegistering] = useState(false);
@@ -24,25 +23,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [categoryNavOpen, setCategoryNavOpen] = useState<boolean>(false);
 
   const { authStage } = useAuthProvider();
-
-  const {
-    productsLoading,
-    fetchProducts,
-    productsError,
-    searching,
-    totalProducts,
-    products,
-    searchedProducts,
-    setSearchedProducts,
-  } = useGetProducts();
-
-  const {
-    filteredProducts,
-    gettingFiltered,
-    getFilteredProducts,
-    totalFiltered,
-  } = useGetFilteredProducts();
-  const { product, productLoading, fetchSingleProduct } = useGetSingleProduct();
   const { getCategories, categories, gettingCategories } = useGetCategories();
   const { orders, gettingOrders, getOrders } = useGetOrders();
 
@@ -56,31 +36,13 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     getCategories();
-    fetchProducts("");
   }, [authStage]);
 
   return (
     <GlobalContext.Provider
       value={{
-        filteredProducts,
-        getFilteredProducts,
-        gettingFiltered,
-        totalFiltered,
-        fetchProducts,
-        products,
-        searchedProducts,
-        setSearchedProducts,
-        productsLoading,
-        productsError,
-        product,
-        productLoading,
-        fetchSingleProduct,
-        totalProducts,
-        searchKeyWord,
         minMax,
         setMinMax,
-        setSearchKeyWord,
-        searching,
         registering,
         setRegistering,
         authModal,

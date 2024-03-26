@@ -1,15 +1,21 @@
 import { useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { SProfile, SUserLayer } from "@src/views/Profile";
 import { TChangeableUserData } from "@src/@types/requestTypes";
 import { UserInfo } from "@src/views/Profile/UserInfo";
 import { UpdateForm } from "@src/views/Profile/UpdateForm";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { OrderList } from "@src/views/Profile/OrderList";
-import { WishlistSlider } from "@src/components/WishlistSlider";
+import { ProductSlider } from "@src/components/ProductSlider";
+import { useWishlistProvider } from "@src/providers/WishlistProvider";
 
 
 export function Profile() {
   const { userData } = useAuthProvider();
+  const { wishlistItems } = useWishlistProvider();
+  const { formatMessage } = useIntl()
+
+  const wishlistProducts = wishlistItems?.map((item) => item.likedProduct);
 
   const [currentEdit, setCurrentEdit] = useState<
     keyof TChangeableUserData | undefined
@@ -59,7 +65,22 @@ export function Profile() {
       <OrderList />
       <hr />
       {/* WISHLIST */}
-      <WishlistSlider />
+      {wishlistProducts.length < 1 ? (
+        <h1>
+          <FormattedMessage
+            id="emptyWishlist"
+            defaultMessage={"_YOURWISHLIST_IS_EMPTY_"}
+          />
+        </h1>
+      ) : (
+        <ProductSlider
+          products={wishlistProducts}
+          title={formatMessage({
+            id: "wishlist",
+            defaultMessage: "_WISHLIST_",
+          })}
+        />
+      )}
     </SProfile>
   );
 }

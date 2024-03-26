@@ -9,10 +9,10 @@ import { CartList } from "@src/views/Cart/CartList";
 import { CartInfo } from "@src/views/Cart/CartInfo";
 import { CartWishlist } from "@src/views/Cart/CartWishlist";
 import { ProductSlider } from "@src/components/ProductSlider";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 export function Cart() {
-  const { products } = useGlobalProvider();
+  const { products } = useProductProvider();
   const { formatMessage } = useIntl();
 
   // IMITATE POPULAR PRODUCTS

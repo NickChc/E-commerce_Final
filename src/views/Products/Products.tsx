@@ -4,7 +4,7 @@ import {
   SEmptyWrapper,
   SProductsLayout,
 } from "@src/views/Products";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 import { ProductCard } from "@src/components/ProductCard";
 import { FilterProducts } from "@src/views/Products/FilterProducts";
 import { Pagination } from "@src/components/Pagination";
@@ -13,7 +13,7 @@ import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 
 export function Products() {
-  const { filteredProducts, gettingFiltered } = useGlobalProvider();
+  const { filteredProducts, gettingFiltered } = useProductProvider();
 
   return (
     <SProducts>

@@ -15,16 +15,15 @@ import { formatDate } from "@src/utils/formatDate";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { calculateSale } from "@src/utils/calculateSale";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { FunctionalSide } from "@src/views/Product/FunctionalSide";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 export function Product() {
   const { productId } = useParams();
   const { formatMessage } = useIntl();
 
-  const { product, productLoading, fetchSingleProduct, products } =
-    useGlobalProvider();
+  const { products, product, productLoading, fetchSingleProduct } = useProductProvider();
 
   const recommended = products?.filter(
     (item) => item.category_name === product?.category_name

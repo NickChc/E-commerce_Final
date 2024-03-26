@@ -9,8 +9,7 @@ export function useCancelOrder() {
   async function cancelOrder(orderId: string, onCancel: () => void) {
     try {
       setLoading(true);
-      const response = await privateAxios.delete(`/purchases/${orderId}`);
-      console.log(response.data);
+      await privateAxios.delete(`/purchases/${orderId}`);
       getOrders();
     } catch (error: any) {
       console.log(error.message);

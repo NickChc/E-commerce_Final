@@ -25,7 +25,7 @@ export const SLangPopup = styled.div`
 `;
 
 export const SLangPopupBtn = styled.button`
-  ${tw`w-[90%] py-1 rounded-xl cursor-pointer border-solid border`}
+  ${tw`w-[90%] py-1 rounded-xl cursor-pointer font-bold border-solid border`}
   border-color: transparent;
 
   :hover {

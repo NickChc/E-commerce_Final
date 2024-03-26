@@ -3,11 +3,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SPagination } from "@src/components/Pagination";
 import { Button } from "@src/components/Buttons/HeaderButton";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { PAGE_SIZE } from "@src/config/general";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 export function Pagination() {
-  const { totalFiltered } = useGlobalProvider();
+  const { totalFiltered } = useProductProvider();
   const [pageRange, setPageRange] = useState<[number, number]>([0, 6]);
 
   const { categoryName, page } = useParams();

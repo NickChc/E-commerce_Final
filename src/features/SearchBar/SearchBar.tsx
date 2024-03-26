@@ -1,28 +1,23 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useIntl } from "react-intl";
+import _ from "lodash";
 import { SInputWrapper, SInput, SInputButton } from "@src/features/SearchBar";
 import { SearchList } from "@src/components/SearchList";
 import { SearchIcon, CloseIcon } from "@src/assets/icons";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import _ from "lodash";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 export function SearchBar() {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
-
   const { formatMessage } = useIntl();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const {
-    fetchProducts,
-    searchKeyWord,
-    setSearchKeyWord,
-  } = useGlobalProvider();
+  const { fetchProducts, setSearchKeyWord, searchKeyWord } = useProductProvider();
 
   // SET TIMER AFTER CHANGING INPUT
   const debounceFetchSearched = useCallback(
     _.debounce((keyWord: string) => {
-      fetchProducts(keyWord, undefined, true);
+      fetchProducts(keyWord, undefined, "search");
     }, 1000),
     []
   );
@@ -33,9 +28,9 @@ export function SearchBar() {
     setSearchKeyWord(keyWord);
     if (keyWord.length > 0) {
       debounceFetchSearched(keyWord);
-      setOpenSearch(true)
+      setOpenSearch(true);
     }
-    if (keyWord  === "") {
+    if (keyWord === "") {
       setOpenSearch(false);
     }
   }

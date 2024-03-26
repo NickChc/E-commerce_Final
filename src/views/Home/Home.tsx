@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   SHome,
@@ -12,14 +13,11 @@ import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { TagIcon } from "@src/assets/icons";
 import { ProductImg } from "@src/components/ProductImg";
 import { ImageSlider } from "@src/components/ImageSlider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 export function Home() {
-  const {
-    products,
-    productsLoading,
-    productsError,
-    categories,
-  } = useGlobalProvider();
+  const { categories } = useGlobalProvider();
+  const { products, productsLoading, productsError } = useProductProvider();
 
   // PRODUCTS FILTERING LOGIC
   const saleProducts = products?.filter((product) => product.salePrice);

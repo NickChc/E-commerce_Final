@@ -7,7 +7,7 @@ import {
   SSliderHolder,
   SMinMaxWrapper,
 } from "@src/views/Products/FilterProducts/MinMaxRange";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 interface MinMaxRangeProps {
   priceRange: number[];
@@ -24,7 +24,7 @@ export function MinMaxRange({
   max,
   saleOnly,
 }: MinMaxRangeProps) {
-  const { getFilteredProducts } = useGlobalProvider();
+  const { getFilteredProducts } = useProductProvider();
 
   const Navigate = useNavigate();
 
@@ -32,7 +32,6 @@ export function MinMaxRange({
 
   useEffect(() => {
     if (categoryName && page) {
-      // Navigate(`/products/${categoryName}/1`);
       getFilteredProducts(categoryName, saleOnly, priceRange, Number(page));
     }
   }, [saleOnly]);

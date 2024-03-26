@@ -8,11 +8,11 @@ import {
 } from "@src/views/Products/FilterProducts";
 import { MinMaxRange } from "@src/views/Products/FilterProducts/MinMaxRange";
 import { minMaxPrice } from "@src/utils/minMaxPrice";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 
 export function FilterProducts() {
   const { categoryName, page } = useParams();
-  const { fetchProducts, products, getFilteredProducts } = useGlobalProvider();
+  const { fetchProducts, categoryProducts, getFilteredProducts } = useProductProvider();
 
   const [minMax, setMinMax] = useState<number[]>([]);
   const [showFilters, setShowFilters] = useState(false);
@@ -24,16 +24,16 @@ export function FilterProducts() {
 
   useEffect(() => {
     if (minMax.length < 1) {
-      const MIN_MAX = minMaxPrice(products);
+      const MIN_MAX = minMaxPrice(categoryProducts);
 
       setMinMax(MIN_MAX);
       setPriceRange(MIN_MAX);
     }
-  }, [products]);
+  }, [categoryProducts]);
 
   useEffect(() => {
     if (categoryName && page) {
-      fetchProducts("", categoryName);
+      fetchProducts("", categoryName, "filter");
       getFilteredProducts(categoryName, false, undefined, Number(page));
     }
     setSaleOnly(false);
