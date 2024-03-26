@@ -5,6 +5,7 @@ import { CancelIcon } from "@src/assets/icons";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { TPaymentStatus_Enum } from "@src/@types/general";
 import { formatDate } from "@src/utils/formatDate";
+import { SProductButton } from "@src/components/Buttons/ProductButton";
 
 interface ListItemProps {
   order: TOrder;
@@ -33,9 +34,9 @@ export function ListItem({ order }: ListItemProps) {
         <FormattedMessage id="quantity" defaultMessage={"_QUANTITY_"} /> -{" "}
         {order.totalItems}
       </h4>
-      <button onClick={handleCancel}>
+      <SProductButton variation="warning" onClick={handleCancel}>
         <FormattedMessage id="cancel" defaultMessage={"_CANCEL_"} />
-      </button>
+      </SProductButton>
       <span onClick={handleCancel}>
         <CancelIcon />
       </span>

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { SCheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
+import {
+  SCheckoutInfo,
+  SConfirmationText,
+} from "@src/views/Checkout/CheckoutInfo";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -24,6 +27,7 @@ export function CheckoutInfo({
 }: CheckoutInfoProps) {
   const [addressConfirmed, setAddressConfirmed] = useState<boolean>(false);
   const [buying, setBuying] = useState<boolean>(false);
+  const [redConfirm, setRedConfirm] = useState<boolean>(false);;
 
   const { usersCountryInfo } = useGetCountry();
   const { deliveryAddress, setPaymentStatus } = useGlobalProvider();
@@ -98,7 +102,7 @@ export function CheckoutInfo({
         </span>
       </h2>
 
-      <p>
+      <SConfirmationText isRed={redConfirm}>
         <FormattedMessage
           id="confirmAddress"
           defaultMessage={"_CONFIRM_YOUR_ADDRESS_"}
@@ -106,13 +110,22 @@ export function CheckoutInfo({
         <input
           type="checkbox"
           checked={addressConfirmed}
-          onChange={() => setAddressConfirmed((prev) => !prev)}
+          onChange={() => {
+            setAddressConfirmed((prev) => !prev);
+            setRedConfirm(false);
+          }}
         />
-      </p>
+      </SConfirmationText>
       {/* BUYING BUTTON */}
       <SProductButton
-        disabled={!gotCard || !addressConfirmed}
-        onClick={buyItems}
+        disabled={!gotCard}
+        onClick={() => {
+          if (addressConfirmed) {
+            buyItems();
+          } else {
+            setRedConfirm(true);
+          }
+        }}
       >
         {buying ? (
           <>

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCheckoutProduct = styled.div`
-  ${tw` p-2 flex items-center gap-x-0 lg:gap-x-1 border-solid border rounded-xl shadow-lg `}
+  ${tw` p-2 flex items-center gap-x-0 lg:gap-x-1 border-solid border-2 rounded-xl `}
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
   `}

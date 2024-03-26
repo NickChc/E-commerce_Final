@@ -20,19 +20,6 @@ export const SListItem = styled.li`
 
   button {
     ${tw`px-[.55em] py-[.2rem] text-[.8rem] lg:text-[1rem] hidden sm:block border-solid border cursor-pointer duration-75 rounded-md `}
-    ${(props) => css`
-      border-color: ${props.theme.colors["saleClr"]};
-      color: ${props.theme.colors["saleClr"]};
-    `}
-
-    @media (hover: hover) {
-      :hover {
-        ${(props) => css`
-          background-color: ${props.theme.colors["saleClr"]};
-          color: ${props.theme.colors["secondary"]};
-        `}
-      }
-    }
   }
 
   span {
@@ -40,13 +27,5 @@ export const SListItem = styled.li`
     ${(props) => css`
       color: ${props.theme.colors["saleClr"]};
     `}
-  }
-
-  @media (hover: hover) {
-    :hover {
-      ${() => css`
-        background-color: rgb(224, 224, 224);
-      `}
-    }
   }
 `;

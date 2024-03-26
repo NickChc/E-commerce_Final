@@ -12,7 +12,9 @@ interface CheckoutFormProps {
 export const SFormHideLink = styled.a`
   ${tw`underline cursor-pointer self-end mr-9 mt-1 sm:mt-6 `}
   ${(props) => css`
-    color: ${props.theme.colors["additional"]};
+    color: ${props.theme.mode === "DARK"
+      ? props.theme.colors["secondary_background"]
+      : props.theme.colors["additional"]};
   `}
 
 
@@ -38,6 +40,7 @@ export const SCheckoutForm = styled.form<CheckoutFormProps>`
 
   button {
     ${tw`mt-6 `}
+    background-color: #dee2e6;
   }
 `;
 

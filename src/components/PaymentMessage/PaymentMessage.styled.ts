@@ -3,12 +3,15 @@ import tw from "twin.macro";
 
 export const SPaymentMessage = styled.div`
   ${tw`flex flex-col items-center `}
+  ${(props) => css`
+    color: ${props.theme.colors["secondary"]};
+  `}
 
   div {
     ${tw`flex items-center justify-center xs:justify-around w-full overflow-hidden gap-x-3 mt-20 `}
 
     button {
-      ${tw`duration-75 p-3 w-fit xs:w-[40%] `}
+      ${tw`p-3 w-fit xs:w-[40%] `}
     }
   }
 

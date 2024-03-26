@@ -7,7 +7,7 @@ interface ProductButtonProps {
 }
 
 export const SProductButton = styled.button<ProductButtonProps>`
-  ${tw`py-[.5rem] px-[.8rem] border-solid border cursor-pointer whitespace-nowrap text-[.65rem] sm:text-[.75rem] md:text-[.9rem] lg:text-[1rem] 2xl:text-[.9rem] flex items-center justify-evenly gap-x-1 break-words disabled:opacity-[.75] opacity-[.85] disabled:cursor-default font-semibold duration-75 `}
+  ${tw`py-[.5rem] px-[.8rem] border-solid border cursor-pointer whitespace-nowrap text-[.65rem] sm:text-[.75rem] md:text-[.9rem] lg:text-[1rem] 2xl:text-[.9rem] flex items-center justify-evenly gap-x-1 break-words disabled:opacity-[.75] opacity-[.85] disabled:cursor-default font-semibold  `}
   ${(props) => css`
     border-color: ${props.variation === "warning"
       ? props.theme.colors["saleClr"]
@@ -16,7 +16,7 @@ export const SProductButton = styled.button<ProductButtonProps>`
     background-color: ${props.variation === "primary"
       ? props.theme.colors["additional"]
       : props.variation === "warning"
-      ? props.theme.colors["secondary"]
+      ? props.theme.colors["myWhite"]
       : null};
     color: ${props.variation === "primary"
       ? props.theme.colors["secondary"]
@@ -38,9 +38,7 @@ export const SProductButton = styled.button<ProductButtonProps>`
         background-color: ${props.variation === "warning"
           ? props.theme.colors["saleClr"]
           : props.theme.colors["additional"]};
-        color: ${props.variation === "primary"
-          ? props.theme.colors["secondary"]
-          : props.theme.colors["secondary"]};
+        color: ${props.theme.colors[ "myWhite"]};
       `}
 
       span {

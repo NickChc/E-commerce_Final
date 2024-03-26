@@ -65,14 +65,6 @@ export function Profile() {
       <OrderList />
       <hr />
       {/* WISHLIST */}
-      {wishlistProducts.length < 1 ? (
-        <h1>
-          <FormattedMessage
-            id="emptyWishlist"
-            defaultMessage={"_YOURWISHLIST_IS_EMPTY_"}
-          />
-        </h1>
-      ) : (
         <ProductSlider
           products={wishlistProducts}
           title={formatMessage({
@@ -80,7 +72,6 @@ export function Profile() {
             defaultMessage: "_WISHLIST_",
           })}
         />
-      )}
     </SProfile>
   );
 }

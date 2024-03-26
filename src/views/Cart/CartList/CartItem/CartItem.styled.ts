@@ -86,7 +86,7 @@ export const SCountBtnHolder = styled.div`
     ${tw`w-[2.25em] px-[.6rem] sm:px-[.8rem] border-solid border border-y-0 flex items-center justify-center font-semibold `}
     ${(props) => css`
       border-color: ${props.theme.colors["additional"]};
-      background-color: #dee2e6;
+      background-color: ${props.theme.colors["secondary"]};
       color: ${props.theme.colors["primary"]};
     `}
   }

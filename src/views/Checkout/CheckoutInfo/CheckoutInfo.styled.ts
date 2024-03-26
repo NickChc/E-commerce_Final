@@ -17,15 +17,22 @@ export const SCheckoutInfo = styled.div`
     }
   }
 
-  p {
-    ${tw`whitespace-nowrap mt-6 flex items-start gap-x-3 `}
-
-    input {
-      ${tw`cursor-pointer w-[18px] aspect-square `}
-    }
-  }
-
   button {
     ${tw`w-full mt-9 text-[1.2rem] `}
+  }
+`;
+
+interface SConfirmationProps {
+  isRed: boolean;
+}
+
+export const SConfirmationText = styled.p<SConfirmationProps>`
+  ${tw`whitespace-nowrap mt-6 flex items-start gap-x-3 `}
+  ${(props) => css`
+    color: ${props.isRed && props.theme.colors["saleClr"]};
+  `}
+
+  input {
+    ${tw`cursor-pointer w-[18px] aspect-square `}
   }
 `;
