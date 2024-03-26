@@ -2,10 +2,10 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SBreadCrumbMenu = styled.div`
-  ${tw`w-full flex flex-col  gap-x-3 p-2 overflow-x-hidden  `}
+  ${tw`w-full flex flex-col gap-x-3 p-2 overflow-hidden text-[1rem] sm:text-[1.4rem] `}
 
   nav {
-    ${tw`w-full flex items-center justify-center gap-x-1 sm:gap-x-3 mb-[.5rem] overflow-x-hidden `}
+    ${tw`w-full flex items-center justify-center gap-x-1 sm:gap-x-3 mb-[.5rem] `}
   }
 
   a {

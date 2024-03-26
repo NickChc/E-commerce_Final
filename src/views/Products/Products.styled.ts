@@ -11,18 +11,18 @@ export const SProducts = styled.div`
 
 export const SProductsLayout = styled.div`
   ${tw`w-full max-w-full overflow-hidden flex flex-col items-center justify-start mb-9`}
-`;
-
-export const SProductsHolder = styled.div`
-  ${tw`w-full grid grid-cols-repeat-15 pb-14 gap-y-9 p-3 `}
 
   h1 {
-    ${tw`flex items-center justify-center gap-x-3 mt-9 text-[2rem] sm:text-[3rem] md:text-[4rem] `}
+    ${tw`flex items-center justify-center gap-x-3 mt-20  text-[2rem] xs:text-[2.5rem] sm:text-[3rem] md:text-[4rem]`}
   }
 `;
 
+export const SProductsHolder = styled.div`
+  ${tw`w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 pb-14 gap-y-9 p-3 `}
+`;
+
 export const SEmptyWrapper = styled.div`
-  ${tw`h-full flex flex-col gap-y-14 items-center justify-center `}
+  ${tw`h-full w-full flex justify-center  `}
 
   div {
     ${tw`text-[5rem] sm:text-[7.5rem] md:text-[10rem] mt-20 flex flex-col gap-y-3 items-center `}
