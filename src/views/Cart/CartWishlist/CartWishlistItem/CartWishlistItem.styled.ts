@@ -2,13 +2,13 @@ import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SCartWishlistItem = styled.div`
-  ${tw`flex items-center justify-between w-[80%] border-solid border border-x-0 border-b-0 last:border-b p-1 `}
+  ${tw`flex items-center justify-between w-[60%] sm:w-[80%] border-solid border border-x-0 border-b-0 last:border-b p-1 `}
   ${(props) => css`
     border-color: ${props.theme.colors["secondary_text"]};
   `}
 
   div {
-    ${tw`flex items-center gap-x-3 `}
+    ${tw`flex flex-row items-center gap-x-1 sm:gap-x-3 `}
 
     a {
       ${tw`text-[1.2rem] `}
@@ -23,7 +23,7 @@ export const SCartWishlistItem = styled.div`
   }
 
   span {
-    ${tw`text-[1.4rem] cursor-pointer transition-colors duration-75 `}
+    ${tw`text-[1rem] sm:text-[1.4rem] cursor-pointer transition-colors duration-75 `}
 
     @media (hover: hover) {
       :hover {

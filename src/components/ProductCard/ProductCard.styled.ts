@@ -16,6 +16,7 @@ export const SProductCard = styled.div`
 
   button,
   button span {
+    ${tw`overflow-hidden `}
     ${(props) => css`
       color: ${props.theme.colors["primary"]};
     `}
@@ -30,7 +31,7 @@ export const SProductCard = styled.div`
 `;
 
 export const SCardInfo = styled.div`
-  ${tw`w-[90%] h-[6rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 overflow-hidden flex flex-col justify-between `}
+  ${tw`w-[90%] h-[6.5rem] text-[.6rem] sm:text-[.8rem] xl:text-[.9rem] my-3 pl-3 overflow-hidden flex flex-col justify-between `}
 
   h3 {
     ${tw`h-[3.2rem] min-h-[3.2rem] overflow-hidden text-[.75rem] xs:text-[.9rem] sm:text-[1rem] md:text-[.9rem] xl:text-[1rem]  `}
@@ -41,7 +42,7 @@ export const SCardInfo = styled.div`
   }
 
   p {
-    ${tw`self-end pr-3 text-[.8rem] xs:text-[1rem] sm:text-[.7rem] sm:text-[1rem] `}
+    ${tw`self-end pr-3 text-[.7rem] sm:text-[.75rem] lg:text-[1rem] whitespace-nowrap `}
     ${(props) => css`
       color: ${props.theme.colors["saleClr"]};
     `}

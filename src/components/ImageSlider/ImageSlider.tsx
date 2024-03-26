@@ -7,16 +7,16 @@ import PSControllerImg from "@src/assets/images/PSControllerImg.jpg";
 import GamingSetupImg from "@src/assets/images/GamingSetupImg.jpg";
 import IphoneCollectionImg from "@src/assets/images/IphoneCollectionImg.jpg";
 import ShipEverywhereImg from "@src/assets/images/ShipEverywhereImg.jpg";
-import EcommerceCartImg from "@src/assets/images/EcommerceCartImg.jpg"
+import EcommerceCartImg from "@src/assets/images/EcommerceCartImg.jpg";
 
 export function ImageSlider() {
   const images = useMemo(
     () => [
-      ShipEverywhereImg,
       PSControllerImg,
       GamingSetupImg,
       IphoneCollectionImg,
       EcommerceCartImg,
+      ShipEverywhereImg,
     ],
     []
   );

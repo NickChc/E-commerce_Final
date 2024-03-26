@@ -123,5 +123,6 @@
   "back": "BACK",
   "cartItems": "CART ITEMS",
   "restoreCartItem": "RESTORE LAST REMOVED ITEM",
-  "emptyWishlist": "YOUR WISHLIST IS EMPTY"
+  "emptyWishlist": "YOUR WISHLIST IS EMPTY",
+  "popularProducts": "POPULAR CHOICES"
 }

@@ -40,6 +40,18 @@ export function Header() {
   const Navigate = useNavigate();
   const Location = useLocation();
 
+  function handlePrivatePageNav(pageName: string) {
+    if (authStage === TAuthStage_Enum.AUTHORIZED) {
+      if (Location.pathname !== `/${pageName}`) {
+        Navigate(`/${pageName}`);
+      } else {
+        Navigate("/");
+      }
+    } else {
+      setAuthModal(true);
+    }
+  }
+
   return (
     <SHeader>
       {/* SHOWS "GO TO HOME" ONLY IF NOT AT HOME */}
@@ -71,19 +83,7 @@ export function Header() {
       <SearchBar />
       <SBtnsWrapper>
         {/* CART BUTTON */}
-        <Button
-          onClick={() => {
-            if (authStage === TAuthStage_Enum.AUTHORIZED) {
-              if (Location.pathname !== "/cart") {
-                Navigate("/cart");
-              } else {
-                Navigate("/");
-              }
-            } else {
-              setAuthModal(true);
-            }
-          }}
-        >
+        <Button onClick={() => handlePrivatePageNav("cart")}>
           {Location.pathname === "/cart" ? (
             <>
               <div>
@@ -109,19 +109,7 @@ export function Header() {
             <LoadingCircleAnim />
           </SLoadingWrapper>
         ) : (
-          <Button
-            onClick={() => {
-              if (authStage === TAuthStage_Enum.AUTHORIZED) {
-                if (Location.pathname !== "/profile") {
-                  Navigate("/profile");
-                } else {
-                  Navigate("/");
-                }
-              } else {
-                setAuthModal(true);
-              }
-            }}
-          >
+          <Button onClick={() => handlePrivatePageNav("profile")}>
             <div>
               {Location.pathname === "/profile" ? (
                 <HomeIcon />
@@ -129,8 +117,7 @@ export function Header() {
                 <ProfileIcon />
               )}
             </div>
-            {/* FIX HERE....... */}
-            <p className="whitespace-nowrap">
+            <p>
               {authStage === TAuthStage_Enum.AUTHORIZED ? (
                 Location.pathname === "/profile" ? (
                   <FormattedMessage id="home" defaultMessage={"_HOME_"} />

@@ -46,6 +46,6 @@ export const Button = styled.button<SButtonProps>`
   }
 
   p {
-    ${tw`hidden sm:block`}
+    ${tw`hidden sm:block whitespace-nowrap`}
   }
 `;

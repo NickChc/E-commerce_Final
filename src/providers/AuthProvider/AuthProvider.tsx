@@ -61,7 +61,10 @@ export function AuthProvider({ children }: PropsWithChildren) {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
     if (refreshToken) updateTokens(refreshToken);
-    else setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
+    else {
+      setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
+      setPrivateAccessToken("")
+    };
   }, []);
 
   return (

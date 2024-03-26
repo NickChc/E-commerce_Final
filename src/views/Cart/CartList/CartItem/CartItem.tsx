@@ -9,6 +9,7 @@ import {
   SImgWrapper,
   SBtnsLg,
   SSaleTag,
+  SButtonsHolderSm,
 } from "@src/views/Cart/CartList/CartItem";
 import { ProductImg } from "@src/components/ProductImg";
 import { PlusIcon, MinusIcon, TrashIcon } from "@src/assets/icons";
@@ -74,8 +75,9 @@ export function CartItem({ item }: CartItemProps) {
             )}
             <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
           </h3>
-          <div>
+          <SButtonsHolderSm>
             {/* FOR INCREASING / DECREASING CART ITEMS ON SMALL SCREENS */}
+
             <SCountBtnHolder>
               <button
                 disabled={decrementing}
@@ -106,7 +108,7 @@ export function CartItem({ item }: CartItemProps) {
                 <TrashIcon />
               </p>
             </SCountBtnHolder>
-          </div>
+          </SButtonsHolderSm>
         </SCartItemInfo>
       </SImgWrapper>
 

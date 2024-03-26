@@ -1,3 +1,4 @@
+import { FormattedMessage } from "react-intl";
 import { SCartWishlist } from "@src/views/Cart/CartWishlist";
 import { useWishlistProvider } from "@src/providers/WishlistProvider";
 import { CartWishlistItem } from "@src/views/Cart/CartWishlist/CartWishlistItem";
@@ -11,7 +12,7 @@ export function CartWishlist() {
   return (
     <SCartWishlist>
       <h2>
-        WISHLIST{" "}
+       <FormattedMessage id="wishlist" defaultMessage={"_WISHLIST_"} />{" "}
         <span>
           <PresentIcon />
         </span>

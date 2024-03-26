@@ -10,10 +10,12 @@ import { CustomArrow } from "@src/components/ProductSlider/CustomArrow";
 interface ProductSliderProps {
   products: TProduct[];
   title?: string;
+  showSlides?: number;
 }
 
-export function ProductSlider({ products, title }: ProductSliderProps) {
+export function ProductSlider({ products, title, showSlides }: ProductSliderProps) {
   const [swiping, setSwiping] = useState<boolean>(false);
+  const slidesToShow = showSlides || 5;
 
   if (products.length === 0) return;
 
@@ -21,7 +23,7 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
     dots: false,
     infinite: products.length > 5,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: false,
@@ -37,14 +39,14 @@ export function ProductSlider({ products, title }: ProductSliderProps) {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: slidesToShow - 1,
           swipe: products.length > 4,
         },
       },
       {
         breakpoint: 870,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: slidesToShow - 2,
           swipe: products.length > 3,
           arrows: false,
         },

@@ -28,9 +28,8 @@ export function ThemeProvider({ children }: PropsWithChildren) {
   const colors = {
     [ThemeModes_Enum.LIGHT]: {
       primary: "#2b2b2b",
-      secondary: "#ffffff",
+      secondary: "#dee2e6",
       secondary_background: "#1b1b1b",
-      // secondary_text: "#5b5b5b",
       secondary_text: "#343a40",
       additional: "#339af0",
       saleClr: "red",

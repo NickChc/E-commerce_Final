@@ -6,28 +6,20 @@ interface CartItemProps {
 }
 
 export const SCartItem = styled.div<CartItemProps>`
-  ${tw`w-full border-2 border-solid rounded-lg flex flex-row items-center sm:items-start lg:items-center justify-between relative transition-all duration-700 origin-top `}
+  ${tw`w-full border-2 border-solid rounded-lg flex flex-row items-center sm:items-start lg:items-center justify-between relative transition-all duration-700 origin-top overflow-hidden w-full  `}
   ${(props) => css`
     ${!props.show
       ? tw`scale-[0] p-0 max-h-0 opacity-[0] m-0 `
-      : tw`scale-[1] opacity-[1] p-2 max-h-[15rem] my-2 lg:mt-9 `}
+      : tw`scale-[1] opacity-[1] p-2 max-h-[10rem] my-2 lg:mt-9 `}
 
     border-color: ${props.theme.colors["additional"]};
     background-color: ${props.theme.mode === "DARK" &&
     props.theme.colors["secondary_text"]};
   `}
 
-  a {
-    ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mt-1 max-w-[8rem] xs:max-w-[12rem] sm:max-w-[20rem] lg:max-w-[12rem] xl:max-w-full truncate xl:whitespace-normal xl:text-clip `}
-    ${(props) => css`
-      color: ${props.theme.mode === "DARK"
-        ? props.theme.colors["secondary"]
-        : props.theme.colors["primary"]};
-    `}
-  }
 
   h3 {
-    ${tw`text-[.75rem] sm:text-[.8rem] md:text-[1rem] xl:text-[1.2rem] truncate mt-2 `}
+    ${tw`text-[.75rem] sm:text-[.8rem] md:text-[1rem] xl:text-[1.2rem] mt-2 `}
     ${(props) => css`
       color: ${props.theme.mode === "DARK"
         ? props.theme.colors["secondary"]
@@ -41,19 +33,33 @@ export const SCartItem = styled.div<CartItemProps>`
 `;
 
 export const SImgWrapper = styled.div`
-  ${tw`flex `}
+  ${tw`flex min-w-0 `}
 
   p {
     ${tw`text-[1rem] md:text-[1.4rem] absolute bottom-1 right-1 `}
+    :active {
+      ${(props) => css`
+        color: ${props.theme.colors["saleClr"]};
+      `}
+    }
   }
 `;
 
 export const SCartItemInfo = styled.div`
-  ${tw`flex flex-col items-start gap-y-1 mt-1 `}
+  ${tw`flex flex-col items-start gap-y-1 m-1 truncate `}
 
-  div {
-    ${tw`block sm:hidden flex`}
+  a {
+    ${tw`text-[.8rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] xl:text-[1.8rem] mt-1 w-[100%] truncate  `}
+    ${(props) => css`
+      color: ${props.theme.mode === "DARK"
+        ? props.theme.colors["secondary"]
+        : props.theme.colors["primary"]};
+    `}
   }
+`;
+
+export const SButtonsHolderSm = styled.div`
+  ${tw`block sm:hidden  `}
 `;
 
 interface SSaleTagProps {
@@ -62,7 +68,7 @@ interface SSaleTagProps {
 
 export const SSaleTag = styled.span<SSaleTagProps>`
   ${(props) => css`
-    ${props.isSale && tw`line-through opacity-[.75]`}
+    ${props.isSale && tw`line-through opacity-[.75] text-[.75em] `}
   `}
 `;
 
@@ -80,7 +86,8 @@ export const SCountBtnHolder = styled.div`
     ${tw`w-[2.25em] px-[.6rem] sm:px-[.8rem] border-solid border border-y-0 flex items-center justify-center font-semibold `}
     ${(props) => css`
       border-color: ${props.theme.colors["additional"]};
-      background-color: #fff;
+      background-color: #dee2e6;
+      color: ${props.theme.colors["primary"]};
     `}
   }
 
@@ -88,6 +95,7 @@ export const SCountBtnHolder = styled.div`
     ${tw`p-[.5rem] sm:p-[.8rem] text-[.6rem] md:text-[.8rem] lg:text-[1rem] border-none first:border-r-0 first:rounded-l-md  first:rounded-[0] border-l-0 rounded-r-md cursor-pointer outline-none opacity-[.75] hover:opacity-[1] flex items-center justify-center  `}
     ${(props) => css`
       border-color: ${props.theme.colors["primary"]};
+      background-color: ${props.theme.colors["secondary"]};
     `}
 
     :active {
@@ -96,14 +104,8 @@ export const SCountBtnHolder = styled.div`
       `}
     }
 
-    :disabled:active {
-      ${(props) => css`
-        color: ${props.theme.colors["primary"]};
-      `}
-    }
-
     :disabled {
-      ${tw`cursor-default opacity-[.5] `}
+      ${tw`cursor-default opacity-[.25] `}
       ${(props) => css`
         color: ${props.theme.colors["primary"]};
       `}
@@ -112,10 +114,10 @@ export const SCountBtnHolder = styled.div`
 `;
 
 export const SBtnsLg = styled.div`
-  ${tw`hidden sm:block relative `}
+  ${tw`hidden sm:block relative`}
 
   p {
-    ${tw`absolute bottom-0 left-[105%] sm:left-[50%] sm:translate-x-[-50%] text-[.6rem] sm:top-[120%] sm:text-[.8rem] flex flex-row gap-x-1 cursor-pointer duration-75 whitespace-nowrap select-none   `}
+    ${tw`absolute bottom-0 left-[105%] sm:left-[50%] sm:translate-x-[-50%] text-[.6rem] sm:top-[120%] sm:text-[.8rem] flex flex-row gap-x-1 cursor-pointer duration-75 whitespace-nowrap select-none `}
     ${(props) => css`
       color: ${props.theme.mode === "DARK"
         ? props.theme.colors["secondary"]

@@ -28,7 +28,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
   const [inCart, setInCart] = useState<boolean>(false);
 
   const { cartItems, handleAddToCart } = useCartProvider();
-  const { toggleWishlist } = useWishlistProvider();
+  const { toggleWishlist, wishlistItems } = useWishlistProvider();
 
   const { setAuthModal } = useGlobalProvider();
   const { authStage } = useAuthProvider();
@@ -49,7 +49,8 @@ export function ProductCard({ product, disable }: ProductCardProps) {
     } else {
       setAddingToCart(true);
       // IF IN CART PAGE AND USER ADDS WISHLIST ITEM TO CART, REMOVE ITEM FROM WISHLIST
-      if (Location.pathname === "/cart") {
+      const inWishlist = wishlistItems.some((item) => item.product_id === product.id);
+      if (Location.pathname === "/cart" && inWishlist) {
         await toggleWishlist(product.id);
       }
       await handleAddToCart(product.id);
