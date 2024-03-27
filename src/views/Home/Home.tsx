@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import {
   SHome,
   SSlidersContainer,
@@ -43,7 +43,7 @@ export function Home() {
           <SSlidersContainer>
             <SSliderHolder>
               <SSliderHeader>
-                SALE{" "}
+                <FormattedMessage id="sale" defaultMessage={"_SALE_"} />{" "}
                 <span>
                   <TagIcon />
                 </span>

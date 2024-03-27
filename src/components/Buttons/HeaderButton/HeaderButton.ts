@@ -11,9 +11,10 @@ export const Button = styled.button<SButtonProps>`
   ${(props) => css`
     ${props.variation === "active" && tw`rounded-md`}
     border-color: ${props.theme.colors["additional"]};
-    background-color: ${props.variation === "active" &&
-    props.theme.colors["additional"]};
-    color: ${props.variation === "active" && "#fff"};
+    background-color: ${props.variation === "active"
+      ? props.theme.colors["additional"]
+      : props.theme.colors["myWhite"]};
+    color: ${props.variation === "active" && props.theme.colors["myWhite"]};
   `}
 
   @media (hover: hover) {
@@ -41,7 +42,7 @@ export const Button = styled.button<SButtonProps>`
     ${tw`text-[1rem] md:text-[1.4rem] mt-1 `}
     color: ${(props) =>
       props.variation === "active"
-        ? "#ffffff"
+        ? props.theme.colors["myWhite"]
         : props.theme.colors["additional"]};
   }
 

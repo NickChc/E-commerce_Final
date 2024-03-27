@@ -124,5 +124,7 @@
   "cartItems": "CART ITEMS",
   "restoreCartItem": "RESTORE LAST REMOVED ITEM",
   "emptyWishlist": "YOUR WISHLIST IS EMPTY",
-  "popularProducts": "POPULAR CHOICES"
+  "popularProducts": "POPULAR CHOICES",
+  "eyeRestMode": "EYE REST MODE",
+  "dayMode": "LIGHT THEME"
 }

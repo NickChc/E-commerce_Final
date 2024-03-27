@@ -124,5 +124,7 @@
   "cartItems": "კალათის ნივთები",
   "restoreCartItem": "აღადგინეთ ბოლო წაშლილი",
   "emptyWishlist": "სასურველი ნივთები სია ცარიელია",
-  "popularProducts": "პოპულარული არჩევნები"
+  "popularProducts": "პოპულარული არჩევნები",
+  "eyeRestMode": "დაასვენეთ თვალები",
+  "dayMode": "დღის ფერები"
 }

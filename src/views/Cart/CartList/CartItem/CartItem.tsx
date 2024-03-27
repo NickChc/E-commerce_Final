@@ -134,7 +134,7 @@ export function CartItem({ item }: CartItemProps) {
           >
             {incrementing ? <LoadingCircleAnim /> : <PlusIcon />}
           </button>
-          <p
+          <p style={{ background: "red"}}
             onClick={() => {
               localStorage.setItem(CART_LAST_REMOVED, item.product_id);
               handleItemCountChange("removeAll");

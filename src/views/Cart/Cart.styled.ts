@@ -30,5 +30,5 @@ export const SCartInfoWrapperSm = styled.div`
 `;
 
 export const SRightSide = styled.div`
-  ${tw`flex-col items-center w-full hidden sm:flex w-[40%] pl-1 min-h-full   `}
+  ${tw`flex-col items-center w-full hidden sm:flex w-[40%] pl-1 min-h-full max-w-[40%]  `}
 `;

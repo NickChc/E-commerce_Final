@@ -8,7 +8,6 @@ export const SPublicLayout = styled.div`
   `}
 `;
 
-
 export const SOutletWrapper = styled.div`
-  ${tw`w-full flex flex-col items-center relative  `}
+  ${tw`w-full flex flex-col items-center relative `}
 `;

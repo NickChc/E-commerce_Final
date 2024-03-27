@@ -12,6 +12,8 @@ import {
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 
+
+
 export function LangSelect() {
   const { setLocale, locale } = useLocaleProvider();
   const [showLangPopup, setShowLangPopup] = useState<boolean>(false);
