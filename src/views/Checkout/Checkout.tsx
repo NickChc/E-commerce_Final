@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { SCheckout, SRightSide, SLeftSide } from "@src/views/Checkout";
-import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useCartProvider } from "@src/providers/CartProvider";
+import { useProductProvider } from "@src/providers/ProductProvider";
 import { TProduct } from "@src/@types/general";
 import { totalCost } from "@src/utils/totalCost";
 import { totalQuantity } from "@src/utils/totalQuantity";
@@ -20,7 +20,7 @@ export function Checkout() {
 
   const [gotCard, setGotCard] = useState(false);
 
-  const { fetchSingleProduct, product } = useGlobalProvider();
+  const { fetchSingleProduct, product } = useProductProvider();
   const { cartItems } = useCartProvider();
 
   const Location = useLocation();
