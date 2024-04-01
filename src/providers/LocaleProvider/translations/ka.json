@@ -91,7 +91,7 @@
   "emptyField": "ველი ცარიელია!",
   "expiryMissing": "ვადის ველი ცარიელია!",
   "expiryFirstTwo": "თვე მეტია 12-ზე!",
-  "expirySecondTwo": "წელი იხილეთ ბარათზე",
+  "expirySecondTwo": "შორეული მომავალი",
   "postalMissing": "ფოსტის მისამართის ველი ცარიელია!",
   "cvcLength": "CVC ზედმეტად მოკლეა!",
   "expiryLength": "არასრული თარიღი!",
@@ -126,5 +126,6 @@
   "emptyWishlist": "სასურველი ნივთები სია ცარიელია",
   "popularProducts": "პოპულარული არჩევნები",
   "eyeRestMode": "დაასვენეთ თვალები",
-  "dayMode": "დღის ფერები"
+  "dayMode": "დღის ფერები",
+  "languageToUpper": "ენა"
 }

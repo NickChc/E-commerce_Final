@@ -11,9 +11,18 @@ import { Pagination } from "@src/components/Pagination";
 import { ListIcon } from "@src/assets/icons";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
+import { TProduct } from "@src/@types/general";
 
 export function Products() {
   const { filteredProducts, gettingFiltered } = useProductProvider();
+
+  // SORT BY INCREASING PRICE
+  const sortedProducts = filteredProducts.sort((a: TProduct, b: TProduct) => {
+    const priceA = a?.salePrice || a.price;
+    const priceB = b?.salePrice || b.price;
+
+    return priceA - priceB;
+  });
 
   return (
     <SProducts>
@@ -33,7 +42,7 @@ export function Products() {
           </h1>
         ) : (
           <SProductsHolder>
-            {filteredProducts?.map((product) => {
+            {sortedProducts?.map((product) => {
               return <ProductCard key={product.id} product={product} />;
             })}
           </SProductsHolder>

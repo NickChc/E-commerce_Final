@@ -6,6 +6,7 @@ import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ThemeSelect } from "@src/features/ThemeSelect";
 import { useThemeProvider } from "@src/providers/ThemeProvider";
 import { ThemeModes_Enum } from "@src/providers/ThemeProvider";
+import { NavLangSelect } from "@src/features/CategoryNav/NavLangSelect";
 
 interface CategoryNavProps {
   show: boolean;
@@ -72,6 +73,7 @@ export function CategoryNav({ show }: CategoryNavProps) {
             )}
           </h4>
         </li>
+        <NavLangSelect />
       </ul>
     </SCategoryNav>
   );

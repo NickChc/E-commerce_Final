@@ -23,7 +23,7 @@ export const SCategoryNav = styled.div<SCategoryNavProps>`
     ${tw`p-3 md:pl-6 flex flex-col items-stretch text-start gap-y-3  `}
 
     li {
-      ${tw`mt-2 opacity-[.8] hover:opacity-[1] cursor-pointer flex sm:flex-row-reverse items-center justify-start sm:justify-between gap-x-3 rounded-lg pl-1 last:hover:bg-transparent last:cursor-default `}
+      ${tw`mt-2 opacity-[.8] hover:opacity-[1] cursor-pointer flex sm:flex-row-reverse items-center justify-start sm:justify-between gap-x-3 rounded-lg pl-1 `}
 
       @media(hover: hover) {
         :hover {

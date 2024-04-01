@@ -35,6 +35,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       saleClr: "red",
       myGreen: "#008000",
       myWhite: "#dee2d6",
+      myGray: "#8b8b8b",
     },
     [ThemeModes_Enum.DARK]: {
       primary: "#333333",
@@ -45,6 +46,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       saleClr: "red",
       myGreen: "#008000",
       myWhite: "#dee2d6",
+      myGray: "#8b8b8b",
     },
   };
 

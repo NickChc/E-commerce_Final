@@ -37,10 +37,10 @@ export function Home() {
       ) : (
         <>
           {/* IMAGE SLIDER */}
-          <SSliderHolder>
-            <ImageSlider />
-          </SSliderHolder>
           <SSlidersContainer>
+            <SSliderHolder>
+              <ImageSlider />
+            </SSliderHolder>
             <SSliderHolder>
               <SSliderHeader>
                 <FormattedMessage id="sale" defaultMessage={"_SALE_"} />{" "}

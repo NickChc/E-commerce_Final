@@ -83,9 +83,9 @@ export function useValidateCheckout() {
         defaultMessage: "_FIRST_TWO_DIGITS_ARE_MONTHS_",
       });
       setIsValid(false);
-      // EXPIRES MORE THAN 10 YEARS FROM NOW
+      // EXPIRES MORE THAN 15 YEARS FROM NOW
     } else if (
-      Number(expiryArray[1]) - 10 >
+      Number(expiryArray[1]) - 15 >
       Number(currYear.toString().slice(2))
     ) {
       errors.expiry = formatMessage({
