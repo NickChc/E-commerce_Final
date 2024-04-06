@@ -1,16 +1,13 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { useGetProducts } from "@src/hooks/useGetProducts";
-import { useGetSingleProduct } from "@src/hooks/useGetSingleproduct";
 import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useGetCategories } from "@src/hooks/useGetCategories";
-import { useGetFilteredProducts } from "@src/hooks/useGetFilteredProducts";
 import { TPaymentStatus_Enum } from "@src/@types/general";
 import { useGetOrders } from "@src/hooks/useGetOrders";
+import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
-
   const [minMax, setMinMax] = useState<number[]>([]);
   const [registering, setRegistering] = useState(false);
   const [authModal, setAuthModal] = useState<boolean>(false);
@@ -32,6 +29,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     window.scrollTo({
       top: 0,
     });
+    if (!Location.pathname.includes("payment-success")) {
+      localStorage.removeItem(ADD_ORDER_DATA);
+    }
   }, [Location.pathname]);
 
   useEffect(() => {

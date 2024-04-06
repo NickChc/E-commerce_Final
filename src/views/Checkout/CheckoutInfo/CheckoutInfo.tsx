@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import axios from "axios";
+import { STRIPE_ENDPOINT } from "@src/config/general";
 import {
   SCheckoutInfo,
   SConfirmationText,
@@ -8,31 +10,39 @@ import {
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { privateAxios } from "@src/utils/privateAxios";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
-import { TPaymentStatus_Enum } from "@src/@types/general";
+import { TProduct } from "@src/@types/general";
+import { useCartProvider } from "@src/providers/CartProvider";
+import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
 
 interface CheckoutInfoProps {
   items: number;
   total: number;
   totalPrice: number;
-  gotCard: boolean;
+  checkoutItems: TProduct[];
+}
+
+interface TStripeItem {
+  id: string;
+  quantity: number;
 }
 
 export function CheckoutInfo({
   items,
   total,
   totalPrice,
-  gotCard,
+  checkoutItems,
 }: CheckoutInfoProps) {
   const [addressConfirmed, setAddressConfirmed] = useState<boolean>(false);
   const [buying, setBuying] = useState<boolean>(false);
-  const [redConfirm, setRedConfirm] = useState<boolean>(false);;
+  const [redConfirm, setRedConfirm] = useState<boolean>(false);
+  const [stripeItems, setStripeItems] = useState<TStripeItem[]>([]);
 
   const { usersCountryInfo } = useGetCountry();
-  const { deliveryAddress, setPaymentStatus } = useGlobalProvider();
+  const { deliveryAddress } = useGlobalProvider();
+  const { cartItems } = useCartProvider();
 
-  const Navigate = useNavigate();
+  const Location = useLocation();
 
   // IMITATES DIFFERENT SHIPPING COSTS
   function shippingPrice() {
@@ -47,28 +57,71 @@ export function CheckoutInfo({
 
   const shipping = shippingPrice();
 
+  // TRIGGERED AFTER USER CLICKS BUY BUTTON
   async function buyItems() {
     try {
-      setBuying(true);
-      const response = await privateAxios.post("/purchases", {
-        totalPrice: totalPrice,
-        totalItems: items,
-      });
-      // INFORM USER ON PAYMENT
-      if (response.status < 299 && response.status > 200) {
-        Navigate("/");
-        setPaymentStatus(TPaymentStatus_Enum.GOOD);
-      }
+      const response = await axios.post(
+        `${STRIPE_ENDPOINT}/create-checkout-session`,
+        {
+          items: stripeItems,
+        }
+      );
+      window.location = response.data.url;
     } catch (error: any) {
       console.log(error.message);
-    } finally {
-      setBuying(false);
+    }
+  }
+
+  function handleStripeItems() {
+    if (Location.pathname.includes("cartItems")) {
+      const totalPrice = cartItems.reduce((acc, item) => {
+        if (item.cartProduct.salePrice) {
+          acc += item.cartProduct.salePrice * item.count;
+        } else {
+          acc += item.cartProduct.price * item.count;
+        }
+        return acc + shipping;
+      }, 0);
+      const totalQuantity = cartItems.reduce((acc, item) => {
+        return (acc += item.count);
+      }, 0);
+      localStorage.setItem(
+        ADD_ORDER_DATA,
+        JSON.stringify({ totalPrice, totalItems: totalQuantity })
+      );
+      setStripeItems(
+        cartItems.map((item) => {
+          return { id: item.cartProduct.id, quantity: item.count };
+        })
+      );
+    } else {
+      // const totalPrice = checkoutItems.reduce((acc, item) => {
+      //   if (item.salePrice) {
+      //     acc += item.salePrice;
+      //   } else {
+      //     acc += item.price;
+      //   }
+      //   return acc + shipping;
+      // }, 0);
+      localStorage.setItem(
+        ADD_ORDER_DATA,
+        JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
+      );
+      setStripeItems(
+        checkoutItems.map((item) => {
+          return { id: item.id, quantity: 1 };
+        })
+      );
     }
   }
 
   useEffect(() => {
     setAddressConfirmed(false);
   }, [deliveryAddress]);
+
+  useEffect(() => {
+    handleStripeItems();
+  }, [checkoutItems]);
 
   return (
     <SCheckoutInfo>
@@ -118,7 +171,6 @@ export function CheckoutInfo({
       </SConfirmationText>
       {/* BUYING BUTTON */}
       <SProductButton
-        disabled={!gotCard}
         onClick={() => {
           if (addressConfirmed) {
             buyItems();

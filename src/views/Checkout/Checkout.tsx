@@ -9,7 +9,6 @@ import { totalCost } from "@src/utils/totalCost";
 import { totalQuantity } from "@src/utils/totalQuantity";
 import { CheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { CheckoutProducts } from "@src/views/Checkout/CheckoutProducts";
-import { CheckoutForm } from "@src/views/Checkout/CheckoutForm";
 import { Map } from "@src/features/Map";
 import { CheckoutIcon } from "@src/assets/icons";
 
@@ -17,8 +16,6 @@ export function Checkout() {
   const [checkoutItems, setCheckoutItems] = useState<TProduct[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-
-  const [gotCard, setGotCard] = useState(false);
 
   const { fetchSingleProduct, product } = useProductProvider();
   const { cartItems } = useCartProvider();
@@ -56,17 +53,7 @@ export function Checkout() {
   return (
     <SCheckout>
       <SLeftSide>
-        <h1>
-          {gotCard ? (
-            <FormattedMessage id="yourCard" defaultMessage={"_YOUR_CARD_"} />
-          ) : (
-            <FormattedMessage
-              id="chooseCard"
-              defaultMessage={"_CHOOSE_CARD_"}
-            />
-          )}
-        </h1>
-        <CheckoutForm gotCard={gotCard} setGotCard={setGotCard} />
+        <h1>Enter Delivery Address</h1>
         <Map />
       </SLeftSide>
 
@@ -82,7 +69,7 @@ export function Checkout() {
         </h1>
         <hr />
         <CheckoutInfo
-          gotCard={gotCard}
+        checkoutItems={checkoutItems}
           items={checkoutItems.length}
           total={totalCount}
           totalPrice={totalPrice}

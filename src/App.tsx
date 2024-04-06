@@ -9,6 +9,7 @@ const Cart = lazy(() => import("@src/views/Cart"));
 const Profile = lazy(() => import("@src/views/Profile"));
 const Products = lazy(() => import("@src/views/Products"));
 const Checkout = lazy(() => import("@src/views/Checkout"));
+const PaymentSuccess = lazy(() => import("@src/views/paymentSuccess"));
 const NotFound = lazy(() => import("@src/views/NotFound"));
 
 function App() {
@@ -40,6 +41,14 @@ function App() {
             element={
               <PrivatePage>
                 <Profile />
+              </PrivatePage>
+            }
+          />
+          <Route
+            path="payment-success"
+            element={
+              <PrivatePage>
+                <PaymentSuccess />
               </PrivatePage>
             }
           />

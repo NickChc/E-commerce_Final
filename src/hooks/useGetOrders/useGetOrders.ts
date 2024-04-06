@@ -1,5 +1,5 @@
+import { useState } from "react";
 import { privateAxios } from "@src/utils/privateAxios";
-import { useEffect, useState } from "react";
 import { TOrder } from "@src/@types/general";
 
 export function useGetOrders() {
@@ -17,10 +17,6 @@ export function useGetOrders() {
       setLoading(false);
     }
   }
-
-  useEffect(() => {
-    getOrders();
-  }, []);
 
   return { orders, getOrders, gettingOrders: loading };
 }
