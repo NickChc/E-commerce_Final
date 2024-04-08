@@ -36,7 +36,7 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      external: ["./src/assets/images/PlaceholderImg.jpg"],
+      external: ["/@src/assets/images/PlaceholderImg.jpg"],
     },
   },
   // resolve: {
