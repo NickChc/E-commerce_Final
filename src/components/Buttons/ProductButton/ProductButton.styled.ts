@@ -38,12 +38,14 @@ export const SProductButton = styled.button<ProductButtonProps>`
         background-color: ${props.variation === "warning"
           ? props.theme.colors["saleClr"]
           : props.theme.colors["additional"]};
-        color: ${props.theme.colors[ "myWhite"]};
+        color: ${props.theme.colors["myWhite"]};
       `}
 
       span {
         ${(props) => css`
-          color: ${props.theme.colors["secondary"]};
+          color: ${props.variation === "warning"
+            ? props.theme.colors["myWhite"]
+            : props.theme.colors["secondary"]};
         `}
       }
     }
@@ -65,9 +67,12 @@ export const SProductButton = styled.button<ProductButtonProps>`
   }
 
   span {
+    ${tw`font-bold `}
     ${(props) => css`
       color: ${props.variation === "primary"
         ? props.theme.colors["secondary"]
+        : props.variation === "warning"
+        ? props.theme.colors["saleClr"]
         : props.theme.colors["additional"]};
     `}
   }

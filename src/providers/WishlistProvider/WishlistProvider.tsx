@@ -6,6 +6,7 @@ import { useAuthProvider } from "@src/providers/AuthProvider";
 import { useAddToWishlist } from "@src/hooks/useAddToWishlist";
 import { useRemoveFromWishlist } from "@src/hooks/useRemoveFromWishlist";
 import { TAuthStage_Enum } from "@src/providers/AuthProvider";
+import { CACHED_WISHLIST_ITEMS } from "@src/config/localStorageCache";
 
 export function WishlistProvider({ children }: PropsWithChildren) {
   const [gettingWishlist, setGettingWishlist] = useState<boolean>(false);
@@ -21,8 +22,18 @@ export function WishlistProvider({ children }: PropsWithChildren) {
   async function getWishlist() {
     try {
       setGettingWishlist(true);
-      const response = await privateAxios.get("/liked-products");
-      setWishlistItems(response.data);
+      const cachedWishlistItems = localStorage.getItem(CACHED_WISHLIST_ITEMS);
+      if (cachedWishlistItems) {
+        const localWishlistItems = JSON.parse(cachedWishlistItems);
+        setWishlistItems(localWishlistItems as TWishlistProduct[]);
+      } else {
+        const response = await privateAxios.get("/liked-products");
+        setWishlistItems(response.data);
+        localStorage.setItem(
+          CACHED_WISHLIST_ITEMS,
+          JSON.stringify(response.data)
+        );
+      }
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -32,6 +43,7 @@ export function WishlistProvider({ children }: PropsWithChildren) {
 
   async function toggleWishlist(productId: string) {
     try {
+      localStorage.removeItem(CACHED_WISHLIST_ITEMS);
       const inWishlist = wishlistItems?.find(
         (item) => item.product_id === productId
       );

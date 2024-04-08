@@ -26,7 +26,7 @@ export function OrderList() {
           <FormattedMessage
             id="loadingOrders"
             defaultMessage={"_LOADING_ORDERS_"}
-          />
+          />...
         </h2>
       ) : (
         <>
