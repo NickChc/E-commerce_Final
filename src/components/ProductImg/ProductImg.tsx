@@ -1,5 +1,5 @@
 import { SImgHolder, SPlaceholderImgWrapper } from "@src/components/ProductImg";
-import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg"
+import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 
 interface ProductImgProps {
   src: string | undefined;
@@ -8,12 +8,7 @@ interface ProductImgProps {
   onLoad: () => void;
 }
 
-export function ProductImg({
-  src,
-  alt,
-  loaded,
-  onLoad,
-}: ProductImgProps) {
+export function ProductImg({ src, alt, loaded, onLoad }: ProductImgProps) {
   return (
     <>
       <SImgHolder loaded={loaded}>
