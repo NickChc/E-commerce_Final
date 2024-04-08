@@ -42,7 +42,7 @@ export function Map() {
       <MapContainer
         center={userCoords}
         zoom={10}
-        style={{ height: "30dvh", borderRadius: "16px", zIndex: 1 }}
+        style={{ height: "60dvh", borderRadius: "16px", zIndex: 1 }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

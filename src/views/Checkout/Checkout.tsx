@@ -18,7 +18,7 @@ export function Checkout() {
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const { fetchSingleProduct, product } = useProductProvider();
-  const { cartItems } = useCartProvider();
+  const { cartItems, gettingCart } = useCartProvider();
 
   const Location = useLocation();
   const Navigate = useNavigate();
@@ -42,7 +42,11 @@ export function Checkout() {
       setTotalCount(totalQuantity(cartItems));
       setTotalPrice(totalCost(cartItems));
       // MANUALLY ACCESSING CHECKOUT BLOCKED
-    } else if (pathEnd === "cartItems" && cartItems.length < 1) {
+    } else if (
+      pathEnd === "cartItems" &&
+      cartItems.length < 1 &&
+      !gettingCart
+    ) {
       Navigate("/");
     } else {
       fetchSingleProduct(pathEnd);
@@ -69,7 +73,7 @@ export function Checkout() {
         </h1>
         <hr />
         <CheckoutInfo
-        checkoutItems={checkoutItems}
+          checkoutItems={checkoutItems}
           items={checkoutItems.length}
           total={totalCount}
           totalPrice={totalPrice}

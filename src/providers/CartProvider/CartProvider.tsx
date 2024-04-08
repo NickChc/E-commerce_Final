@@ -2,6 +2,7 @@ import { PropsWithChildren, useState, useEffect } from "react";
 import { CartContext } from "@src/providers/CartProvider";
 import { TAuthStage_Enum, useAuthProvider } from "@src/providers/AuthProvider";
 import { privateAxios } from "@src/utils/privateAxios";
+import { CACHED_CART_ITEMS } from "@src/config/localStorageCache";
 
 import { useAddToCart } from "@src/hooks/useAddToCart";
 import { useRemoveCartItem } from "@src/hooks/useRemoveCartItem";
@@ -19,18 +20,28 @@ export function CartProvider({ children }: PropsWithChildren) {
   async function getCart() {
     try {
       setGettingCart(true);
-      const response = await privateAxios.get("/cart");
+      const cachedCartItems = localStorage.getItem(CACHED_CART_ITEMS);
+      if (cachedCartItems) {
+        const storageCartItems = JSON.parse(cachedCartItems);
+        setCartItems(storageCartItems as TCartItem[]);
+      } else {
+        const response = await privateAxios.get("/cart");
 
-      // SORT CART ITEMS TO MAINTAIN ITEMS LIST ORDER
-      const sortedCartItems = response?.data.sort(
-        (a: TCartItem, b: TCartItem) => {
-          const dateA = new Date(a["created_at"]).getTime();
-          const dateB = new Date(b["created_at"]).getTime();
+        // SORT CART ITEMS TO MAINTAIN ITEMS LIST ORDER
+        const sortedCartItems = response?.data.sort(
+          (a: TCartItem, b: TCartItem) => {
+            const dateA = new Date(a["created_at"]).getTime();
+            const dateB = new Date(b["created_at"]).getTime();
 
-          return dateB - dateA;
-        }
-      );
-      setCartItems(sortedCartItems);
+            return dateB - dateA;
+          }
+        );
+        localStorage.setItem(
+          CACHED_CART_ITEMS,
+          JSON.stringify(sortedCartItems)
+        );
+        setCartItems(sortedCartItems);
+      }
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -40,11 +51,13 @@ export function CartProvider({ children }: PropsWithChildren) {
 
   async function handleAddToCart(id: string) {
     await addToCart(id);
+    localStorage.removeItem(CACHED_CART_ITEMS);
     getCart();
   }
-
+  
   async function handleRemoveCart(item: TCartItem, removeAll: boolean) {
     await removeCartItem(item, removeAll);
+    localStorage.removeItem(CACHED_CART_ITEMS);
     getCart();
   }
 
