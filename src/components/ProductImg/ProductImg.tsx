@@ -1,5 +1,5 @@
 import { SImgHolder, SPlaceholderImgWrapper } from "@src/components/ProductImg";
-import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
+import PlaceholderImg from "/@src/assets/images/PlaceholderImg.jpg";
 
 interface ProductImgProps {
   src: string | undefined;
