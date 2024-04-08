@@ -1,5 +1,6 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { CACHED_COUNTRY_DATA } from "@src/config/localStorageCache";
 
 export function useGetCountry() {
   interface TUserCountryInfo {
@@ -14,8 +15,18 @@ export function useGetCountry() {
 
   async function getCountry() {
     try {
-      const response = await axios.get("https://ipapi.co/json/");
-      setUsersCountryInfo(response.data);
+      const cachedCountryData = localStorage.getItem(CACHED_COUNTRY_DATA);
+      if (cachedCountryData) {
+        const localCountryData = JSON.parse(cachedCountryData);
+        setUsersCountryInfo(localCountryData);
+      } else {
+        const response = await axios.get("https://ipapi.co/json/");
+        setUsersCountryInfo(response?.data);
+        localStorage.setItem(
+          CACHED_COUNTRY_DATA,
+          JSON.stringify(response.data)
+        );
+      }
     } catch (error: any) {
       console.log(error.message);
     }

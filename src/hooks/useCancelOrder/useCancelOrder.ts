@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { privateAxios } from "@src/utils/privateAxios";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
+import { CACHED_ORDERS } from "@src/config/localStorageCache";
 
 export function useCancelOrder() {
   const { getOrders } = useGlobalProvider();
@@ -10,6 +11,7 @@ export function useCancelOrder() {
     try {
       setLoading(true);
       await privateAxios.delete(`/purchases/${orderId}`);
+      localStorage.removeItem(CACHED_ORDERS);
       getOrders();
     } catch (error: any) {
       console.log(error.message);

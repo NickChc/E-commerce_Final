@@ -6,7 +6,7 @@ interface SNavLangSelectProps {
 }
 
 export const SNavLangSelect = styled.div<SNavLangSelectProps>`
-  ${tw`w-full flex items-center justify-between gap-x-6 relative rounded-lg pl-1 cursor-pointer `}
+  ${tw`w-full flex flex-row-reverse sm:flex-row items-center justify-between gap-x-3 relative rounded-lg pl-1 cursor-pointer `}
   ${(props) => css`
     ${props.show ? tw`opacity-[1] ` : tw`opacity-[.8] `}
     background-color: ${props.show && props.theme.colors["secondary"]};
@@ -27,7 +27,7 @@ export const SNavLangSelect = styled.div<SNavLangSelectProps>`
   }
 
   span {
-    ${tw`grid place-items-center p-1.5 duration-150 rounded-full `}
+    ${tw`grid place-items-center p-[.3rem] duration-150 rounded-full text-[1rem] sm:text-[1rem] lg:text-[1.2rem] `}
     ${(props) => css`
       ${props.show && tw`rotate-90  `}
       color: ${props.show

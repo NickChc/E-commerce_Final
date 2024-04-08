@@ -4,6 +4,7 @@ import { privateAxios } from "@src/utils/privateAxios";
 import { SPaymentSuccess } from "@src/views/paymentSuccess";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
+import { CACHED_ORDERS } from "@src/config/localStorageCache";
 
 interface TAddOrderData {
   totalPrice: number;
@@ -23,6 +24,7 @@ export function PaymentSuccess() {
       console.log(error.message);
     } finally {
       localStorage.removeItem(ADD_ORDER_DATA);
+      localStorage.removeItem(CACHED_ORDERS);
     }
   }
 
@@ -41,7 +43,10 @@ export function PaymentSuccess() {
       <h1>CONGRATULATIONS!</h1>
       <h3>
         Your order will be on it's way soon. <br /> you can track it from{" "}
-        <Link replace to={"/profile"}>PROFILE</Link> page
+        <Link replace to={"/profile"}>
+          PROFILE
+        </Link>{" "}
+        page
       </h3>
       <SProductButton onClick={() => Navigate("/", { replace: true })}>
         HOME
