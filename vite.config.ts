@@ -34,6 +34,11 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      external: ["react", "react-dom"],
+    },
+  },
   resolve: {
     alias: {
       ...resolvedAliases,
