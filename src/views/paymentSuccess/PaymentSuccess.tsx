@@ -5,6 +5,9 @@ import { SPaymentSuccess } from "@src/views/paymentSuccess";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
 import { CACHED_ORDERS } from "@src/config/localStorageCache";
+import { TLocale_Enum } from "@src/providers/LocaleProvider";
+import { useLocaleProvider } from "@src/providers/LocaleProvider";
+import PaymentSuccessImg from "@src/assets/images/PaymentSuccessImg.jpg";
 
 interface TAddOrderData {
   totalPrice: number;
@@ -13,6 +16,7 @@ interface TAddOrderData {
 
 export function PaymentSuccess() {
   const Navigate = useNavigate();
+  const { locale } = useLocaleProvider();
 
   async function addOrders(addOrderData: TAddOrderData) {
     try {
@@ -40,17 +44,38 @@ export function PaymentSuccess() {
 
   return (
     <SPaymentSuccess>
-      <h1>CONGRATULATIONS!</h1>
-      <h3>
-        Your order will be on it's way soon. <br /> you can track it from{" "}
-        <Link replace to={"/profile"}>
-          PROFILE
-        </Link>{" "}
-        page
-      </h3>
-      <SProductButton onClick={() => Navigate("/", { replace: true })}>
-        HOME
-      </SProductButton>
+      <img src={PaymentSuccessImg} alt="successful payment image" />
+      {(locale === TLocale_Enum.EN && (
+        <div>
+          <h1>CONGRATULATIONS!</h1>
+          <h3>
+            Your order will be on it's way soon. <br /> You can track it from{" "}
+            <Link replace to={"/profile"}>
+              PROFILE
+            </Link>{" "}
+            page.
+          </h3>
+          <SProductButton onClick={() => Navigate("/", { replace: true })}>
+            HOME
+          </SProductButton>
+        </div>
+      )) ||
+        (locale === TLocale_Enum.KA && (
+          <div>
+            <h1>გილოცავთ!</h1>
+            <h3>
+              თქვენი შეკვეთა მალე გზაში იქნება. <br /> შეკვეთას შეგიძლიათ თვალი
+              ადევნოთ{" "}
+              <Link replace to={"/profile"}>
+                პროფილი
+              </Link>{" "}
+              -ს გვერდიდან.
+            </h3>
+            <SProductButton onClick={() => Navigate("/", { replace: true })}>
+              მთავარი
+            </SProductButton>
+          </div>
+        ))}
     </SPaymentSuccess>
   );
 }

@@ -127,5 +127,8 @@
   "popularProducts": "POPULAR CHOICES",
   "eyeRestMode": "EYE REST MODE",
   "dayMode": "LIGHT THEME",
-  "languageToUpper": "LANGUAGE"
+  "languageToUpper": "LANGUAGE",
+  "deliverWhereClick": "We deliver where you click!",
+  "orders": "ORDERS",
+  "loadingOrders": "LOADING ORDERS"
 }

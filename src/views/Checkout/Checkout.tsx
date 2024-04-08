@@ -57,7 +57,12 @@ export function Checkout() {
   return (
     <SCheckout>
       <SLeftSide>
-        <h1>Enter Delivery Address</h1>
+        <h1>
+          <FormattedMessage
+            id="deliverWhereClick"
+            defaultMessage={"_WE_DELIVER_WHERE_YOU_CLICK_"}
+          />
+        </h1>
         <Map />
       </SLeftSide>
 

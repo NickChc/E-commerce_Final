@@ -127,5 +127,8 @@
   "popularProducts": "პოპულარული არჩევნები",
   "eyeRestMode": "დაასვენეთ თვალები",
   "dayMode": "დღის ფერები",
-  "languageToUpper": "ენა"
+  "languageToUpper": "ენა",
+  "deliverWhereClick": "ჩვენ მოგვაქვს სადაც თქვენ აჭერთ!",
+  "orders": "შეკვეთები",
+  "loadingOrders": "იტვირთება შეკვეთები"
 }
