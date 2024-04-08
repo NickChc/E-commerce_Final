@@ -10,7 +10,6 @@ import {
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { useGetCountry } from "@src/hooks/useGetCountry";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
-import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { TProduct } from "@src/@types/general";
 import { useCartProvider } from "@src/providers/CartProvider";
 import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
@@ -34,7 +33,6 @@ export function CheckoutInfo({
   checkoutItems,
 }: CheckoutInfoProps) {
   const [addressConfirmed, setAddressConfirmed] = useState<boolean>(false);
-  const [buying, setBuying] = useState<boolean>(false);
   const [redConfirm, setRedConfirm] = useState<boolean>(false);
   const [stripeItems, setStripeItems] = useState<TStripeItem[]>([]);
 
@@ -72,22 +70,12 @@ export function CheckoutInfo({
     }
   }
 
+  // SEND ITEMS TO STRIPE SERVER
   function handleStripeItems() {
     if (Location.pathname.includes("cartItems")) {
-      const totalPrice = cartItems.reduce((acc, item) => {
-        if (item.cartProduct.salePrice) {
-          acc += item.cartProduct.salePrice * item.count;
-        } else {
-          acc += item.cartProduct.price * item.count;
-        }
-        return acc + shipping;
-      }, 0);
-      const totalQuantity = cartItems.reduce((acc, item) => {
-        return (acc += item.count);
-      }, 0);
       localStorage.setItem(
         ADD_ORDER_DATA,
-        JSON.stringify({ totalPrice, totalItems: totalQuantity })
+        JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
       );
       setStripeItems(
         cartItems.map((item) => {
@@ -95,14 +83,6 @@ export function CheckoutInfo({
         })
       );
     } else {
-      // const totalPrice = checkoutItems.reduce((acc, item) => {
-      //   if (item.salePrice) {
-      //     acc += item.salePrice;
-      //   } else {
-      //     acc += item.price;
-      //   }
-      //   return acc + shipping;
-      // }, 0);
       localStorage.setItem(
         ADD_ORDER_DATA,
         JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
@@ -179,14 +159,7 @@ export function CheckoutInfo({
           }
         }}
       >
-        {buying ? (
-          <>
-            <FormattedMessage id="buying" defaultMessage={"_BUYING_"} />
-            <LoadingCircleAnim isSpan />
-          </>
-        ) : (
-          <FormattedMessage id="buyNow" defaultMessage={"_BUY_NOW_"} />
-        )}
+        <FormattedMessage id="buyNow" defaultMessage={"_BUY_NOW_"} />
       </SProductButton>
     </SCheckoutInfo>
   );

@@ -3,7 +3,6 @@ import { FormattedMessage } from "react-intl";
 import { SOrderList } from "@src/views/Profile/OrderList";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { ListItem } from "@src/views/Profile/OrderList/ListItem";
-import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 
 export function OrderList() {
   const { orders, getOrders, gettingOrders } = useGlobalProvider();

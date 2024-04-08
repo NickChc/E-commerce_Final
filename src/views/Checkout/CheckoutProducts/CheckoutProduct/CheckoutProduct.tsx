@@ -4,7 +4,6 @@ import { FormattedMessage } from "react-intl";
 import { TCartItem, TProduct } from "@src/@types/general";
 import { SCheckoutProduct } from "@src/views/Checkout/CheckoutProducts/CheckoutProduct";
 import { ProductImg } from "@src/components/ProductImg";
-import PlaceholderImg from "@src/assets/images/PlaceholderImg.jpg";
 
 interface CheckoutProductProps {
   product?: TProduct;
@@ -18,7 +17,6 @@ export function CheckoutProduct({ product, item }: CheckoutProductProps) {
     <SCheckoutProduct>
       <ProductImg
         src={product?.image || item?.cartProduct.image}
-        fallbackSrc={PlaceholderImg}
         loaded={imgLoaded}
         onLoad={() => setImgLoaded(true)}
         alt="product image"

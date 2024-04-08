@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const privateAxios = axios.create({ baseURL: "http://localhost:3000" });
+export const privateAxios = axios.create({ baseURL: "https://final-api-k3og.onrender.com" });
 
 export function setPrivateAccessToken(accessToken: string) {
   privateAxios.defaults.headers.common[

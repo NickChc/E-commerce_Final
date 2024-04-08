@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { SProfile, SUserLayer } from "@src/views/Profile";
 import { TChangeableUserData } from "@src/@types/requestTypes";
 import { UserInfo } from "@src/views/Profile/UserInfo";

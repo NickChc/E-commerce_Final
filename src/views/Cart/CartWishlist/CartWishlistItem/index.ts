@@ -1,2 +1,2 @@
 export { SCartWishlistItem } from "./CartWishlistItem.styled";
-export { CartWishlistItem } from "./CartWishlistitem";
+export { CartWishlistItem } from "./CartWishlistItem";
