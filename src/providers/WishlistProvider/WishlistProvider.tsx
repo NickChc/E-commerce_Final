@@ -29,10 +29,12 @@ export function WishlistProvider({ children }: PropsWithChildren) {
       } else {
         const response = await privateAxios.get("/liked-products");
         setWishlistItems(response.data);
-        localStorage.setItem(
-          CACHED_WISHLIST_ITEMS,
-          JSON.stringify(response.data)
-        );
+        if (response.data.length > 0) {
+          localStorage.setItem(
+            CACHED_WISHLIST_ITEMS,
+            JSON.stringify(response.data)
+          );
+        }
       }
     } catch (error: any) {
       console.log(error.message);

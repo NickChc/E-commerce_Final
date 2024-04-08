@@ -5,7 +5,7 @@ export const SMapInputForm = styled.form`
   ${tw`flex items-stretch justify-center mb-3 `}
 
   input {
-    ${tw`border-solid border rounded-l-xl outline-none p-[.65rem] text-[.8rem] sm:text-[1rem]  `}
+    ${tw`border-solid border rounded-l-xl rounded-r-[0] outline-none p-[.65rem] text-[.8rem] sm:text-[1rem] `}
     ${(props) => css`
       border-color: ${props.theme.colors["additional"]};
     `}

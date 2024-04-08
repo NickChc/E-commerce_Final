@@ -32,12 +32,11 @@ export const SLogInForm = styled.form`
   a {
     ${tw`font-semibold whitespace-nowrap underline cursor-pointer `}
 
-    ${(props) => css`
+    /* ${(props) => css`
       color: ${props.theme.mode === ThemeModes_Enum.LIGHT
         ? props.theme.colors["secondary_background"]
         : props.theme.colors["additional"]};
-      /* color: ${props.theme.colors["secondary_background"]}; */
-    `}
+    `} */
 
     :active {
       ${(props) => css`

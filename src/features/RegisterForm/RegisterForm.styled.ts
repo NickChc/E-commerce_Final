@@ -20,7 +20,11 @@ export const SRegisterForm = styled.form`
     }
 
     p {
-    ${tw` text-[.7rem] sm:text-[.8rem] md:text-[1rem] `}
+      ${tw`text-[.7rem] sm:text-[.8rem] md:text-[1rem] `}
+      ${(props) => css`
+        color: ${props.theme.colors["secondary"]};
+      `}
+    }
   }
 
   a {
@@ -28,9 +32,8 @@ export const SRegisterForm = styled.form`
 
     ${(props) => css`
       color: ${props.theme.mode === ThemeModes_Enum.LIGHT
-        ? props.theme.colors["secondary_background"]
-        : props.theme.colors["additional"]};
-      /* color: ${props.theme.colors["secondary_background"]}; */
+        ? props.theme.colors["myWhite"]
+        : props.theme.colors["secondary"]};
     `}
 
     :active {

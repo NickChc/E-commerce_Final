@@ -33,6 +33,6 @@ export const SConfirmationText = styled.p<SConfirmationProps>`
   `}
 
   input {
-    ${tw`cursor-pointer w-[18px] aspect-square `}
+    ${tw`cursor-pointer w-[20px] sm:w-[18px] aspect-square `}
   }
 `;
