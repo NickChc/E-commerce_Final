@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
+import path from "path";
 // import { resolve } from "path";
 
 // const aliases = {
@@ -39,11 +40,12 @@ export default defineConfig({
       external: ["@src/assets/images/PlaceholderImg.jpg"],
     },
   },
-  // resolve: {
-  //   alias: {
-  //     ...resolvedAliases,
-  //     "./runtimeConfig": "./runtimeConfig.browser",
-  //     "jss-plugin-{}": "jss-plugin-global",
-  //   },
-  // },
+  resolve: {
+    alias: {
+      "@src": path.resolve(__dirname, "src"),
+      // ...resolvedAliases,
+      // "./runtimeConfig": "./runtimeConfig.browser",
+      // "jss-plugin-{}": "jss-plugin-global",
+    },
+  },
 });
