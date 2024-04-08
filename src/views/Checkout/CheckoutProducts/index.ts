@@ -1,2 +1,2 @@
-export { SCheckoutProducts } from "@src/views/Checkout/CheckoutProducts/CheckoutProducts.styled";
+export { SCheckoutProducts } from "./Checkoutproducts.styled";
 export { CheckoutProducts } from "./CheckoutProducts";
