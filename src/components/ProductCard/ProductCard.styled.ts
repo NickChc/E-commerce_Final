@@ -16,7 +16,7 @@ export const SProductCard = styled.div`
 
   button,
   button span {
-    ${tw`overflow-hidden `}
+    ${tw`overflow-hidden shrink lg:text-[.85rem] xl:text-[1rem] `}
     ${(props) => css`
       color: ${props.theme.colors["primary"]};
     `}

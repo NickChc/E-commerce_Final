@@ -130,5 +130,7 @@
   "languageToUpper": "LANGUAGE",
   "deliverWhereClick": "We deliver where you pin!",
   "orders": "ORDERS",
-  "loadingOrders": "LOADING ORDERS"
+  "loadingOrders": "LOADING ORDERS",
+  "forPayment": "FOR PAYMENT",
+  "redirecting": "REDIRECTING",
 }

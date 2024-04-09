@@ -31,4 +31,5 @@ export {
   CheckIcon,
   TagIcon,
   CheckoutIcon,
+  CopyIcon,
 } from "./icons";

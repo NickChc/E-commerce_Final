@@ -13,7 +13,11 @@ interface ProductSliderProps {
   showSlides?: number;
 }
 
-export function ProductSlider({ products, title, showSlides }: ProductSliderProps) {
+export function ProductSlider({
+  products,
+  title,
+  showSlides,
+}: ProductSliderProps) {
   const [swiping, setSwiping] = useState<boolean>(false);
   const slidesToShow = showSlides || 5;
 
@@ -46,7 +50,7 @@ export function ProductSlider({ products, title, showSlides }: ProductSliderProp
       {
         breakpoint: 870,
         settings: {
-          slidesToShow: slidesToShow - 2,
+          slidesToShow: slidesToShow === 3 ? 2 : slidesToShow - 2,
           swipe: products.length > 3,
           arrows: false,
         },

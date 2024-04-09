@@ -16,3 +16,8 @@ export const SCartWishlist = styled.div`
     }
   }
 `;
+
+
+export const SEmptyWishlist = styled.h1`
+  ${tw`my-3 text-[1rem] md:text-[1.4rem] lg:text-[1.6rem] text-center `}
+`

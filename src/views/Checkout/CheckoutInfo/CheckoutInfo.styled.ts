@@ -27,12 +27,38 @@ interface SConfirmationProps {
 }
 
 export const SConfirmationText = styled.p<SConfirmationProps>`
-  ${tw`whitespace-nowrap mt-6 flex items-start gap-x-3 `}
+  ${tw`whitespace-nowrap mt-6 flex items-start gap-x-3 font-semibold `}
   ${(props) => css`
     color: ${props.isRed && props.theme.colors["saleClr"]};
   `}
 
   input {
     ${tw`cursor-pointer w-[20px] sm:w-[18px] aspect-square `}
+  }
+`;
+
+export const SCardData = styled.p`
+  ${tw`font-semibold flex items-center whitespace-nowrap text-[.75rem] md:text-[.9rem] lg:text-[1rem] `}
+
+  span {
+    ${tw`text-[1.1rem] ml-3 cursor-pointer opacity-[.8] `}
+    ${(props) => css`
+      color: ${props.theme.colors["primary"]};
+    `}
+
+    :active {
+      ${(props) => css`
+        color: ${props.theme.colors["additional"]};
+      `}
+    }
+
+    @media (hover: hover) {
+      :hover {
+        ${tw`opacity-[1] `}
+        ${(props) => css`
+          color: ${props.theme.colors["additional"]};
+        `}
+      }
+    }
   }
 `;

@@ -128,7 +128,9 @@
   "eyeRestMode": "დაასვენეთ თვალები",
   "dayMode": "დღის ფერები",
   "languageToUpper": "ენა",
-  "deliverWhereClick": "ჩვენ მოგვაქვს სადაც თქვენ ნიშნავთ!",
+  "deliverWhereClick": "ჩვენ მოგვაქვს სადაც თქვენ მონიშნავთ!",
   "orders": "შეკვეთები",
-  "loadingOrders": "იტვირთება შეკვეთები"
+  "loadingOrders": "იტვირთება შეკვეთები",
+  "forPayment": "გადახდისთვის",
+  "redirecting": "გადამისამართება"
 }

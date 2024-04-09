@@ -39,13 +39,14 @@ export function Cart() {
             defaultMessage: "_POPULAR_CHOICES_",
           })}
           products={popularProducts}
-          showSlides={4}
+          showSlides={3}
         />
       </SLeftSide>
 
       {/* RIGHT SIDE */}
       <SRightSide>
         <CartInfo />
+        <hr />
         <CartWishlist />
       </SRightSide>
     </SCart>
