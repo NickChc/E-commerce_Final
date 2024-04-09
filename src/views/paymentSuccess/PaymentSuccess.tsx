@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { privateAxios } from "@src/utils/privateAxios";
 import { SPaymentSuccess } from "@src/views/paymentSuccess";
@@ -7,6 +7,7 @@ import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
 import { CACHED_ORDERS } from "@src/config/localStorageCache";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
+import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
 import PaymentSuccessImg from "@src/assets/images/PaymentSuccessImg.jpg";
 
 interface TAddOrderData {
@@ -15,32 +16,40 @@ interface TAddOrderData {
 }
 
 export function PaymentSuccess() {
+  const [addOrderDataString, setAddOrderDataString] = useState<string | null>(
+    null
+  );
+
   const Navigate = useNavigate();
   const { locale } = useLocaleProvider();
+  const { authStage } = useAuthProvider();
 
   async function addOrders(addOrderData: TAddOrderData) {
     try {
+      if (!addOrderDataString || authStage !== TAuthStage_Enum.AUTHORIZED) {
+        console.log("NOT WORKING");
+        return;
+      }
       await privateAxios.post("/purchases", {
         totalPrice: addOrderData.totalPrice,
         totalItems: addOrderData.totalItems,
       });
+      setAddOrderDataString(null);
+      localStorage.removeItem(CACHED_ORDERS);
     } catch (error: any) {
       console.log(error.message);
     } finally {
       localStorage.removeItem(ADD_ORDER_DATA);
-      localStorage.removeItem(CACHED_ORDERS);
     }
   }
 
   useEffect(() => {
-    return () => {
-      const addOrderDataString = localStorage.getItem(ADD_ORDER_DATA);
-      if (addOrderDataString) {
-        const addOrderData: TAddOrderData = JSON.parse(addOrderDataString);
-        addOrders(addOrderData);
-      }
-    };
-  }, []);
+    setAddOrderDataString(localStorage.getItem(ADD_ORDER_DATA));
+    if (addOrderDataString) {
+      const addOrderData: TAddOrderData = JSON.parse(addOrderDataString);
+      addOrders(addOrderData);
+    }
+  }, [authStage]);
 
   return (
     <SPaymentSuccess>

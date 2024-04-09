@@ -17,7 +17,9 @@ export function useGetOrders() {
       } else {
         const response = await privateAxios.get("/purchases");
         setOrders(response?.data);
-        localStorage.setItem(CACHED_ORDERS, JSON.stringify(response.data));
+        if (response.data.length > 0) {
+          localStorage.setItem(CACHED_ORDERS, JSON.stringify(response.data));
+        }
       }
     } catch (error: any) {
       console.log(error.message);
