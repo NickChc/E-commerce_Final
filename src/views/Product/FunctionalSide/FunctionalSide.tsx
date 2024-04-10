@@ -9,8 +9,7 @@ import {
 } from "@src/views/Product/FunctionalSide";
 import { ProductImg } from "@src/components/ProductImg";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
-import { TAuthStage_Enum } from "@src/providers/AuthProvider";
-import { useAuthProvider } from "@src/providers/AuthProvider";
+import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { useCartProvider } from "@src/providers/CartProvider";
@@ -29,7 +28,8 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
   const [inCart, setInCart] = useState<boolean>(false);
 
   const { handleAddToCart, cartItems, addingToCart } = useCartProvider();
-  const { wishlistItems, toggleWishlist, addingWishlist, removingWishlist } = useWishlistProvider()
+  const { wishlistItems, toggleWishlist, addingWishlist, removingWishlist } =
+    useWishlistProvider();
   const { setAuthModal } = useGlobalProvider();
   const { authStage } = useAuthProvider();
   const { locale } = useLocaleProvider();
@@ -74,7 +74,11 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
         <SProductButton
           variation="primary"
           onClick={() => {
-            Navigate(`/checkout/${product?.id}`);
+            if (authStage === TAuthStage_Enum.AUTHORIZED) {
+              Navigate(`/checkout/${product?.id}`);
+            } else {
+              setAuthModal(true);
+            }
           }}
         >
           <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
