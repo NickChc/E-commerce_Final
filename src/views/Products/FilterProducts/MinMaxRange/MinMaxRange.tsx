@@ -7,6 +7,7 @@ import {
   SSliderHolder,
   SMinMaxWrapper,
 } from "@src/views/Products/FilterProducts/MinMaxRange";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { useProductProvider } from "@src/providers/ProductProvider";
 
 interface MinMaxRangeProps {
@@ -70,11 +71,11 @@ export function MinMaxRange({
       <SMinMaxWrapper>
         <h4>
           <FormattedMessage id="min" defaultMessage={"_MIN_"} /> - <br />{" "}
-          {priceRange[0]} <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+          {formatCurrency(priceRange[0])} <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
         </h4>
         <h4>
           <FormattedMessage id="max" defaultMessage={"_MAX_"} /> - <br />{" "}
-          {priceRange[1]} <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+          {formatCurrency(priceRange[1])} <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
         </h4>
       </SMinMaxWrapper>
     </SMinMaxRange>

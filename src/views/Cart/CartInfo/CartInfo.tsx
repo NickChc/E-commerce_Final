@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { SCartInfo } from "@src/views/Cart/CartInfo";
 import { totalCost } from "@src/utils/totalCost";
 import { moneySaved } from "@src/utils/moneySaved";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { totalQuantity } from "@src/utils/totalQuantity";
 import { CartIcon2, CartPlusIcon } from "@src/assets/icons";
@@ -26,7 +27,7 @@ export function CartInfo() {
             <FormattedMessage id="totalCost" defaultMessage={"_TOTAL_COST_"} />:
             {"  "}
             <span>
-              {totalCost(cartItems)}
+              {formatCurrency(totalCost(cartItems))}
               {"  "}
               <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
             </span>
@@ -38,7 +39,7 @@ export function CartInfo() {
             />
             :{"  "}
             <span>
-              {moneySaved(cartItems)}
+              {formatCurrency(moneySaved(cartItems))}
               {"  "}
               <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
             </span>

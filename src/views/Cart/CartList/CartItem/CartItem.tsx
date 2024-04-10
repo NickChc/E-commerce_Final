@@ -12,6 +12,7 @@ import {
   SButtonsHolderSm,
 } from "@src/views/Cart/CartList/CartItem";
 import { ProductImg } from "@src/components/ProductImg";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { PlusIcon, MinusIcon, TrashIcon } from "@src/assets/icons";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { CART_LAST_REMOVED } from "@src/config/localStorageKeys";
@@ -68,11 +69,11 @@ export function CartItem({ item }: CartItemProps) {
           <h3>
             <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
             <SSaleTag isSale={item.cartProduct.salePrice !== null}>
-              {item.cartProduct.price}{" "}
+              {formatCurrency(item.cartProduct.price)}{" "}
             </SSaleTag>
             {item.cartProduct.salePrice !== null && (
-              <span>{item.cartProduct.salePrice}</span>
-            )}
+              <span>{formatCurrency(item.cartProduct.salePrice)}</span>
+            )}{" "}
             <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
           </h3>
           <SButtonsHolderSm>
@@ -134,7 +135,8 @@ export function CartItem({ item }: CartItemProps) {
           >
             {incrementing ? <LoadingCircleAnim /> : <PlusIcon />}
           </button>
-          <p style={{ background: "red"}}
+          <p
+            style={{ background: "red" }}
             onClick={() => {
               localStorage.setItem(CART_LAST_REMOVED, item.product_id);
               handleItemCountChange("removeAll");

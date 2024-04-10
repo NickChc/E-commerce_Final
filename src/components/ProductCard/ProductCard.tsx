@@ -9,6 +9,7 @@ import {
 import { TProduct } from "@src/@types/general";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { calculateSale } from "@src/utils/calculateSale";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { ProductImg } from "@src/components/ProductImg";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
@@ -49,7 +50,9 @@ export function ProductCard({ product, disable }: ProductCardProps) {
     } else {
       setAddingToCart(true);
       // IF IN CART PAGE AND USER ADDS WISHLIST ITEM TO CART, REMOVE ITEM FROM WISHLIST
-      const inWishlist = wishlistItems.some((item) => item.product_id === product.id);
+      const inWishlist = wishlistItems.some(
+        (item) => item.product_id === product.id
+      );
       if (Location.pathname === "/cart" && inWishlist) {
         await toggleWishlist(product.id);
       }
@@ -98,7 +101,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
         )}
         <h2>
           <FormattedMessage id="price" defaultMessage={"_PRICE_"} />:{" "}
-          {product?.salePrice || product.price}{" "}
+          {formatCurrency(product?.salePrice || product.price)}{" "}
           <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
         </h2>
       </SCardInfo>

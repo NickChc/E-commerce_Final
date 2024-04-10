@@ -14,6 +14,7 @@ import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { TProduct } from "@src/@types/general";
 import { useCartProvider } from "@src/providers/CartProvider";
 import { copyToClipboard } from "@src/utils/copyToClipboard";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
 import { CopyIcon } from "@src/assets/icons";
 import { TLocale_Enum, useLocaleProvider } from "@src/providers/LocaleProvider";
@@ -142,7 +143,7 @@ export function CheckoutInfo({
       </h2>
       <h2>
         <FormattedMessage id="totalPrice" defaultMessage={"_TOTAL_PRICE_"} /> -{" "}
-        <span>{totalPrice + shipping || "  "}</span>{" "}
+        <span>{formatCurrency(totalPrice + shipping) || "  "}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h2>
       <h2>

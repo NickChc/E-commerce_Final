@@ -5,6 +5,7 @@ import { CancelIcon } from "@src/assets/icons";
 import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import { TPaymentStatus_Enum } from "@src/@types/general";
 import { formatDate } from "@src/utils/formatDate";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 
 interface ListItemProps {
@@ -27,7 +28,7 @@ export function ListItem({ order }: ListItemProps) {
       </h4>
       <h4>
         <FormattedMessage id="cost" defaultMessage={"_COST_"} /> -{" "}
-        <span>{order.totalPrice}</span>{" "}
+        <span>{formatCurrency(order.totalPrice)}</span>{" "}
         <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
       </h4>
       <h4>

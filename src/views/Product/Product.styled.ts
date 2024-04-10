@@ -84,7 +84,7 @@ export const STextTitle = styled.h2`
 
 export const SPrice = styled.h2<PriceProps>`
   ${(props) => css`
-    ${props.isSale ? tw`line-through ` : null}
+    ${props.isSale ? tw`line-through scale-[.8] ` : null}
     color: ${props.isSale ? "#8b8b8b" : ""};
   `}
 `;

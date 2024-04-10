@@ -12,6 +12,7 @@ import {
   STextPair,
 } from "@src/views/Product";
 import { formatDate } from "@src/utils/formatDate";
+import { formatCurrency } from "@src/utils/formatCurrency";
 import { BreadCrumbMenu } from "@src/features/BreadCrumbMenu";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
 import { calculateSale } from "@src/utils/calculateSale";
@@ -23,7 +24,8 @@ export function Product() {
   const { productId } = useParams();
   const { formatMessage } = useIntl();
 
-  const { products, product, productLoading, fetchSingleProduct } = useProductProvider();
+  const { products, product, productLoading, fetchSingleProduct } =
+    useProductProvider();
 
   const recommended = products?.filter(
     (item) => item.category_name === product?.category_name
@@ -72,12 +74,14 @@ export function Product() {
                   <FormattedMessage id="priceTUC" defaultMessage={"_PRICE_"} />:
                 </STextTitle>
                 <SPrice isSale={product?.salePrice !== null}>
-                  {product?.price}{" "}
-                  <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+                  {formatCurrency(product?.price || 0)}{" "}
+                  {product?.salePrice === null && (
+                    <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
+                  )}
                 </SPrice>
-                {product?.salePrice && (
+                {formatCurrency(product?.salePrice || 0) && (
                   <h2>
-                    {product?.salePrice}
+                    {formatCurrency(product?.salePrice || 0)}{" "}
                     <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
                   </h2>
                 )}
