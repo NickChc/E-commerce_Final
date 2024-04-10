@@ -6,11 +6,10 @@ interface PriceProps {
 }
 
 export const SProduct = styled.div`
-  ${tw`min-h-dvh w-full px-3 pb-6 sm:w-[80%] flex flex-col items-center border-solid border border-y-0`}
+  ${tw`min-h-dvh w-full px-3 pb-6 sm:w-[80%] flex flex-col items-center`}
   ${(props) => css`
     color: ${props.theme.colors["primary"]};
     background-color: ${props.theme.colors["secondary"]};
-    border-color: ${props.theme.mode === "DARK" ? "#7b7b7b" : "transparent"};
   `}
 
   h5 {
@@ -73,7 +72,7 @@ export const STextPair = styled.div`
   }
 
   h3 {
-    ${tw`whitespace-normal text-[.8rem] xs:text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem]   `}
+    ${tw`whitespace-normal text-[.8rem] xs:text-[1rem] sm:text-[1.2rem] lg:text-[1.6rem]   `}
   }
 `;
 

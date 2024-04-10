@@ -3,6 +3,7 @@ import { AuthContext, TAuthStage_Enum } from "@src/providers/AuthProvider";
 import { TUserTokens } from "@src/@types/requestTypes";
 import { TUserInfo } from "@src/@types/general";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@src/config/localStorageKeys";
+import { REFRESH_TOKEN_BACKUP } from "@src/config/sessionStorageKeys";
 import {
   USER_CARD_DATA,
   DELIVERY_ADDRESS,
@@ -15,6 +16,9 @@ import { publicAxios } from "@src/utils/publicAxios";
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [userData, setUserData] = useState<TUserInfo>();
+  const [refreshTokenState, setRefreshTokenState] = useState<string | null>(
+    null
+  );
   const [authStage, setAuthStage] = useState<TAuthStage_Enum>(
     TAuthStage_Enum.PENDING
   );
@@ -22,6 +26,9 @@ export function AuthProvider({ children }: PropsWithChildren) {
   function setAuthData(tokens: TUserTokens) {
     localStorage.setItem(ACCESS_TOKEN, tokens.access_token);
     localStorage.setItem(REFRESH_TOKEN, tokens.refresh_token);
+    // STORE IN SESSIONSTORAGE FOR BACKUP
+    sessionStorage.setItem(REFRESH_TOKEN_BACKUP, tokens.refresh_token);
+
     setPrivateAccessToken(tokens.access_token);
     setAuthStage(TAuthStage_Enum.AUTHORIZED);
     getUser();
@@ -30,6 +37,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
   function logOut() {
     localStorage.removeItem(ACCESS_TOKEN);
     localStorage.removeItem(REFRESH_TOKEN);
+    localStorage.removeItem(REFRESH_TOKEN_BACKUP);
     setPrivateAccessToken("");
     setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
     sessionStorage.removeItem(USER_CARD_DATA);
@@ -52,6 +60,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
       });
       setAuthData(response.data as TUserTokens);
     } catch (error: any) {
+      localStorage.removeItem(REFRESH_TOKEN);
+      setRefreshTokenState(null);
       console.log(error.message);
       setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
     }
@@ -59,12 +69,21 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+    if (refreshToken) return;
+    const refreshTokenBackup = sessionStorage.getItem(REFRESH_TOKEN_BACKUP);
+    updateTokens(refreshTokenBackup!);
+  }, [refreshTokenState]);
 
-    if (refreshToken) updateTokens(refreshToken);
-    else {
+  useEffect(() => {
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+    setRefreshTokenState(refreshToken);
+
+    if (refreshToken) {
+      updateTokens(refreshToken);
+    } else {
       setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
-      setPrivateAccessToken("")
-    };
+      setPrivateAccessToken("");
+    }
   }, []);
 
   return (
