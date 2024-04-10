@@ -9,6 +9,7 @@ import { TLocale_Enum } from "@src/providers/LocaleProvider";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { useAuthProvider, TAuthStage_Enum } from "@src/providers/AuthProvider";
 import PaymentSuccessImg from "@src/assets/images/PaymentSuccessImg.jpg";
+import { ADD_ORDER_DATA_BACKUP } from "@src/config/sessionStorageKeys";
 
 interface TAddOrderData {
   totalPrice: number;
@@ -44,10 +45,12 @@ export function PaymentSuccess() {
   }
 
   useEffect(() => {
-    setAddOrderDataString(localStorage.getItem(ADD_ORDER_DATA));
+    const addOrderData = localStorage.getItem(ADD_ORDER_DATA);
+    const addOrderDataBackup = sessionStorage.getItem(ADD_ORDER_DATA_BACKUP);
+    setAddOrderDataString(addOrderData || addOrderDataBackup);
     if (addOrderDataString) {
-      const addOrderData: TAddOrderData = JSON.parse(addOrderDataString);
-      addOrders(addOrderData);
+      const addOrderDataParsed: TAddOrderData = JSON.parse(addOrderDataString);
+      addOrders(addOrderDataParsed);
     }
   }, [authStage]);
 

@@ -6,6 +6,7 @@ import { useGetCategories } from "@src/hooks/useGetCategories";
 import { TPaymentStatus_Enum } from "@src/@types/general";
 import { useGetOrders } from "@src/hooks/useGetOrders";
 import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
+import { ADD_ORDER_DATA_BACKUP } from "@src/config/sessionStorageKeys";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [minMax, setMinMax] = useState<number[]>([]);
@@ -31,6 +32,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     });
     if (!Location.pathname.includes("payment-success")) {
       localStorage.removeItem(ADD_ORDER_DATA);
+      sessionStorage.removeItem(ADD_ORDER_DATA_BACKUP);
     }
   }, [Location.pathname]);
 

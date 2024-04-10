@@ -27,13 +27,13 @@ interface SConfirmationProps {
 }
 
 export const SConfirmationText = styled.p<SConfirmationProps>`
-  ${tw`whitespace-nowrap mt-6 flex items-start gap-x-3 font-semibold `}
+  ${tw`whitespace-nowrap mt-6 flex items-center gap-x-3 font-semibold `}
   ${(props) => css`
     color: ${props.isRed && props.theme.colors["saleClr"]};
   `}
 
   input {
-    ${tw`cursor-pointer w-[20px] sm:w-[18px] aspect-square `}
+    ${tw`cursor-pointer w-[22px] sm:w-[18px] aspect-square `}
   }
 `;
 

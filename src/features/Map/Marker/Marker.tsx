@@ -31,7 +31,7 @@ export function MapMarker({ coords, setCoords }: MapMarkerProps) {
 
   const customIcon = new Icon({
     iconUrl: CartMapIcon,
-    iconSize: [40, 40],
+    iconSize: window.screen.width < 650 ? [60, 60] : [40, 40],
   });
 
   return (

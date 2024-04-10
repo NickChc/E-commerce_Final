@@ -16,6 +16,7 @@ import { useCartProvider } from "@src/providers/CartProvider";
 import { copyToClipboard } from "@src/utils/copyToClipboard";
 import { formatCurrency } from "@src/utils/formatCurrency";
 import { ADD_ORDER_DATA } from "@src/config/localStorageKeys";
+import { ADD_ORDER_DATA_BACKUP } from "@src/config/sessionStorageKeys";
 import { CopyIcon } from "@src/assets/icons";
 import { TLocale_Enum, useLocaleProvider } from "@src/providers/LocaleProvider";
 import { LoadingCircleAnim } from "@src/features/LoadingCircleAnim";
@@ -92,21 +93,21 @@ export function CheckoutInfo({
 
   // SEND ITEMS TO STRIPE SERVER
   function handleStripeItems() {
+    localStorage.setItem(
+      ADD_ORDER_DATA,
+      JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
+    );
+    sessionStorage.setItem(
+      ADD_ORDER_DATA_BACKUP,
+      JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
+    );
     if (Location.pathname.includes("cartItems")) {
-      localStorage.setItem(
-        ADD_ORDER_DATA,
-        JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
-      );
       setStripeItems(
         cartItems.map((item) => {
           return { id: item.cartProduct.id, quantity: item.count };
         })
       );
     } else {
-      localStorage.setItem(
-        ADD_ORDER_DATA,
-        JSON.stringify({ totalPrice: totalPrice + shipping, totalItems: total })
-      );
       setStripeItems(
         checkoutItems.map((item) => {
           return { id: item.id, quantity: 1 };

@@ -9,7 +9,7 @@ export const SFilterProducts = styled.div<FilterProductsProp>`
   ${tw`w-full md:w-[35vw] lg:w-[25vw] border-none md:border-solid border border-y-0 border-l-0 border flex flex-col items-center md:justify-start gap-y-3 transition-all ease-linear duration-500 overflow-hidden `}
   ${(props) => css`
     ${props.show
-      ? tw`min-h-[40dvh] max-h-[60dvh] md:min-h-full md:max-h-full justify-between`
+      ? tw`min-h-[40dvh] max-h-[100dvh] md:min-h-full md:max-h-full justify-between`
       : tw`min-h-[1.2rem] max-h-[1.6rem] md:max-h-full justify-end`}
     border-color: ${props.theme.colors["primary"]};
     background-color: ${props.theme.colors["secondary_background"]};
@@ -46,7 +46,7 @@ export const SViewContainer = styled.div<FilterProductsProp>`
 `;
 
 export const SOpen = styled.div`
-  ${tw`text-center py-[.2rem] w-full block md:hidden cursor-pointer border-solid border border-x-0 text-[.8rem] `}
+  ${tw`text-center py-[.2rem] w-full block md:hidden cursor-pointer border-solid border border-x-0 text-[.8rem] min-h-fit `}
   ${(props) => css`
     background-color: ${props.theme.colors["secondary_text"]};
     border-color: ${props.theme.colors["secondary_background"]};
