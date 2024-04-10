@@ -37,7 +37,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
   function logOut() {
     localStorage.removeItem(ACCESS_TOKEN);
     localStorage.removeItem(REFRESH_TOKEN);
-    localStorage.removeItem(REFRESH_TOKEN_BACKUP);
+    sessionStorage.removeItem(REFRESH_TOKEN_BACKUP);
+    setRefreshTokenState(null);
     setPrivateAccessToken("");
     setAuthStage(TAuthStage_Enum.UNAUTHORIZED);
     sessionStorage.removeItem(USER_CARD_DATA);
@@ -69,9 +70,9 @@ export function AuthProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
-    if (refreshToken) return;
     const refreshTokenBackup = sessionStorage.getItem(REFRESH_TOKEN_BACKUP);
-    updateTokens(refreshTokenBackup!);
+    if (refreshToken || !refreshTokenBackup) return;
+    updateTokens(refreshTokenBackup);
   }, [refreshTokenState]);
 
   useEffect(() => {

@@ -1,9 +1,8 @@
-import { ThemeModes_Enum } from "@src/providers/ThemeProvider";
 import styled, { css } from "styled-components";
 import tw from "twin.macro";
 
 export const SLogInForm = styled.form`
-  ${tw`flex flex-col items-center justify-between w-full h-full text-center pb-6 px-3 `}
+  ${tw`flex flex-col items-center justify-between w-full h-fit text-center pb-6 px-3 `}
   ${(props) => css`
     color: ${props.theme.colors["secondary"]};
   `}
@@ -32,12 +31,6 @@ export const SLogInForm = styled.form`
   a {
     ${tw`font-semibold whitespace-nowrap underline cursor-pointer `}
 
-    /* ${(props) => css`
-      color: ${props.theme.mode === ThemeModes_Enum.LIGHT
-        ? props.theme.colors["secondary_background"]
-        : props.theme.colors["additional"]};
-    `} */
-
     :active {
       ${(props) => css`
         color: ${props.theme.colors["additional"]};
@@ -56,16 +49,13 @@ export const SLogInForm = styled.form`
 `;
 
 export const SInputsWrapper = styled.div`
-  ${tw`flex flex-col items-stretch gap-y-[6dvh] min-w-full text-[1.4rem] `}
+  ${tw`flex flex-col items-stretch gap-y-4 min-w-full text-[1.4rem] last:mt-6 `}
 
   button {
     ${tw`duration-[50ms] lg:text-[1.2rem] `}
-
-    
-
   }
 `;
 
 export const SFormContent = styled.div`
-  ${tw`flex flex-col items-stretch justify-between w-full sm:w-auto h-full mt-6 `}
+  ${tw`flex flex-col items-stretch justify-between w-full sm:w-auto h-fit mt-6 `}
 `;

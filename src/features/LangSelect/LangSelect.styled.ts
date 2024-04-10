@@ -18,9 +18,9 @@ export const SLangSelect = styled.div`
 
 export const SLangPopup = styled.div`
   ${tw`w-full my-1 py-3 rounded-xl flex flex-col gap-y-3 items-center border-solid border-2`}
-  background-color: #8b8b8b;
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
+    background-color: ${props.theme.colors["secondary_text"]};
   `}
 `;
 
@@ -43,9 +43,9 @@ export const SLangPopupBtn = styled.button`
 
 export const SLangButton = styled.button`
   ${tw`w-full mb-1 p-2 outline-none cursor-pointer rounded-xl border-solid border-2`}
-  background-color: #8b8b8b;
   ${(props) => css`
     border-color: ${props.theme.colors["additional"]};
+    background-color: ${props.theme.colors["secondary_text"]};
   `}
 
   img {

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useIntl, FormattedMessage } from "react-intl";
-import { SRegisterForm } from "@src/features/RegisterForm";
+import {
+  SRegisterForm,
+  SInputsWrapper,
+  SFooterText,
+} from "@src/features/RegisterForm";
 import { FormInput } from "@src/components/FormInput";
 import { SProductButton } from "@src/components/Buttons/ProductButton";
 import { TRegisterUser, TUserTokens } from "@src/@types/requestTypes";
@@ -112,7 +116,7 @@ export function RegisterForm() {
 
   return (
     <SRegisterForm onSubmit={onSubmit}>
-      <div className="flex flex-col items-center ">
+      <SInputsWrapper>
         <FormInput
           error={formErrors.first_name}
           placeholder={formatMessage({ id: "name", defaultMessage: "_NAME_" })}
@@ -223,9 +227,9 @@ export function RegisterForm() {
             <FormattedMessage id="register" defaultMessage={"_REGISTER_"} />
           )}
         </SProductButton>
-      </div>
+      </SInputsWrapper>
 
-      <div>
+      <SFooterText>
         {locale === TLocale_Enum.EN ? (
           <p>
             Already have an account?{" "}
@@ -237,7 +241,7 @@ export function RegisterForm() {
             <a onClick={() => setRegistering(false)}>სცადე შესვლა აქ!</a>
           </p>
         ) : null}
-      </div>
+      </SFooterText>
     </SRegisterForm>
   );
 }
