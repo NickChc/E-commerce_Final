@@ -5,6 +5,7 @@ import {
   SLanguages,
   SLangOption,
 } from "@src/features/CategoryNav/NavLangSelect";
+import { LANGUAGE } from "@src/config/localStorageKeys";
 import { RightArrow } from "@src/assets/icons";
 import { useLocaleProvider } from "@src/providers/LocaleProvider";
 import { TLocale_Enum } from "@src/providers/LocaleProvider";
@@ -50,13 +51,19 @@ export function NavLangSelect() {
         <SLanguages>
           <SLangOption
             disabled={locale === TLocale_Enum.EN}
-            onClick={() => setLocale(TLocale_Enum.EN)}
+            onClick={() => {
+              setLocale(TLocale_Enum.EN);
+              localStorage.setItem(LANGUAGE, TLocale_Enum.EN);
+            }}
           >
             English
           </SLangOption>
           <SLangOption
             disabled={locale === TLocale_Enum.KA}
-            onClick={() => setLocale(TLocale_Enum.KA)}
+            onClick={() => {
+              setLocale(TLocale_Enum.KA);
+              localStorage.setItem(LANGUAGE, TLocale_Enum.KA);
+            }}
           >
             Georgian
           </SLangOption>
