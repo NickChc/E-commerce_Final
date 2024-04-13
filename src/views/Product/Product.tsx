@@ -37,6 +37,8 @@ export function Product() {
     }
   }, [productId]);
 
+  if (product == null) return;
+
   return (
     <SProduct>
       {(productLoading && (
@@ -75,13 +77,13 @@ export function Product() {
                 </STextTitle>
                 <SPrice isSale={product?.salePrice !== null}>
                   {formatCurrency(product?.price || 0)}{" "}
-                  {product?.salePrice === null && (
+                  {product.salePrice === null && (
                     <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
                   )}
                 </SPrice>
-                {formatCurrency(product?.salePrice || 0) && (
+                {product.salePrice != null && (
                   <h2>
-                    {formatCurrency(product?.salePrice || 0)}{" "}
+                    {formatCurrency(product?.salePrice || 555)}{" "}
                     <FormattedMessage id="gel" defaultMessage={"_GEL_"} />
                   </h2>
                 )}
@@ -94,7 +96,7 @@ export function Product() {
                 :{" "}
               </STextTitle>
               <p>
-                {product?.description} Lorem ipsum dolor sit amet consectetur
+                {product.description} Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Consectetur quaerat nesciunt, error commodi
                 sequi officiis corrupti, voluptas culpa temporibus itaque,
                 molestias maxime laborum quibusdam ratione! Lorem ipsum dolor
@@ -112,7 +114,7 @@ export function Product() {
                 <FormattedMessage id="uploaded" defaultMessage={"_UPLOADED_"} />
                 :{" "}
               </h5>
-              <p>{formatDate(product?.created_at)}</p>
+              <p>{formatDate(product.created_at)}</p>
             </STextPair>
             <hr />
             <STextPair>
@@ -131,7 +133,7 @@ export function Product() {
                 <FormattedMessage id="category" defaultMessage={"_CATEGORY_"} />
                 :{" "}
               </h5>
-              <p>{product?.category_name}</p>
+              <p>{product.category_name}</p>
             </STextPair>
           </SAdditionalInfo>
 
