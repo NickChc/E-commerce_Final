@@ -13,6 +13,14 @@ import {
   setPrivateAccessToken,
 } from "@src/utils/privateAxios/privateAxios";
 import { publicAxios } from "@src/utils/publicAxios";
+import {
+  CACHED_CART_ITEMS,
+  CACHED_CATEGORIES,
+  CACHED_COUNTRY_DATA,
+  CACHED_ORDERS,
+  CACHED_WISHLIST_ITEMS,
+} from "@src/config/localStorageCache";
+import { localStorageRemover } from "@src/utils/localStorageRemover";
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [userData, setUserData] = useState<TUserInfo>();
@@ -22,6 +30,17 @@ export function AuthProvider({ children }: PropsWithChildren) {
   const [authStage, setAuthStage] = useState<TAuthStage_Enum>(
     TAuthStage_Enum.PENDING
   );
+
+  // LOCALSTORAGE VALUES TO BE REMOVED AFTER LOG OUT
+  const removeValues = [
+    ACCESS_TOKEN,
+    REFRESH_TOKEN,
+    CACHED_CART_ITEMS,
+    CACHED_CATEGORIES,
+    CACHED_COUNTRY_DATA,
+    CACHED_ORDERS,
+    CACHED_WISHLIST_ITEMS,
+  ];
 
   function setAuthData(tokens: TUserTokens) {
     localStorage.setItem(ACCESS_TOKEN, tokens.access_token);
@@ -35,9 +54,8 @@ export function AuthProvider({ children }: PropsWithChildren) {
   }
 
   function logOut() {
-    localStorage.removeItem(ACCESS_TOKEN);
-    localStorage.removeItem(REFRESH_TOKEN);
     sessionStorage.removeItem(REFRESH_TOKEN_BACKUP);
+    localStorageRemover(removeValues);
     setRefreshTokenState(null);
     setPrivateAccessToken("");
     setAuthStage(TAuthStage_Enum.UNAUTHORIZED);

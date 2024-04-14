@@ -32,7 +32,7 @@ export function CartItem({ item }: CartItemProps) {
   const { handleRemoveCart, handleAddToCart } = useCartProvider();
 
   // HANDLE DIFFERENT SCENARIOS OF CART ITEM MANIPULATIONS
-  async function handleItemCountChange(opType: string) {
+  async function handleItemCountChange(opType: "dec" | "inc" | "removeAll") {
     // DECREMENTING COUNT
     if (opType === "dec") {
       setDecrementing(true);
@@ -81,7 +81,7 @@ export function CartItem({ item }: CartItemProps) {
 
             <SCountBtnHolder>
               <button
-                disabled={decrementing}
+                disabled={decrementing || count === 1}
                 onClick={() => {
                   handleItemCountChange("dec");
                   setCount(count - 1);

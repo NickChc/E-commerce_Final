@@ -1,0 +1,1 @@
+export { localStorageRemover } from "./localStorageRemover";
