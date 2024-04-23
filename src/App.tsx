@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
 import { PrivatePage } from "@src/features/PrivatePage";
+import { LoadingScreen } from "@src/components/LoadingScreen";
 
 const Home = lazy(() => import("@src/views/Home"));
 const Product = lazy(() => import("@src/views/Product"));
@@ -14,7 +15,7 @@ const NotFound = lazy(() => import("@src/views/NotFound"));
 
 function App() {
   return (
-    <Suspense fallback={<div className="min-h-dvh w-full">LOADING...</div>}>
+    <Suspense fallback={<LoadingScreen />}>
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />

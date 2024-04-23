@@ -23,7 +23,6 @@ export function Pagination() {
       setPageRange((prev) => [prev[0] + 1, prev[1] + 1]);
     } else if (newPage === mappedPages[0] && pageRange[0] !== 0) {
       setPageRange((prev) => [prev[0] - 1, prev[1] - 1]);
-      console.log("CHANGE");
     }
   }
 
