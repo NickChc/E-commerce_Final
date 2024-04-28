@@ -8,7 +8,7 @@ interface SNavLangSelectProps {
 export const SNavLangSelect = styled.div<SNavLangSelectProps>`
   ${tw`w-full flex flex-row-reverse sm:flex-row items-center justify-between gap-x-3 relative rounded-lg pl-1 cursor-pointer `}
   ${(props) => css`
-    ${props.show ? tw`opacity-[1] ` : tw`opacity-[.8] `}
+    ${props.show ? tw`opacity-[1]` : tw`opacity-[.8]`}
     background-color: ${props.show && props.theme.colors["secondary"]};
   `}
 
