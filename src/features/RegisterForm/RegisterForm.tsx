@@ -214,7 +214,10 @@ export function RegisterForm() {
           }
         />
         {authFail !== "" && <h4>{authFail}</h4>}
-        <SProductButton onClick={() => validateRegister(registerValues)}>
+        <SProductButton
+          disabled={authLoading}
+          onClick={() => validateRegister(registerValues)}
+        >
           {authLoading ? (
             <>
               <FormattedMessage

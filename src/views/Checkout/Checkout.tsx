@@ -11,6 +11,7 @@ import { CheckoutInfo } from "@src/views/Checkout/CheckoutInfo";
 import { CheckoutProducts } from "@src/views/Checkout/CheckoutProducts";
 import { Map } from "@src/features/Map";
 import { CheckoutIcon } from "@src/assets/icons";
+import { CACHED_CART_ITEMS } from "@src/config/localStorageCache";
 
 export function Checkout() {
   const [checkoutItems, setCheckoutItems] = useState<TProduct[]>([]);
@@ -47,6 +48,10 @@ export function Checkout() {
       cartItems.length < 1 &&
       !gettingCart
     ) {
+      const cachedCartItems = localStorage.getItem(CACHED_CART_ITEMS);
+      const haveItems =
+        cachedCartItems != null && JSON.parse(cachedCartItems).length > 0;
+      if (haveItems) return;
       Navigate("/");
     } else {
       fetchSingleProduct(pathEnd);

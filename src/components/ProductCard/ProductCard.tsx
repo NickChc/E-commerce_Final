@@ -117,6 +117,7 @@ export function ProductCard({ product, disable }: ProductCardProps) {
           <FormattedMessage id="buyNow" defaultMessage={"_BUY NOW_"} />
         </SProductButton>
         <SProductButton
+          disabled={addingToCart}
           variation="primary"
           onClick={(e) => {
             e.stopPropagation();

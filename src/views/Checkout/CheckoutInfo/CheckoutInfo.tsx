@@ -87,7 +87,7 @@ export function CheckoutInfo({
     } catch (error: any) {
       console.log(error.message);
     } finally {
-      setStripeLoading(true);
+      setStripeLoading(false);
     }
   }
 
@@ -179,6 +179,7 @@ export function CheckoutInfo({
       </SCardData>
       {/* BUYING BUTTON */}
       <SProductButton
+        disabled={stripeLoading}
         onClick={() => {
           if (addressConfirmed) {
             copyCardData();

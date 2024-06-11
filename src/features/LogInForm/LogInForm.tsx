@@ -52,7 +52,6 @@ export function LogInForm() {
       const response = await publicAxios.post("/auth/login", values);
       setAuthData(response.data as TUserTokens);
 
-      // CHECK IF RESPONSE IS OK, IFSO CLOSE THE MODAL
       if (response && response.status >= 200 && response.status <= 299) {
         setAuthModal(false);
         setPopUpText(
@@ -141,7 +140,10 @@ export function LogInForm() {
 
         <SInputsWrapper>
           {logInFail !== "" && <h4>{logInFail}</h4>}
-          <SProductButton onClick={() => validateLogIn(logInValues)}>
+          <SProductButton
+            disabled={loggingIn}
+            onClick={() => validateLogIn(logInValues)}
+          >
             {loggingIn ? (
               <>
                 <FormattedMessage

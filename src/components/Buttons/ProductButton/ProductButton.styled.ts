@@ -62,8 +62,18 @@ export const SProductButton = styled.button<ProductButtonProps>`
     ${tw`opacity-[.75] `}
     ${(props) => css`
       background-color: ${props.theme.colors["secondary"]};
-      color: ${props.theme.colors["additional"]};
+      color: ${props.variation === "primary"
+        ? props.theme.colors["primary"]
+        : props.theme.colors["additional"]};
     `}
+
+    span {
+      ${(props) => css`
+        color: ${props.variation === "primary"
+          ? props.theme.colors["primary"]
+          : props.theme.colors["additional"]};
+      `}
+    }
   }
 
   span {
