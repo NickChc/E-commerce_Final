@@ -14,10 +14,7 @@ export function PaymentMessage({ status, closeModal }: PaymentMessageProps) {
       {status === TPaymentStatus_Enum.GOOD ? (
         <Good closeModal={closeModal} />
       ) : status === TPaymentStatus_Enum.BAD ? (
-        <>
-          <h2>OOPS, SOMETHING WENT WRONG</h2>
-          <p>ERROR MESSSAGE HERE</p>
-        </>
+        <h2>OOPS, SOMETHING WENT WRONG</h2>
       ) : status === TPaymentStatus_Enum.CANCEL ? (
         <Cancel closeModal={closeModal} />
       ) : null}

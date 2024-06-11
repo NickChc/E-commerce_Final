@@ -40,7 +40,11 @@ export function Cancel({ closeModal }: CancelProps) {
       </p>
 
       <div>
-        <SProductButton variation="warning" onClick={removeOrder}>
+        <SProductButton
+          disabled={cancellingOrder}
+          variation="warning"
+          onClick={removeOrder}
+        >
           {cancellingOrder ? (
             <>
               <FormattedMessage

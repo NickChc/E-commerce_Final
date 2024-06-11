@@ -64,6 +64,8 @@ export const SProductButton = styled.button<ProductButtonProps>`
       background-color: ${props.theme.colors["secondary"]};
       color: ${props.variation === "primary"
         ? props.theme.colors["primary"]
+        : props.variation === "warning"
+        ? props.theme.colors["saleClr"]
         : props.theme.colors["additional"]};
     `}
 
@@ -71,6 +73,8 @@ export const SProductButton = styled.button<ProductButtonProps>`
       ${(props) => css`
         color: ${props.variation === "primary"
           ? props.theme.colors["primary"]
+          : props.variation === "warning"
+          ? props.theme.colors["saleClr"]
           : props.theme.colors["additional"]};
       `}
     }
