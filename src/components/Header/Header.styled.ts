@@ -61,7 +61,7 @@ export const SHeadlineWrapper = styled.div<SHeadlineWrapperProps>`
   }
 
   h1 {
-    ${tw`text-[1em] sm:text-[1.2em] md:text-[1.4em] lg:text-[1.6em] xl:text-[2em] font-[Oswald, sans]`}
+    ${tw`text-[1em] sm:text-[1.2em] md:text-[1.4em] lg:text-[1.6em] xl:text-[2em] font-[Merriweather, sans]`}
   }
 `;
 
