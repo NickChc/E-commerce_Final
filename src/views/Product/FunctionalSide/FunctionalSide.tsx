@@ -85,6 +85,7 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
         </SProductButton>
         <SDoubleBtn>
           <SProductButton
+            disabled={removingWishlist || addingWishlist}
             side="left"
             onClick={() => {
               if (authStage !== TAuthStage_Enum.AUTHORIZED) {
@@ -125,7 +126,11 @@ export function FunctionalSide({ product }: FunctionalSideProps) {
               </>
             )}
           </SProductButton>
-          <SProductButton side="right" onClick={handleCartAdding}>
+          <SProductButton
+            disabled={addingToCart}
+            side="right"
+            onClick={handleCartAdding}
+          >
             {addingToCart ? (
               <>
                 <FormattedMessage id="adding" defaultMessage={"_ADDING_"} />
