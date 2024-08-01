@@ -8,7 +8,17 @@ export function useRemoveCartItem() {
   async function removeCartItem(cartItem: TCartItem, removeAll: boolean) {
     try {
       setloading(true);
-      await privateAxios.delete(`/cart/${cartItem.id}?removeAll=${removeAll}`);
+      if (removeAll) {
+        const { count, id } = cartItem;
+
+        for (let i = 0; i < 20 || i < count; i++) {
+          await privateAxios.delete(`/cart/${id}`);
+        }
+      } else {
+        await privateAxios.delete(
+          `/cart/${cartItem.id}?removeAll=${removeAll}`
+        );
+      }
     } catch (error: any) {
       console.log(error.message);
     } finally {
