@@ -6,7 +6,19 @@ interface SCategoryNavProps {
 }
 
 export const SCategoryNav = styled.div<SCategoryNavProps>`
-  ${tw`flex flex-col items-center sm:items-start px-3 pt-3 border-solid border h-dvh fixed left-0 z-30 overflow-hidden whitespace-nowrap border-y-0 transition-all ease-in-out duration-150`}
+  ${tw`flex flex-col items-center sm:items-start px-3 pt-3 border-solid border h-dvh fixed left-0 z-30 overflow-hidden whitespace-nowrap border-y-0 transition-all ease-in-out duration-150 fixed top-0 bottom-0 z-20`}
+  ${() =>
+    window.screen.height > 1000
+      ? tw`pt-32 sm:pt-40 lg:pt-24`
+      : window.screen.height > 800
+      ? tw`pt-32 sm:pt-40 lg:pt-24`
+      : window.screen.height > 600
+      ? tw`pt-32 sm:pt-44 md:pt-40 lg:pt-24`
+      : window.screen.height > 400
+      ? tw`pt-32 sm:pt-44 md:pt-24`
+      : tw`pt-32 sm:pt-40 lg:pt-24`}
+
+
   ${(props) => css`
     ${props.show
       ? tw`w-full sm:w-[35vw] md:w-[30vw] lg:w-[20rem]`
@@ -17,7 +29,7 @@ export const SCategoryNav = styled.div<SCategoryNavProps>`
   `}
 
   ul {
-    ${tw`p-3 md:pl-6 flex flex-col items-stretch text-start gap-y-3 overflow-y-auto  h-[70dvh] `}
+    ${tw`p-3 md:pl-6 flex flex-col items-stretch text-start gap-y-3 overflow-y-auto`}
 
     ::-webkit-scrollbar {
       ${tw`w-[3px] `}
