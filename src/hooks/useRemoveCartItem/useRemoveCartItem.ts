@@ -11,7 +11,9 @@ export function useRemoveCartItem() {
       if (removeAll) {
         const { count, id } = cartItem;
 
-        for (let i = 0; i < 20 || i < count; i++) {
+        for (let i = 0; i < count; i++) {
+          if (i > 20) break;
+
           await privateAxios.delete(`/cart/${id}`);
         }
       } else {
