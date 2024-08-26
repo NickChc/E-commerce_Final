@@ -17,6 +17,7 @@ interface FormInputProps {
   error?: string;
   isPassword?: boolean;
   autoComplete?: string;
+  type?: "text" | "email";
 }
 
 export function FormInput({
@@ -28,6 +29,7 @@ export function FormInput({
   error,
   isPassword,
   autoComplete,
+  type,
 }: FormInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -37,7 +39,15 @@ export function FormInput({
         <SFormInput
           autoComplete={autoComplete}
           error={error !== ""}
-          type={isPassword ? (showPassword ? "text" : "password") : "text"}
+          type={
+            isPassword
+              ? showPassword
+                ? "text"
+                : "password"
+              : type
+              ? type
+              : "text"
+          }
           placeholder={placeholder}
           value={value}
           name={name}

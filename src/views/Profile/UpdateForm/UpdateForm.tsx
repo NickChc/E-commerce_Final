@@ -40,11 +40,6 @@ export function UpdateForm({
 
   const [updating, setUpdating] = useState(false);
 
-  // CLEAR FORM ERRORS
-  useEffect(() => {
-    setFormErrors(userUpdateDefaultValues);
-  }, [currentEdit]);
-
   function inputChange(e: React.ChangeEvent<HTMLFormElement>) {
     setFormValues((prev) => ({
       ...prev,
@@ -71,8 +66,9 @@ export function UpdateForm({
       console.log(error.message);
       // IF EMAIL VIOLATES DUPLICATE KEY, PREPARE MESSAGE FOR USER
       if (
-        error.response.data.message ===
-        'duplicate key value violates unique constraint "UQ_97672ac88f789774dd47f7c8be3"'
+        error.response.data.message.includes(
+          "duplicate key value violates unique constraint"
+        )
       ) {
         if (locale === TLocale_Enum.EN) {
           setUpdateFail("This Email Is Already Used!");
@@ -93,8 +89,13 @@ export function UpdateForm({
     updateUser(formValues);
   }
 
+  // CLEAR FORM ERRORS
+  useEffect(() => {
+    setFormErrors(userUpdateDefaultValues);
+  }, [currentEdit]);
+
   return (
-    <SUpdateForm onSubmit={onSubmit} editing={currentEdit !== undefined}>
+    <SUpdateForm onSubmit={onSubmit} editing={currentEdit != null}>
       <h3>
         <FormattedMessage id="newValue" defaultMessage={"_NEW_VALUE"} />
       </h3>
@@ -102,6 +103,7 @@ export function UpdateForm({
       <div>
         {currentEdit && (
           <FormInput
+            type={currentEdit === "email" ? "email" : "text"}
             autoComplete="off"
             error={formErrors[currentEdit]}
             onFocus={() => {
@@ -118,6 +120,8 @@ export function UpdateForm({
           />
         )}
         <SProductButton
+          variation="primary"
+          disabled={updating}
           onClick={() => {
             validateUpdate(formValues, currentEdit as string);
           }}
@@ -130,6 +134,9 @@ export function UpdateForm({
           ) : (
             <FormattedMessage id="change" defaultMessage={"_CHANGE_"} />
           )}
+        </SProductButton>
+        <SProductButton onClick={() => setCurrentEdit(undefined)}>
+          <FormattedMessage id="cancel" defaultMessage={"_CANCEL_"} />
         </SProductButton>
       </div>
     </SUpdateForm>
