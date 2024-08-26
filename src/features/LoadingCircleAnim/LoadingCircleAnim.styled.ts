@@ -16,6 +16,7 @@ export const SloadingCircleAnim = styled.span<SLoadingCircleProps>`
 export const SLoadingIcon = styled(LoadingCircle)`
   ${tw`animate-spin `}
   ${(props) => css`
+    animation-duration: 1500ms;
     color: ${props.theme.colors["additional"]};
   `}
 `;
