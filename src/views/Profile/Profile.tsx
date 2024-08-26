@@ -9,11 +9,10 @@ import { OrderList } from "@src/views/Profile/OrderList";
 import { ProductSlider } from "@src/components/ProductSlider";
 import { useWishlistProvider } from "@src/providers/WishlistProvider";
 
-
 export function Profile() {
   const { userData } = useAuthProvider();
   const { wishlistItems } = useWishlistProvider();
-  const { formatMessage } = useIntl()
+  const { formatMessage } = useIntl();
 
   const wishlistProducts = wishlistItems?.map((item) => item.likedProduct);
 
@@ -65,13 +64,13 @@ export function Profile() {
       <OrderList />
       <hr />
       {/* WISHLIST */}
-        <ProductSlider
-          products={wishlistProducts}
-          title={formatMessage({
-            id: "wishlist",
-            defaultMessage: "_WISHLIST_",
-          })}
-        />
+      <ProductSlider
+        products={wishlistProducts}
+        title={formatMessage({
+          id: "wishlist",
+          defaultMessage: "_WISHLIST_",
+        })}
+      />
     </SProfile>
   );
 }

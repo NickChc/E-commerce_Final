@@ -62,7 +62,7 @@ export function FormInput({
             <EyeIcon />
           </STogglePassword>
         )}
-        {error !== "" && <p className="text-[red]">{error}</p>}
+        {error !== "" && <p>{error}</p>}
       </SFormSpan>
     </SFormInpuLabel>
   );

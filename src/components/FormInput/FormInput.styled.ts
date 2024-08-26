@@ -11,7 +11,7 @@ export const SFormInpuLabel = styled.label`
 export const SFormSpan = styled.span`
   ${tw`relative flex flex-col items-stretch `}
 
-  p {
+  & > p {
     ${tw`absolute bottom-[-35%] left-[50%] translate-x-[-50%] whitespace-nowrap `}
     ${(props) => css`
       color: ${props.theme.colors["saleClr"]};
@@ -24,7 +24,7 @@ interface FormInputProps {
 }
 
 export const SFormInput = styled.input<FormInputProps>`
-  ${tw`p-[.6rem] text-[.8rem] md:text-[.85rem] lg:text-[.9rem] xl:text-[1rem] 2xl:text-[1.2rem] m-1 placeholder:font-semibold rounded-xl border-solid border outline-none `}
+  ${tw`p-[.6rem] text-[.8rem] md:text-[.85rem] lg:text-[.9rem] xl:text-[1rem] 2xl:text-[1.2rem] m-1 placeholder:font-semibold rounded-md border-solid border outline-none `}
   ${(props) => css`
     border-color: ${props.error
       ? props.theme.colors["saleClr"]

@@ -6,7 +6,7 @@ interface SEditProps {
 }
 
 export const SUpdateForm = styled.form<SEditProps>`
-  ${tw`mb-9 w-[90%] lg:w-[35%] border-solid border rounded-md p-3 pt-1 pb-6 flex flex-col items-stretch justify-between text-center origin-top lg:origin-top-left fixed sm:static z-50 `}
+  ${tw`mb-9 w-[90%] lg:w-[35%] border-solid border rounded-md p-3 pt-1 pb-6 text-center origin-top lg:origin-top-left fixed sm:static z-50 `}
 
   button {
     ${tw`disabled:pointer-events-none`}
@@ -28,7 +28,7 @@ export const SUpdateForm = styled.form<SEditProps>`
   `}
 
   div {
-    ${tw`flex flex-col items-stretch gap-y-5 `}
+    ${tw`flex flex-col items-stretch gap-y-7 `}
   }
 
   h4 {

@@ -34,7 +34,7 @@ export function UpdateForm({
   const { isValid, setIsValid, formErrors, setFormErrors, validateUpdate } =
     useValidateUpdate();
 
-  const { getUser } = useAuthProvider();
+  const { getUser, userData } = useAuthProvider();
 
   const { locale } = useLocaleProvider();
 
@@ -53,7 +53,19 @@ export function UpdateForm({
     try {
       setUpdateFail("");
       setUpdating(true);
-      if (!currentEdit) return;
+      if (currentEdit == null || userData == null) return;
+
+      if (userData[currentEdit] === value[currentEdit]) {
+        setFormErrors((prev) => ({
+          ...prev,
+          [currentEdit]:
+            locale === TLocale_Enum.KA
+              ? "შეიყვანეთ ახალი მნიშვნელობა"
+              : "Enter new value first",
+        }));
+        return;
+      }
+
       const updatedData = { [currentEdit]: value[currentEdit] };
       const response = await privateAxios.put("/user", updatedData);
       // REFETCH USERS NEW VALUES
@@ -84,7 +96,7 @@ export function UpdateForm({
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!isValid) return;
+    if (!isValid || userData == null) return;
 
     updateUser(formValues);
   }
