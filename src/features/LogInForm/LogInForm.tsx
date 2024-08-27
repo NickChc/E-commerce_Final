@@ -103,6 +103,7 @@ export function LogInForm() {
       <SFormContent>
         <SInputsWrapper>
           <FormInput
+            type="email"
             error={formErrors.email}
             placeholder={formatMessage({
               id: "email",

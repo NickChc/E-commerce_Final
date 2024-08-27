@@ -148,6 +148,7 @@ export function RegisterForm() {
           }
         />
         <FormInput
+          type="email"
           error={formErrors.email}
           placeholder={formatMessage({
             id: "email",
